@@ -3,7 +3,7 @@
   "portfolios": [
     {
       "name": "Value Picks",
-      "style": "Warren Buffett Style",
+      "style": "Deep Value Investing",
       "totalValue": 102450.00,
       "startingCash": 100000.00,
       "totalReturn": 2.45,
@@ -15,7 +15,7 @@
     },
     {
       "name": "Innovation Fund",
-      "style": "Cathie Wood/ARK Style",
+      "style": "Disruptive Innovation",
       "totalValue": 98200.00,
       "startingCash": 100000.00,
       "totalReturn": -1.80,
@@ -27,7 +27,7 @@
     },
     {
       "name": "Growth Value",
-      "style": "Peter Lynch Style",
+      "style": "GARP (Growth at Reasonable Price)",
       "totalValue": 105300.00,
       "startingCash": 100000.00,
       "totalReturn": 5.30,

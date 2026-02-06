@@ -1,0 +1,9 @@
+slack-bolt==1.19.0
+python-dotenv==1.0.1
+anthropic>=0.45.0   # for Claude — optional for pure DM test
+feedparser>=6.0.0   # for RSS news feeds (Motley Fool, etc.)
+yfinance>=0.2.0     # for Yahoo Finance stock data
+pandas>=2.0.0       # for data processing (dashboard export)
+matplotlib>=3.5.0   # for chart generation
+schedule>=1.2.0     # for autonomous trading scheduler
+discord.py>=2.3.0   # for Discord bot support
