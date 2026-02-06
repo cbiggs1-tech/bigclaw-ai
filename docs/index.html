@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigClaw AI - Trading Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="crab">🦀</span>
+            <h1>BigClaw AI</h1>
+        </div>
+        <p class="tagline">AI-Powered Investment Research</p>
+        <p class="update-time">Last updated: <span id="lastUpdate">Loading...</span></p>
+    </header>
+
+    <main>
+        <!-- Portfolio Summary Section -->
+        <section id="portfolios" class="card">
+            <h2>📊 Model Portfolios</h2>
+            <div id="portfolio-grid" class="portfolio-grid">
+                <!-- Populated by JavaScript -->
+                <div class="loading">Loading portfolio data...</div>
+            </div>
+        </section>
+
+        <!-- Live Ticker Section -->
+        <section id="tickers" class="card">
+            <h2>📈 Live Quotes</h2>
+            <div id="ticker-tape" class="ticker-tape">
+                <!-- TradingView widget will go here -->
+                <div class="loading">Loading live quotes...</div>
+            </div>
+        </section>
+
+        <!-- Today's Sentiment Section -->
+        <section id="sentiment" class="card">
+            <h2>🐦 X/Twitter Sentiment</h2>
+            <div id="sentiment-data">
+                <div class="loading">Loading sentiment data...</div>
+            </div>
+        </section>
+
+        <!-- Performance Chart Section -->
+        <section id="performance" class="card">
+            <h2>📉 Portfolio Performance</h2>
+            <div id="performance-chart">
+                <div class="loading">Loading performance chart...</div>
+            </div>
+        </section>
+
+        <!-- News Feed Section -->
+        <section id="news" class="card">
+            <h2>📰 Market News</h2>
+            <div id="news-feed">
+                <div class="loading">Loading news...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by Claude AI | Data refreshed daily at 9:00 AM & 4:30 PM CT</p>
+        <p class="disclaimer">For educational purposes only. Not financial advice.</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

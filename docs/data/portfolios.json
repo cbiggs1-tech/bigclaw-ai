@@ -1,0 +1,41 @@
+{
+  "lastUpdate": "2026-02-06T16:30:00Z",
+  "portfolios": [
+    {
+      "name": "Value Picks",
+      "style": "Warren Buffett Style",
+      "totalValue": 102450.00,
+      "startingCash": 100000.00,
+      "totalReturn": 2.45,
+      "holdings": [
+        {"ticker": "WMT", "shares": 50, "avgCost": 165.20, "currentPrice": 168.50},
+        {"ticker": "CVX", "shares": 30, "avgCost": 148.00, "currentPrice": 152.30},
+        {"ticker": "HD", "shares": 20, "avgCost": 355.00, "currentPrice": 362.15}
+      ]
+    },
+    {
+      "name": "Innovation Fund",
+      "style": "Cathie Wood/ARK Style",
+      "totalValue": 98200.00,
+      "startingCash": 100000.00,
+      "totalReturn": -1.80,
+      "holdings": [
+        {"ticker": "NVDA", "shares": 25, "avgCost": 875.00, "currentPrice": 862.40},
+        {"ticker": "TSLA", "shares": 40, "avgCost": 245.00, "currentPrice": 238.50},
+        {"ticker": "CRSP", "shares": 100, "avgCost": 58.00, "currentPrice": 55.20}
+      ]
+    },
+    {
+      "name": "Growth Value",
+      "style": "Peter Lynch Style",
+      "totalValue": 105300.00,
+      "startingCash": 100000.00,
+      "totalReturn": 5.30,
+      "holdings": [
+        {"ticker": "AAPL", "shares": 60, "avgCost": 182.00, "currentPrice": 191.25},
+        {"ticker": "MSFT", "shares": 25, "avgCost": 405.00, "currentPrice": 428.50},
+        {"ticker": "COST", "shares": 15, "avgCost": 725.00, "currentPrice": 742.00}
+      ]
+    }
+  ]
+}

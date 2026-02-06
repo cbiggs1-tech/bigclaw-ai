@@ -1,0 +1,11 @@
+{
+  "lastUpdate": "2026-02-06T16:30:00Z",
+  "tickers": [
+    {"ticker": "$AAPL", "bullishPercent": 72, "tweetCount": 156},
+    {"ticker": "$NVDA", "bullishPercent": 85, "tweetCount": 243},
+    {"ticker": "$TSLA", "bullishPercent": 58, "tweetCount": 412},
+    {"ticker": "$MSFT", "bullishPercent": 68, "tweetCount": 98},
+    {"ticker": "$WMT", "bullishPercent": 45, "tweetCount": 34},
+    {"ticker": "$CVX", "bullishPercent": 52, "tweetCount": 28}
+  ]
+}
