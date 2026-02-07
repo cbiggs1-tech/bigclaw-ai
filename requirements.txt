@@ -7,3 +7,4 @@ pandas>=2.0.0       # for data processing (dashboard export)
 matplotlib>=3.5.0   # for chart generation
 schedule>=1.2.0     # for autonomous trading scheduler
 discord.py>=2.3.0   # for Discord bot support
+alpaca-py>=0.30.0   # for extended hours market data

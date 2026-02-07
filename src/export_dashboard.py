@@ -29,39 +29,59 @@ DOCS_DATA_PATH = os.path.join(REPO_ROOT, "docs", "data")
 
 
 def get_current_prices(tickers: list[str]) -> dict[str, float]:
-    """Fetch current prices for a list of tickers."""
+    """Fetch current prices for a list of tickers.
+
+    Uses Alpaca for extended hours data when available,
+    falls back to yfinance for regular hours.
+    """
     prices = {}
     if not tickers:
         return prices
 
+    # Try Alpaca first for extended hours data
     try:
-        # Batch fetch for efficiency
-        data = yf.download(tickers, period="1d", progress=False)
-        if len(tickers) == 1:
-            # Single ticker returns Series, not DataFrame
-            ticker = tickers[0]
-            if 'Close' in data and len(data['Close']) > 0:
-                prices[ticker] = float(data['Close'].iloc[-1])
-        else:
-            # Multiple tickers
-            if 'Close' in data:
-                for ticker in tickers:
-                    if ticker in data['Close'].columns:
-                        close = data['Close'][ticker].iloc[-1]
-                        if not pd.isna(close):
-                            prices[ticker] = float(close)
+        from alpaca_data import get_extended_hours_prices
+        alpaca_prices = get_extended_hours_prices(tickers)
+        for ticker, data in alpaca_prices.items():
+            if data.get('price'):
+                prices[ticker] = data['price']
+                logger.debug(f"Got {ticker} price from Alpaca: ${data['price']:.2f}")
+    except ImportError:
+        logger.debug("Alpaca module not available")
     except Exception as e:
-        logger.warning(f"Error fetching prices: {e}")
+        logger.warning(f"Alpaca price fetch failed: {e}")
 
-    # Fallback: fetch individually for any missing
-    for ticker in tickers:
-        if ticker not in prices:
-            try:
-                stock = yf.Ticker(ticker)
-                info = stock.info
-                prices[ticker] = info.get('regularMarketPrice') or info.get('currentPrice', 0)
-            except:
-                pass
+    # Get remaining tickers from yfinance
+    missing_tickers = [t for t in tickers if t not in prices]
+    if missing_tickers:
+        try:
+            # Batch fetch for efficiency
+            data = yf.download(missing_tickers, period="1d", progress=False)
+            if len(missing_tickers) == 1:
+                # Single ticker returns Series, not DataFrame
+                ticker = missing_tickers[0]
+                if 'Close' in data and len(data['Close']) > 0:
+                    prices[ticker] = float(data['Close'].iloc[-1])
+            else:
+                # Multiple tickers
+                if 'Close' in data:
+                    for ticker in missing_tickers:
+                        if ticker in data['Close'].columns:
+                            close = data['Close'][ticker].iloc[-1]
+                            if not pd.isna(close):
+                                prices[ticker] = float(close)
+        except Exception as e:
+            logger.warning(f"Error fetching prices from yfinance: {e}")
+
+        # Fallback: fetch individually for any still missing
+        for ticker in tickers:
+            if ticker not in prices:
+                try:
+                    stock = yf.Ticker(ticker)
+                    info = stock.info
+                    prices[ticker] = info.get('regularMarketPrice') or info.get('currentPrice', 0)
+                except:
+                    pass
 
     return prices
 
