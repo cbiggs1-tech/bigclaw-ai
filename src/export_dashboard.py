@@ -286,7 +286,50 @@ def export_news() -> dict:
     }
 
 
-def save_json_files(portfolios: dict, sentiment: dict, metadata: dict, news: dict):
+def export_market() -> dict:
+    """Export market indices data (S&P 500, Dow, Nasdaq)."""
+    indices = {
+        'spy': 'SPY',      # S&P 500 ETF
+        'dji': 'DIA',      # Dow Jones ETF
+        'nasdaq': 'QQQ'    # Nasdaq ETF
+    }
+
+    result = {
+        'lastUpdate': datetime.utcnow().isoformat() + 'Z'
+    }
+
+    for key, ticker in indices.items():
+        try:
+            stock = yf.Ticker(ticker)
+            # Get today's data
+            hist = stock.history(period='2d')
+            if len(hist) >= 2:
+                prev_close = hist['Close'].iloc[-2]
+                current = hist['Close'].iloc[-1]
+                change_pct = ((current - prev_close) / prev_close) * 100
+                result[key] = {
+                    'price': round(current, 2),
+                    'change': round(change_pct, 2)
+                }
+            elif len(hist) == 1:
+                # Only today's data available
+                info = stock.info
+                prev_close = info.get('previousClose', hist['Close'].iloc[-1])
+                current = hist['Close'].iloc[-1]
+                change_pct = ((current - prev_close) / prev_close) * 100
+                result[key] = {
+                    'price': round(current, 2),
+                    'change': round(change_pct, 2)
+                }
+        except Exception as e:
+            logger.warning(f"Error fetching {ticker}: {e}")
+            result[key] = {'price': 0, 'change': 0}
+
+    logger.info(f"Exported market data: SPY {result.get('spy', {}).get('change', 0):+.2f}%")
+    return result
+
+
+def save_json_files(portfolios: dict, sentiment: dict, metadata: dict, news: dict, market: dict):
     """Save all JSON files to docs/data folder."""
     os.makedirs(DOCS_DATA_PATH, exist_ok=True)
 
@@ -294,7 +337,8 @@ def save_json_files(portfolios: dict, sentiment: dict, metadata: dict, news: dic
         'portfolios.json': portfolios,
         'sentiment.json': sentiment,
         'metadata.json': metadata,
-        'news.json': news
+        'news.json': news,
+        'market.json': market
     }
 
     for filename, data in files.items():
@@ -372,9 +416,10 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
         sentiment = export_sentiment(sentiment_data)
         metadata = export_metadata()
         news = export_news()
+        market = export_market()
 
         # Save files
-        save_json_files(portfolios, sentiment, metadata, news)
+        save_json_files(portfolios, sentiment, metadata, news, market)
 
         # Generate performance chart
         generate_performance_chart()

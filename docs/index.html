@@ -770,12 +770,16 @@
                     <span class="badge-value" id="lastUpdate">Loading...</span>
                 </div>
                 <div class="badge">
-                    <span class="badge-label">Avg Return</span>
-                    <span class="badge-value gain" id="avgReturn">+0.00%</span>
-                </div>
-                <div class="badge">
                     <span class="badge-label">S&P 500</span>
                     <span class="badge-value" id="spyChange">--</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-label">Dow</span>
+                    <span class="badge-value" id="djiChange">--</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-label">Nasdaq</span>
+                    <span class="badge-value" id="nasdaqChange">--</span>
                 </div>
                 <div class="ticker-search">
                     <input type="text" id="ticker-input" placeholder="Ticker..." maxlength="10">
@@ -909,9 +913,41 @@
             loadNewsData();
             loadSentimentData();
             loadPerformanceChart();
+            loadMarketData();
             updateTimestamp();
             setupTickerSearch();
         });
+
+        function loadMarketData() {
+            fetch('data/market.json')
+                .then(res => res.json())
+                .then(data => {
+                    // S&P 500
+                    if (data.spy) {
+                        const spyEl = document.getElementById('spyChange');
+                        const change = data.spy.change;
+                        spyEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+                        spyEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
+                    }
+                    // Dow Jones
+                    if (data.dji) {
+                        const djiEl = document.getElementById('djiChange');
+                        const change = data.dji.change;
+                        djiEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+                        djiEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
+                    }
+                    // Nasdaq
+                    if (data.nasdaq) {
+                        const nasdaqEl = document.getElementById('nasdaqChange');
+                        const change = data.nasdaq.change;
+                        nasdaqEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+                        nasdaqEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
+                    }
+                })
+                .catch(() => {
+                    // Keep showing -- if fetch fails
+                });
+        }
 
         function setupTickerSearch() {
             const input = document.getElementById('ticker-input');
@@ -1018,13 +1054,11 @@
                 .then(res => res.json())
                 .then(data => {
                     container.innerHTML = '';
-                    let totalReturn = 0;
 
                     data.portfolios.forEach((portfolio, idx) => {
                         const isGain = portfolio.totalReturn >= 0;
                         const returnClass = isGain ? 'gain' : 'loss';
                         const returnSign = isGain ? '+' : '';
-                        totalReturn += portfolio.totalReturn;
 
                         // Format start date
                         let startDate = '';
@@ -1072,12 +1106,6 @@
                             </div>
                         `;
                     });
-
-                    // Update average return in hero
-                    const avgReturn = totalReturn / data.portfolios.length;
-                    const avgEl = document.getElementById('avgReturn');
-                    avgEl.textContent = (avgReturn >= 0 ? '+' : '') + avgReturn.toFixed(2) + '%';
-                    avgEl.className = 'badge-value ' + (avgReturn >= 0 ? 'gain' : 'loss');
                 })
                 .catch(err => {
                     container.innerHTML = '<p class="loading">Portfolio data unavailable</p>';
