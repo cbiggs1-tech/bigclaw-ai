@@ -317,6 +317,17 @@ main {
     letter-spacing: 0.5px;
 }
 
+/* X Timeline Container */
+.x-timeline-container {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+}
+
+.x-timeline-container iframe {
+    border-radius: 8px;
+}
+
 /* Performance Chart */
 #performance-chart {
     min-height: 300px;
