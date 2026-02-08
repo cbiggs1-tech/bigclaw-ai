@@ -1044,6 +1044,19 @@
                     const chartContainer = document.getElementById('performance-chart');
                     chartContainer.innerHTML = `<img src="data/performance_chart.png${cacheBuster}" alt="Portfolio Performance">`;
 
+                    // Update timestamp to current refresh time
+                    const refreshTime = new Date();
+                    const timeStr = refreshTime.toLocaleString('en-US', {
+                        month: 'long',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        hour12: true,
+                        timeZoneName: 'short'
+                    });
+                    document.getElementById('lastUpdate').textContent = timeStr;
+
                     // Restore refresh icon
                     refreshIcon.textContent = '↻';
                     refreshIcon.classList.remove('loading');
