@@ -164,11 +164,102 @@
         .badge-value.gain { color: var(--gain); }
         .badge-value.loss { color: var(--loss); }
 
-        /* Main Layout */
-        main {
+        /* Main Layout with Sidebar */
+        .page-wrapper {
+            display: flex;
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            padding: 1rem 0.5rem 1rem 1rem;
+            position: sticky;
+            top: 50px;
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+        }
+
+        .sidebar-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.6rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .sidebar-link:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+        }
+
+        .sidebar-link-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .sidebar-link.yahoo .sidebar-link-icon { background: #5f0a87; }
+        .sidebar-link.bloomberg .sidebar-link-icon { background: #1a1a2e; }
+        .sidebar-link.nbc .sidebar-link-icon { background: #e31837; }
+        .sidebar-link.allin .sidebar-link-icon { background: #0f4c75; }
+        .sidebar-link.xfeed .sidebar-link-icon { background: #000; font-size: 0.8rem; }
+
+        main {
+            flex: 1;
+            min-width: 0;
             padding: 1.5rem 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .page-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 0.75rem 1rem;
+            }
+            .sidebar-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .sidebar-link {
+                flex: 0 0 auto;
+            }
         }
 
         .section-title {
@@ -441,52 +532,6 @@
             object-fit: contain;
         }
 
-        /* Quick Links Row */
-        .quick-links {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .quick-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .quick-link:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--accent);
-            transform: scale(1.02);
-        }
-
-        .quick-link-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        .quick-link.yahoo .quick-link-icon { background: #5f0a87; }
-        .quick-link.bloomberg .quick-link-icon { background: #1a1a2e; }
-        .quick-link.nbc .quick-link-icon { background: #e31837; }
-        .quick-link.allin .quick-link-icon { background: #0f4c75; }
-        .quick-link.xfeed .quick-link-icon { background: #000; font-size: 0.9rem; }
-
         .ticker-search {
             display: inline-flex;
             align-items: center;
@@ -715,35 +760,42 @@
         </div>
     </header>
 
-    <main>
-        <!-- Quick Links -->
-        <div class="quick-links">
-            <a href="https://www.youtube.com/@YahooFinance/streams" target="_blank" class="quick-link yahoo">
-                <span class="quick-link-icon">Y</span>
-                Yahoo Finance Live
-            </a>
-            <a href="https://www.youtube.com/@business/streams" target="_blank" class="quick-link bloomberg">
-                <span class="quick-link-icon">B</span>
-                Bloomberg Quicktake
-            </a>
-            <a href="https://www.youtube.com/@NBCNews/streams" target="_blank" class="quick-link nbc">
-                <span class="quick-link-icon">N</span>
-                NBC News NOW
-            </a>
-            <a href="https://www.youtube.com/@allin/streams" target="_blank" class="quick-link allin">
-                <span class="quick-link-icon">A</span>
-                All-In Podcast
-            </a>
-            <a href="https://twitter.com/unusual_whales" target="_blank" class="quick-link xfeed">
-                <span class="quick-link-icon">𝕏</span>
-                Unusual Whales
-            </a>
-            <a href="https://twitter.com/rebellionaire" target="_blank" class="quick-link xfeed">
-                <span class="quick-link-icon">𝕏</span>
-                Rebellionaire
-            </a>
-        </div>
+    <div class="page-wrapper">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-title">Live Streams</div>
+            <div class="sidebar-links">
+                <a href="https://www.youtube.com/@YahooFinance/streams" target="_blank" class="sidebar-link yahoo">
+                    <span class="sidebar-link-icon">Y</span>
+                    Yahoo Finance
+                </a>
+                <a href="https://www.youtube.com/@business/streams" target="_blank" class="sidebar-link bloomberg">
+                    <span class="sidebar-link-icon">B</span>
+                    Bloomberg
+                </a>
+                <a href="https://www.youtube.com/@NBCNews/streams" target="_blank" class="sidebar-link nbc">
+                    <span class="sidebar-link-icon">N</span>
+                    NBC News
+                </a>
+                <a href="https://www.youtube.com/@allin/streams" target="_blank" class="sidebar-link allin">
+                    <span class="sidebar-link-icon">A</span>
+                    All-In Pod
+                </a>
+            </div>
+            <div class="sidebar-title">𝕏 Feeds</div>
+            <div class="sidebar-links">
+                <a href="https://twitter.com/unusual_whales" target="_blank" class="sidebar-link xfeed">
+                    <span class="sidebar-link-icon">𝕏</span>
+                    Unusual Whales
+                </a>
+                <a href="https://twitter.com/rebellionaire" target="_blank" class="sidebar-link xfeed">
+                    <span class="sidebar-link-icon">𝕏</span>
+                    Rebellionaire
+                </a>
+            </div>
+        </aside>
 
+        <main>
         <!-- Quote Widget (populated by ticker search) -->
         <div class="quote-widget-container" id="quote-widget">
             <div class="quote-widget-header">
@@ -813,7 +865,8 @@
             </div>
         </div>
 
-    </main>
+        </main>
+    </div>
 
     <footer>
         <div class="footer-links">
