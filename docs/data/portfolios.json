@@ -1,14 +1,20 @@
 {
-  "lastUpdate": "2026-02-08T16:23:07.744459Z",
+  "lastUpdate": "2026-02-08T16:25:24.880692Z",
   "portfolios": [
     {
       "name": "Value Picks",
       "style": "Warren Buffett Style",
-      "totalValue": 102435.46,
+      "totalValue": 102647.34,
       "startingCash": 100000.0,
-      "totalReturn": 2.44,
+      "totalReturn": 2.65,
       "createdAt": "2026-02-03 19:30:00",
       "holdings": [
+        {
+          "ticker": "AAPL",
+          "shares": 11.0,
+          "avgCost": 274.3,
+          "currentPrice": 278.12
+        },
         {
           "ticker": "BAC",
           "shares": 462.02,
@@ -16,10 +22,28 @@
           "currentPrice": 56.53
         },
         {
+          "ticker": "BRK-B",
+          "shares": 12.0,
+          "avgCost": 500.83,
+          "currentPrice": 508.09
+        },
+        {
           "ticker": "JNJ",
           "shares": 128.19,
           "avgCost": 234.02,
           "currentPrice": 239.99
+        },
+        {
+          "ticker": "KHC",
+          "shares": 326.6,
+          "avgCost": 24.49,
+          "currentPrice": 24.64
+        },
+        {
+          "ticker": "KO",
+          "shares": 38.0,
+          "avgCost": 78.15,
+          "currentPrice": 79.03
         },
         {
           "ticker": "PG",
@@ -66,11 +90,17 @@
     {
       "name": "Growth Value",
       "style": "Peter Lynch Style",
-      "totalValue": 99542.98,
+      "totalValue": 100666.79,
       "startingCash": 100000.0,
-      "totalReturn": -0.46,
+      "totalReturn": 0.67,
       "createdAt": "2026-02-03 19:30:00",
       "holdings": [
+        {
+          "ticker": "AAPL",
+          "shares": 91.0,
+          "avgCost": 274.73,
+          "currentPrice": 278.12
+        },
         {
           "ticker": "JPM",
           "shares": 64.07,
@@ -84,8 +114,14 @@
           "currentPrice": 401.14
         },
         {
+          "ticker": "NVDA",
+          "shares": 79.0,
+          "avgCost": 173.65,
+          "currentPrice": 185.41
+        },
+        {
           "ticker": "UNH",
-          "shares": 88.47,
+          "shares": 38.47,
           "avgCost": 282.6,
           "currentPrice": 276.65
         }
