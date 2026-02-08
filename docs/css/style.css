@@ -230,40 +230,87 @@ main {
     color: var(--text-secondary);
 }
 
-/* Live TV Video Container */
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+/* Live TV Grid */
+.live-tv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.tv-card {
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg-dark);
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
     overflow: hidden;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 8px;
-}
-
-.tv-note {
-    margin-top: 0.75rem;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-align: center;
-}
-
-.tv-note a {
-    color: var(--accent-blue);
     text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.tv-note a:hover {
-    text-decoration: underline;
+.tv-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.tv-logo {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tv-card.bloomberg .tv-logo {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.tv-card.yahoo .tv-logo {
+    background: linear-gradient(135deg, #5f0a87 0%, #a4508b 100%);
+}
+
+.tv-card.cnbc .tv-logo {
+    background: linear-gradient(135deg, #005587 0%, #007bb5 100%);
+}
+
+.tv-card.foxbiz .tv-logo {
+    background: linear-gradient(135deg, #003366 0%, #336699 100%);
+}
+
+.tv-info {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.tv-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.tv-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.tv-live-badge {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 0.25rem;
+    padding: 0.15rem 0.5rem;
+    background-color: var(--accent-red);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Performance Chart */
