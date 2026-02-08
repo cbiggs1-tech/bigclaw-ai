@@ -334,6 +334,16 @@ def push_to_github():
         return False
 
 
+def generate_performance_chart():
+    """Generate the portfolio performance comparison chart."""
+    try:
+        from generate_chart import main as generate_chart_main
+        generate_chart_main()
+        logger.info("Performance chart generated")
+    except Exception as e:
+        logger.warning(f"Failed to generate performance chart: {e}")
+
+
 def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
     """Main export function - call this after reports.
 
@@ -354,6 +364,9 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
 
         # Save files
         save_json_files(portfolios, sentiment, metadata, news)
+
+        # Generate performance chart
+        generate_performance_chart()
 
         # Push to GitHub
         success = push_to_github()
