@@ -164,6 +164,34 @@
         .badge-value.gain { color: var(--gain); }
         .badge-value.loss { color: var(--loss); }
 
+        .market-status {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+        }
+
+        .status-dot.open {
+            background: var(--gain);
+            box-shadow: 0 0 8px var(--gain);
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.closed {
+            background: var(--loss);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         /* Main Layout with Sidebar */
         .page-wrapper {
             display: flex;
@@ -341,6 +369,18 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 0.15rem;
+        }
+
+        .style-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .style-link:hover {
+            color: var(--gold);
+            border-color: var(--gold);
         }
 
         .portfolio-return {
@@ -769,6 +809,10 @@
                     <span class="badge-label">Updated</span>
                     <span class="badge-value" id="lastUpdate">Loading...</span>
                 </div>
+                <div class="badge market-status">
+                    <span class="status-dot" id="marketDot"></span>
+                    <span class="badge-value" id="marketStatus">--</span>
+                </div>
                 <div class="badge">
                     <span class="badge-label">S&P 500</span>
                     <span class="badge-value" id="spyChange">--</span>
@@ -915,8 +959,51 @@
             loadPerformanceChart();
             loadMarketData();
             updateTimestamp();
+            updateMarketStatus();
             setupTickerSearch();
+            // Update market status every minute
+            setInterval(updateMarketStatus, 60000);
         });
+
+        function updateMarketStatus() {
+            const now = new Date();
+            const dot = document.getElementById('marketDot');
+            const status = document.getElementById('marketStatus');
+
+            // Convert to Eastern Time
+            const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+            const day = et.getDay(); // 0 = Sunday
+            const hours = et.getHours();
+            const minutes = et.getMinutes();
+            const time = hours * 60 + minutes;
+
+            // Market hours: 9:30 AM - 4:00 PM ET, Mon-Fri
+            const marketOpen = 9 * 60 + 30;  // 9:30 AM
+            const marketClose = 16 * 60;      // 4:00 PM
+
+            const isWeekday = day >= 1 && day <= 5;
+            const isDuringHours = time >= marketOpen && time < marketClose;
+            const isOpen = isWeekday && isDuringHours;
+
+            if (isOpen) {
+                dot.className = 'status-dot open';
+                status.textContent = 'Market Open';
+                status.className = 'badge-value';
+            } else {
+                dot.className = 'status-dot closed';
+                // Show when market opens next
+                if (day === 0) {
+                    status.textContent = 'Opens Mon 9:30a';
+                } else if (day === 6) {
+                    status.textContent = 'Opens Mon 9:30a';
+                } else if (time < marketOpen) {
+                    status.textContent = 'Opens 9:30a ET';
+                } else {
+                    status.textContent = 'Closed';
+                }
+                status.className = 'badge-value';
+            }
+        }
 
         function loadMarketData() {
             fetch('data/market.json')
@@ -1067,6 +1154,14 @@
                             startDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                         }
 
+                        // Map style to anchor
+                        const styleAnchors = {
+                            'Deep Value Investing': 'value',
+                            'Disruptive Innovation': 'innovation',
+                            'Growth at Reasonable Price': 'garp'
+                        };
+                        const styleAnchor = styleAnchors[portfolio.style] || '';
+
                         // Holdings (limit to 4 visible)
                         const holdings = portfolio.holdings || [];
                         const visibleHoldings = holdings.slice(0, 4);
@@ -1094,7 +1189,7 @@
                                 <div class="portfolio-header">
                                     <div>
                                         <div class="portfolio-name">${portfolio.name}</div>
-                                        <div class="portfolio-style">${portfolio.style} • ${startDate}</div>
+                                        <div class="portfolio-style"><a href="styles.html#${styleAnchor}" class="style-link">${portfolio.style}</a> • ${startDate}</div>
                                     </div>
                                     <div class="portfolio-return ${returnClass}">${returnSign}${portfolio.totalReturn.toFixed(2)}%</div>
                                 </div>

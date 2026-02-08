@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Styles - BigClaw AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+    <style>
+        :root {
+            --bg-primary: #0F172A;
+            --bg-card: #1E293B;
+            --border-color: #334155;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --gain: #10B981;
+            --loss: #EF4444;
+            --gold: #FCD34D;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .back-link:hover { color: var(--gold); }
+
+        .styles-grid {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .style-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .style-card h2 {
+            color: var(--gold);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .style-card .celebrity {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .style-card .description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .style-card h3 {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .style-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .style-card li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .style-card li::before {
+            content: "•";
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+
+        .metrics-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            background: var(--bg-primary);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .risk-low { color: var(--gain); }
+        .risk-medium { color: var(--gold); }
+        .risk-high { color: var(--loss); }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><span>🦀</span> Investment Styles</h1>
+        <a href="index.html" class="back-link">← Back to Dashboard</a>
+    </div>
+
+    <div class="styles-grid">
+        <!-- Value Picks -->
+        <div class="style-card" id="value">
+            <h2>💎 Deep Value Investing</h2>
+            <p class="celebrity">Made famous by Warren Buffett & Benjamin Graham</p>
+            <p class="description">
+                Deep value investing focuses on finding stocks trading significantly below their intrinsic value.
+                This approach looks for companies with strong fundamentals that the market has temporarily overlooked
+                or undervalued. The goal is to buy "wonderful companies at fair prices" and hold them for the long term.
+            </p>
+
+            <h3>What We Look For</h3>
+            <ul>
+                <li>Low P/E ratios compared to industry peers</li>
+                <li>Strong balance sheets with low debt</li>
+                <li>Consistent dividend history</li>
+                <li>Wide economic moats (competitive advantages)</li>
+                <li>Quality management with shareholder-friendly practices</li>
+                <li>Companies trading below book value</li>
+            </ul>
+
+            <h3>Typical Holdings</h3>
+            <ul>
+                <li>Blue-chip dividend aristocrats</li>
+                <li>Consumer staples (Procter & Gamble, Coca-Cola)</li>
+                <li>Financial institutions (banks, insurance)</li>
+                <li>Healthcare giants (Johnson & Johnson)</li>
+            </ul>
+
+            <div class="metrics-row">
+                <div class="metric">
+                    <div class="metric-label">Risk Level</div>
+                    <div class="metric-value risk-low">Low-Medium</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Time Horizon</div>
+                    <div class="metric-value">5-10+ Years</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Volatility</div>
+                    <div class="metric-value risk-low">Lower</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Innovation Fund -->
+        <div class="style-card" id="innovation">
+            <h2>🚀 Disruptive Innovation</h2>
+            <p class="celebrity">Made famous by Cathie Wood & ARK Invest</p>
+            <p class="description">
+                Disruptive innovation investing targets companies developing breakthrough technologies that could
+                fundamentally change industries. This high-conviction strategy accepts higher volatility in pursuit
+                of exponential growth potential. The focus is on companies at the forefront of technological revolution.
+            </p>
+
+            <h3>What We Look For</h3>
+            <ul>
+                <li>Companies leading in AI, robotics, and automation</li>
+                <li>Genomics and biotechnology innovators</li>
+                <li>Electric vehicles and clean energy pioneers</li>
+                <li>Fintech disruptors and blockchain technology</li>
+                <li>Space exploration and next-gen internet</li>
+                <li>High revenue growth potential (30%+ annually)</li>
+            </ul>
+
+            <h3>Typical Holdings</h3>
+            <ul>
+                <li>AI and semiconductor leaders (NVIDIA)</li>
+                <li>Electric vehicle manufacturers (Tesla)</li>
+                <li>Genomics companies (CRISPR Therapeutics)</li>
+                <li>Data and cloud platforms (Palantir)</li>
+            </ul>
+
+            <div class="metrics-row">
+                <div class="metric">
+                    <div class="metric-label">Risk Level</div>
+                    <div class="metric-value risk-high">High</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Time Horizon</div>
+                    <div class="metric-value">5-7 Years</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Volatility</div>
+                    <div class="metric-value risk-high">Higher</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Growth Value -->
+        <div class="style-card" id="garp">
+            <h2>📈 Growth at Reasonable Price (GARP)</h2>
+            <p class="celebrity">Made famous by Peter Lynch & Fidelity Magellan Fund</p>
+            <p class="description">
+                GARP combines the best of growth and value investing. This approach seeks companies with above-average
+                growth potential that aren't excessively overvalued. The strategy aims to find quality growth stocks
+                before they become widely recognized, paying a reasonable price for future earnings potential.
+            </p>
+
+            <h3>What We Look For</h3>
+            <ul>
+                <li>PEG ratio (P/E to Growth) under 1.5</li>
+                <li>Consistent earnings growth (15-25% annually)</li>
+                <li>Strong return on equity (ROE)</li>
+                <li>Expanding profit margins</li>
+                <li>Market leadership in growing industries</li>
+                <li>Reasonable valuations relative to growth rate</li>
+            </ul>
+
+            <h3>Typical Holdings</h3>
+            <ul>
+                <li>Technology giants (Apple, Microsoft)</li>
+                <li>Financial services leaders (JPMorgan)</li>
+                <li>Healthcare innovators (UnitedHealth)</li>
+                <li>Established growth companies with proven track records</li>
+            </ul>
+
+            <div class="metrics-row">
+                <div class="metric">
+                    <div class="metric-label">Risk Level</div>
+                    <div class="metric-value risk-medium">Medium</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Time Horizon</div>
+                    <div class="metric-value">3-5 Years</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Volatility</div>
+                    <div class="metric-value risk-medium">Moderate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>For educational purposes only. Not financial advice.</p>
+        <p>Investment styles are simplified descriptions. Actual portfolio decisions may vary.</p>
+    </footer>
+</body>
+</html>
