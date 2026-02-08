@@ -168,6 +168,52 @@ def export_portfolios() -> dict:
     }
 
 
+def export_analysis(analysis_text: str, portfolio_name: str = None) -> dict:
+    """Export BigClaw analysis report to JSON format.
+
+    Args:
+        analysis_text: The analysis text from the trading agent.
+        portfolio_name: Optional name of the portfolio analyzed.
+
+    Returns:
+        Dict with the analysis data.
+    """
+    now = datetime.now()
+    hour = now.hour
+
+    # Determine if this is morning or evening report
+    if hour < 12:
+        report_type = "Morning Analysis"
+    else:
+        report_type = "Evening Analysis"
+
+    return {
+        'lastUpdate': now.isoformat() + 'Z',
+        'timestamp': now.strftime("%B %d, %Y at %I:%M %p CT"),
+        'reportType': report_type,
+        'portfolioName': portfolio_name or "All Portfolios",
+        'content': analysis_text
+    }
+
+
+def save_analysis_report(analysis_text: str, portfolio_name: str = None):
+    """Save analysis report to JSON file.
+
+    Args:
+        analysis_text: The analysis text from the trading agent.
+        portfolio_name: Optional name of the portfolio analyzed.
+    """
+    os.makedirs(DOCS_DATA_PATH, exist_ok=True)
+
+    analysis = export_analysis(analysis_text, portfolio_name)
+
+    filepath = os.path.join(DOCS_DATA_PATH, 'analysis.json')
+    with open(filepath, 'w') as f:
+        json.dump(analysis, f, indent=2)
+
+    logger.info(f"Saved analysis report to {filepath}")
+
+
 def export_sentiment(sentiment_data: Optional[dict] = None) -> dict:
     """Export sentiment data to JSON format.
 

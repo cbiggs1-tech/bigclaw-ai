@@ -735,6 +735,91 @@
             height: 400px;
         }
 
+        /* Analysis Report Card */
+        .analysis-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            animation-delay: 0.35s;
+        }
+
+        .analysis-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .analysis-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .analysis-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .analysis-content {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .analysis-content strong,
+        .analysis-content b {
+            color: var(--text-primary);
+        }
+
+        .analysis-toggle {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .analysis-toggle:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .analysis-collapsed .analysis-content {
+            max-height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .analysis-collapsed .analysis-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(transparent, var(--bg-primary));
+        }
+
         /* Sentiment Row */
         .sentiment-row {
             display: flex;
@@ -827,6 +912,7 @@
             </div>
             <div class="nav-links">
                 <a href="#portfolios">Portfolios</a>
+                <a href="#analysis">Analysis</a>
                 <a href="#sentiment">Sentiment</a>
                 <a href="#market">Market</a>
             </div>
@@ -921,6 +1007,22 @@
             </div>
         </section>
 
+        <!-- BigClaw Analysis Report -->
+        <section id="analysis">
+            <div class="analysis-card analysis-collapsed" id="analysis-card">
+                <div class="analysis-header">
+                    <div>
+                        <div class="analysis-title">🦀 BigClaw Market Analysis</div>
+                        <div class="analysis-meta" id="analysis-meta">Loading...</div>
+                    </div>
+                    <button class="analysis-toggle" id="analysis-toggle">Expand</button>
+                </div>
+                <div class="analysis-content" id="analysis-content">
+                    Loading analysis report...
+                </div>
+            </div>
+        </section>
+
         <!-- Sentiment Row -->
         <section id="sentiment">
             <h2 class="section-title">𝕏 Sentiment</h2>
@@ -996,10 +1098,12 @@
             loadSentimentData();
             loadPerformanceChart();
             loadMarketData();
+            loadAnalysisReport();
             updateTimestamp();
             updateMarketStatus();
             setupTickerSearch();
             setupRefreshButton();
+            setupAnalysisToggle();
             // Update market status every minute
             setInterval(updateMarketStatus, 60000);
         });
@@ -1070,6 +1174,7 @@
                     fetch('data/news.json' + cacheBuster).then(r => r.json()).then(loadNewsDataFromJson),
                     fetch('data/sentiment.json' + cacheBuster).then(r => r.json()).then(loadSentimentDataFromJson),
                     fetch('data/market.json' + cacheBuster).then(r => r.json()).then(loadMarketDataFromJson),
+                    fetch('data/analysis.json' + cacheBuster).then(r => r.json()).then(loadAnalysisDataFromJson).catch(() => {}),
                     fetch('data/metadata.json' + cacheBuster).then(r => r.json()).then(data => {
                         document.getElementById('lastUpdate').textContent = data.lastUpdate || 'Unknown';
                     })
@@ -1360,6 +1465,45 @@
                 .then(loadNewsDataFromJson)
                 .catch(() => {
                     container.innerHTML = '<p class="loading">News unavailable</p>';
+                });
+        }
+
+        function setupAnalysisToggle() {
+            const card = document.getElementById('analysis-card');
+            const toggle = document.getElementById('analysis-toggle');
+
+            toggle.addEventListener('click', function() {
+                card.classList.toggle('analysis-collapsed');
+                toggle.textContent = card.classList.contains('analysis-collapsed') ? 'Expand' : 'Collapse';
+            });
+        }
+
+        function loadAnalysisDataFromJson(data) {
+            const content = document.getElementById('analysis-content');
+            const meta = document.getElementById('analysis-meta');
+
+            if (!data || !data.content) {
+                content.textContent = 'No analysis available yet. Reports are published at 9 AM and 4:30 PM CT.';
+                meta.textContent = 'Awaiting report...';
+                return;
+            }
+
+            // Format the content - convert markdown-style bold to HTML
+            let formattedContent = data.content
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+
+            content.innerHTML = formattedContent;
+            meta.textContent = `${data.reportType} • ${data.portfolioName} • ${data.timestamp}`;
+        }
+
+        function loadAnalysisReport() {
+            fetch('data/analysis.json')
+                .then(res => res.json())
+                .then(loadAnalysisDataFromJson)
+                .catch(() => {
+                    document.getElementById('analysis-content').textContent = 'Analysis report not available.';
+                    document.getElementById('analysis-meta').textContent = 'Reports published at 9 AM & 4:30 PM CT';
                 });
         }
 

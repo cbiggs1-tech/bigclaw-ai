@@ -14,7 +14,7 @@ from datetime import datetime, time
 from typing import Optional, Callable
 import schedule
 
-from export_dashboard import export_dashboard
+from export_dashboard import export_dashboard, save_analysis_report
 
 logger = logging.getLogger(__name__)
 
@@ -392,6 +392,13 @@ Begin your analysis now."""
                     f"**🤖 Autonomous Trading: {portfolio.name}**\n\n{response[:2000]}"
                 )
 
+            # Save analysis report to JSON for dashboard
+            try:
+                save_analysis_report(response, portfolio.name)
+                logger.info(f"Saved analysis report for {portfolio.name}")
+            except Exception as e:
+                logger.error(f"Failed to save analysis report: {e}")
+
             return response
 
         except Exception as e:
@@ -419,6 +426,13 @@ Begin your analysis now."""
             try:
                 report = self._generate_report(portfolio)
                 self._send_message(portfolio.report_channel, report)
+
+                # Save report to JSON for dashboard
+                try:
+                    save_analysis_report(report, portfolio.name)
+                    logger.info(f"Saved evening report for {portfolio.name}")
+                except Exception as e:
+                    logger.error(f"Failed to save evening report: {e}")
             except Exception as e:
                 logger.error(f"Error generating report for {portfolio.name}: {e}")
 
