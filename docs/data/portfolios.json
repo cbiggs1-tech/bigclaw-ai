@@ -1,9 +1,9 @@
 {
-  "lastUpdate": "2026-02-08T16:25:24.880692Z",
+  "lastUpdate": "2026-02-08T16:28:38.137182Z",
   "portfolios": [
     {
       "name": "Value Picks",
-      "style": "Warren Buffett Style",
+      "style": "Deep Value Investing",
       "totalValue": 102647.34,
       "startingCash": 100000.0,
       "totalReturn": 2.65,
@@ -55,7 +55,7 @@
     },
     {
       "name": "Innovation Fund",
-      "style": "Cathie Wood Style",
+      "style": "Disruptive Innovation",
       "totalValue": 97037.73,
       "startingCash": 100000.0,
       "totalReturn": -2.96,
@@ -89,7 +89,7 @@
     },
     {
       "name": "Growth Value",
-      "style": "Peter Lynch Style",
+      "style": "Growth at Reasonable Price",
       "totalValue": 100666.79,
       "startingCash": 100000.0,
       "totalReturn": 0.67,
