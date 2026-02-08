@@ -449,6 +449,31 @@
             animation-delay: 0.4s;
         }
 
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .card-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .click-hint {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: auto;
+        }
+
+        .card-link:hover .click-hint {
+            color: var(--gold);
+        }
+
         .card-title {
             font-size: 0.9rem;
             font-weight: 600;
@@ -830,12 +855,12 @@
                         <div class="loading">Loading news...</div>
                     </div>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">📈 Portfolio Performance</h3>
+                <a href="chart-detail.html" class="card card-link">
+                    <h3 class="card-title">📈 Portfolio Performance <span class="click-hint">Click for details →</span></h3>
                     <div class="chart-container" id="performance-chart">
                         <div class="loading">Loading chart...</div>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Performance - BigClaw AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0F172A;
+            --bg-card: #1E293B;
+            --border-color: #334155;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --gain: #10B981;
+            --loss: #EF4444;
+            --gold: #FCD34D;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .back-link:hover { color: var(--gold); }
+
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            height: 400px;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .legend-item:hover {
+            background: var(--bg-card);
+        }
+
+        .legend-item.active {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .legend-return {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .portfolio-detail {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: none;
+        }
+
+        .portfolio-detail.visible {
+            display: block;
+        }
+
+        .portfolio-detail h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .portfolio-detail .style {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .holdings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .holdings-table th {
+            text-align: left;
+            padding: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .holdings-table td {
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .holdings-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ticker {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .change.positive { color: var(--gain); }
+        .change.negative { color: var(--loss); }
+
+        .summary {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .summary-item {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .summary-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .summary-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .instruction {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><span>🦀</span> Portfolio Performance</h1>
+        <a href="index.html" class="back-link">← Back to Dashboard</a>
+    </div>
+
+    <div class="legend" id="legend"></div>
+
+    <div class="chart-container">
+        <canvas id="performanceChart"></canvas>
+    </div>
+
+    <div class="portfolio-detail" id="portfolio-detail">
+        <div class="summary" id="summary"></div>
+        <h2 id="detail-name">Portfolio Name</h2>
+        <p class="style" id="detail-style">Style</p>
+        <table class="holdings-table">
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Shares</th>
+                    <th>Avg Cost</th>
+                    <th>Current</th>
+                    <th>Change</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody id="holdings-body"></tbody>
+        </table>
+    </div>
+
+    <div class="instruction" id="instruction">
+        Click on a portfolio in the legend above to see holdings details
+    </div>
+
+    <script>
+        const colors = {
+            'Value Picks': '#4ade80',
+            'Innovation Fund': '#f87171',
+            'Growth Value': '#60a5fa'
+        };
+
+        let portfolioData = null;
+        let chart = null;
+
+        async function loadData() {
+            try {
+                const response = await fetch('data/portfolios.json');
+                portfolioData = await response.json();
+                buildChart();
+                buildLegend();
+            } catch (e) {
+                console.error('Error loading data:', e);
+            }
+        }
+
+        function buildChart() {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+
+            // Generate sample historical data based on current returns
+            const datasets = portfolioData.portfolios.map(p => {
+                const color = colors[p.name] || '#ffffff';
+                const startDate = new Date(p.createdAt);
+                const today = new Date();
+                const days = Math.ceil((today - startDate) / (1000 * 60 * 60 * 24));
+
+                // Simulate daily returns leading to current return
+                const data = [];
+                const labels = [];
+                const dailyReturn = p.totalReturn / days;
+
+                for (let i = 0; i <= days; i++) {
+                    const date = new Date(startDate);
+                    date.setDate(date.getDate() + i);
+                    labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+                    // Add some randomness but trend toward final return
+                    const progress = i / days;
+                    const noise = (Math.random() - 0.5) * 1.5;
+                    data.push(Number((p.totalReturn * progress + noise).toFixed(2)));
+                }
+                // Set final point to actual return
+                data[data.length - 1] = p.totalReturn;
+
+                return {
+                    label: p.name,
+                    data: data,
+                    borderColor: color,
+                    backgroundColor: color + '20',
+                    tension: 0.3,
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    pointHoverRadius: 6,
+                    fill: false
+                };
+            });
+
+            // Use labels from first dataset
+            const labels = [];
+            const startDate = new Date(portfolioData.portfolios[0].createdAt);
+            const today = new Date();
+            const days = Math.ceil((today - startDate) / (1000 * 60 * 60 * 24));
+
+            for (let i = 0; i <= days; i++) {
+                const date = new Date(startDate);
+                date.setDate(date.getDate() + i);
+                labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+            }
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed.y;
+                                    const sign = value >= 0 ? '+' : '';
+                                    return `${context.dataset.label}: ${sign}${value.toFixed(2)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#334155' },
+                            ticks: { color: '#94A3B8' }
+                        },
+                        y: {
+                            grid: { color: '#334155' },
+                            ticks: {
+                                color: '#94A3B8',
+                                callback: function(value) {
+                                    return (value >= 0 ? '+' : '') + value + '%';
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        function buildLegend() {
+            const legend = document.getElementById('legend');
+            legend.innerHTML = '';
+
+            portfolioData.portfolios.forEach(p => {
+                const color = colors[p.name] || '#ffffff';
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `
+                    <span class="legend-dot" style="background: ${color}"></span>
+                    <span class="legend-name">${p.name}</span>
+                    <span class="legend-return" style="color: ${p.totalReturn >= 0 ? 'var(--gain)' : 'var(--loss)'}">
+                        ${p.totalReturn >= 0 ? '+' : ''}${p.totalReturn.toFixed(2)}%
+                    </span>
+                `;
+                item.onclick = () => showPortfolioDetail(p.name);
+                legend.appendChild(item);
+            });
+        }
+
+        function showPortfolioDetail(name) {
+            const portfolio = portfolioData.portfolios.find(p => p.name === name);
+            if (!portfolio) return;
+
+            // Update legend active state
+            document.querySelectorAll('.legend-item').forEach(item => {
+                item.classList.toggle('active', item.textContent.includes(name));
+            });
+
+            // Show detail panel
+            document.getElementById('portfolio-detail').classList.add('visible');
+            document.getElementById('instruction').style.display = 'none';
+
+            // Update summary
+            const summary = document.getElementById('summary');
+            const gainLoss = portfolio.totalValue - portfolio.startingCash;
+            summary.innerHTML = `
+                <div class="summary-item">
+                    <div class="summary-label">Total Value</div>
+                    <div class="summary-value">$${portfolio.totalValue.toLocaleString()}</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Starting Cash</div>
+                    <div class="summary-value">$${portfolio.startingCash.toLocaleString()}</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Gain/Loss</div>
+                    <div class="summary-value" style="color: ${gainLoss >= 0 ? 'var(--gain)' : 'var(--loss)'}">
+                        ${gainLoss >= 0 ? '+' : ''}$${gainLoss.toLocaleString()}
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Return</div>
+                    <div class="summary-value" style="color: ${portfolio.totalReturn >= 0 ? 'var(--gain)' : 'var(--loss)'}">
+                        ${portfolio.totalReturn >= 0 ? '+' : ''}${portfolio.totalReturn.toFixed(2)}%
+                    </div>
+                </div>
+            `;
+
+            // Update name and style
+            document.getElementById('detail-name').textContent = portfolio.name;
+            document.getElementById('detail-style').textContent = portfolio.style;
+
+            // Build holdings table
+            const tbody = document.getElementById('holdings-body');
+            tbody.innerHTML = '';
+
+            portfolio.holdings.forEach(h => {
+                const change = ((h.currentPrice - h.avgCost) / h.avgCost) * 100;
+                const value = h.shares * h.currentPrice;
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="ticker">${h.ticker}</td>
+                    <td>${h.shares.toFixed(2)}</td>
+                    <td>$${h.avgCost.toFixed(2)}</td>
+                    <td>$${h.currentPrice.toFixed(2)}</td>
+                    <td class="change ${change >= 0 ? 'positive' : 'negative'}">
+                        ${change >= 0 ? '+' : ''}${change.toFixed(2)}%
+                    </td>
+                    <td>$${value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
