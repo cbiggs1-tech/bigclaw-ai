@@ -277,8 +277,12 @@ main {
     background: linear-gradient(135deg, #005587 0%, #007bb5 100%);
 }
 
-.tv-card.foxbiz .tv-logo {
-    background: linear-gradient(135deg, #003366 0%, #336699 100%);
+.tv-card.reuters .tv-logo {
+    background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
+}
+
+.tv-card.markets .tv-logo {
+    background: linear-gradient(135deg, #1a1a2e 0%, #4a4a6a 100%);
 }
 
 .tv-info {
