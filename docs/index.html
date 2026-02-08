@@ -1022,6 +1022,8 @@
                 }
 
                 lastRefreshTime = now;
+                const startTime = now;
+                const MIN_LOADING_TIME = 2000; // Minimum 2 seconds to show clock
                 refreshBtn.classList.add('refreshing');
 
                 // Show clock icon while loading
@@ -1030,6 +1032,38 @@
 
                 // Refresh all data with cache-busting
                 const cacheBuster = '?t=' + now;
+
+                // Helper to restore icon after minimum time
+                function finishRefresh(success) {
+                    const elapsed = Date.now() - startTime;
+                    const remaining = Math.max(0, MIN_LOADING_TIME - elapsed);
+
+                    setTimeout(() => {
+                        if (success) {
+                            // Reload chart with cache buster
+                            const chartContainer = document.getElementById('performance-chart');
+                            chartContainer.innerHTML = `<img src="data/performance_chart.png${cacheBuster}" alt="Portfolio Performance">`;
+
+                            // Update timestamp to current refresh time
+                            const refreshTime = new Date();
+                            const timeStr = refreshTime.toLocaleString('en-US', {
+                                month: 'long',
+                                day: 'numeric',
+                                year: 'numeric',
+                                hour: 'numeric',
+                                minute: '2-digit',
+                                hour12: true,
+                                timeZoneName: 'short'
+                            });
+                            document.getElementById('lastUpdate').textContent = timeStr;
+                        }
+
+                        // Restore refresh icon
+                        refreshIcon.textContent = '↻';
+                        refreshIcon.classList.remove('loading');
+                        refreshBtn.classList.remove('refreshing');
+                    }, remaining);
+                }
 
                 Promise.all([
                     fetch('data/portfolios.json' + cacheBuster).then(r => r.json()).then(loadPortfolioDataFromJson),
@@ -1040,32 +1074,9 @@
                         document.getElementById('lastUpdate').textContent = data.lastUpdate || 'Unknown';
                     })
                 ]).then(() => {
-                    // Reload chart with cache buster
-                    const chartContainer = document.getElementById('performance-chart');
-                    chartContainer.innerHTML = `<img src="data/performance_chart.png${cacheBuster}" alt="Portfolio Performance">`;
-
-                    // Update timestamp to current refresh time
-                    const refreshTime = new Date();
-                    const timeStr = refreshTime.toLocaleString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                        hour12: true,
-                        timeZoneName: 'short'
-                    });
-                    document.getElementById('lastUpdate').textContent = timeStr;
-
-                    // Restore refresh icon
-                    refreshIcon.textContent = '↻';
-                    refreshIcon.classList.remove('loading');
-                    refreshBtn.classList.remove('refreshing');
+                    finishRefresh(true);
                 }).catch(() => {
-                    // Restore refresh icon even on error
-                    refreshIcon.textContent = '↻';
-                    refreshIcon.classList.remove('loading');
-                    refreshBtn.classList.remove('refreshing');
+                    finishRefresh(false);
                 });
             });
         }
