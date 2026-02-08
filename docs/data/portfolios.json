@@ -1,87 +1,93 @@
 {
-  "lastUpdate": "2026-02-08T16:14:35.228307Z",
+  "lastUpdate": "2026-02-08T16:23:07.744459Z",
   "portfolios": [
     {
       "name": "Value Picks",
-      "style": "Deep Value Investing",
-      "totalValue": 100000.0,
+      "style": "Warren Buffett Style",
+      "totalValue": 102435.46,
       "startingCash": 100000.0,
-      "totalReturn": 0.0,
-      "createdAt": "2026-02-08 14:36:56",
+      "totalReturn": 2.44,
+      "createdAt": "2026-02-03 19:30:00",
       "holdings": [
         {
           "ticker": "BAC",
-          "shares": 442.24,
-          "avgCost": 56.53,
+          "shares": 462.02,
+          "avgCost": 54.11,
           "currentPrice": 56.53
         },
         {
-          "ticker": "WFC",
-          "shares": 266.04,
-          "avgCost": 93.97,
-          "currentPrice": 93.97
+          "ticker": "JNJ",
+          "shares": 128.19,
+          "avgCost": 234.02,
+          "currentPrice": 239.99
         },
         {
-          "ticker": "XOM",
-          "shares": 167.73,
-          "avgCost": 149.05,
-          "currentPrice": 149.05
+          "ticker": "PG",
+          "shares": 160.54,
+          "avgCost": 155.73,
+          "currentPrice": 159.17
         }
       ]
     },
     {
       "name": "Innovation Fund",
-      "style": "Disruptive Innovation",
-      "totalValue": 100000.0,
+      "style": "Cathie Wood Style",
+      "totalValue": 97037.73,
       "startingCash": 100000.0,
-      "totalReturn": 0.0,
-      "createdAt": "2026-02-08 14:36:56",
+      "totalReturn": -2.96,
+      "createdAt": "2026-02-03 19:30:00",
       "holdings": [
         {
+          "ticker": "CRSP",
+          "shares": 291.72,
+          "avgCost": 51.42,
+          "currentPrice": 48.74
+        },
+        {
           "ticker": "NVDA",
-          "shares": 161.8,
-          "avgCost": 185.41,
+          "shares": 139.85,
+          "avgCost": 178.76,
           "currentPrice": 185.41
         },
         {
-          "ticker": "RKLB",
-          "shares": 276.55,
-          "avgCost": 72.32,
-          "currentPrice": 72.32
+          "ticker": "PLTR",
+          "shares": 127.49,
+          "avgCost": 156.87,
+          "currentPrice": 135.9
         },
         {
           "ticker": "TSLA",
-          "shares": 60.81,
-          "avgCost": 411.11,
+          "shares": 59.75,
+          "avgCost": 418.43,
           "currentPrice": 411.11
         }
       ]
     },
     {
       "name": "Growth Value",
-      "style": "GARP (Growth at Reasonable Price)",
-      "totalValue": 100000.0,
+      "style": "Peter Lynch Style",
+      "totalValue": 99542.98,
       "startingCash": 100000.0,
-      "totalReturn": 0.0,
-      "createdAt": "2026-02-08 14:36:56",
+      "totalReturn": -0.46,
+      "createdAt": "2026-02-03 19:30:00",
       "holdings": [
         {
-          "ticker": "GOOGL",
-          "shares": 92.92,
-          "avgCost": 322.86,
-          "currentPrice": 322.86
+          "ticker": "JPM",
+          "shares": 64.07,
+          "avgCost": 312.18,
+          "currentPrice": 322.4
         },
         {
           "ticker": "MSFT",
-          "shares": 62.32,
-          "avgCost": 401.14,
+          "shares": 73.32,
+          "avgCost": 409.15,
           "currentPrice": 401.14
         },
         {
-          "ticker": "NVDA",
-          "shares": 107.87,
-          "avgCost": 185.41,
-          "currentPrice": 185.41
+          "ticker": "UNH",
+          "shares": 88.47,
+          "avgCost": 282.6,
+          "currentPrice": 276.65
         }
       ]
     }
