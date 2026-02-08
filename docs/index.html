@@ -180,20 +180,21 @@
         }
 
         .refresh-btn.refreshing {
-            opacity: 0.7;
-            pointer-events: none;
+            opacity: 0.85;
+            cursor: wait;
         }
 
         .refresh-btn .refresh-icon {
             display: inline-block;
             transition: transform 0.3s;
+            font-size: 0.9rem;
         }
 
-        .refresh-btn.refreshing .refresh-icon {
-            animation: spin 1s linear infinite;
+        .refresh-btn .refresh-icon.loading {
+            animation: clockTick 1s steps(12) infinite;
         }
 
-        @keyframes spin {
+        @keyframes clockTick {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
@@ -1005,18 +1006,27 @@
 
         function setupRefreshButton() {
             const refreshBtn = document.getElementById('refreshBtn');
+            const refreshIcon = refreshBtn.querySelector('.refresh-icon');
 
             refreshBtn.addEventListener('click', function() {
                 const now = Date.now();
 
                 // Check cooldown
                 if (now - lastRefreshTime < REFRESH_COOLDOWN) {
-                    const remaining = Math.ceil((REFRESH_COOLDOWN - (now - lastRefreshTime)) / 1000);
                     return; // Silently ignore during cooldown
+                }
+
+                // Check if already refreshing
+                if (refreshBtn.classList.contains('refreshing')) {
+                    return;
                 }
 
                 lastRefreshTime = now;
                 refreshBtn.classList.add('refreshing');
+
+                // Show clock icon while loading
+                refreshIcon.textContent = '🕐';
+                refreshIcon.classList.add('loading');
 
                 // Refresh all data with cache-busting
                 const cacheBuster = '?t=' + now;
@@ -1034,8 +1044,14 @@
                     const chartContainer = document.getElementById('performance-chart');
                     chartContainer.innerHTML = `<img src="data/performance_chart.png${cacheBuster}" alt="Portfolio Performance">`;
 
+                    // Restore refresh icon
+                    refreshIcon.textContent = '↻';
+                    refreshIcon.classList.remove('loading');
                     refreshBtn.classList.remove('refreshing');
                 }).catch(() => {
+                    // Restore refresh icon even on error
+                    refreshIcon.textContent = '↻';
+                    refreshIcon.classList.remove('loading');
                     refreshBtn.classList.remove('refreshing');
                 });
             });
