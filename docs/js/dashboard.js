@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadPortfolioData();
     loadSentimentData();
     loadPerformanceChart();
+    loadNewsData();
     updateTimestamp();
 });
 
@@ -119,6 +120,51 @@ function loadPerformanceChart() {
     img.src = 'data/performance_chart.png';
 }
 
+// Load news data
+function loadNewsData() {
+    const container = document.getElementById('news-articles');
+
+    fetch('data/news.json')
+        .then(res => res.json())
+        .then(data => {
+            container.innerHTML = '';
+
+            if (!data.articles || data.articles.length === 0) {
+                container.innerHTML = '<p class="loading">No news available yet.</p>';
+                return;
+            }
+
+            data.articles.forEach(article => {
+                const publishedDate = article.published ? formatPublishedDate(article.published) : '';
+
+                container.innerHTML += `
+                    <div class="news-item">
+                        <h4><a href="${article.link}" target="_blank" rel="noopener">${article.title}</a></h4>
+                        <p class="summary">${article.summary || ''}</p>
+                        <p class="source">${article.source}${publishedDate ? ' • ' + publishedDate : ''}</p>
+                    </div>
+                `;
+            });
+        })
+        .catch(err => {
+            container.innerHTML = '<p class="loading">News feed not yet available.</p>';
+        });
+}
+
+// Format published date for display
+function formatPublishedDate(dateStr) {
+    try {
+        const date = new Date(dateStr);
+        if (isNaN(date.getTime())) {
+            // Try to parse RSS date format
+            return dateStr.split(',').slice(0, 2).join(',').trim();
+        }
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    } catch {
+        return '';
+    }
+}
+
 // Utility function to format currency
 function formatCurrency(value) {
     return new Intl.NumberFormat('en-US', {
@@ -141,6 +187,7 @@ if (shouldAutoRefresh()) {
     setInterval(() => {
         loadPortfolioData();
         loadSentimentData();
+        loadNewsData();
         updateTimestamp();
     }, 5 * 60 * 1000); // 5 minutes
 }

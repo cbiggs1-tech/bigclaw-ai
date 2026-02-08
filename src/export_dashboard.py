@@ -14,6 +14,7 @@ from typing import Optional
 
 import pandas as pd
 import yfinance as yf
+import re
 
 from portfolio import (
     get_active_portfolios,
@@ -211,14 +212,76 @@ def export_metadata() -> dict:
     }
 
 
-def save_json_files(portfolios: dict, sentiment: dict, metadata: dict):
+def export_news() -> dict:
+    """Fetch and export news from Motley Fool RSS feeds."""
+    try:
+        import feedparser
+    except ImportError:
+        logger.warning("feedparser not installed - skipping news export")
+        return {'lastUpdate': datetime.utcnow().isoformat() + 'Z', 'articles': []}
+
+    # Motley Fool RSS feeds
+    feeds = {
+        "main": "https://www.fool.com/feeds/index.aspx",
+        "investing": "https://www.fool.com/feeds/investing-news.aspx",
+    }
+
+    all_articles = []
+    seen_links = set()
+
+    for category, url in feeds.items():
+        try:
+            feed = feedparser.parse(url)
+
+            for entry in feed.entries[:10]:  # Limit per feed
+                link = entry.get("link", "")
+
+                # Skip duplicates
+                if link in seen_links:
+                    continue
+                seen_links.add(link)
+
+                title = entry.get("title", "No title")
+                summary = entry.get("summary", "")
+                published = entry.get("published", "")
+
+                # Clean HTML from summary
+                if summary:
+                    summary = re.sub(r'<[^>]+>', '', summary)
+                    summary = summary[:200] + "..." if len(summary) > 200 else summary
+
+                all_articles.append({
+                    "title": title,
+                    "link": link,
+                    "summary": summary,
+                    "published": published,
+                    "source": "Motley Fool"
+                })
+
+        except Exception as e:
+            logger.warning(f"Error fetching {category} feed: {e}")
+            continue
+
+    # Limit to 10 most recent articles
+    articles = all_articles[:10]
+
+    logger.info(f"Exported {len(articles)} news articles")
+
+    return {
+        'lastUpdate': datetime.utcnow().isoformat() + 'Z',
+        'articles': articles
+    }
+
+
+def save_json_files(portfolios: dict, sentiment: dict, metadata: dict, news: dict):
     """Save all JSON files to docs/data folder."""
     os.makedirs(DOCS_DATA_PATH, exist_ok=True)
 
     files = {
         'portfolios.json': portfolios,
         'sentiment.json': sentiment,
-        'metadata.json': metadata
+        'metadata.json': metadata,
+        'news.json': news
     }
 
     for filename, data in files.items():
@@ -285,9 +348,10 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
         portfolios = export_portfolios()
         sentiment = export_sentiment(sentiment_data)
         metadata = export_metadata()
+        news = export_news()
 
         # Save files
-        save_json_files(portfolios, sentiment, metadata)
+        save_json_files(portfolios, sentiment, metadata, news)
 
         # Push to GitHub
         success = push_to_github()
