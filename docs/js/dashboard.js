@@ -35,6 +35,13 @@ function loadPortfolioData() {
                 const changeClass = portfolio.totalReturn >= 0 ? 'positive' : 'negative';
                 const changeSign = portfolio.totalReturn >= 0 ? '+' : '';
 
+                // Format start date
+                let startDateStr = '';
+                if (portfolio.createdAt) {
+                    const startDate = new Date(portfolio.createdAt);
+                    startDateStr = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                }
+
                 let holdingsHtml = '';
                 if (portfolio.holdings && portfolio.holdings.length > 0) {
                     holdingsHtml = `
@@ -54,7 +61,7 @@ function loadPortfolioData() {
                 container.innerHTML += `
                     <div class="portfolio-card">
                         <h3>${portfolio.name}</h3>
-                        <p class="style">${portfolio.style}</p>
+                        <p class="style">${portfolio.style}${startDateStr ? ' • Started ' + startDateStr : ''}</p>
                         <div>
                             <span class="value">$${portfolio.totalValue.toLocaleString()}</span>
                             <span class="change ${changeClass}">${changeSign}${portfolio.totalReturn.toFixed(2)}%</span>

@@ -1,84 +1,87 @@
 {
-  "lastUpdate": "2026-02-08T16:13:20.383771Z",
+  "lastUpdate": "2026-02-08T16:14:35.228307Z",
   "portfolios": [
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 100007.34,
+      "totalValue": 100000.0,
       "startingCash": 100000.0,
-      "totalReturn": 0.01,
+      "totalReturn": 0.0,
+      "createdAt": "2026-02-08 14:36:56",
       "holdings": [
         {
           "ticker": "BAC",
           "shares": 442.24,
           "avgCost": 56.53,
-          "currentPrice": 56.54
+          "currentPrice": 56.53
         },
         {
           "ticker": "WFC",
           "shares": 266.04,
           "avgCost": 93.97,
-          "currentPrice": 93.94
+          "currentPrice": 93.97
         },
         {
           "ticker": "XOM",
           "shares": 167.73,
           "avgCost": 149.05,
-          "currentPrice": 149.12
+          "currentPrice": 149.05
         }
       ]
     },
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 99911.34,
+      "totalValue": 100000.0,
       "startingCash": 100000.0,
-      "totalReturn": -0.09,
+      "totalReturn": 0.0,
+      "createdAt": "2026-02-08 14:36:56",
       "holdings": [
         {
           "ticker": "NVDA",
           "shares": 161.8,
           "avgCost": 185.41,
-          "currentPrice": 185.51
+          "currentPrice": 185.41
         },
         {
           "ticker": "RKLB",
           "shares": 276.55,
           "avgCost": 72.32,
-          "currentPrice": 72.13
+          "currentPrice": 72.32
         },
         {
           "ticker": "TSLA",
           "shares": 60.81,
           "avgCost": 411.11,
-          "currentPrice": 410.25
+          "currentPrice": 411.11
         }
       ]
     },
     {
       "name": "Growth Value",
       "style": "GARP (Growth at Reasonable Price)",
-      "totalValue": 99990.07,
+      "totalValue": 100000.0,
       "startingCash": 100000.0,
-      "totalReturn": -0.01,
+      "totalReturn": 0.0,
+      "createdAt": "2026-02-08 14:36:56",
       "holdings": [
         {
           "ticker": "GOOGL",
           "shares": 92.92,
           "avgCost": 322.86,
-          "currentPrice": 322.57
+          "currentPrice": 322.86
         },
         {
           "ticker": "MSFT",
           "shares": 62.32,
           "avgCost": 401.14,
-          "currentPrice": 401.24
+          "currentPrice": 401.14
         },
         {
           "ticker": "NVDA",
           "shares": 107.87,
           "avgCost": 185.41,
-          "currentPrice": 185.51
+          "currentPrice": 185.41
         }
       ]
     }
