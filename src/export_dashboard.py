@@ -131,11 +131,22 @@ def export_portfolios() -> dict:
             value = h['shares'] * current_price
             holdings_value += value
 
+            # Format purchase date
+            purchased_at = h.get('first_bought_at', '')
+            if purchased_at:
+                # Parse and format the date nicely
+                try:
+                    dt = datetime.fromisoformat(purchased_at.replace('Z', '+00:00'))
+                    purchased_at = dt.strftime('%b %d, %Y')
+                except:
+                    purchased_at = purchased_at[:10] if len(purchased_at) >= 10 else purchased_at
+
             holdings.append({
                 'ticker': ticker,
                 'shares': round(h['shares'], 2),
                 'avgCost': round(h['avg_cost'], 2),
-                'currentPrice': round(current_price, 2)
+                'currentPrice': round(current_price, 2),
+                'purchasedAt': purchased_at
             })
 
         total_value = p['current_cash'] + holdings_value

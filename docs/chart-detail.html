@@ -219,6 +219,7 @@
             <thead>
                 <tr>
                     <th>Ticker</th>
+                    <th>Purchased</th>
                     <th>Shares</th>
                     <th>Avg Cost</th>
                     <th>Current</th>
@@ -421,9 +422,11 @@
             portfolio.holdings.forEach(h => {
                 const change = ((h.currentPrice - h.avgCost) / h.avgCost) * 100;
                 const value = h.shares * h.currentPrice;
+                const purchasedAt = h.purchasedAt || '-';
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td class="ticker">${h.ticker}</td>
+                    <td>${purchasedAt}</td>
                     <td>${h.shares.toFixed(2)}</td>
                     <td>$${h.avgCost.toFixed(2)}</td>
                     <td>$${h.currentPrice.toFixed(2)}</td>

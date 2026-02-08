@@ -13,43 +13,50 @@
           "ticker": "AAPL",
           "shares": 11.0,
           "avgCost": 274.3,
-          "currentPrice": 278.12
+          "currentPrice": 278.12,
+          "purchasedAt": "Feb 05, 2026"
         },
         {
           "ticker": "BAC",
           "shares": 462.02,
           "avgCost": 54.11,
-          "currentPrice": 56.53
+          "currentPrice": 56.53,
+          "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "BRK-B",
           "shares": 12.0,
           "avgCost": 500.83,
-          "currentPrice": 508.09
+          "currentPrice": 508.09,
+          "purchasedAt": "Feb 04, 2026"
         },
         {
           "ticker": "JNJ",
           "shares": 128.19,
           "avgCost": 234.02,
-          "currentPrice": 239.99
+          "currentPrice": 239.99,
+          "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "KHC",
           "shares": 326.6,
           "avgCost": 24.49,
-          "currentPrice": 24.64
+          "currentPrice": 24.64,
+          "purchasedAt": "Feb 04, 2026"
         },
         {
           "ticker": "KO",
           "shares": 38.0,
           "avgCost": 78.15,
-          "currentPrice": 79.03
+          "currentPrice": 79.03,
+          "purchasedAt": "Feb 05, 2026"
         },
         {
           "ticker": "PG",
           "shares": 160.54,
           "avgCost": 155.73,
-          "currentPrice": 159.17
+          "currentPrice": 159.17,
+          "purchasedAt": "Feb 03, 2026"
         }
       ]
     },
@@ -65,25 +72,29 @@
           "ticker": "CRSP",
           "shares": 291.72,
           "avgCost": 51.42,
-          "currentPrice": 48.74
+          "currentPrice": 48.74,
+          "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "NVDA",
           "shares": 139.85,
           "avgCost": 178.76,
-          "currentPrice": 185.41
+          "currentPrice": 185.41,
+          "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "PLTR",
           "shares": 127.49,
           "avgCost": 156.87,
-          "currentPrice": 135.9
+          "currentPrice": 135.9,
+          "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "TSLA",
           "shares": 59.75,
           "avgCost": 418.43,
-          "currentPrice": 411.11
+          "currentPrice": 411.11,
+          "purchasedAt": "Feb 03, 2026"
         }
       ]
     },
@@ -99,31 +110,36 @@
           "ticker": "AAPL",
           "shares": 91.0,
           "avgCost": 274.73,
-          "currentPrice": 278.12
+          "currentPrice": 278.12,
+          "purchasedAt": "Feb 04, 2026"
         },
         {
           "ticker": "JPM",
           "shares": 64.07,
           "avgCost": 312.18,
-          "currentPrice": 322.4
+          "currentPrice": 322.4,
+          "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "MSFT",
           "shares": 73.32,
           "avgCost": 409.15,
-          "currentPrice": 401.14
+          "currentPrice": 401.14,
+          "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "NVDA",
           "shares": 79.0,
           "avgCost": 173.65,
-          "currentPrice": 185.41
+          "currentPrice": 185.41,
+          "purchasedAt": "Feb 05, 2026"
         },
         {
           "ticker": "UNH",
           "shares": 38.47,
           "avgCost": 282.6,
-          "currentPrice": 276.65
+          "currentPrice": 276.65,
+          "purchasedAt": "Feb 03, 2026"
         }
       ]
     }
