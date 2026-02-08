@@ -486,6 +486,53 @@
         .quick-link.nbc .quick-link-icon { background: #e31837; }
         .quick-link.allin .quick-link-icon { background: #0f4c75; }
 
+        .ticker-search {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.5rem 0.4rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .ticker-search:focus-within {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(252, 211, 77, 0.2);
+        }
+
+        .ticker-search input {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-family: inherit;
+            width: 100px;
+            outline: none;
+        }
+
+        .ticker-search input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .ticker-search button {
+            background: var(--gold);
+            color: var(--bg-primary);
+            border: none;
+            padding: 0.35rem 0.75rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .ticker-search button:hover {
+            background: #F59E0B;
+            transform: scale(1.05);
+        }
+
         /* TradingView Widget */
         .tradingview-container {
             margin-bottom: 1.5rem;
@@ -672,10 +719,11 @@
                 <span class="quick-link-icon">A</span>
                 All-In Podcast
             </a>
-            <a href="https://finance.yahoo.com/" target="_blank" class="quick-link">
+            <div class="ticker-search">
                 <span class="quick-link-icon">📈</span>
-                Yahoo Finance
-            </a>
+                <input type="text" id="ticker-input" placeholder="Enter ticker..." maxlength="10">
+                <button id="ticker-search-btn">Go</button>
+            </div>
         </div>
 
         <!-- Portfolio Section -->
@@ -788,7 +836,26 @@
             loadSentimentData();
             loadPerformanceChart();
             updateTimestamp();
+            setupTickerSearch();
         });
+
+        function setupTickerSearch() {
+            const input = document.getElementById('ticker-input');
+            const btn = document.getElementById('ticker-search-btn');
+
+            function searchTicker() {
+                const ticker = input.value.trim().toUpperCase();
+                if (ticker) {
+                    window.open('https://finance.yahoo.com/quote/' + ticker, '_blank');
+                    input.value = '';
+                }
+            }
+
+            btn.addEventListener('click', searchTicker);
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') searchTicker();
+            });
+        }
 
         function updateTimestamp() {
             fetch('data/metadata.json')
