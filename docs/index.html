@@ -164,6 +164,40 @@
         .badge-value.gain { color: var(--gain); }
         .badge-value.loss { color: var(--loss); }
 
+        .refresh-btn {
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .refresh-btn:hover {
+            border-color: var(--gold);
+            background: var(--bg-card-hover);
+        }
+
+        .refresh-btn:active {
+            transform: scale(0.98);
+        }
+
+        .refresh-btn.refreshing {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .refresh-btn .refresh-icon {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .refresh-btn.refreshing .refresh-icon {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .market-status {
             display: flex;
             align-items: center;
@@ -805,8 +839,8 @@
             <h1>BigClaw AI</h1>
             <p class="hero-tagline">Investment Research Dashboard (not financial advice)</p>
             <div class="hero-badges">
-                <div class="badge">
-                    <span class="badge-label">Updated</span>
+                <div class="badge refresh-btn" id="refreshBtn" title="Click to refresh data">
+                    <span class="refresh-icon">↻</span>
                     <span class="badge-value" id="lastUpdate">Loading...</span>
                 </div>
                 <div class="badge market-status">
@@ -952,6 +986,9 @@
 
     <script>
         // Dashboard JavaScript
+        let lastRefreshTime = 0;
+        const REFRESH_COOLDOWN = 30000; // 30 second cooldown between refreshes
+
         document.addEventListener('DOMContentLoaded', function() {
             loadPortfolioData();
             loadNewsData();
@@ -961,9 +998,48 @@
             updateTimestamp();
             updateMarketStatus();
             setupTickerSearch();
+            setupRefreshButton();
             // Update market status every minute
             setInterval(updateMarketStatus, 60000);
         });
+
+        function setupRefreshButton() {
+            const refreshBtn = document.getElementById('refreshBtn');
+
+            refreshBtn.addEventListener('click', function() {
+                const now = Date.now();
+
+                // Check cooldown
+                if (now - lastRefreshTime < REFRESH_COOLDOWN) {
+                    const remaining = Math.ceil((REFRESH_COOLDOWN - (now - lastRefreshTime)) / 1000);
+                    return; // Silently ignore during cooldown
+                }
+
+                lastRefreshTime = now;
+                refreshBtn.classList.add('refreshing');
+
+                // Refresh all data with cache-busting
+                const cacheBuster = '?t=' + now;
+
+                Promise.all([
+                    fetch('data/portfolios.json' + cacheBuster).then(r => r.json()).then(loadPortfolioDataFromJson),
+                    fetch('data/news.json' + cacheBuster).then(r => r.json()).then(loadNewsDataFromJson),
+                    fetch('data/sentiment.json' + cacheBuster).then(r => r.json()).then(loadSentimentDataFromJson),
+                    fetch('data/market.json' + cacheBuster).then(r => r.json()).then(loadMarketDataFromJson),
+                    fetch('data/metadata.json' + cacheBuster).then(r => r.json()).then(data => {
+                        document.getElementById('lastUpdate').textContent = data.lastUpdate || 'Unknown';
+                    })
+                ]).then(() => {
+                    // Reload chart with cache buster
+                    const chartContainer = document.getElementById('performance-chart');
+                    chartContainer.innerHTML = `<img src="data/performance_chart.png${cacheBuster}" alt="Portfolio Performance">`;
+
+                    refreshBtn.classList.remove('refreshing');
+                }).catch(() => {
+                    refreshBtn.classList.remove('refreshing');
+                });
+            });
+        }
 
         function updateMarketStatus() {
             const now = new Date();
@@ -1005,32 +1081,34 @@
             }
         }
 
+        function loadMarketDataFromJson(data) {
+            // S&P 500
+            if (data.spy) {
+                const spyEl = document.getElementById('spyChange');
+                const change = data.spy.change;
+                spyEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+                spyEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
+            }
+            // Dow Jones
+            if (data.dji) {
+                const djiEl = document.getElementById('djiChange');
+                const change = data.dji.change;
+                djiEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+                djiEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
+            }
+            // Nasdaq
+            if (data.nasdaq) {
+                const nasdaqEl = document.getElementById('nasdaqChange');
+                const change = data.nasdaq.change;
+                nasdaqEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+                nasdaqEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
+            }
+        }
+
         function loadMarketData() {
             fetch('data/market.json')
                 .then(res => res.json())
-                .then(data => {
-                    // S&P 500
-                    if (data.spy) {
-                        const spyEl = document.getElementById('spyChange');
-                        const change = data.spy.change;
-                        spyEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-                        spyEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
-                    }
-                    // Dow Jones
-                    if (data.dji) {
-                        const djiEl = document.getElementById('djiChange');
-                        const change = data.dji.change;
-                        djiEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-                        djiEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
-                    }
-                    // Nasdaq
-                    if (data.nasdaq) {
-                        const nasdaqEl = document.getElementById('nasdaqChange');
-                        const change = data.nasdaq.change;
-                        nasdaqEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-                        nasdaqEl.className = 'badge-value ' + (change >= 0 ? 'gain' : 'loss');
-                    }
-                })
+                .then(loadMarketDataFromJson)
                 .catch(() => {
                     // Keep showing -- if fetch fails
                 });
@@ -1134,77 +1212,104 @@
                 });
         }
 
+        function loadPortfolioDataFromJson(data) {
+            const container = document.getElementById('portfolio-grid');
+            container.innerHTML = '';
+
+            data.portfolios.forEach((portfolio, idx) => {
+                const isGain = portfolio.totalReturn >= 0;
+                const returnClass = isGain ? 'gain' : 'loss';
+                const returnSign = isGain ? '+' : '';
+
+                // Format start date
+                let startDate = '';
+                if (portfolio.createdAt) {
+                    const d = new Date(portfolio.createdAt);
+                    startDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                }
+
+                // Map style to anchor
+                const styleAnchors = {
+                    'Deep Value Investing': 'value',
+                    'Disruptive Innovation': 'innovation',
+                    'Growth at Reasonable Price': 'garp'
+                };
+                const styleAnchor = styleAnchors[portfolio.style] || '';
+
+                // Holdings (limit to 4 visible)
+                const holdings = portfolio.holdings || [];
+                const visibleHoldings = holdings.slice(0, 4);
+                const hiddenHoldings = holdings.slice(4);
+
+                let holdingsHtml = visibleHoldings.map(h => `
+                    <div class="holding-item">
+                        <span class="holding-ticker">${h.ticker}</span>
+                        <span class="holding-shares">${h.shares}</span>
+                    </div>
+                `).join('');
+
+                if (hiddenHoldings.length > 0) {
+                    holdingsHtml += hiddenHoldings.map(h => `
+                        <div class="holding-item holdings-hidden">
+                            <span class="holding-ticker">${h.ticker}</span>
+                            <span class="holding-shares">${h.shares}</span>
+                        </div>
+                    `).join('');
+                    holdingsHtml += `<div class="holdings-expander" onclick="this.parentElement.classList.toggle('holdings-expanded')">+${hiddenHoldings.length} more</div>`;
+                }
+
+                container.innerHTML += `
+                    <div class="portfolio-card">
+                        <div class="portfolio-header">
+                            <div>
+                                <div class="portfolio-name">${portfolio.name}</div>
+                                <div class="portfolio-style"><a href="styles.html#${styleAnchor}" class="style-link">${portfolio.style}</a> • ${startDate}</div>
+                            </div>
+                            <div class="portfolio-return ${returnClass}">${returnSign}${portfolio.totalReturn.toFixed(2)}%</div>
+                        </div>
+                        <div class="portfolio-value">
+                            $${portfolio.totalValue.toLocaleString()}
+                            <small>of $${portfolio.startingCash.toLocaleString()}</small>
+                        </div>
+                        <div class="holdings-grid">${holdingsHtml}</div>
+                    </div>
+                `;
+            });
+        }
+
         function loadPortfolioData() {
             const container = document.getElementById('portfolio-grid');
 
             fetch('data/portfolios.json')
                 .then(res => res.json())
-                .then(data => {
-                    container.innerHTML = '';
-
-                    data.portfolios.forEach((portfolio, idx) => {
-                        const isGain = portfolio.totalReturn >= 0;
-                        const returnClass = isGain ? 'gain' : 'loss';
-                        const returnSign = isGain ? '+' : '';
-
-                        // Format start date
-                        let startDate = '';
-                        if (portfolio.createdAt) {
-                            const d = new Date(portfolio.createdAt);
-                            startDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                        }
-
-                        // Map style to anchor
-                        const styleAnchors = {
-                            'Deep Value Investing': 'value',
-                            'Disruptive Innovation': 'innovation',
-                            'Growth at Reasonable Price': 'garp'
-                        };
-                        const styleAnchor = styleAnchors[portfolio.style] || '';
-
-                        // Holdings (limit to 4 visible)
-                        const holdings = portfolio.holdings || [];
-                        const visibleHoldings = holdings.slice(0, 4);
-                        const hiddenHoldings = holdings.slice(4);
-
-                        let holdingsHtml = visibleHoldings.map(h => `
-                            <div class="holding-item">
-                                <span class="holding-ticker">${h.ticker}</span>
-                                <span class="holding-shares">${h.shares}</span>
-                            </div>
-                        `).join('');
-
-                        if (hiddenHoldings.length > 0) {
-                            holdingsHtml += hiddenHoldings.map(h => `
-                                <div class="holding-item holdings-hidden">
-                                    <span class="holding-ticker">${h.ticker}</span>
-                                    <span class="holding-shares">${h.shares}</span>
-                                </div>
-                            `).join('');
-                            holdingsHtml += `<div class="holdings-expander" onclick="this.parentElement.classList.toggle('holdings-expanded')">+${hiddenHoldings.length} more</div>`;
-                        }
-
-                        container.innerHTML += `
-                            <div class="portfolio-card">
-                                <div class="portfolio-header">
-                                    <div>
-                                        <div class="portfolio-name">${portfolio.name}</div>
-                                        <div class="portfolio-style"><a href="styles.html#${styleAnchor}" class="style-link">${portfolio.style}</a> • ${startDate}</div>
-                                    </div>
-                                    <div class="portfolio-return ${returnClass}">${returnSign}${portfolio.totalReturn.toFixed(2)}%</div>
-                                </div>
-                                <div class="portfolio-value">
-                                    $${portfolio.totalValue.toLocaleString()}
-                                    <small>of $${portfolio.startingCash.toLocaleString()}</small>
-                                </div>
-                                <div class="holdings-grid">${holdingsHtml}</div>
-                            </div>
-                        `;
-                    });
-                })
+                .then(loadPortfolioDataFromJson)
                 .catch(err => {
                     container.innerHTML = '<p class="loading">Portfolio data unavailable</p>';
                 });
+        }
+
+        function loadNewsDataFromJson(data) {
+            const container = document.getElementById('news-articles');
+            container.innerHTML = '';
+            const articles = (data.articles || []).slice(0, 5);
+
+            if (articles.length === 0) {
+                container.innerHTML = '<p class="loading">No news available</p>';
+                return;
+            }
+
+            articles.forEach(article => {
+                const pubDate = article.published ? formatDate(article.published) : '';
+                container.innerHTML += `
+                    <div class="news-item" onclick="this.classList.toggle('expanded')">
+                        <div class="news-title">
+                            <a href="${article.link}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${article.title}</a>
+                        </div>
+                        <div class="news-meta">${article.source}${pubDate ? ' • ' + pubDate : ''}</div>
+                        ${article.summary ? `<div class="news-summary">${article.summary}</div>` : ''}
+                    </div>
+                `;
+            });
         }
 
         function loadNewsData() {
@@ -1212,31 +1317,34 @@
 
             fetch('data/news.json')
                 .then(res => res.json())
-                .then(data => {
-                    container.innerHTML = '';
-                    const articles = (data.articles || []).slice(0, 5);
-
-                    if (articles.length === 0) {
-                        container.innerHTML = '<p class="loading">No news available</p>';
-                        return;
-                    }
-
-                    articles.forEach(article => {
-                        const pubDate = article.published ? formatDate(article.published) : '';
-                        container.innerHTML += `
-                            <div class="news-item" onclick="this.classList.toggle('expanded')">
-                                <div class="news-title">
-                                    <a href="${article.link}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${article.title}</a>
-                                </div>
-                                <div class="news-meta">${article.source}${pubDate ? ' • ' + pubDate : ''}</div>
-                                ${article.summary ? `<div class="news-summary">${article.summary}</div>` : ''}
-                            </div>
-                        `;
-                    });
-                })
+                .then(loadNewsDataFromJson)
                 .catch(() => {
                     container.innerHTML = '<p class="loading">News unavailable</p>';
                 });
+        }
+
+        function loadSentimentDataFromJson(data) {
+            const container = document.getElementById('sentiment-row');
+            container.innerHTML = '';
+            const tickers = data.tickers || [];
+
+            if (tickers.length === 0) {
+                container.innerHTML = '<div class="sentiment-chip"><span class="sentiment-ticker">𝕏 Sentiment</span><span class="sentiment-score neutral">No data</span></div>';
+                return;
+            }
+
+            tickers.forEach(item => {
+                let scoreClass = 'neutral';
+                if (item.bullishPercent >= 60) scoreClass = 'bullish';
+                else if (item.bullishPercent <= 40) scoreClass = 'bearish';
+
+                container.innerHTML += `
+                    <div class="sentiment-chip">
+                        <span class="sentiment-ticker">${item.ticker}</span>
+                        <span class="sentiment-score ${scoreClass}">${item.bullishPercent}%</span>
+                    </div>
+                `;
+            });
         }
 
         function loadSentimentData() {
@@ -1244,28 +1352,7 @@
 
             fetch('data/sentiment.json')
                 .then(res => res.json())
-                .then(data => {
-                    container.innerHTML = '';
-                    const tickers = data.tickers || [];
-
-                    if (tickers.length === 0) {
-                        container.innerHTML = '<div class="sentiment-chip"><span class="sentiment-ticker">𝕏 Sentiment</span><span class="sentiment-score neutral">No data</span></div>';
-                        return;
-                    }
-
-                    tickers.forEach(item => {
-                        let scoreClass = 'neutral';
-                        if (item.bullishPercent >= 60) scoreClass = 'bullish';
-                        else if (item.bullishPercent <= 40) scoreClass = 'bearish';
-
-                        container.innerHTML += `
-                            <div class="sentiment-chip">
-                                <span class="sentiment-ticker">${item.ticker}</span>
-                                <span class="sentiment-score ${scoreClass}">${item.bullishPercent}%</span>
-                            </div>
-                        `;
-                    });
-                })
+                .then(loadSentimentDataFromJson)
                 .catch(() => {
                     container.innerHTML = '';
                 });
