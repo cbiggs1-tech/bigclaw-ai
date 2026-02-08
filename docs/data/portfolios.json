@@ -1,29 +1,86 @@
 {
-  "lastUpdate": "2026-02-08T16:09:45.425120Z",
+  "lastUpdate": "2026-02-08T16:13:20.383771Z",
   "portfolios": [
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 100000.0,
+      "totalValue": 100007.34,
       "startingCash": 100000.0,
-      "totalReturn": 0.0,
-      "holdings": []
+      "totalReturn": 0.01,
+      "holdings": [
+        {
+          "ticker": "BAC",
+          "shares": 442.24,
+          "avgCost": 56.53,
+          "currentPrice": 56.54
+        },
+        {
+          "ticker": "WFC",
+          "shares": 266.04,
+          "avgCost": 93.97,
+          "currentPrice": 93.94
+        },
+        {
+          "ticker": "XOM",
+          "shares": 167.73,
+          "avgCost": 149.05,
+          "currentPrice": 149.12
+        }
+      ]
     },
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 100000.0,
+      "totalValue": 99911.34,
       "startingCash": 100000.0,
-      "totalReturn": 0.0,
-      "holdings": []
+      "totalReturn": -0.09,
+      "holdings": [
+        {
+          "ticker": "NVDA",
+          "shares": 161.8,
+          "avgCost": 185.41,
+          "currentPrice": 185.51
+        },
+        {
+          "ticker": "RKLB",
+          "shares": 276.55,
+          "avgCost": 72.32,
+          "currentPrice": 72.13
+        },
+        {
+          "ticker": "TSLA",
+          "shares": 60.81,
+          "avgCost": 411.11,
+          "currentPrice": 410.25
+        }
+      ]
     },
     {
       "name": "Growth Value",
       "style": "GARP (Growth at Reasonable Price)",
-      "totalValue": 100000.0,
+      "totalValue": 99990.07,
       "startingCash": 100000.0,
-      "totalReturn": 0.0,
-      "holdings": []
+      "totalReturn": -0.01,
+      "holdings": [
+        {
+          "ticker": "GOOGL",
+          "shares": 92.92,
+          "avgCost": 322.86,
+          "currentPrice": 322.57
+        },
+        {
+          "ticker": "MSFT",
+          "shares": 62.32,
+          "avgCost": 401.14,
+          "currentPrice": 401.24
+        },
+        {
+          "ticker": "NVDA",
+          "shares": 107.87,
+          "avgCost": 185.41,
+          "currentPrice": 185.51
+        }
+      ]
     }
   ]
 }
