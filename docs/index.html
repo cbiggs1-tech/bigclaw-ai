@@ -542,6 +542,54 @@
             border: 1px solid var(--border-color);
         }
 
+        /* Quote Widget */
+        .quote-widget-container {
+            display: none;
+            margin-bottom: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            animation: fadeInUp 0.3s ease forwards;
+        }
+
+        .quote-widget-container.visible {
+            display: block;
+        }
+
+        .quote-widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quote-widget-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .quote-widget-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.25rem;
+            line-height: 1;
+            padding: 0.25rem;
+            transition: color 0.2s;
+        }
+
+        .quote-widget-close:hover {
+            color: var(--text-primary);
+        }
+
+        .quote-widget-body {
+            height: 400px;
+        }
+
         /* Sentiment Row */
         .sentiment-row {
             display: flex;
@@ -726,6 +774,15 @@
             </div>
         </div>
 
+        <!-- Quote Widget (populated by ticker search) -->
+        <div class="quote-widget-container" id="quote-widget">
+            <div class="quote-widget-header">
+                <span class="quote-widget-title" id="quote-ticker">AAPL</span>
+                <button class="quote-widget-close" id="quote-close" title="Close">&times;</button>
+            </div>
+            <div class="quote-widget-body" id="quote-body"></div>
+        </div>
+
         <!-- Portfolio Section -->
         <section id="portfolios">
             <h2 class="section-title">Model Portfolios</h2>
@@ -842,14 +899,83 @@
         function setupTickerSearch() {
             const input = document.getElementById('ticker-input');
             const btn = document.getElementById('ticker-search-btn');
+            const quoteWidget = document.getElementById('quote-widget');
+            const quoteBody = document.getElementById('quote-body');
+            const quoteTicker = document.getElementById('quote-ticker');
+            const quoteClose = document.getElementById('quote-close');
 
             function searchTicker() {
                 const ticker = input.value.trim().toUpperCase();
-                if (ticker) {
-                    window.open('https://app.alpaca.markets/trade/' + ticker, '_blank');
-                    input.value = '';
-                }
+                if (!ticker) return;
+
+                // Update title
+                quoteTicker.textContent = ticker;
+
+                // Clear previous widget
+                quoteBody.innerHTML = '';
+
+                // Create TradingView Symbol Overview widget
+                const widgetContainer = document.createElement('div');
+                widgetContainer.className = 'tradingview-widget-container';
+                widgetContainer.style.height = '100%';
+                widgetContainer.style.width = '100%';
+
+                const widgetDiv = document.createElement('div');
+                widgetDiv.className = 'tradingview-widget-container__widget';
+                widgetDiv.style.height = 'calc(100% - 32px)';
+                widgetDiv.style.width = '100%';
+
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
+                script.async = true;
+                script.innerHTML = JSON.stringify({
+                    "symbols": [[ticker + "|1D"]],
+                    "chartOnly": false,
+                    "width": "100%",
+                    "height": "100%",
+                    "locale": "en",
+                    "colorTheme": "dark",
+                    "autosize": true,
+                    "showVolume": false,
+                    "showMA": false,
+                    "hideDateRanges": false,
+                    "hideMarketStatus": false,
+                    "hideSymbolLogo": false,
+                    "scalePosition": "right",
+                    "scaleMode": "Normal",
+                    "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+                    "fontSize": "10",
+                    "noTimeScale": false,
+                    "valuesTracking": "1",
+                    "changeMode": "price-and-percent",
+                    "chartType": "area",
+                    "maLineColor": "#2962FF",
+                    "maLineWidth": 1,
+                    "maLength": 9,
+                    "backgroundColor": "rgba(30, 41, 59, 1)",
+                    "lineWidth": 2,
+                    "lineType": 0,
+                    "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"]
+                });
+
+                widgetContainer.appendChild(widgetDiv);
+                widgetContainer.appendChild(script);
+                quoteBody.appendChild(widgetContainer);
+
+                // Show the widget
+                quoteWidget.classList.add('visible');
+                input.value = '';
+
+                // Scroll to widget
+                quoteWidget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
+
+            // Close button handler
+            quoteClose.addEventListener('click', function() {
+                quoteWidget.classList.remove('visible');
+                quoteBody.innerHTML = '';
+            });
 
             btn.addEventListener('click', searchTicker);
             input.addEventListener('keypress', function(e) {
