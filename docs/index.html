@@ -485,6 +485,7 @@
         .quick-link.bloomberg .quick-link-icon { background: #1a1a2e; }
         .quick-link.nbc .quick-link-icon { background: #e31837; }
         .quick-link.allin .quick-link-icon { background: #0f4c75; }
+        .quick-link.xfeed .quick-link-icon { background: #000; font-size: 0.9rem; }
 
         .ticker-search {
             display: inline-flex;
@@ -620,59 +621,6 @@
         .sentiment-score.bearish { color: var(--loss); }
         .sentiment-score.neutral { color: var(--gold); }
 
-        /* X Feeds Grid - Compact */
-        .x-feeds-row {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .x-feed-card {
-            flex: 1;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 0.5rem;
-            min-width: 0;
-        }
-
-        .x-feed-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            padding: 0 0.25rem;
-        }
-
-        .x-feed-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        .x-feed-link {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .x-feed-link:hover {
-            color: var(--gold);
-        }
-
-        .x-timeline-container {
-            border-radius: 6px;
-            overflow: hidden;
-            background: var(--bg-primary);
-            height: 200px;
-        }
-
-        @media (max-width: 700px) {
-            .x-feeds-row {
-                flex-direction: column;
-            }
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -783,6 +731,14 @@
                 <span class="quick-link-icon">A</span>
                 All-In Podcast
             </a>
+            <a href="https://twitter.com/unusual_whales" target="_blank" class="quick-link xfeed">
+                <span class="quick-link-icon">𝕏</span>
+                Unusual Whales
+            </a>
+            <a href="https://twitter.com/rebellionaire" target="_blank" class="quick-link xfeed">
+                <span class="quick-link-icon">𝕏</span>
+                Rebellionaire
+            </a>
             <div class="ticker-search">
                 <span class="quick-link-icon">📈</span>
                 <input type="text" id="ticker-input" placeholder="Enter ticker..." maxlength="10">
@@ -798,39 +754,6 @@
             </div>
             <div class="quote-widget-body" id="quote-body"></div>
         </div>
-
-        <!-- X/Twitter Feeds - Compact -->
-        <div class="x-feeds-row">
-            <div class="x-feed-card">
-                <div class="x-feed-header">
-                    <span class="x-feed-title">Unusual Whales</span>
-                    <a href="https://twitter.com/unusual_whales" target="_blank" class="x-feed-link">@unusual_whales</a>
-                </div>
-                <div class="x-timeline-container">
-                    <a class="twitter-timeline"
-                       data-theme="dark"
-                       data-height="200"
-                       data-chrome="noheader nofooter noborders transparent"
-                       href="https://twitter.com/unusual_whales">
-                    </a>
-                </div>
-            </div>
-            <div class="x-feed-card">
-                <div class="x-feed-header">
-                    <span class="x-feed-title">Rebellionaire</span>
-                    <a href="https://twitter.com/rebellionaire" target="_blank" class="x-feed-link">@rebellionaire</a>
-                </div>
-                <div class="x-timeline-container">
-                    <a class="twitter-timeline"
-                       data-theme="dark"
-                       data-height="200"
-                       data-chrome="noheader nofooter noborders transparent"
-                       href="https://twitter.com/rebellionaire">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
         <!-- Portfolio Section -->
         <section id="portfolios">
