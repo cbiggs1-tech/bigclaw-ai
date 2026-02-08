@@ -277,8 +277,8 @@ main {
     background: linear-gradient(135deg, #005587 0%, #007bb5 100%);
 }
 
-.tv-card.reuters .tv-logo {
-    background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
+.tv-card.nbc .tv-logo {
+    background: linear-gradient(135deg, #e31837 0%, #ff4d4d 100%);
 }
 
 .tv-card.markets .tv-logo {
