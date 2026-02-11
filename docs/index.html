@@ -1023,6 +1023,22 @@
             </div>
         </section>
 
+        <!-- Market Sentiment Report -->
+        <section id="sentiment-report">
+            <h2 class="section-title">📊 Market Sentiment Report</h2>
+            <div class="analysis-card" id="sentiment-report-card">
+                <div class="analysis-header">
+                    <div>
+                        <div class="analysis-meta" id="sentiment-report-meta">Loading...</div>
+                    </div>
+                    <button class="analysis-toggle" id="sentiment-report-toggle">Collapse</button>
+                </div>
+                <div class="analysis-content" id="sentiment-report-content" style="max-height: 500px;">
+                    Loading market sentiment report...
+                </div>
+            </div>
+        </section>
+
         <!-- Sentiment Row -->
         <section id="sentiment">
             <h2 class="section-title">𝕏 Sentiment</h2>
@@ -1084,7 +1100,7 @@
             <span>|</span>
             <span>Powered by Claude AI</span>
         </div>
-        <p>For educational purposes only. Not financial advice. Data refreshed at 9 AM & 4:30 PM CT.</p>
+        <p>For educational purposes only. Not financial advice. Data refreshed at 9 AM & 4:30 PM ET.</p>
     </footer>
 
     <script>
@@ -1099,11 +1115,13 @@
             loadPerformanceChart();
             loadMarketData();
             loadAnalysisReport();
+            loadSentimentReport();
             updateTimestamp();
             updateMarketStatus();
             setupTickerSearch();
             setupRefreshButton();
             setupAnalysisToggle();
+            setupSentimentReportToggle();
             // Update market status every minute
             setInterval(updateMarketStatus, 60000);
         });
@@ -1174,7 +1192,10 @@
                     fetch('data/news.json' + cacheBuster).then(r => r.json()).then(loadNewsDataFromJson),
                     fetch('data/sentiment.json' + cacheBuster).then(r => r.json()).then(loadSentimentDataFromJson),
                     fetch('data/market.json' + cacheBuster).then(r => r.json()).then(loadMarketDataFromJson),
-                    fetch('data/analysis.json' + cacheBuster).then(r => r.json()).then(loadAnalysisDataFromJson).catch(() => {}),
+                    fetch('data/analysis.json' + cacheBuster).then(r => r.json()).then(data => {
+                        loadAnalysisDataFromJson(data);
+                        loadSentimentReportDataFromJson(data);
+                    }).catch(() => {}),
                     fetch('data/metadata.json' + cacheBuster).then(r => r.json()).then(data => {
                         document.getElementById('lastUpdate').textContent = data.lastUpdate || 'Unknown';
                     })
@@ -1478,12 +1499,67 @@
             });
         }
 
+        function setupSentimentReportToggle() {
+            const card = document.getElementById('sentiment-report-card');
+            const toggle = document.getElementById('sentiment-report-toggle');
+            const content = document.getElementById('sentiment-report-content');
+
+            // Start expanded
+            let isCollapsed = false;
+
+            toggle.addEventListener('click', function() {
+                isCollapsed = !isCollapsed;
+                if (isCollapsed) {
+                    content.style.maxHeight = '100px';
+                    content.style.overflow = 'hidden';
+                    toggle.textContent = 'Expand';
+                } else {
+                    content.style.maxHeight = '500px';
+                    content.style.overflow = 'auto';
+                    toggle.textContent = 'Collapse';
+                }
+            });
+        }
+
+        function loadSentimentReportDataFromJson(data) {
+            const content = document.getElementById('sentiment-report-content');
+            const meta = document.getElementById('sentiment-report-meta');
+
+            if (!data || !data.content) {
+                content.textContent = 'No market sentiment report available yet. Reports are published at 9 AM ET.';
+                meta.textContent = 'Awaiting report...';
+                return;
+            }
+
+            // Format the content - convert markdown-style formatting to HTML
+            let formattedContent = data.content
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`([^`]+)`/g, '<code style="background: var(--bg-card); padding: 0.1rem 0.3rem; border-radius: 3px; color: var(--gold);">$1</code>')
+                .replace(/^## (.*$)/gm, '<h3 style="color: var(--text-primary); margin: 1rem 0 0.5rem; font-size: 1rem;">$1</h3>')
+                .replace(/^# (.*$)/gm, '<h2 style="color: var(--gold); margin: 1rem 0 0.5rem; font-size: 1.1rem;">$1</h2>')
+                .replace(/^• /gm, '• ')
+                .replace(/\n/g, '<br>');
+
+            content.innerHTML = formattedContent;
+            meta.textContent = `${data.reportType || 'Market Sentiment'} • ${data.timestamp || 'Recent'}`;
+        }
+
+        function loadSentimentReport() {
+            fetch('data/analysis.json')
+                .then(res => res.json())
+                .then(loadSentimentReportDataFromJson)
+                .catch(() => {
+                    document.getElementById('sentiment-report-content').textContent = 'Market sentiment report not available.';
+                    document.getElementById('sentiment-report-meta').textContent = 'Reports published at 9 AM ET';
+                });
+        }
+
         function loadAnalysisDataFromJson(data) {
             const content = document.getElementById('analysis-content');
             const meta = document.getElementById('analysis-meta');
 
             if (!data || !data.content) {
-                content.textContent = 'No analysis available yet. Reports are published at 9 AM and 4:30 PM CT.';
+                content.textContent = 'No analysis available yet. Reports are published at 9 AM and 4:30 PM ET.';
                 meta.textContent = 'Awaiting report...';
                 return;
             }
@@ -1503,7 +1579,7 @@
                 .then(loadAnalysisDataFromJson)
                 .catch(() => {
                     document.getElementById('analysis-content').textContent = 'Analysis report not available.';
-                    document.getElementById('analysis-meta').textContent = 'Reports published at 9 AM & 4:30 PM CT';
+                    document.getElementById('analysis-meta').textContent = 'Reports published at 9 AM & 4:30 PM ET';
                 });
         }
 
