@@ -131,15 +131,19 @@ class TradingScheduler:
 
 You MUST gather data from these sources using the available tools:
 
-1. **Institutional Sentiment (Motley Fool)** - Use get_motley_fool_news to see what the smart money is focused on
-2. **Retail Trader Sentiment (WSB/Reddit)** - Use get_wsb_trending and search_reddit_stocks to check retail mood
-3. **Macro Prediction Markets (Polymarket)** - Use get_polymarket_trending to see what traders are betting on
+1. **X/Twitter Sentiment** - Use get_x_sentiment for key tickers like $SPY, $AAPL, $NVDA, $TSLA to check real-time social sentiment
+2. **Institutional Sentiment (Motley Fool)** - Use get_motley_fool_news to see what the smart money is focused on
+3. **Retail Trader Sentiment (WSB/Reddit)** - Use get_wsb_trending and search_reddit_stocks to check retail mood
+4. **Macro Prediction Markets (Polymarket)** - Use get_polymarket_trending to see what traders are betting on
 
-After gathering data from ALL THREE sources, synthesize it into a report with this exact format:
+After gathering data from ALL FOUR sources, synthesize it into a report with this exact format:
 
 # **Market Sentiment Report** - [Today's Date]
 
 Let me pinch together the current market vibes from across the trading ecosystem:
+
+## 𝕏 X/Twitter Sentiment
+[Include bullish/bearish percentages for key tickers like $SPY, $AAPL, $NVDA, $TSLA]
 
 ## 🏛️ Institutional Sentiment (Motley Fool)
 [Summarize key themes, stocks being discussed, bullish/bearish takes]
