@@ -189,7 +189,7 @@ def export_analysis(analysis_text: str, portfolio_name: str = None) -> dict:
 
     return {
         'lastUpdate': now.isoformat() + 'Z',
-        'timestamp': now.strftime("%B %d, %Y at %I:%M %p CT"),
+        'timestamp': now.strftime("%B %d, %Y at %I:%M %p ET"),
         'reportType': report_type,
         'portfolioName': portfolio_name or "All Portfolios",
         'content': analysis_text
