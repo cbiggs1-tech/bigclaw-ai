@@ -1281,97 +1281,15 @@
         function setupTickerSearch() {
             const input = document.getElementById('ticker-input');
             const btn = document.getElementById('ticker-search-btn');
-            const quoteWidget = document.getElementById('quote-widget');
-            const quoteBody = document.getElementById('quote-body');
-            const quoteTicker = document.getElementById('quote-ticker');
-            const quoteClose = document.getElementById('quote-close');
-
-            // US stock exchange mappings for TradingView
-            const exchangeMap = {
-                // Major NASDAQ stocks
-                'AAPL': 'NASDAQ', 'MSFT': 'NASDAQ', 'GOOGL': 'NASDAQ', 'GOOG': 'NASDAQ',
-                'AMZN': 'NASDAQ', 'NVDA': 'NASDAQ', 'META': 'NASDAQ', 'TSLA': 'NASDAQ',
-                'AVGO': 'NASDAQ', 'COST': 'NASDAQ', 'NFLX': 'NASDAQ', 'AMD': 'NASDAQ',
-                'QCOM': 'NASDAQ', 'INTC': 'NASDAQ', 'CSCO': 'NASDAQ', 'ADBE': 'NASDAQ',
-                'TXN': 'NASDAQ', 'INTU': 'NASDAQ', 'AMAT': 'NASDAQ', 'PYPL': 'NASDAQ',
-                'PLTR': 'NASDAQ', 'CRSP': 'NASDAQ', 'MU': 'NASDAQ', 'MRVL': 'NASDAQ',
-                'LRCX': 'NASDAQ', 'KLAC': 'NASDAQ', 'SNPS': 'NASDAQ', 'CDNS': 'NASDAQ',
-                // Major NYSE stocks
-                'JPM': 'NYSE', 'V': 'NYSE', 'JNJ': 'NYSE', 'UNH': 'NYSE', 'PG': 'NYSE',
-                'MA': 'NYSE', 'HD': 'NYSE', 'CVX': 'NYSE', 'MRK': 'NYSE', 'ABBV': 'NYSE',
-                'KO': 'NYSE', 'PEP': 'NYSE', 'BAC': 'NYSE', 'PFE': 'NYSE', 'TMO': 'NYSE',
-                'WMT': 'NYSE', 'DIS': 'NYSE', 'VZ': 'NYSE', 'NKE': 'NYSE', 'MCD': 'NYSE',
-                'IBM': 'NYSE', 'GS': 'NYSE', 'CAT': 'NYSE', 'HON': 'NYSE', 'BA': 'NYSE',
-                'GE': 'NYSE', 'MMM': 'NYSE', 'AXP': 'NYSE', 'TRV': 'NYSE', 'DOW': 'NYSE',
-                // Berkshire
-                'BRK.A': 'NYSE', 'BRK.B': 'NYSE', 'BRK-A': 'NYSE', 'BRK-B': 'NYSE',
-                // Other
-                'KHC': 'NASDAQ',
-                // ETFs
-                'SPY': 'AMEX', 'QQQ': 'NASDAQ', 'DIA': 'AMEX', 'IWM': 'AMEX', 'VTI': 'AMEX',
-                'VOO': 'AMEX', 'VGT': 'AMEX', 'ARKK': 'AMEX', 'XLF': 'AMEX', 'XLE': 'AMEX'
-            };
-
-            function getFullSymbol(ticker) {
-                // If already has exchange, return as-is
-                if (ticker.includes(':')) return ticker;
-
-                // Look up in our map
-                const exchange = exchangeMap[ticker];
-                if (exchange) {
-                    return exchange + ':' + ticker;
-                }
-
-                // Default: try NYSE first (covers most large caps)
-                return 'NYSE:' + ticker;
-            }
 
             function searchTicker() {
                 const ticker = input.value.trim().toUpperCase();
                 if (!ticker) return;
 
-                const fullSymbol = getFullSymbol(ticker);
-
-                // Update title
-                quoteTicker.textContent = ticker;
-
-                // Clear previous widget
-                quoteBody.innerHTML = '';
-
-                // Use TradingView iframe embed - most reliable method
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://www.tradingview.com/embed-widget/single-quote/?symbol=${encodeURIComponent(fullSymbol)}&locale=en&colorTheme=dark`;
-                iframe.style.width = '100%';
-                iframe.style.height = '150px';
-                iframe.style.border = 'none';
-                iframe.frameBorder = '0';
-                iframe.allowTransparency = 'true';
-
-                const chartIframe = document.createElement('iframe');
-                chartIframe.src = `https://www.tradingview.com/embed-widget/mini-symbol-overview/?symbol=${encodeURIComponent(fullSymbol)}&dateRange=1M&colorTheme=dark&isTransparent=false&autosize=true&largeChartUrl=`;
-                chartIframe.style.width = '100%';
-                chartIframe.style.height = '250px';
-                chartIframe.style.border = 'none';
-                chartIframe.style.marginTop = '0';
-                chartIframe.frameBorder = '0';
-                chartIframe.allowTransparency = 'true';
-
-                quoteBody.appendChild(iframe);
-                quoteBody.appendChild(chartIframe);
-
-                // Show the widget
-                quoteWidget.classList.add('visible');
+                // Open Yahoo Finance in new tab - always works correctly
+                window.open(`https://finance.yahoo.com/quote/${ticker}`, '_blank');
                 input.value = '';
-
-                // Scroll to widget
-                quoteWidget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
-
-            // Close button handler
-            quoteClose.addEventListener('click', function() {
-                quoteWidget.classList.remove('visible');
-                quoteBody.innerHTML = '';
-            });
 
             btn.addEventListener('click', searchTicker);
             input.addEventListener('keypress', function(e) {
