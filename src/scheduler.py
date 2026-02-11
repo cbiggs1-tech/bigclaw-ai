@@ -94,7 +94,13 @@ class TradingScheduler:
 
         logger.info("Starting daily autonomous trading analysis")
 
-        # First, check and execute any pending orders
+        # First, generate and save the market sentiment report for the website
+        try:
+            self._generate_market_sentiment_report()
+        except Exception as e:
+            logger.error(f"Error generating market sentiment report: {e}")
+
+        # Check and execute any pending orders
         self._check_pending_orders()
 
         portfolios = get_active_portfolios()
@@ -114,6 +120,68 @@ class TradingScheduler:
             logger.info("Dashboard exported after morning analysis")
         except Exception as e:
             logger.error(f"Dashboard export failed: {e}")
+
+    def _generate_market_sentiment_report(self):
+        """Generate a comprehensive market sentiment report for the website."""
+        from agent import BigClawAgent
+
+        logger.info("Generating market sentiment report")
+
+        prompt = """Generate a comprehensive **Market Sentiment Report** for today.
+
+You MUST gather data from these sources using the available tools:
+
+1. **Institutional Sentiment (Motley Fool)** - Use get_motley_fool_news to see what the smart money is focused on
+2. **Retail Trader Sentiment (WSB/Reddit)** - Use get_wsb_trending and search_reddit_stocks to check retail mood
+3. **Macro Prediction Markets (Polymarket)** - Use get_polymarket_trending to see what traders are betting on
+
+After gathering data from ALL THREE sources, synthesize it into a report with this exact format:
+
+# **Market Sentiment Report** - [Today's Date]
+
+Let me pinch together the current market vibes from across the trading ecosystem:
+
+## 🏛️ Institutional Sentiment (Motley Fool)
+[Summarize key themes, stocks being discussed, bullish/bearish takes]
+
+## 🎰 Retail Trader Sentiment (WSB)
+[Summarize hot tickers, mood, key catalysts, meme potential]
+
+## 🔮 Macro Prediction Markets (Polymarket)
+[Summarize what traders are betting on, any market-related predictions]
+
+## 🦀 BigClaw's Take
+[Your synthesis: overall market mood, what to watch, your signature crab wisdom]
+
+---
+This is for educational purposes only, not financial advice. Markets can stay irrational longer than you can stay liquid.
+
+IMPORTANT: You MUST call the tools to get real data before writing the report. Do not make up information."""
+
+        agent = BigClawAgent(self.anthropic_client)
+        try:
+            response = agent.run(prompt)
+            logger.info("Market sentiment report generated")
+
+            # Save to analysis.json for the website
+            save_analysis_report(response, "Market Overview")
+
+            # Send to report channel
+            from portfolio import get_active_portfolios
+            portfolios = get_active_portfolios()
+            if portfolios and portfolios[0].report_channel:
+                self._send_message(
+                    portfolios[0].report_channel,
+                    f"**🦀 Morning Market Sentiment Report**\n\n{response[:2000]}"
+                )
+
+            return response
+
+        except Exception as e:
+            logger.error(f"Market sentiment report error: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            return f"Error generating report: {str(e)}"
 
     def _check_pending_orders(self):
         """Check all pending orders and execute any that have been triggered."""
@@ -391,13 +459,8 @@ Begin your analysis now."""
                     portfolio.report_channel,
                     f"**🤖 Autonomous Trading: {portfolio.name}**\n\n{response[:2000]}"
                 )
-
-            # Save analysis report to JSON for dashboard
-            try:
-                save_analysis_report(response, portfolio.name)
-                logger.info(f"Saved analysis report for {portfolio.name}")
-            except Exception as e:
-                logger.error(f"Failed to save analysis report: {e}")
+            # Note: Trading analysis goes to Slack/Discord only
+            # The website shows the market sentiment report (generated separately)
 
             return response
 
