@@ -1338,36 +1338,26 @@
                 // Clear previous widget
                 quoteBody.innerHTML = '';
 
-                // Create TradingView mini chart widget
-                const widgetContainer = document.createElement('div');
-                widgetContainer.className = 'tradingview-widget-container';
-                widgetContainer.style.height = '100%';
-                widgetContainer.style.width = '100%';
+                // Use TradingView iframe embed - most reliable method
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.tradingview.com/embed-widget/single-quote/?symbol=${encodeURIComponent(fullSymbol)}&locale=en&colorTheme=dark`;
+                iframe.style.width = '100%';
+                iframe.style.height = '150px';
+                iframe.style.border = 'none';
+                iframe.frameBorder = '0';
+                iframe.allowTransparency = 'true';
 
-                const widgetDiv = document.createElement('div');
-                widgetDiv.className = 'tradingview-widget-container__widget';
-                widgetDiv.style.height = '100%';
-                widgetDiv.style.width = '100%';
+                const chartIframe = document.createElement('iframe');
+                chartIframe.src = `https://www.tradingview.com/embed-widget/mini-symbol-overview/?symbol=${encodeURIComponent(fullSymbol)}&dateRange=1M&colorTheme=dark&isTransparent=false&autosize=true&largeChartUrl=`;
+                chartIframe.style.width = '100%';
+                chartIframe.style.height = '250px';
+                chartIframe.style.border = 'none';
+                chartIframe.style.marginTop = '0';
+                chartIframe.frameBorder = '0';
+                chartIframe.allowTransparency = 'true';
 
-                const script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
-                script.async = true;
-                script.innerHTML = JSON.stringify({
-                    "symbol": fullSymbol,
-                    "width": "100%",
-                    "height": "100%",
-                    "locale": "en",
-                    "dateRange": "1M",
-                    "colorTheme": "dark",
-                    "isTransparent": false,
-                    "autosize": true,
-                    "largeChartUrl": ""
-                });
-
-                widgetContainer.appendChild(widgetDiv);
-                widgetContainer.appendChild(script);
-                quoteBody.appendChild(widgetContainer);
+                quoteBody.appendChild(iframe);
+                quoteBody.appendChild(chartIframe);
 
                 // Show the widget
                 quoteWidget.classList.add('visible');
