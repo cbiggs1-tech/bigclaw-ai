@@ -14,7 +14,7 @@ from datetime import datetime, time
 from typing import Optional, Callable
 import schedule
 
-from export_dashboard import export_dashboard, save_analysis_report
+from export_dashboard import export_dashboard, save_analysis_report, save_portfolio_analysis
 
 logger = logging.getLogger(__name__)
 
@@ -486,17 +486,29 @@ Begin your analysis now."""
         if not portfolios:
             return
 
-        for portfolio in portfolios:
-            if not portfolio.report_channel:
-                continue
+        # Collect all reports for the website
+        all_reports = []
 
+        for portfolio in portfolios:
             try:
                 report = self._generate_report(portfolio)
-                self._send_message(portfolio.report_channel, report)
-                # Note: Evening portfolio reports are sent to Slack/Discord only
-                # The analysis.json on the website shows the morning market sentiment analysis
+                all_reports.append(report)
+
+                # Send to Slack/Discord if channel is set
+                if portfolio.report_channel:
+                    self._send_message(portfolio.report_channel, report)
             except Exception as e:
                 logger.error(f"Error generating report for {portfolio.name}: {e}")
+
+        # Save combined portfolio analysis to website
+        if all_reports:
+            try:
+                combined_report = "\n\n---\n\n".join(all_reports)
+                combined_report += "\n\n---\n_This is for educational purposes only, not financial advice._"
+                save_portfolio_analysis(combined_report, "All Portfolios")
+                logger.info("Portfolio analysis saved to website")
+            except Exception as e:
+                logger.error(f"Failed to save portfolio analysis: {e}")
 
         # Export dashboard data to GitHub Pages
         try:

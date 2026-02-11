@@ -214,6 +214,35 @@ def save_analysis_report(analysis_text: str, portfolio_name: str = None):
     logger.info(f"Saved analysis report to {filepath}")
 
 
+def save_portfolio_analysis(analysis_text: str, portfolio_name: str = None):
+    """Save portfolio analysis report to JSON file.
+
+    This is separate from the market sentiment report - this contains
+    analysis of the model portfolios (holdings, performance, recommendations).
+
+    Args:
+        analysis_text: The portfolio analysis text from the trading agent.
+        portfolio_name: Optional name of the portfolio analyzed.
+    """
+    os.makedirs(DOCS_DATA_PATH, exist_ok=True)
+
+    now = datetime.now()
+
+    data = {
+        'lastUpdate': now.isoformat() + 'Z',
+        'timestamp': now.strftime("%B %d, %Y at %I:%M %p ET"),
+        'reportType': "Portfolio Analysis",
+        'portfolioName': portfolio_name or "All Portfolios",
+        'content': analysis_text
+    }
+
+    filepath = os.path.join(DOCS_DATA_PATH, 'portfolio_analysis.json')
+    with open(filepath, 'w') as f:
+        json.dump(data, f, indent=2)
+
+    logger.info(f"Saved portfolio analysis to {filepath}")
+
+
 def export_sentiment(sentiment_data: Optional[dict] = None) -> dict:
     """Export sentiment data to JSON format.
 

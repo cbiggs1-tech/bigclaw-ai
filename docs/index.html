@@ -1192,10 +1192,8 @@
                     fetch('data/news.json' + cacheBuster).then(r => r.json()).then(loadNewsDataFromJson),
                     fetch('data/sentiment.json' + cacheBuster).then(r => r.json()).then(loadSentimentDataFromJson),
                     fetch('data/market.json' + cacheBuster).then(r => r.json()).then(loadMarketDataFromJson),
-                    fetch('data/analysis.json' + cacheBuster).then(r => r.json()).then(data => {
-                        loadAnalysisDataFromJson(data);
-                        loadSentimentReportDataFromJson(data);
-                    }).catch(() => {}),
+                    fetch('data/portfolio_analysis.json' + cacheBuster).then(r => r.json()).then(loadAnalysisDataFromJson).catch(() => {}),
+                    fetch('data/analysis.json' + cacheBuster).then(r => r.json()).then(loadSentimentReportDataFromJson).catch(() => {}),
                     fetch('data/metadata.json' + cacheBuster).then(r => r.json()).then(data => {
                         document.getElementById('lastUpdate').textContent = data.lastUpdate || 'Unknown';
                     })
@@ -1574,12 +1572,12 @@
         }
 
         function loadAnalysisReport() {
-            fetch('data/analysis.json')
+            fetch('data/portfolio_analysis.json')
                 .then(res => res.json())
                 .then(loadAnalysisDataFromJson)
                 .catch(() => {
-                    document.getElementById('analysis-content').textContent = 'Analysis report not available.';
-                    document.getElementById('analysis-meta').textContent = 'Reports published at 9 AM & 4:30 PM ET';
+                    document.getElementById('analysis-content').textContent = 'Portfolio analysis not available yet. Reports published after market close.';
+                    document.getElementById('analysis-meta').textContent = 'Reports published at 4:30 PM ET';
                 });
         }
 
