@@ -426,13 +426,8 @@ Begin your analysis now."""
             try:
                 report = self._generate_report(portfolio)
                 self._send_message(portfolio.report_channel, report)
-
-                # Save report to JSON for dashboard
-                try:
-                    save_analysis_report(report, portfolio.name)
-                    logger.info(f"Saved evening report for {portfolio.name}")
-                except Exception as e:
-                    logger.error(f"Failed to save evening report: {e}")
+                # Note: Evening portfolio reports are sent to Slack/Discord only
+                # The analysis.json on the website shows the morning market sentiment analysis
             except Exception as e:
                 logger.error(f"Error generating report for {portfolio.name}: {e}")
 
