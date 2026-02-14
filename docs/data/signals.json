@@ -1,0 +1,359 @@
+{
+  "date": "2026-02-14 09:06",
+  "signals": [
+    {
+      "ticker": "AAPL",
+      "score": 0,
+      "label": "\u26aa HOLD",
+      "reasons": [
+        "MACD bearish crossover",
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 18%",
+        "D/E ratio 103",
+        "insider net selling (0B/20S)",
+        "outperforming XLK by 3.2%"
+      ],
+      "price": 255.77999877929688
+    },
+    {
+      "ticker": "ARKK",
+      "score": -1,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "golden cross (50>200)"
+      ],
+      "price": 70.25
+    },
+    {
+      "ticker": "BAC",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "MACD bearish crossover",
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 21%",
+        "insider net selling (9B/11S)",
+        "outperforming XLF by 4.9%",
+        "correlated with WFC (0.90)"
+      ],
+      "price": 52.54999923706055
+    },
+    {
+      "ticker": "BRK-B",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 17%",
+        "forward P/E (20.7) > trailing (15.9)",
+        "insider net selling (3B/12S)",
+        "outperforming XLF by 6.0%"
+      ],
+      "price": 497.54998779296875
+    },
+    {
+      "ticker": "CRSP",
+      "score": -4,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "MACD bullish crossover",
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "golden cross (50>200)",
+        "revenue growth -98%",
+        "short interest 23.9%",
+        "insider net selling (3B/15S)",
+        "underperforming XLV by 2.6%"
+      ],
+      "price": 53.06999969482422
+    },
+    {
+      "ticker": "JNJ",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "RSI 82 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 49%",
+        "insider net selling (1B/13S)",
+        "outperforming XLV by 10.4%"
+      ],
+      "price": 243.4499969482422
+    },
+    {
+      "ticker": "JPM",
+      "score": -1,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "reasons": [
+        "MACD bearish crossover",
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth -4%",
+        "insider net selling (0B/16S)",
+        "outperforming XLF by 2.8%"
+      ],
+      "price": 302.54998779296875
+    },
+    {
+      "ticker": "KO",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 4%",
+        "D/E ratio 133",
+        "insider net selling (2B/13S)",
+        "outperforming XLP by 3.0%"
+      ],
+      "price": 78.68000030517578
+    },
+    {
+      "ticker": "MSFT",
+      "score": -4,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth 60%",
+        "insider net selling (1B/19S)",
+        "underperforming XLK by 8.1%"
+      ],
+      "price": 401.32000732421875
+    },
+    {
+      "ticker": "NVDA",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 67%",
+        "insider net selling (0B/20S)"
+      ],
+      "price": 182.80999755859375
+    },
+    {
+      "ticker": "PG",
+      "score": -1,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "reasons": [
+        "RSI 71 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth -5%",
+        "insider net selling (0B/13S)",
+        "outperforming XLP by 2.8%"
+      ],
+      "price": 160.07000732421875
+    },
+    {
+      "ticker": "PLTR",
+      "score": -2,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 681%",
+        "insider net selling (0B/19S)",
+        "underperforming XLK by 21.7%"
+      ],
+      "price": 131.41000366210938
+    },
+    {
+      "ticker": "QBTS",
+      "score": -4,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "golden cross (50>200)",
+        "short interest 15.8%",
+        "insider net selling (0B/18S)",
+        "underperforming XLK by 27.5%"
+      ],
+      "price": 19.670000076293945
+    },
+    {
+      "ticker": "RBLX",
+      "score": -6,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "death cross (50<200)",
+        "D/E ratio 481",
+        "insider net selling (0B/16S)",
+        "underperforming XLC by 24.0%"
+      ],
+      "price": 63.16999816894531
+    },
+    {
+      "ticker": "TSLA",
+      "score": -2,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth -61%",
+        "revenue growth -3%",
+        "insider net selling (1B/14S)"
+      ],
+      "price": 417.44000244140625
+    },
+    {
+      "ticker": "UNH",
+      "score": -1,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "reasons": [
+        "MACD bullish crossover",
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth -100%",
+        "insider net buying (5B/4S)",
+        "underperforming XLV by 14.0%"
+      ],
+      "price": 293.19000244140625
+    },
+    {
+      "ticker": "V",
+      "score": -4,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "MACD bearish crossover",
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth 17%",
+        "insider net selling (0B/16S)"
+      ],
+      "price": 314.0799865722656
+    },
+    {
+      "ticker": "WFC",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 13%",
+        "outperforming XLF by 3.3%",
+        "correlated with BAC (0.90)"
+      ],
+      "price": 86.9800033569336
+    }
+  ],
+  "earnings": [
+    {
+      "ticker": "BRK-B",
+      "date": "Feb 28",
+      "days": 13
+    },
+    {
+      "ticker": "NVDA",
+      "date": "Feb 25",
+      "days": 10
+    },
+    {
+      "ticker": "QBTS",
+      "date": "Feb 26",
+      "days": 11
+    }
+  ],
+  "overlap": [
+    {
+      "ticker": "AAPL",
+      "portfolios": [
+        "Value Picks",
+        "Growth Value"
+      ]
+    },
+    {
+      "ticker": "JPM",
+      "portfolios": [
+        "Value Picks",
+        "Growth Value"
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "portfolios": [
+        "Innovation Fund",
+        "Growth Value"
+      ]
+    },
+    {
+      "ticker": "TSLA",
+      "portfolios": [
+        "Innovation Fund",
+        "Growth Value"
+      ]
+    }
+  ],
+  "concentration": [
+    {
+      "ticker": "JNJ",
+      "portfolio": "Value Picks",
+      "pct": 30.950733645160906
+    },
+    {
+      "ticker": "BAC",
+      "portfolio": "Value Picks",
+      "pct": 24.079114767805255
+    },
+    {
+      "ticker": "PG",
+      "portfolio": "Value Picks",
+      "pct": 25.485916173273615
+    },
+    {
+      "ticker": "NVDA",
+      "portfolio": "Innovation Fund",
+      "pct": 33.92901568185307
+    },
+    {
+      "ticker": "TSLA",
+      "portfolio": "Innovation Fund",
+      "pct": 25.636105209380432
+    },
+    {
+      "ticker": "CRSP",
+      "portfolio": "Innovation Fund",
+      "pct": 15.91238805400044
+    },
+    {
+      "ticker": "MSFT",
+      "portfolio": "Growth Value",
+      "pct": 30.054729715090144
+    },
+    {
+      "ticker": "JPM",
+      "portfolio": "Growth Value",
+      "pct": 19.799372326847536
+    },
+    {
+      "ticker": "AAPL",
+      "portfolio": "Growth Value",
+      "pct": 24.329160859539563
+    }
+  ]
+}

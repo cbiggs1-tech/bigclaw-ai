@@ -1,0 +1,194 @@
+{
+  "timestamp": "2026-02-14T09:06:33.073332",
+  "context": {
+    "ticker": null,
+    "sector": null,
+    "ticker_info": null
+  },
+  "rates": {
+    "fed_funds": "4.25\u20134.50%",
+    "ten_year": 4.056,
+    "two_year": 3.448,
+    "yield_spread": 0.608,
+    "inverted": false
+  },
+  "market": {
+    "S&P 500": {
+      "ticker": "^GSPC",
+      "price": 6836.17,
+      "ytd": -0.14,
+      "1mo": -1.31,
+      "3mo": 1.52
+    },
+    "Nasdaq": {
+      "ticker": "^IXIC",
+      "price": 22546.67,
+      "ytd": -2.99,
+      "1mo": -3.94,
+      "3mo": -1.55
+    },
+    "Dow Jones": {
+      "ticker": "^DJI",
+      "price": 49500.93,
+      "ytd": 2.99,
+      "1mo": 0.71,
+      "3mo": 4.99
+    },
+    "Russell 2000": {
+      "ticker": "^RUT",
+      "price": 2646.7,
+      "ytd": 6.64,
+      "1mo": -0.19,
+      "3mo": 10.82
+    },
+    "VIX": {
+      "level": 20.6,
+      "classification": "Elevated",
+      "1mo_change": 22.99
+    }
+  },
+  "sectors": [
+    {
+      "etf": "XLE",
+      "sector": "Energy",
+      "price": 54.35,
+      "1mo": 13.09,
+      "3mo": 19.13,
+      "above_50sma": "True",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLB",
+      "sector": "Materials",
+      "price": 53.31,
+      "1mo": 9.35,
+      "3mo": 23.51,
+      "above_50sma": "True",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLP",
+      "sector": "Consumer Staples",
+      "price": 89.51,
+      "1mo": 8.85,
+      "3mo": 16.79,
+      "above_50sma": "True",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLU",
+      "sector": "Utilities",
+      "price": 46.5,
+      "1mo": 7.71,
+      "3mo": 5.56,
+      "above_50sma": "True",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLI",
+      "sector": "Industrials",
+      "price": 174.17,
+      "1mo": 6.03,
+      "3mo": 14.97,
+      "above_50sma": "True",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLRE",
+      "sector": "Real Estate",
+      "price": 43.5,
+      "1mo": 5.1,
+      "3mo": 7.39,
+      "above_50sma": "True",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLV",
+      "sector": "Healthcare",
+      "price": 157.67,
+      "1mo": -0.12,
+      "3mo": 4.29,
+      "above_50sma": "True",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLC",
+      "sector": "Communications",
+      "price": 114.58,
+      "1mo": -1.77,
+      "3mo": 3.25,
+      "above_50sma": "False",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLK",
+      "sector": "Technology",
+      "price": 139.56,
+      "1mo": -3.55,
+      "3mo": -2.99,
+      "above_50sma": "False",
+      "above_200sma": "True"
+    },
+    {
+      "etf": "XLF",
+      "sector": "Financials",
+      "price": 51.65,
+      "1mo": -4.62,
+      "3mo": -1.18,
+      "above_50sma": "False",
+      "above_200sma": "False"
+    },
+    {
+      "etf": "XLY",
+      "sector": "Consumer Discretionary",
+      "price": 116.18,
+      "1mo": -4.97,
+      "3mo": 0.84,
+      "above_50sma": "False",
+      "above_200sma": "True"
+    }
+  ],
+  "risk": {
+    "vix": {
+      "level": 20.6,
+      "classification": "Elevated",
+      "1mo_change": 22.99
+    },
+    "Gold (GLD)": {
+      "price": 462.62,
+      "1mo": 8.61
+    },
+    "US Dollar (UUP)": {
+      "price": 26.82,
+      "1mo": -1.87
+    },
+    "Bitcoin": {
+      "price": 69741.11,
+      "1mo": -27.01
+    },
+    "yield_curve": {
+      "spread": 0.608,
+      "inverted": false
+    }
+  },
+  "economic": {
+    "links": {
+      "CPI": "https://www.bls.gov/cpi/",
+      "Jobs Report": "https://www.bls.gov/news.release/empsit.nr0.htm",
+      "GDP": "https://www.bea.gov/data/gdp/gross-domestic-product",
+      "FOMC Calendar": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    "headlines": []
+  },
+  "verdict": {
+    "environment": "Mixed",
+    "positioning": "Neutral",
+    "score": -1,
+    "signals": {
+      "bullish": 1,
+      "bearish": 2
+    },
+    "specific": null,
+    "watch": "Next FOMC meeting & CPI release"
+  }
+}
