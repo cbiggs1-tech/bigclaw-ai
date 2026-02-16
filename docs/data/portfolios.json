@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-02-16T13:52:10.597679Z",
+  "lastUpdate": "2026-02-16T18:17:50.636488Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -167,6 +167,93 @@
           "shares": 11.0,
           "avgCost": 1040.0,
           "currentPrice": 1040.0,
+          "purchasedAt": "Feb 16, 2026"
+        }
+      ]
+    },
+    {
+      "name": "AI Defense & Autonomous",
+      "style": "AI Defense / Autonomous Systems",
+      "totalValue": 100000.0,
+      "startingCash": 100000.0,
+      "totalReturn": 0.0,
+      "createdAt": "2026-02-16",
+      "holdings": [
+        {
+          "ticker": "AVAV",
+          "shares": 41.0,
+          "avgCost": 243.87,
+          "currentPrice": 243.87,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "BAH",
+          "shares": 37.0,
+          "avgCost": 79.32,
+          "currentPrice": 79.32,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "GD",
+          "shares": 14.0,
+          "avgCost": 347.64,
+          "currentPrice": 347.64,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "KTOS",
+          "shares": 134.0,
+          "avgCost": 89.06,
+          "currentPrice": 89.06,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "LDOS",
+          "shares": 45.0,
+          "avgCost": 176.3,
+          "currentPrice": 176.3,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "LHX",
+          "shares": 23.0,
+          "avgCost": 345.5,
+          "currentPrice": 345.5,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "LMT",
+          "shares": 15.0,
+          "avgCost": 652.58,
+          "currentPrice": 652.58,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "NOC",
+          "shares": 17.0,
+          "avgCost": 702.57,
+          "currentPrice": 702.57,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "PLTR",
+          "shares": 76.0,
+          "avgCost": 131.41,
+          "currentPrice": 131.41,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "RTX",
+          "shares": 59.0,
+          "avgCost": 200.06,
+          "currentPrice": 200.06,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "TXT",
+          "shares": 50.0,
+          "avgCost": 98.09,
+          "currentPrice": 98.09,
           "purchasedAt": "Feb 16, 2026"
         }
       ]
