@@ -1,6 +1,124 @@
 {
-  "lastUpdate": "2026-02-13T21:30:15.865773Z",
+  "lastUpdate": "2026-02-16T13:13:03.502431Z",
   "portfolios": [
+    {
+      "name": "Income Dividends",
+      "style": "Income / Dividend Growth",
+      "totalValue": 100000.0,
+      "startingCash": 100000.0,
+      "totalReturn": 0.0,
+      "createdAt": "2026-02-16 13:12:32",
+      "holdings": [
+        {
+          "ticker": "DUK",
+          "shares": 85.0,
+          "avgCost": 128.2,
+          "currentPrice": 128.2,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "ED",
+          "shares": 96.0,
+          "avgCost": 113.72,
+          "currentPrice": 113.72,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "IBM",
+          "shares": 34.0,
+          "avgCost": 262.38,
+          "currentPrice": 262.38,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "JNJ",
+          "shares": 32.0,
+          "avgCost": 243.45,
+          "currentPrice": 243.45,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "O",
+          "shares": 197.0,
+          "avgCost": 65.66,
+          "currentPrice": 65.66,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "PG",
+          "shares": 62.0,
+          "avgCost": 160.07,
+          "currentPrice": 160.07,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "T",
+          "shares": 418.0,
+          "avgCost": 28.69,
+          "currentPrice": 28.69,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "VZ",
+          "shares": 285.0,
+          "avgCost": 49.01,
+          "currentPrice": 49.01,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "XOM",
+          "shares": 80.0,
+          "avgCost": 148.45,
+          "currentPrice": 148.45,
+          "purchasedAt": "Feb 16, 2026"
+        }
+      ]
+    },
+    {
+      "name": "Momentum Growth",
+      "style": "Momentum / Aggressive Growth",
+      "totalValue": 100000.0,
+      "startingCash": 100000.0,
+      "totalReturn": 0.0,
+      "createdAt": "2026-02-16 13:12:32",
+      "holdings": [
+        {
+          "ticker": "ANET",
+          "shares": 105.0,
+          "avgCost": 141.59,
+          "currentPrice": 141.59,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "AVGO",
+          "shares": 15.0,
+          "avgCost": 325.17,
+          "currentPrice": 325.17,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "DECK",
+          "shares": 172.0,
+          "avgCost": 115.73,
+          "currentPrice": 115.73,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "GE",
+          "shares": 57.0,
+          "avgCost": 315.41,
+          "currentPrice": 315.41,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "LLY",
+          "shares": 11.0,
+          "avgCost": 1040.0,
+          "currentPrice": 1040.0,
+          "purchasedAt": "Feb 16, 2026"
+        }
+      ]
+    },
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
