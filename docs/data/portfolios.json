@@ -1,6 +1,58 @@
 {
-  "lastUpdate": "2026-02-16T13:13:03.502431Z",
+  "lastUpdate": "2026-02-16T13:52:10.597679Z",
   "portfolios": [
+    {
+      "name": "Nuclear Renaissance",
+      "style": "Nuclear Energy / Domain Expertise",
+      "totalValue": 98789.24,
+      "startingCash": 100000.0,
+      "totalReturn": -1.21,
+      "createdAt": "2026-02-16 13:51:57",
+      "holdings": [
+        {
+          "ticker": "BWXT",
+          "shares": 49.0,
+          "avgCost": 200.4,
+          "currentPrice": 200.4,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "CCJ",
+          "shares": 132.0,
+          "avgCost": 112.9,
+          "currentPrice": 112.9,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "CEG",
+          "shares": 104.0,
+          "avgCost": 288.43,
+          "currentPrice": 288.43,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "GEV",
+          "shares": 6.0,
+          "avgCost": 802.13,
+          "currentPrice": 802.13,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "TLN",
+          "shares": 26.0,
+          "avgCost": 376.7,
+          "currentPrice": 376.7,
+          "purchasedAt": "Feb 16, 2026"
+        },
+        {
+          "ticker": "VST",
+          "shares": 145.0,
+          "avgCost": 171.49,
+          "currentPrice": 171.49,
+          "purchasedAt": "Feb 16, 2026"
+        }
+      ]
+    },
     {
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
