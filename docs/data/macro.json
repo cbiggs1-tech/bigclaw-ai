@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-14T09:06:33.073332",
+  "timestamp": "2026-02-16T07:04:02.996487",
   "context": {
     "ticker": null,
     "sector": null,
@@ -42,9 +42,9 @@
       "3mo": 10.82
     },
     "VIX": {
-      "level": 20.6,
+      "level": 20.58,
       "classification": "Elevated",
-      "1mo_change": 22.99
+      "1mo_change": 29.76
     }
   },
   "sectors": [
@@ -150,9 +150,9 @@
   ],
   "risk": {
     "vix": {
-      "level": 20.6,
+      "level": 20.58,
       "classification": "Elevated",
-      "1mo_change": 22.99
+      "1mo_change": 29.76
     },
     "Gold (GLD)": {
       "price": 462.62,
@@ -163,13 +163,48 @@
       "1mo": -1.87
     },
     "Bitcoin": {
-      "price": 69741.11,
-      "1mo": -27.01
+      "price": 69649.08,
+      "1mo": -26.76
     },
     "yield_curve": {
       "spread": 0.608,
       "inverted": false
     }
+  },
+  "sentiment": {
+    "michigan": {
+      "current": 52.9,
+      "date": "2025-12-01",
+      "previous": 51.0,
+      "prev_date": "2025-11-01",
+      "year_ago": 74.0,
+      "assessment": "Crisis-level",
+      "percentile": 5,
+      "mom_change": 1.9
+    },
+    "fear_greed": {
+      "score": 36.3,
+      "rating": "fear",
+      "previous": 36.9,
+      "1w_ago": 43.9,
+      "1m_ago": 59.5
+    },
+    "saving_rate": {
+      "current": 3.5,
+      "date": "2025-11-01",
+      "assessment": "Low"
+    },
+    "sp_gold_ratio": {
+      "current": 14.78,
+      "1mo_ago": 16.26,
+      "trend": "declining"
+    },
+    "sp_oil_ratio": {
+      "current": 89.69,
+      "1mo_ago": 95.39,
+      "trend": "declining"
+    },
+    "contrarian_signal": "\ud83d\udfe1 Partial contrarian signal \u2014 one sentiment indicator depressed. Watch for confirmation."
   },
   "economic": {
     "links": {
@@ -183,9 +218,9 @@
   "verdict": {
     "environment": "Mixed",
     "positioning": "Neutral",
-    "score": -1,
+    "score": 0,
     "signals": {
-      "bullish": 1,
+      "bullish": 2,
       "bearish": 2
     },
     "specific": null,

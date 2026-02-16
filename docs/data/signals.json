@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-14 09:06",
+  "date": "2026-02-16 07:03",
   "signals": [
     {
       "ticker": "AAPL",
@@ -69,7 +69,7 @@
         "below 200-day SMA",
         "golden cross (50>200)",
         "revenue growth -98%",
-        "short interest 23.9%",
+        "short interest 24.6%",
         "insider net selling (3B/15S)",
         "underperforming XLV by 2.6%"
       ],
@@ -266,17 +266,17 @@
     {
       "ticker": "BRK-B",
       "date": "Feb 28",
-      "days": 13
+      "days": 11
     },
     {
       "ticker": "NVDA",
       "date": "Feb 25",
-      "days": 10
+      "days": 8
     },
     {
       "ticker": "QBTS",
       "date": "Feb 26",
-      "days": 11
+      "days": 9
     }
   ],
   "overlap": [
