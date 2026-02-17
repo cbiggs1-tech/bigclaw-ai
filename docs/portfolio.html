@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Details — BigClaw AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #161b28;
+            --bg-card-hover: #1c2333;
+            --bg-elevated: #1e2536;
+            --border-color: #1e2a3a;
+            --border-subtle: #151d2b;
+            --text-primary: #e8edf5;
+            --text-secondary: #8b95a8;
+            --text-muted: #505a6e;
+            --gain: #00c48c;
+            --gain-bg: rgba(0, 196, 140, 0.08);
+            --loss: #ff4757;
+            --loss-bg: rgba(255, 71, 87, 0.08);
+            --gold: #f0b90b;
+            --warn: #f59e0b;
+            --warn-bg: rgba(245, 158, 11, 0.08);
+            --accent: #3b82f6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .topbar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 200;
+        }
+        .topbar-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.5rem; height: 48px;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 1.5rem; }
+        .brand {
+            display: flex; align-items: center; gap: 0.5rem;
+            text-decoration: none; color: var(--text-primary); font-weight: 700; font-size: 1rem;
+        }
+        .brand-icon { font-size: 1.25rem; }
+        .brand-name {
+            background: linear-gradient(135deg, var(--gold) 0%, #f59e0b 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .nav-links { display: flex; gap: 0; height: 48px; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.8rem; font-weight: 500;
+            padding: 0 0.85rem; display: flex; align-items: center; height: 100%;
+            border-bottom: 2px solid transparent; transition: all 0.15s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); border-bottom-color: var(--gold); }
+        .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
+
+        /* Header */
+        .port-header {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px;
+            padding: 1.5rem; margin-bottom: 1.5rem;
+        }
+        .port-header-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+        .port-name { font-size: 1.5rem; font-weight: 800; }
+        .port-style { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+        .port-created { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.3rem; }
+        .port-return-big {
+            font-size: 1.8rem; font-weight: 800; text-align: right;
+        }
+        .port-return-big.gain { color: var(--gain); }
+        .port-return-big.loss { color: var(--loss); }
+        .port-value-line { font-size: 1.1rem; font-weight: 600; text-align: right; }
+        .pending-badge-big {
+            display: inline-block; padding: 0.4rem 1rem; border-radius: 6px;
+            background: var(--warn-bg); color: var(--warn); font-weight: 700; font-size: 1rem;
+        }
+        .port-stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color);
+        }
+        .port-stat-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .port-stat-value { font-size: 1rem; font-weight: 700; margin-top: 0.15rem; }
+
+        /* Metrics */
+        .metrics-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .metric-card {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem;
+        }
+        .metric-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .metric-value { font-size: 1.15rem; font-weight: 700; margin-top: 0.25rem; }
+        .metric-sub { font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.15rem; }
+
+        /* Table */
+        .table-wrap {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px;
+            overflow-x: auto; margin-bottom: 1.5rem;
+        }
+        .table-title { padding: 1rem 1.25rem 0.5rem; font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        th {
+            text-align: left; padding: 0.6rem 1rem; font-size: 0.68rem; font-weight: 600;
+            color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border-color);
+        }
+        td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border-subtle); }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background: var(--bg-card-hover); }
+        .ticker-cell { font-weight: 700; color: var(--gold); }
+        .gain { color: var(--gain); }
+        .loss { color: var(--loss); }
+        .right { text-align: right; }
+
+        /* Holdings cards */
+        .holdings-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem; margin-bottom: 1.5rem;
+        }
+        .holding-card {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem;
+        }
+        .holding-ticker { font-size: 1rem; font-weight: 800; color: var(--gold); }
+        .holding-company { font-size: 0.72rem; color: var(--text-muted); }
+        .holding-price { font-size: 1.1rem; font-weight: 700; margin: 0.4rem 0 0.2rem; }
+        .holding-detail { font-size: 0.72rem; color: var(--text-secondary); }
+        .holding-pnl { font-size: 0.85rem; font-weight: 600; margin-top: 0.3rem; }
+
+        /* Footer */
+        .footer {
+            text-align: center; padding: 2rem 1rem; font-size: 0.7rem; color: var(--text-muted);
+            border-top: 1px solid var(--border-color); margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .port-header-top { flex-direction: column; }
+            .port-return-big, .port-value-line { text-align: left; }
+            th, td { padding: 0.5rem 0.6rem; font-size: 0.75rem; }
+            .hide-mobile { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <a href="index.html" class="brand"><span class="brand-icon">🦀</span><span class="brand-name">BigClaw AI</span></a>
+                <nav class="nav-links">
+                    <a href="index.html">Dashboard</a>
+                    <a href="signals.html">Signals</a>
+                    <a class="active">Portfolio</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="content"><div style="text-align:center;padding:3rem;color:var(--text-muted);">Loading...</div></div>
+    </div>
+
+    <div class="footer" id="footer"></div>
+
+<script>
+const TICKER_NAMES = {
+    AAPL:'Apple',ANET:'Arista Networks',ARKK:'ARK Innovation ETF',AVAV:'AeroVironment',AVGO:'Broadcom',
+    BAC:'Bank of America',BAH:'Booz Allen Hamilton',BWXT:'BWX Technologies','BRK-B':'Berkshire Hathaway',
+    CCJ:'Cameco',CEG:'Constellation Energy',CRSP:'CRISPR Therapeutics',DECK:'Deckers Outdoor',
+    DUK:'Duke Energy',ED:'Consolidated Edison',GD:'General Dynamics',GE:'GE Aerospace',
+    GEV:'GE Vernova',IBM:'IBM',JNJ:'Johnson & Johnson',JPM:'JPMorgan Chase',KO:'Coca-Cola',
+    KTOS:'Kratos Defense',LDOS:'Leidos',LHX:'L3Harris Technologies',LLY:'Eli Lilly',
+    LMT:'Lockheed Martin',MSFT:'Microsoft',NOC:'Northrop Grumman',NVDA:'NVIDIA',O:'Realty Income',
+    PG:'Procter & Gamble',PLTR:'Palantir',QBTS:'D-Wave Quantum',RBLX:'Roblox',RTX:'RTX Corp',
+    T:'AT&T',TLN:'Talen Energy',TSLA:'Tesla',TXT:'Textron',UNH:'UnitedHealth',V:'Visa',
+    VST:'Vistra',VZ:'Verizon',WFC:'Wells Fargo',XOM:'Exxon Mobil'
+};
+
+function fmt$(v) { return '$' + Number(v).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+function fmtPct(v) { return (v >= 0 ? '+' : '') + v.toFixed(2) + '%'; }
+function fmtPrice(v) { return Number(v).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+const params = new URLSearchParams(window.location.search);
+const portfolioId = parseInt(params.get('id'), 10);
+
+fetch('data/portfolios.json')
+    .then(r => r.json())
+    .then(data => {
+        const portfolios = data.portfolios || [];
+        if (isNaN(portfolioId) || portfolioId < 0 || portfolioId >= portfolios.length) {
+            document.getElementById('content').innerHTML = '<div style="text-align:center;padding:3rem;color:var(--loss);">Portfolio not found. <a href="index.html" style="color:var(--gold);">Back to Dashboard</a></div>';
+            return;
+        }
+        const p = portfolios[portfolioId];
+        const isPending = p.purchaseStatus === 'pending';
+        const holdings = (p.holdings || []).map(h => {
+            const value = h.shares * h.currentPrice;
+            const cost = h.shares * h.avgCost;
+            const pnl = value - cost;
+            const pnlPct = cost > 0 ? (pnl / cost * 100) : 0;
+            return { ...h, value, cost, pnl, pnlPct };
+        });
+
+        const totalInvested = holdings.reduce((s, h) => s + h.cost, 0);
+        const totalValue = holdings.reduce((s, h) => s + h.value, 0);
+        const cashRemaining = (p.startingCash || 0) - totalInvested;
+
+        // Sort by weight desc
+        holdings.sort((a, b) => b.value - a.value);
+
+        // Metrics
+        const largest = holdings[0];
+        const sorted = [...holdings].sort((a, b) => b.pnlPct - a.pnlPct);
+        const topGainer = sorted[0];
+        const topLoser = sorted[sorted.length - 1];
+
+        let html = '';
+
+        // Header
+        const returnHtml = isPending
+            ? '<div class="pending-badge-big">⏳ Pending Purchase</div>'
+            : `<div><div class="port-return-big ${p.totalReturn >= 0 ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}</div>
+               <div class="port-value-line">${fmt$(p.totalValue)}</div></div>`;
+
+        html += `<div class="port-header">
+            <div class="port-header-top">
+                <div>
+                    <div class="port-name">${p.name}</div>
+                    <div class="port-style">${p.style || ''}</div>
+                    <div class="port-created">Created ${p.createdAt}</div>
+                </div>
+                ${returnHtml}
+            </div>
+            <div class="port-stats">
+                <div><div class="port-stat-label">Starting Cash</div><div class="port-stat-value">${fmt$(p.startingCash)}</div></div>
+                <div><div class="port-stat-label">Total Invested</div><div class="port-stat-value">${fmt$(totalInvested)}</div></div>
+                <div><div class="port-stat-label">Cash Remaining</div><div class="port-stat-value">${fmt$(Math.max(0, cashRemaining))}</div></div>
+                <div><div class="port-stat-label">Holdings</div><div class="port-stat-value">${holdings.length}</div></div>
+            </div>
+        </div>`;
+
+        // Metrics cards
+        html += `<div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Largest Position</div>
+                <div class="metric-value">${largest ? largest.ticker : '--'}</div>
+                <div class="metric-sub">${largest ? fmt$(largest.value) + ' · ' + (largest.value / totalValue * 100).toFixed(1) + '% weight' : ''}</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">${isPending ? 'Largest Allocation' : 'Top Gainer'}</div>
+                <div class="metric-value ${!isPending && topGainer && topGainer.pnl >= 0 ? 'gain' : ''}">${topGainer ? topGainer.ticker : '--'}</div>
+                <div class="metric-sub">${topGainer && !isPending ? fmtPct(topGainer.pnlPct) + ' · ' + fmt$(topGainer.pnl) : topGainer ? (topGainer.value / totalValue * 100).toFixed(1) + '% target' : ''}</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">${isPending ? 'Smallest Allocation' : 'Top Loser'}</div>
+                <div class="metric-value ${!isPending && topLoser && topLoser.pnl < 0 ? 'loss' : ''}">${topLoser ? topLoser.ticker : '--'}</div>
+                <div class="metric-sub">${topLoser && !isPending ? fmtPct(topLoser.pnlPct) + ' · ' + fmt$(topLoser.pnl) : topLoser ? (topLoser.value / totalValue * 100).toFixed(1) + '% target' : ''}</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Portfolio ${isPending ? 'Target' : 'Value'}</div>
+                <div class="metric-value">${fmt$(totalValue)}</div>
+                <div class="metric-sub">${isPending ? 'Awaiting purchase execution' : fmt$(totalValue - totalInvested) + ' P&L'}</div>
+            </div>
+        </div>`;
+
+        // Holdings table
+        const pnlLabel = isPending ? 'Target %' : 'P&L ($)';
+        const pnlPctLabel = isPending ? 'Weight' : 'P&L (%)';
+        html += `<div class="table-wrap">
+            <div class="table-title">${isPending ? 'Planned Holdings' : 'Current Holdings'}</div>
+            <table>
+                <thead><tr>
+                    <th>Ticker</th><th>Shares</th><th class="right">Avg Cost</th><th class="right">Price</th>
+                    <th class="right hide-mobile">Value</th><th class="right">Weight</th>
+                    <th class="right hide-mobile">${pnlLabel}</th><th class="right">${pnlPctLabel}</th>
+                </tr></thead>
+                <tbody>`;
+
+        holdings.forEach(h => {
+            const weight = (h.value / totalValue * 100).toFixed(1);
+            const pnlClass = h.pnl >= 0 ? 'gain' : 'loss';
+            html += `<tr>
+                <td class="ticker-cell">${h.ticker}</td>
+                <td>${h.shares % 1 === 0 ? h.shares : h.shares.toFixed(2)}</td>
+                <td class="right">$${fmtPrice(h.avgCost)}</td>
+                <td class="right">$${fmtPrice(h.currentPrice)}</td>
+                <td class="right hide-mobile">${fmt$(h.value)}</td>
+                <td class="right">${weight}%</td>
+                <td class="right hide-mobile ${isPending ? '' : pnlClass}">${isPending ? '--' : (h.pnl >= 0 ? '+' : '') + '$' + fmtPrice(Math.abs(h.pnl))}</td>
+                <td class="right ${isPending ? '' : pnlClass}">${isPending ? weight + '%' : fmtPct(h.pnlPct)}</td>
+            </tr>`;
+        });
+        html += '</tbody></table></div>';
+
+        // Holding mini cards
+        html += '<div class="holdings-grid">';
+        holdings.forEach(h => {
+            const weight = (h.value / totalValue * 100).toFixed(1);
+            const pnlClass = h.pnl >= 0 ? 'gain' : 'loss';
+            html += `<div class="holding-card">
+                <div class="holding-ticker">${h.ticker}</div>
+                <div class="holding-company">${TICKER_NAMES[h.ticker] || ''}</div>
+                <div class="holding-price">$${fmtPrice(h.currentPrice)}</div>
+                <div class="holding-detail">${h.shares % 1 === 0 ? h.shares : h.shares.toFixed(2)} shares · ${weight}% weight</div>
+                <div class="holding-pnl ${isPending ? '' : pnlClass}">${isPending ? '⏳ Pending' : fmtPct(h.pnlPct) + ' · ' + (h.pnl >= 0 ? '+' : '') + fmt$(h.pnl)}</div>
+            </div>`;
+        });
+        html += '</div>';
+
+        document.getElementById('content').innerHTML = html;
+
+        // Footer
+        document.getElementById('footer').innerHTML = `
+            <div>Data as of ${data.lastUpdate || 'Unknown'}</div>
+            <div style="margin-top:0.5rem;">BigClaw AI — AI-powered investment research. Not financial advice. Past performance doesn't guarantee future results.</div>
+        `;
+
+        document.title = p.name + ' — BigClaw AI';
+    })
+    .catch(err => {
+        document.getElementById('content').innerHTML = '<div style="text-align:center;padding:3rem;color:var(--loss);">Error loading portfolio data. <a href="index.html" style="color:var(--gold);">Back to Dashboard</a></div>';
+    });
+</script>
+</body>
+</html>

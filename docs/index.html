@@ -273,6 +273,10 @@
         .pf-card:hover { background: var(--bg-card-hover); }
         .pf-card.positive { border-left-color: var(--gain); }
         .pf-card.negative { border-left-color: var(--loss); }
+        .pf-card.pending { border-left-color: var(--warn); }
+        .pending-badge { color: var(--warn) !important; background: var(--warn-bg) !important; }
+        .pf-detail-link { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.5rem; transition: color 0.15s; }
+        .pf-card:hover .pf-detail-link { color: var(--gold); }
         .pf-top {
             display: flex;
             justify-content: space-between;
@@ -941,19 +945,25 @@ function loadPortfolios() {
             <span class="portfolio-total-label">across ${portfolios.length} portfolios</span>
         `;
 
-        grid.innerHTML = portfolios.map(p => {
+        grid.innerHTML = portfolios.map((p, idx) => {
+            const isPending = p.purchaseStatus === 'pending';
             const isGain = p.totalReturn >= 0;
-            return `<div class="pf-card ${isGain ? 'positive' : 'negative'}">
+            const cardClass = isPending ? 'pending' : (isGain ? 'positive' : 'negative');
+            const returnHtml = isPending
+                ? '<div class="pf-return pending-badge">⏳ Pending</div>'
+                : `<div class="pf-return ${isGain ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}</div>`;
+            return `<a href="portfolio.html?id=${idx}" class="pf-card ${cardClass}" style="text-decoration:none;color:inherit;display:block;">
                 <div class="pf-top">
                     <div>
                         <div class="pf-name">${p.name}</div>
                         <div class="pf-style">${p.style || ''}</div>
                     </div>
-                    <div class="pf-return ${isGain ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}</div>
+                    ${returnHtml}
                 </div>
                 <div class="pf-value">${fmt$(p.totalValue)}</div>
                 <div class="pf-basis">of ${fmt$(p.startingCash)} initial</div>
-            </div>`;
+                <div class="pf-detail-link">Click for details →</div>
+            </a>`;
         }).join('');
     }).catch(() => {
         document.getElementById('portfolioGrid').innerHTML = '<div class="placeholder">Portfolio data unavailable</div>';
