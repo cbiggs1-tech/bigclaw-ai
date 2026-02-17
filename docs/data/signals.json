@@ -1,10 +1,10 @@
 {
-  "date": "2026-02-16 07:03",
+  "date": "2026-02-16 19:53",
   "signals": [
     {
       "ticker": "AAPL",
-      "score": 0,
-      "label": "\u26aa HOLD",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "MACD bearish crossover",
         "below 50-day SMA",
@@ -13,20 +13,66 @@
         "earnings growth 18%",
         "D/E ratio 103",
         "insider net selling (0B/20S)",
-        "outperforming XLK by 3.2%"
+        "outperforming XLK by 3.2%",
+        "bond mkt +2 (wt 0.75x)"
       ],
       "price": 255.77999877929688
     },
     {
+      "ticker": "ANET",
+      "score": 5,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 20%",
+        "insider net selling (0B/15S)",
+        "outperforming XLK by 12.5%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 141.58999633789062
+    },
+    {
       "ticker": "ARKK",
-      "score": -1,
+      "score": 0,
+      "label": "\u26aa HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "golden cross (50>200)",
+        "bond mkt +2 (wt 1.25x)"
+      ],
+      "price": 70.25
+    },
+    {
+      "ticker": "AVAV",
+      "score": -2,
       "label": "\ud83d\udfe1 WATCH / CAUTION",
       "reasons": [
         "below 50-day SMA",
         "below 200-day SMA",
-        "golden cross (50>200)"
+        "golden cross (50>200)",
+        "insider net selling (0B/15S)",
+        "underperforming XLI by 40.6%",
+        "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 70.25
+      "price": 243.8699951171875
+    },
+    {
+      "ticker": "AVGO",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 188%",
+        "D/E ratio 166",
+        "insider net selling (1B/19S)",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 325.1700134277344
     },
     {
       "ticker": "BAC",
@@ -45,6 +91,23 @@
       "price": 52.54999923706055
     },
     {
+      "ticker": "BAH",
+      "score": -5,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth 12%",
+        "revenue growth -10%",
+        "forward P/E (12.6) > trailing (11.8)",
+        "D/E ratio 404",
+        "underperforming XLI by 22.8%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 79.31999969482422
+    },
+    {
       "ticker": "BRK-B",
       "score": 3,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
@@ -60,8 +123,56 @@
       "price": 497.54998779296875
     },
     {
+      "ticker": "BWXT",
+      "score": 2,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 17%",
+        "D/E ratio 122",
+        "insider net selling (0B/14S)",
+        "underperforming XLI by 11.1%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 200.39999389648438
+    },
+    {
+      "ticker": "CCJ",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 49%",
+        "insider net selling (0B/12S)",
+        "underperforming XLE by 14.1%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 112.9000015258789
+    },
+    {
+      "ticker": "CEG",
+      "score": -5,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth -22%",
+        "insider net selling (0B/2S)",
+        "underperforming XLU by 22.1%",
+        "bond mkt +2 (wt 0.75x)",
+        "correlated with TLN (0.80)",
+        "correlated with VST (0.83)"
+      ],
+      "price": 288.42999267578125
+    },
+    {
       "ticker": "CRSP",
-      "score": -4,
+      "score": -3,
       "label": "\ud83d\udd34 SELL / TRIM",
       "reasons": [
         "MACD bullish crossover",
@@ -71,13 +182,126 @@
         "revenue growth -98%",
         "short interest 24.6%",
         "insider net selling (3B/15S)",
-        "underperforming XLV by 2.6%"
+        "underperforming XLV by 2.6%",
+        "bond mkt +2 (wt 1.25x)"
       ],
       "price": 53.06999969482422
     },
     {
+      "ticker": "DECK",
+      "score": 5,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 11%",
+        "insider net selling (1B/19S)",
+        "outperforming XLY by 17.6%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 115.7300033569336
+    },
+    {
+      "ticker": "DUK",
+      "score": 0,
+      "label": "\u26aa HOLD",
+      "reasons": [
+        "RSI 76 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth -1%",
+        "D/E ratio 171",
+        "insider net selling (0B/20S)",
+        "outperforming XLU by 2.1%",
+        "bond mkt +2 (wt 1.5x)",
+        "correlated with ED (0.86)"
+      ],
+      "price": 128.1999969482422
+    },
+    {
+      "ticker": "ED",
+      "score": 6,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "RSI 76 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 12%",
+        "D/E ratio 110",
+        "insider net buying (4B/2S)",
+        "outperforming XLU by 4.2%",
+        "bond mkt +2 (wt 1.5x)",
+        "correlated with DUK (0.86)"
+      ],
+      "price": 113.72000122070312
+    },
+    {
+      "ticker": "GD",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 0%",
+        "insider net selling (0B/13S)",
+        "underperforming XLI by 10.4%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 347.6400146484375
+    },
+    {
+      "ticker": "GE",
+      "score": 2,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 37%",
+        "D/E ratio 114",
+        "insider net selling (1B/11S)",
+        "underperforming XLI by 6.5%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 315.4100036621094
+    },
+    {
+      "ticker": "GEV",
+      "score": 5,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 672%",
+        "insider net selling (0B/5S)",
+        "outperforming XLI by 19.8%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 802.1300048828125
+    },
+    {
+      "ticker": "IBM",
+      "score": 0,
+      "label": "\u26aa HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "below 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 90%",
+        "D/E ratio 197",
+        "underperforming XLK by 7.4%",
+        "bond mkt +2 (wt 1.5x)"
+      ],
+      "price": 262.3800048828125
+    },
+    {
       "ticker": "JNJ",
-      "score": 3,
+      "score": 5,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "RSI 82 overbought",
@@ -86,14 +310,15 @@
         "golden cross (50>200)",
         "earnings growth 49%",
         "insider net selling (1B/13S)",
-        "outperforming XLV by 10.4%"
+        "outperforming XLV by 10.4%",
+        "bond mkt +2 (wt 1.5x)"
       ],
       "price": 243.4499969482422
     },
     {
       "ticker": "JPM",
-      "score": -1,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "score": 0,
+      "label": "\u26aa HOLD",
       "reasons": [
         "MACD bearish crossover",
         "below 50-day SMA",
@@ -101,7 +326,8 @@
         "golden cross (50>200)",
         "earnings growth -4%",
         "insider net selling (0B/16S)",
-        "outperforming XLF by 2.8%"
+        "outperforming XLF by 2.8%",
+        "bond mkt +2 (wt 0.75x)"
       ],
       "price": 302.54998779296875
     },
@@ -121,8 +347,86 @@
       "price": 78.68000030517578
     },
     {
+      "ticker": "KTOS",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 150%",
+        "insider net selling (0B/19S)",
+        "underperforming XLI by 33.6%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 89.05999755859375
+    },
+    {
+      "ticker": "LDOS",
+      "score": 0,
+      "label": "\u26aa HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 5%",
+        "D/E ratio 106",
+        "insider net selling (0B/14S)",
+        "underperforming XLK by 4.8%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 176.3000030517578
+    },
+    {
+      "ticker": "LHX",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth -32%",
+        "insider net selling (0B/11S)",
+        "underperforming XLI by 3.6%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 345.5
+    },
+    {
+      "ticker": "LLY",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "below 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 51%",
+        "D/E ratio 165",
+        "insider net selling (0B/11S)",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 1040.0
+    },
+    {
+      "ticker": "LMT",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "RSI 72 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 161%",
+        "D/E ratio 339",
+        "insider net selling (0B/9S)",
+        "outperforming XLI by 7.9%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 652.5800170898438
+    },
+    {
       "ticker": "MSFT",
-      "score": -4,
+      "score": -3,
       "label": "\ud83d\udd34 SELL / TRIM",
       "reasons": [
         "below 50-day SMA",
@@ -130,27 +434,61 @@
         "death cross (50<200)",
         "earnings growth 60%",
         "insider net selling (1B/19S)",
-        "underperforming XLK by 8.1%"
+        "underperforming XLK by 8.1%",
+        "bond mkt +2 (wt 0.75x)"
       ],
       "price": 401.32000732421875
     },
     {
+      "ticker": "NOC",
+      "score": 4,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 15%",
+        "D/E ratio 107",
+        "insider net selling (0B/12S)",
+        "outperforming XLI by 2.3%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 702.5700073242188
+    },
+    {
       "ticker": "NVDA",
-      "score": 1,
+      "score": 2,
       "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "below 50-day SMA",
         "above 200-day SMA",
         "golden cross (50>200)",
         "earnings growth 67%",
-        "insider net selling (0B/20S)"
+        "insider net selling (0B/20S)",
+        "bond mkt +2 (wt 1.25x)"
       ],
       "price": 182.80999755859375
     },
     {
+      "ticker": "O",
+      "score": 5,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "RSI 78 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 15%",
+        "insider net selling (0B/2S)",
+        "outperforming XLRE by 4.3%",
+        "bond mkt +2 (wt 1.5x)"
+      ],
+      "price": 65.66000366210938
+    },
+    {
       "ticker": "PG",
-      "score": -1,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "RSI 71 overbought",
         "above 50-day SMA",
@@ -158,13 +496,14 @@
         "death cross (50<200)",
         "earnings growth -5%",
         "insider net selling (0B/13S)",
-        "outperforming XLP by 2.8%"
+        "outperforming XLP by 2.8%",
+        "bond mkt +2 (wt 1.5x)"
       ],
       "price": 160.07000732421875
     },
     {
       "ticker": "PLTR",
-      "score": -2,
+      "score": -1,
       "label": "\ud83d\udfe1 WATCH / CAUTION",
       "reasons": [
         "below 50-day SMA",
@@ -172,13 +511,14 @@
         "golden cross (50>200)",
         "earnings growth 681%",
         "insider net selling (0B/19S)",
-        "underperforming XLK by 21.7%"
+        "underperforming XLK by 21.7%",
+        "bond mkt +2 (wt 1.25x)"
       ],
       "price": 131.41000366210938
     },
     {
       "ticker": "QBTS",
-      "score": -4,
+      "score": -3,
       "label": "\ud83d\udd34 SELL / TRIM",
       "reasons": [
         "below 50-day SMA",
@@ -186,13 +526,14 @@
         "golden cross (50>200)",
         "short interest 15.8%",
         "insider net selling (0B/18S)",
-        "underperforming XLK by 27.5%"
+        "underperforming XLK by 27.5%",
+        "bond mkt +2 (wt 1.25x)"
       ],
       "price": 19.670000076293945
     },
     {
       "ticker": "RBLX",
-      "score": -6,
+      "score": -5,
       "label": "\ud83d\udd34 SELL / TRIM",
       "reasons": [
         "below 50-day SMA",
@@ -200,13 +541,65 @@
         "death cross (50<200)",
         "D/E ratio 481",
         "insider net selling (0B/16S)",
-        "underperforming XLC by 24.0%"
+        "underperforming XLC by 24.0%",
+        "bond mkt +2 (wt 1.25x)"
       ],
       "price": 63.16999816894531
     },
     {
+      "ticker": "RTX",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 8%",
+        "insider net selling (0B/12S)",
+        "underperforming XLI by 4.9%",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 200.05999755859375
+    },
+    {
+      "ticker": "T",
+      "score": -1,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "reasons": [
+        "RSI 81 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth -6%",
+        "forward P/E (11.1) > trailing (9.4)",
+        "D/E ratio 124",
+        "insider net selling (0B/1S)",
+        "outperforming XLC by 22.3%",
+        "bond mkt +2 (wt 1.5x)"
+      ],
+      "price": 28.690000534057617
+    },
+    {
+      "ticker": "TLN",
+      "score": 2,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 34%",
+        "D/E ratio 205",
+        "insider net selling (1B/3S)",
+        "underperforming XLU by 16.7%",
+        "bond mkt +2 (wt 0.75x)",
+        "correlated with CEG (0.80)",
+        "correlated with VST (0.81)"
+      ],
+      "price": 376.70001220703125
+    },
+    {
       "ticker": "TSLA",
-      "score": -2,
+      "score": -1,
       "label": "\ud83d\udfe1 WATCH / CAUTION",
       "reasons": [
         "below 50-day SMA",
@@ -214,14 +607,29 @@
         "golden cross (50>200)",
         "earnings growth -61%",
         "revenue growth -3%",
-        "insider net selling (1B/14S)"
+        "insider net selling (1B/14S)",
+        "bond mkt +2 (wt 1.25x)"
       ],
       "price": 417.44000244140625
     },
     {
+      "ticker": "TXT",
+      "score": 4,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth 74%",
+        "insider net selling (0B/7S)",
+        "bond mkt +2 (wt 0.75x)"
+      ],
+      "price": 98.08999633789062
+    },
+    {
       "ticker": "UNH",
-      "score": -1,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "score": 0,
+      "label": "\u26aa HOLD",
       "reasons": [
         "MACD bullish crossover",
         "below 50-day SMA",
@@ -229,7 +637,8 @@
         "golden cross (50>200)",
         "earnings growth -100%",
         "insider net buying (5B/4S)",
-        "underperforming XLV by 14.0%"
+        "underperforming XLV by 14.0%",
+        "bond mkt +2 (wt 0.75x)"
       ],
       "price": 293.19000244140625
     },
@@ -248,6 +657,42 @@
       "price": 314.0799865722656
     },
     {
+      "ticker": "VST",
+      "score": -5,
+      "label": "\ud83d\udd34 SELL / TRIM",
+      "reasons": [
+        "above 50-day SMA",
+        "below 200-day SMA",
+        "death cross (50<200)",
+        "earnings growth -67%",
+        "revenue growth -21%",
+        "D/E ratio 336",
+        "insider net selling (0B/12S)",
+        "underperforming XLU by 11.4%",
+        "bond mkt +2 (wt 0.75x)",
+        "correlated with CEG (0.83)",
+        "correlated with TLN (0.81)"
+      ],
+      "price": 171.49000549316406
+    },
+    {
+      "ticker": "VZ",
+      "score": 2,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "RSI 80 overbought",
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth -53%",
+        "D/E ratio 172",
+        "insider net selling (0B/14S)",
+        "outperforming XLC by 25.9%",
+        "bond mkt +2 (wt 1.5x)"
+      ],
+      "price": 49.0099983215332
+    },
+    {
       "ticker": "WFC",
       "score": 3,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
@@ -260,13 +705,58 @@
         "correlated with BAC (0.90)"
       ],
       "price": 86.9800033569336
+    },
+    {
+      "ticker": "XOM",
+      "score": 2,
+      "label": "\ud83d\udfe2 BUY / HOLD",
+      "reasons": [
+        "above 50-day SMA",
+        "above 200-day SMA",
+        "golden cross (50>200)",
+        "earnings growth -11%",
+        "revenue growth -1%",
+        "insider net selling (0B/6S)",
+        "bond mkt +2 (wt 1.5x)"
+      ],
+      "price": 148.4499969482422
     }
   ],
   "earnings": [
     {
+      "ticker": "AVAV",
+      "date": "Mar 03",
+      "days": 14
+    },
+    {
       "ticker": "BRK-B",
       "date": "Feb 28",
       "days": 11
+    },
+    {
+      "ticker": "BWXT",
+      "date": "Feb 23",
+      "days": 6
+    },
+    {
+      "ticker": "CEG",
+      "date": "Feb 17",
+      "days": 0
+    },
+    {
+      "ticker": "ED",
+      "date": "Feb 19",
+      "days": 2
+    },
+    {
+      "ticker": "KTOS",
+      "date": "Feb 23",
+      "days": 6
+    },
+    {
+      "ticker": "LDOS",
+      "date": "Feb 17",
+      "days": 0
     },
     {
       "ticker": "NVDA",
@@ -274,12 +764,41 @@
       "days": 8
     },
     {
+      "ticker": "O",
+      "date": "Feb 24",
+      "days": 7
+    },
+    {
       "ticker": "QBTS",
+      "date": "Feb 26",
+      "days": 9
+    },
+    {
+      "ticker": "TLN",
+      "date": "Feb 26",
+      "days": 9
+    },
+    {
+      "ticker": "VST",
       "date": "Feb 26",
       "days": 9
     }
   ],
   "overlap": [
+    {
+      "ticker": "JNJ",
+      "portfolios": [
+        "Value Picks",
+        "Income Dividends"
+      ]
+    },
+    {
+      "ticker": "PG",
+      "portfolios": [
+        "Value Picks",
+        "Income Dividends"
+      ]
+    },
     {
       "ticker": "AAPL",
       "portfolios": [
@@ -306,6 +825,13 @@
       "portfolios": [
         "Innovation Fund",
         "Growth Value"
+      ]
+    },
+    {
+      "ticker": "PLTR",
+      "portfolios": [
+        "Innovation Fund",
+        "AI Defense & Autonomous"
       ]
     }
   ],
@@ -354,6 +880,63 @@
       "ticker": "AAPL",
       "portfolio": "Growth Value",
       "pct": 24.329160859539563
+    },
+    {
+      "ticker": "DECK",
+      "portfolio": "Momentum Growth",
+      "pct": 19.905560457356604
+    },
+    {
+      "ticker": "GE",
+      "portfolio": "Momentum Growth",
+      "pct": 17.978370100325748
+    },
+    {
+      "ticker": "CEG",
+      "portfolio": "Nuclear Renaissance",
+      "pct": 30.364358661027364
+    },
+    {
+      "ticker": "VST",
+      "portfolio": "Nuclear Renaissance",
+      "pct": 25.170808809816375
+    },
+    {
+      "ticker": "CCJ",
+      "portfolio": "Nuclear Renaissance",
+      "pct": 15.085448737738522
     }
-  ]
+  ],
+  "bond_signals": {
+    "yield_curve": {
+      "two_year": 3.47,
+      "ten_year": 4.09,
+      "spread": 0.62,
+      "spread_1mo_ago": 0.65,
+      "spread_change": -0.03,
+      "date": "2026-02-12",
+      "assessment": "Normal & steepening \u2014 bullish"
+    },
+    "credit_spreads": {
+      "current_bps": 292.0,
+      "raw_value": 2.92,
+      "prev_value": 2.71,
+      "change": 0.21,
+      "date": "2026-02-12",
+      "assessment": "Tight (292bps) \u2014 bullish"
+    },
+    "ten_year": {
+      "current": 4.09,
+      "prev": 4.18,
+      "change_bps": -9.0,
+      "date": "2026-02-12",
+      "assessment": "Stable \u2014 neutral"
+    },
+    "scores": {
+      "yield_curve": 1,
+      "credit_spreads": 1,
+      "ten_year_level": 0
+    },
+    "combined_score": 2
+  }
 }

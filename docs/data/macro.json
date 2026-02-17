@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-16T07:04:02.996487",
+  "timestamp": "2026-02-16T19:54:05.935876",
   "context": {
     "ticker": null,
     "sector": null,
@@ -42,9 +42,9 @@
       "3mo": 10.82
     },
     "VIX": {
-      "level": 20.58,
+      "level": 21.2,
       "classification": "Elevated",
-      "1mo_change": 29.76
+      "1mo_change": 33.67
     }
   },
   "sectors": [
@@ -150,9 +150,9 @@
   ],
   "risk": {
     "vix": {
-      "level": 20.58,
+      "level": 21.2,
       "classification": "Elevated",
-      "1mo_change": 29.76
+      "1mo_change": 33.67
     },
     "Gold (GLD)": {
       "price": 462.62,
@@ -163,8 +163,8 @@
       "1mo": -1.87
     },
     "Bitcoin": {
-      "price": 69649.08,
-      "1mo": -26.76
+      "price": 68791.3,
+      "1mo": -26.53
     },
     "yield_curve": {
       "spread": 0.608,
@@ -172,16 +172,6 @@
     }
   },
   "sentiment": {
-    "michigan": {
-      "current": 52.9,
-      "date": "2025-12-01",
-      "previous": 51.0,
-      "prev_date": "2025-11-01",
-      "year_ago": 74.0,
-      "assessment": "Crisis-level",
-      "percentile": 5,
-      "mom_change": 1.9
-    },
     "fear_greed": {
       "score": 36.3,
       "rating": "fear",
@@ -204,7 +194,39 @@
       "1mo_ago": 95.39,
       "trend": "declining"
     },
-    "contrarian_signal": "\ud83d\udfe1 Partial contrarian signal \u2014 one sentiment indicator depressed. Watch for confirmation."
+    "contrarian_signal": null
+  },
+  "bond_signals": {
+    "yield_curve": {
+      "two_year": 3.47,
+      "ten_year": 4.09,
+      "spread": 0.62,
+      "spread_1mo_ago": 0.65,
+      "spread_change": -0.03,
+      "date": "2026-02-12",
+      "assessment": "Normal & steepening \u2014 bullish"
+    },
+    "credit_spreads": {
+      "current_bps": 292.0,
+      "raw_value": 2.92,
+      "prev_value": 2.71,
+      "change": 0.21,
+      "date": "2026-02-12",
+      "assessment": "Tight (292bps) \u2014 bullish"
+    },
+    "ten_year": {
+      "current": 4.09,
+      "prev": 4.18,
+      "change_bps": -9.0,
+      "date": "2026-02-12",
+      "assessment": "Stable \u2014 neutral"
+    },
+    "scores": {
+      "yield_curve": 1,
+      "credit_spreads": 1,
+      "ten_year_level": 0
+    },
+    "combined_score": 2
   },
   "economic": {
     "links": {
