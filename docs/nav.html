@@ -124,9 +124,64 @@
             .hero h1 { font-size: 1.5rem; }
             .hero-icon { width: 96px; height: 96px; }
         }
+
+        /* ── Unified Nav Bar ── */
+        .topbar {
+            background: var(--bg-secondary, #111827);
+            border-bottom: 1px solid var(--border-color, #1e2a3a);
+            position: sticky; top: 0; z-index: 200;
+        }
+        .topbar-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.5rem; height: 48px;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 1.5rem; }
+        .brand {
+            display: flex; align-items: center; gap: 0.5rem;
+            text-decoration: none; color: var(--text-primary, #e8edf5); font-weight: 700; font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .brand-icon { font-size: 1.25rem; }
+        .brand-name {
+            background: linear-gradient(135deg, var(--gold, #f0b90b) 0%, #f59e0b 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .nav-links { display: flex; gap: 0; height: 48px; }
+        .nav-links a {
+            color: var(--text-secondary, #8b95a8); text-decoration: none; font-size: 0.8rem; font-weight: 500;
+            padding: 0 0.85rem; display: flex; align-items: center; height: 100%;
+            border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary, #e8edf5); border-bottom-color: var(--gold, #f0b90b);
+        }
+        @media (max-width: 600px) {
+            .topbar-inner { padding: 0 0.75rem; }
+            .nav-links a { padding: 0 0.5rem; font-size: 0.72rem; }
+            .brand-name { display: none; }
+            .topbar-left { gap: 0.5rem; }
+        }
     </style>
 </head>
 <body>
+<nav class="topbar">
+    <div class="topbar-inner">
+        <div class="topbar-left">
+            <a href="nav.html" class="brand">
+                <span class="brand-icon">🦀</span>
+                <span class="brand-name">BigClaw</span>
+            </a>
+            <div class="nav-links">
+                <a href="nav.html" class="active">Home</a>
+                <a href="index.html">Dashboard</a>
+                <a href="signals.html">Signals</a>
+                <a href="portfolio.html">Portfolios</a>
+                <a href="chart-detail.html">Charts</a>
+            </div>
+        </div>
+    </div>
+</nav>
     <section class="hero">
         <img src="bigclaw-icon.jpg" alt="BigClaw AI" class="hero-icon">
         <h1><span>BigClaw AI</span> — Autonomous Investment Research</h1>
