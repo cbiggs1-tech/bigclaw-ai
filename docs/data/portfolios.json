@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-02-17T01:54:21.517829Z",
+  "lastUpdate": "2026-02-17T12:38:38.224939Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -8,6 +8,7 @@
       "startingCash": 100000.0,
       "totalReturn": -1.21,
       "createdAt": "2026-02-16 13:51:57",
+      "purchaseStatus": "pending",
       "holdings": [
         {
           "ticker": "BWXT",
@@ -60,6 +61,7 @@
       "startingCash": 100000.0,
       "totalReturn": 0.0,
       "createdAt": "2026-02-16 13:12:32",
+      "purchaseStatus": "active",
       "holdings": [
         {
           "ticker": "DUK",
@@ -133,6 +135,7 @@
       "startingCash": 100000.0,
       "totalReturn": 0.0,
       "createdAt": "2026-02-16 13:12:32",
+      "purchaseStatus": "active",
       "holdings": [
         {
           "ticker": "ANET",
@@ -178,6 +181,7 @@
       "startingCash": 100000.0,
       "totalReturn": 0.0,
       "createdAt": "2026-02-16",
+      "purchaseStatus": "pending",
       "holdings": [
         {
           "ticker": "AVAV",
@@ -265,6 +269,7 @@
       "startingCash": 100000.0,
       "totalReturn": 0.83,
       "createdAt": "2026-02-03 19:30:00",
+      "purchaseStatus": "active",
       "holdings": [
         {
           "ticker": "AAPL",
@@ -338,6 +343,7 @@
       "startingCash": 100000.0,
       "totalReturn": -2.71,
       "createdAt": "2026-02-03 19:30:00",
+      "purchaseStatus": "active",
       "holdings": [
         {
           "ticker": "ARKK",
@@ -397,6 +403,7 @@
       "startingCash": 100000.0,
       "totalReturn": -2.1,
       "createdAt": "2026-02-03 19:30:00",
+      "purchaseStatus": "active",
       "holdings": [
         {
           "ticker": "AAPL",
