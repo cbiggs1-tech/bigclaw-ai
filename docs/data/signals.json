@@ -1,5 +1,5 @@
 {
-  "date": "2026-02-16 19:53",
+  "date": "2026-02-17 10:54",
   "signals": [
     {
       "ticker": "AAPL",
@@ -20,7 +20,7 @@
     },
     {
       "ticker": "ANET",
-      "score": 5,
+      "score": 7,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "above 50-day SMA",
@@ -29,40 +29,50 @@
         "earnings growth 20%",
         "insider net selling (0B/15S)",
         "outperforming XLK by 12.5%",
-        "bond mkt +2 (wt 0.75x)"
+        "bond mkt +2 (wt 1.5x)",
+        "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 141.58999633789062
+      "price": 141.58999633789062,
+      "value_override": {
+        "total_score": 1,
+        "base_score_before": 6,
+        "components": {
+          "analyst_target": {
+            "score": 1,
+            "reason": "20% below analyst target $178.06"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
+      }
     },
     {
       "ticker": "ARKK",
-      "score": 0,
-      "label": "\u26aa HOLD",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "below 50-day SMA",
         "below 200-day SMA",
         "golden cross (50>200)",
-        "bond mkt +2 (wt 1.25x)"
+        "bond mkt +2 (wt 1.25x)",
+        "\u26a1 VALUE OVERRIDE: +1 (RSI 39 oversold)"
       ],
-      "price": 70.25
-    },
-    {
-      "ticker": "AVAV",
-      "score": -2,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
-      "reasons": [
-        "below 50-day SMA",
-        "below 200-day SMA",
-        "golden cross (50>200)",
-        "insider net selling (0B/15S)",
-        "underperforming XLI by 40.6%",
-        "bond mkt +2 (wt 0.75x)"
-      ],
-      "price": 243.8699951171875
+      "price": 70.25,
+      "value_override": {
+        "total_score": 1,
+        "base_score_before": 0,
+        "components": {
+          "rsi_oversold": {
+            "score": 1,
+            "reason": "RSI 39 oversold territory"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (RSI 39 oversold)"
+      }
     },
     {
       "ticker": "AVGO",
-      "score": 1,
-      "label": "\ud83d\udfe2 BUY / HOLD",
+      "score": 4,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "below 50-day SMA",
         "above 200-day SMA",
@@ -70,13 +80,25 @@
         "earnings growth 188%",
         "D/E ratio 166",
         "insider net selling (1B/19S)",
-        "bond mkt +2 (wt 0.75x)"
+        "bond mkt +2 (wt 1.5x)",
+        "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 325.1700134277344
+      "price": 325.1700134277344,
+      "value_override": {
+        "total_score": 2,
+        "base_score_before": 2,
+        "components": {
+          "analyst_target": {
+            "score": 2,
+            "reason": "29% below analyst target $456.59"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
+      }
     },
     {
       "ticker": "BAC",
-      "score": 1,
+      "score": 2,
       "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "MACD bearish crossover",
@@ -86,26 +108,21 @@
         "earnings growth 21%",
         "insider net selling (9B/11S)",
         "outperforming XLF by 4.9%",
+        "\u26a1 VALUE OVERRIDE: +1 (16% below target)",
         "correlated with WFC (0.90)"
       ],
-      "price": 52.54999923706055
-    },
-    {
-      "ticker": "BAH",
-      "score": -5,
-      "label": "\ud83d\udd34 SELL / TRIM",
-      "reasons": [
-        "below 50-day SMA",
-        "below 200-day SMA",
-        "death cross (50<200)",
-        "earnings growth 12%",
-        "revenue growth -10%",
-        "forward P/E (12.6) > trailing (11.8)",
-        "D/E ratio 404",
-        "underperforming XLI by 22.8%",
-        "bond mkt +2 (wt 0.75x)"
-      ],
-      "price": 79.31999969482422
+      "price": 52.54999923706055,
+      "value_override": {
+        "total_score": 1,
+        "base_score_before": 1,
+        "components": {
+          "analyst_target": {
+            "score": 1,
+            "reason": "16% below analyst target $62.23"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (16% below target)"
+      }
     },
     {
       "ticker": "BRK-B",
@@ -116,7 +133,7 @@
         "above 200-day SMA",
         "golden cross (50>200)",
         "earnings growth 17%",
-        "forward P/E (20.7) > trailing (15.9)",
+        "forward P/E (20.9) > trailing (16.1)",
         "insider net selling (3B/12S)",
         "outperforming XLF by 6.0%"
       ],
@@ -140,7 +157,7 @@
     },
     {
       "ticker": "CCJ",
-      "score": 3,
+      "score": 4,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "above 50-day SMA",
@@ -149,31 +166,14 @@
         "earnings growth 49%",
         "insider net selling (0B/12S)",
         "underperforming XLE by 14.1%",
-        "bond mkt +2 (wt 0.75x)"
+        "bond mkt +2 (wt 1.5x)"
       ],
       "price": 112.9000015258789
     },
     {
-      "ticker": "CEG",
-      "score": -5,
-      "label": "\ud83d\udd34 SELL / TRIM",
-      "reasons": [
-        "below 50-day SMA",
-        "below 200-day SMA",
-        "death cross (50<200)",
-        "earnings growth -22%",
-        "insider net selling (0B/2S)",
-        "underperforming XLU by 22.1%",
-        "bond mkt +2 (wt 0.75x)",
-        "correlated with TLN (0.80)",
-        "correlated with VST (0.83)"
-      ],
-      "price": 288.42999267578125
-    },
-    {
       "ticker": "CRSP",
-      "score": -3,
-      "label": "\ud83d\udd34 SELL / TRIM",
+      "score": -1,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
       "reasons": [
         "MACD bullish crossover",
         "below 50-day SMA",
@@ -183,13 +183,25 @@
         "short interest 24.6%",
         "insider net selling (3B/15S)",
         "underperforming XLV by 2.6%",
-        "bond mkt +2 (wt 1.25x)"
+        "bond mkt +2 (wt 1.25x)",
+        "\u26a1 VALUE OVERRIDE: +2 (37% below target)"
       ],
-      "price": 53.06999969482422
+      "price": 53.06999969482422,
+      "value_override": {
+        "total_score": 2,
+        "base_score_before": -3,
+        "components": {
+          "analyst_target": {
+            "score": 2,
+            "reason": "37% below analyst target $84.78"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +2 (37% below target)"
+      }
     },
     {
       "ticker": "DECK",
-      "score": 5,
+      "score": 6,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "above 50-day SMA",
@@ -198,27 +210,9 @@
         "earnings growth 11%",
         "insider net selling (1B/19S)",
         "outperforming XLY by 17.6%",
-        "bond mkt +2 (wt 0.75x)"
+        "bond mkt +2 (wt 1.5x)"
       ],
       "price": 115.7300033569336
-    },
-    {
-      "ticker": "DUK",
-      "score": 0,
-      "label": "\u26aa HOLD",
-      "reasons": [
-        "RSI 76 overbought",
-        "above 50-day SMA",
-        "above 200-day SMA",
-        "death cross (50<200)",
-        "earnings growth -1%",
-        "D/E ratio 171",
-        "insider net selling (0B/20S)",
-        "outperforming XLU by 2.1%",
-        "bond mkt +2 (wt 1.5x)",
-        "correlated with ED (0.86)"
-      ],
-      "price": 128.1999969482422
     },
     {
       "ticker": "ED",
@@ -233,8 +227,7 @@
         "D/E ratio 110",
         "insider net buying (4B/2S)",
         "outperforming XLU by 4.2%",
-        "bond mkt +2 (wt 1.5x)",
-        "correlated with DUK (0.86)"
+        "bond mkt +2 (wt 1.5x)"
       ],
       "price": 113.72000122070312
     },
@@ -271,7 +264,7 @@
     },
     {
       "ticker": "GEV",
-      "score": 5,
+      "score": 6,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "above 50-day SMA",
@@ -280,24 +273,9 @@
         "earnings growth 672%",
         "insider net selling (0B/5S)",
         "outperforming XLI by 19.8%",
-        "bond mkt +2 (wt 0.75x)"
-      ],
-      "price": 802.1300048828125
-    },
-    {
-      "ticker": "IBM",
-      "score": 0,
-      "label": "\u26aa HOLD",
-      "reasons": [
-        "below 50-day SMA",
-        "below 200-day SMA",
-        "golden cross (50>200)",
-        "earnings growth 90%",
-        "D/E ratio 197",
-        "underperforming XLK by 7.4%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 262.3800048828125
+      "price": 802.1300048828125
     },
     {
       "ticker": "JNJ",
@@ -333,7 +311,7 @@
     },
     {
       "ticker": "KO",
-      "score": 3,
+      "score": 4,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "above 50-day SMA",
@@ -342,13 +320,14 @@
         "earnings growth 4%",
         "D/E ratio 133",
         "insider net selling (2B/13S)",
-        "outperforming XLP by 3.0%"
+        "outperforming XLP by 3.0%",
+        "bond mkt +2 (wt 0.75x)"
       ],
       "price": 78.68000030517578
     },
     {
       "ticker": "KTOS",
-      "score": 1,
+      "score": 2,
       "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "below 50-day SMA",
@@ -357,25 +336,21 @@
         "earnings growth 150%",
         "insider net selling (0B/19S)",
         "underperforming XLI by 33.6%",
-        "bond mkt +2 (wt 0.75x)"
+        "bond mkt +2 (wt 0.75x)",
+        "\u26a1 VALUE OVERRIDE: +1 (24% below target)"
       ],
-      "price": 89.05999755859375
-    },
-    {
-      "ticker": "LDOS",
-      "score": 0,
-      "label": "\u26aa HOLD",
-      "reasons": [
-        "below 50-day SMA",
-        "above 200-day SMA",
-        "golden cross (50>200)",
-        "earnings growth 5%",
-        "D/E ratio 106",
-        "insider net selling (0B/14S)",
-        "underperforming XLK by 4.8%",
-        "bond mkt +2 (wt 0.75x)"
-      ],
-      "price": 176.3000030517578
+      "price": 89.05999755859375,
+      "value_override": {
+        "total_score": 1,
+        "base_score_before": 1,
+        "components": {
+          "analyst_target": {
+            "score": 1,
+            "reason": "24% below analyst target $117.63"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (24% below target)"
+      }
     },
     {
       "ticker": "LHX",
@@ -426,8 +401,8 @@
     },
     {
       "ticker": "MSFT",
-      "score": -3,
-      "label": "\ud83d\udd34 SELL / TRIM",
+      "score": 0,
+      "label": "\u26aa HOLD",
       "reasons": [
         "below 50-day SMA",
         "below 200-day SMA",
@@ -435,9 +410,25 @@
         "earnings growth 60%",
         "insider net selling (1B/19S)",
         "underperforming XLK by 8.1%",
-        "bond mkt +2 (wt 0.75x)"
+        "bond mkt +2 (wt 0.75x)",
+        "\u26a1 VALUE OVERRIDE: +3 (33% below target, RSI 32 oversold)"
       ],
-      "price": 401.32000732421875
+      "price": 401.32000732421875,
+      "value_override": {
+        "total_score": 3,
+        "base_score_before": -3,
+        "components": {
+          "analyst_target": {
+            "score": 2,
+            "reason": "33% below analyst target $596.00"
+          },
+          "rsi_oversold": {
+            "score": 1,
+            "reason": "RSI 32 oversold territory"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +3 (33% below target, RSI 32 oversold)"
+      }
     },
     {
       "ticker": "NOC",
@@ -457,17 +448,29 @@
     },
     {
       "ticker": "NVDA",
-      "score": 2,
-      "label": "\ud83d\udfe2 BUY / HOLD",
+      "score": 4,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "below 50-day SMA",
         "above 200-day SMA",
         "golden cross (50>200)",
         "earnings growth 67%",
         "insider net selling (0B/20S)",
-        "bond mkt +2 (wt 1.25x)"
+        "bond mkt +2 (wt 1.25x)",
+        "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       ],
-      "price": 182.80999755859375
+      "price": 182.80999755859375,
+      "value_override": {
+        "total_score": 2,
+        "base_score_before": 2,
+        "components": {
+          "analyst_target": {
+            "score": 2,
+            "reason": "28% below analyst target $253.88"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
+      }
     },
     {
       "ticker": "O",
@@ -495,7 +498,7 @@
         "above 200-day SMA",
         "death cross (50<200)",
         "earnings growth -5%",
-        "insider net selling (0B/13S)",
+        "insider net selling (0B/14S)",
         "outperforming XLP by 2.8%",
         "bond mkt +2 (wt 1.5x)"
       ],
@@ -503,8 +506,8 @@
     },
     {
       "ticker": "PLTR",
-      "score": -1,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "score": 2,
+      "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "below 50-day SMA",
         "below 200-day SMA",
@@ -512,14 +515,30 @@
         "earnings growth 681%",
         "insider net selling (0B/19S)",
         "underperforming XLK by 21.7%",
-        "bond mkt +2 (wt 1.25x)"
+        "bond mkt +2 (wt 1.25x)",
+        "\u26a1 VALUE OVERRIDE: +3 (31% below target, RSI 34 oversold)"
       ],
-      "price": 131.41000366210938
+      "price": 131.41000366210938,
+      "value_override": {
+        "total_score": 3,
+        "base_score_before": -1,
+        "components": {
+          "analyst_target": {
+            "score": 2,
+            "reason": "31% below analyst target $189.92"
+          },
+          "rsi_oversold": {
+            "score": 1,
+            "reason": "RSI 34 oversold territory"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +3 (31% below target, RSI 34 oversold)"
+      }
     },
     {
       "ticker": "QBTS",
-      "score": -3,
-      "label": "\ud83d\udd34 SELL / TRIM",
+      "score": -1,
+      "label": "\ud83d\udfe1 WATCH / CAUTION",
       "reasons": [
         "below 50-day SMA",
         "below 200-day SMA",
@@ -527,24 +546,21 @@
         "short interest 15.8%",
         "insider net selling (0B/18S)",
         "underperforming XLK by 27.5%",
-        "bond mkt +2 (wt 1.25x)"
+        "bond mkt +2 (wt 1.25x)",
+        "\u26a1 VALUE OVERRIDE: +2 (50% below target)"
       ],
-      "price": 19.670000076293945
-    },
-    {
-      "ticker": "RBLX",
-      "score": -5,
-      "label": "\ud83d\udd34 SELL / TRIM",
-      "reasons": [
-        "below 50-day SMA",
-        "below 200-day SMA",
-        "death cross (50<200)",
-        "D/E ratio 481",
-        "insider net selling (0B/16S)",
-        "underperforming XLC by 24.0%",
-        "bond mkt +2 (wt 1.25x)"
-      ],
-      "price": 63.16999816894531
+      "price": 19.670000076293945,
+      "value_override": {
+        "total_score": 2,
+        "base_score_before": -3,
+        "components": {
+          "analyst_target": {
+            "score": 2,
+            "reason": "50% below analyst target $39.17"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +2 (50% below target)"
+      }
     },
     {
       "ticker": "RTX",
@@ -562,27 +578,9 @@
       "price": 200.05999755859375
     },
     {
-      "ticker": "T",
-      "score": -1,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
-      "reasons": [
-        "RSI 81 overbought",
-        "above 50-day SMA",
-        "above 200-day SMA",
-        "death cross (50<200)",
-        "earnings growth -6%",
-        "forward P/E (11.1) > trailing (9.4)",
-        "D/E ratio 124",
-        "insider net selling (0B/1S)",
-        "outperforming XLC by 22.3%",
-        "bond mkt +2 (wt 1.5x)"
-      ],
-      "price": 28.690000534057617
-    },
-    {
       "ticker": "TLN",
-      "score": 2,
-      "label": "\ud83d\udfe2 BUY / HOLD",
+      "score": 3,
+      "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
         "above 50-day SMA",
         "above 200-day SMA",
@@ -592,10 +590,20 @@
         "insider net selling (1B/3S)",
         "underperforming XLU by 16.7%",
         "bond mkt +2 (wt 0.75x)",
-        "correlated with CEG (0.80)",
-        "correlated with VST (0.81)"
+        "\u26a1 VALUE OVERRIDE: +1 (19% below target)"
       ],
-      "price": 376.70001220703125
+      "price": 376.70001220703125,
+      "value_override": {
+        "total_score": 1,
+        "base_score_before": 2,
+        "components": {
+          "analyst_target": {
+            "score": 1,
+            "reason": "19% below analyst target $466.37"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (19% below target)"
+      }
     },
     {
       "ticker": "TSLA",
@@ -628,8 +636,8 @@
     },
     {
       "ticker": "UNH",
-      "score": 0,
-      "label": "\u26aa HOLD",
+      "score": 1,
+      "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
         "MACD bullish crossover",
         "below 50-day SMA",
@@ -638,42 +646,21 @@
         "earnings growth -100%",
         "insider net buying (5B/4S)",
         "underperforming XLV by 14.0%",
-        "bond mkt +2 (wt 0.75x)"
-      ],
-      "price": 293.19000244140625
-    },
-    {
-      "ticker": "V",
-      "score": -4,
-      "label": "\ud83d\udd34 SELL / TRIM",
-      "reasons": [
-        "MACD bearish crossover",
-        "below 50-day SMA",
-        "below 200-day SMA",
-        "death cross (50<200)",
-        "earnings growth 17%",
-        "insider net selling (0B/16S)"
-      ],
-      "price": 314.0799865722656
-    },
-    {
-      "ticker": "VST",
-      "score": -5,
-      "label": "\ud83d\udd34 SELL / TRIM",
-      "reasons": [
-        "above 50-day SMA",
-        "below 200-day SMA",
-        "death cross (50<200)",
-        "earnings growth -67%",
-        "revenue growth -21%",
-        "D/E ratio 336",
-        "insider net selling (0B/12S)",
-        "underperforming XLU by 11.4%",
         "bond mkt +2 (wt 0.75x)",
-        "correlated with CEG (0.83)",
-        "correlated with TLN (0.81)"
+        "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 171.49000549316406
+      "price": 293.19000244140625,
+      "value_override": {
+        "total_score": 1,
+        "base_score_before": 0,
+        "components": {
+          "analyst_target": {
+            "score": 1,
+            "reason": "20% below analyst target $364.62"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
+      }
     },
     {
       "ticker": "VZ",
@@ -724,64 +711,49 @@
   ],
   "earnings": [
     {
-      "ticker": "AVAV",
-      "date": "Mar 03",
+      "ticker": "AVGO",
+      "date": "Mar 04",
       "days": 14
     },
     {
       "ticker": "BRK-B",
       "date": "Feb 28",
-      "days": 11
+      "days": 10
     },
     {
       "ticker": "BWXT",
       "date": "Feb 23",
-      "days": 6
-    },
-    {
-      "ticker": "CEG",
-      "date": "Feb 17",
-      "days": 0
+      "days": 5
     },
     {
       "ticker": "ED",
       "date": "Feb 19",
-      "days": 2
+      "days": 1
     },
     {
       "ticker": "KTOS",
       "date": "Feb 23",
-      "days": 6
-    },
-    {
-      "ticker": "LDOS",
-      "date": "Feb 17",
-      "days": 0
+      "days": 5
     },
     {
       "ticker": "NVDA",
       "date": "Feb 25",
-      "days": 8
+      "days": 7
     },
     {
       "ticker": "O",
       "date": "Feb 24",
-      "days": 7
+      "days": 6
     },
     {
       "ticker": "QBTS",
       "date": "Feb 26",
-      "days": 9
+      "days": 8
     },
     {
       "ticker": "TLN",
       "date": "Feb 26",
-      "days": 9
-    },
-    {
-      "ticker": "VST",
-      "date": "Feb 26",
-      "days": 9
+      "days": 8
     }
   ],
   "overlap": [
@@ -789,7 +761,10 @@
       "ticker": "JNJ",
       "portfolios": [
         "Value Picks",
-        "Income Dividends"
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
       ]
     },
     {
@@ -797,6 +772,15 @@
       "portfolios": [
         "Value Picks",
         "Income Dividends"
+      ]
+    },
+    {
+      "ticker": "KO",
+      "portfolios": [
+        "Value Picks",
+        "Growth Value",
+        "Momentum Growth",
+        "Nuclear Renaissance"
       ]
     },
     {
@@ -814,10 +798,23 @@
       ]
     },
     {
+      "ticker": "ANET",
+      "portfolios": [
+        "Value Picks",
+        "Innovation Fund",
+        "Growth Value",
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
       "ticker": "NVDA",
       "portfolios": [
         "Innovation Fund",
-        "Growth Value"
+        "Growth Value",
+        "Nuclear Renaissance"
       ]
     },
     {
@@ -833,78 +830,150 @@
         "Innovation Fund",
         "AI Defense & Autonomous"
       ]
+    },
+    {
+      "ticker": "AVGO",
+      "portfolios": [
+        "Innovation Fund",
+        "Growth Value",
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "CCJ",
+      "portfolios": [
+        "Innovation Fund",
+        "Growth Value",
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "DECK",
+      "portfolios": [
+        "Innovation Fund",
+        "Growth Value",
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "ED",
+      "portfolios": [
+        "Growth Value",
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "O",
+      "portfolios": [
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "GEV",
+      "portfolios": [
+        "Income Dividends",
+        "Momentum Growth",
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "LMT",
+      "portfolios": [
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "NOC",
+      "portfolios": [
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
+    },
+    {
+      "ticker": "RTX",
+      "portfolios": [
+        "Nuclear Renaissance",
+        "AI Defense & Autonomous"
+      ]
     }
   ],
   "concentration": [
     {
       "ticker": "JNJ",
       "portfolio": "Value Picks",
-      "pct": 30.950733645160906
+      "pct": 30.934975970175678
     },
     {
       "ticker": "BAC",
       "portfolio": "Value Picks",
-      "pct": 24.079114767805255
+      "pct": 24.066855579742278
     },
     {
       "ticker": "PG",
       "portfolio": "Value Picks",
-      "pct": 25.485916173273615
+      "pct": 25.47294075277588
     },
     {
       "ticker": "NVDA",
       "portfolio": "Innovation Fund",
-      "pct": 33.92901568185307
+      "pct": 34.04980368873795
     },
     {
       "ticker": "TSLA",
       "portfolio": "Innovation Fund",
-      "pct": 25.636105209380432
-    },
-    {
-      "ticker": "CRSP",
-      "portfolio": "Innovation Fund",
-      "pct": 15.91238805400044
-    },
-    {
-      "ticker": "MSFT",
-      "portfolio": "Growth Value",
-      "pct": 30.054729715090144
+      "pct": 25.727370281187046
     },
     {
       "ticker": "JPM",
       "portfolio": "Growth Value",
-      "pct": 19.799372326847536
+      "pct": 19.850086875408834
     },
     {
       "ticker": "AAPL",
       "portfolio": "Growth Value",
-      "pct": 24.329160859539563
+      "pct": 24.391478108263335
+    },
+    {
+      "ticker": "ED",
+      "portfolio": "Income Dividends",
+      "pct": 15.825100083573313
     },
     {
       "ticker": "DECK",
       "portfolio": "Momentum Growth",
-      "pct": 19.905560457356604
+      "pct": 24.881950483233016
     },
     {
       "ticker": "GE",
       "portfolio": "Momentum Growth",
-      "pct": 17.978370100325748
+      "pct": 17.978370036407288
     },
     {
-      "ticker": "CEG",
-      "portfolio": "Nuclear Renaissance",
-      "pct": 30.364358661027364
-    },
-    {
-      "ticker": "VST",
-      "portfolio": "Nuclear Renaissance",
-      "pct": 25.170808809816375
+      "ticker": "ANET",
+      "portfolio": "Momentum Growth",
+      "pct": 19.82259929729375
     },
     {
       "ticker": "CCJ",
       "portfolio": "Nuclear Renaissance",
-      "pct": 15.085448737738522
+      "pct": 19.936554544518927
     }
   ],
   "bond_signals": {
