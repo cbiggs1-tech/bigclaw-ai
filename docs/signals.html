@@ -238,8 +238,8 @@
         <div id="signalsContainer" class="loading">Loading signals data...</div>
     </div>
 
-    <!-- Macro + Sentiment Grid -->
-    <div class="grid-2">
+    <!-- Macro + Sentiment + Bond Grid -->
+    <div class="grid-3">
         <!-- Macro Overview -->
         <div class="card">
             <div class="card-title">🌍 Macro Overview</div>
@@ -250,6 +250,12 @@
         <div class="card">
             <div class="card-title">📈 Consumer & Market Sentiment</div>
             <div id="sentimentPanel" class="loading">Loading...</div>
+        </div>
+
+        <!-- Bond Market -->
+        <div class="card">
+            <div class="card-title">🏦 Bond Market</div>
+            <div id="bondPanel" class="loading">Loading...</div>
         </div>
     </div>
 
@@ -427,6 +433,48 @@
         });
     }
 
+    // Render bond market
+    function renderBond(macro, signals) {
+        const panel = $('bondPanel');
+        panel.innerHTML = '';
+        panel.className = '';
+
+        // Try macro.bond_signals first, then signals.bond_signals
+        const bond = (macro && macro.bond_signals) || (signals && signals.bond_signals);
+        if (!bond) { panel.innerHTML = '<div class="error-msg">No bond data</div>'; return; }
+
+        const items = [];
+        const yc = bond.yield_curve || {};
+        if (yc.spread != null) {
+            items.push({ label: 'Yield Curve (10Y-2Y)', value: yc.spread + '%', sub: yc.assessment || '' });
+        }
+        const cs = bond.credit_spreads || {};
+        if (cs.current_bps != null) {
+            items.push({ label: 'HY Credit Spreads', value: cs.current_bps + 'bps', sub: cs.assessment || '' });
+        }
+        const ty = bond.ten_year || {};
+        if (ty.current != null) {
+            items.push({ label: '10Y Treasury', value: ty.current + '%', sub: ty.assessment || '' });
+        }
+
+        items.forEach(item => {
+            const d = el('div', 'indicator');
+            d.innerHTML = '<div class="indicator-label">' + item.label + '</div>' +
+                '<div class="indicator-value">' + item.value + '</div>' +
+                (item.sub ? '<div class="indicator-sub">' + item.sub + '</div>' : '');
+            panel.appendChild(d);
+        });
+
+        // Combined score
+        const score = bond.combined_score != null ? bond.combined_score : 0;
+        const cls = score >= 2 ? 'badge-buy' : score <= -2 ? 'badge-sell' : 'badge-hold';
+        const d = el('div', 'indicator');
+        d.style.marginTop = '0.5rem';
+        d.innerHTML = '<div class="indicator-label">Combined Bond Score</div>' +
+            '<div><span class="badge ' + cls + '">' + (score >= 0 ? '+' : '') + score + ' / 3</span></div>';
+        panel.appendChild(d);
+    }
+
     // Render alerts
     function renderAlerts(signals, macro) {
         const panel = $('alertsPanel');
@@ -504,6 +552,7 @@
         renderSignals(signals);
         renderMacro(macro);
         renderSentiment(macro);
+        renderBond(macro, signals);
         renderAlerts(signals, macro);
         renderVerdict(macro);
         renderTimestamp(meta);
