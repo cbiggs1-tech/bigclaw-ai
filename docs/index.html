@@ -543,6 +543,38 @@
         .footer-disclaimer { font-size: 0.7rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.4rem; }
         .footer-updated { font-size: 0.68rem; color: var(--text-muted); }
 
+        /* ── Report Banner ── */
+        .report-banner {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.6rem 2rem;
+        }
+        .report-banner-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+        }
+        .report-banner-left {
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .report-banner-left a {
+            display: flex; align-items: center; gap: 0.5rem;
+            text-decoration: none; color: var(--gold); font-weight: 600; font-size: 0.82rem;
+            transition: color 0.15s;
+        }
+        .report-banner-left a:hover { color: #ffd54f; }
+        .report-banner-icon { font-size: 1rem; }
+        .report-times {
+            display: flex; align-items: center; gap: 1.25rem; font-size: 0.72rem; color: var(--text-secondary);
+        }
+        .report-time-item { display: flex; align-items: center; gap: 0.35rem; }
+        .report-time-label { color: var(--text-muted); }
+        .report-time-value { color: var(--text-primary); font-weight: 500; }
+        .report-time-dot { color: var(--gain); font-size: 0.5rem; }
+        @media (max-width: 768px) {
+            .report-banner { padding: 0.5rem 1rem; }
+            .report-banner-inner { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+        }
+
         /* ── Placeholder ── */
         .placeholder {
             color: var(--text-muted);
@@ -600,6 +632,30 @@
         </div>
     </div>
 </nav>
+
+<!-- Report Banner -->
+<div class="report-banner">
+    <div class="report-banner-inner">
+        <div class="report-banner-left">
+            <a href="signals.html">
+                <span class="report-banner-icon">📡</span>
+                <span>Market Sentiment & Signals Report</span>
+                <span style="font-size:0.7rem; opacity:0.6;">→</span>
+            </a>
+        </div>
+        <div class="report-times">
+            <div class="report-time-item">
+                <span class="report-time-label">Last report:</span>
+                <span class="report-time-value" id="lastReportTime">--</span>
+            </div>
+            <div class="report-time-item">
+                <span class="report-time-dot">●</span>
+                <span class="report-time-label">Next report:</span>
+                <span class="report-time-value" id="nextReportTime">--</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Signals Alert Bar -->
 <div class="signals-bar">
@@ -1083,6 +1139,33 @@ function loadTimestamp() {
         const ts = data.lastUpdate || 'Unknown';
         document.getElementById('headerTimestamp').textContent = ts;
         document.getElementById('footerTimestamp').textContent = 'Last updated: ' + ts;
+
+        // Report banner times
+        const signalsTs = data.signals_updated || data.lastUpdate;
+        if (signalsTs) {
+            try {
+                const d = new Date(signalsTs);
+                document.getElementById('lastReportTime').textContent = d.toLocaleString('en-US', {
+                    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
+                    hour12: true, timeZone: 'America/Chicago'
+                }) + ' CST';
+            } catch(e) {
+                document.getElementById('lastReportTime').textContent = signalsTs;
+            }
+        }
+        // Calculate next report (9 AM ET morning or 4:30 PM ET afternoon, Mon-Fri)
+        const now = new Date();
+        const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+        const hr = et.getHours(), mn = et.getMinutes(), dow = et.getDay();
+
+        let nextLabel = '';
+        if (dow === 0) nextLabel = 'Mon 9:00 AM ET (Morning)';
+        else if (dow === 6) nextLabel = 'Mon 9:00 AM ET (Morning)';
+        else if (hr < 9) nextLabel = 'Today 9:00 AM ET (Morning)';
+        else if (hr < 16 || (hr === 16 && mn < 30)) nextLabel = 'Today 4:30 PM ET (Afternoon)';
+        else if (dow === 5) nextLabel = 'Mon 9:00 AM ET (Morning)';
+        else nextLabel = 'Tomorrow 9:00 AM ET (Morning)';
+        document.getElementById('nextReportTime').textContent = nextLabel;
     }).catch(() => {
         document.getElementById('headerTimestamp').textContent = '';
     });
