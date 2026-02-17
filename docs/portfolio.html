@@ -207,14 +207,40 @@ function fmtPct(v) { return (v >= 0 ? '+' : '') + v.toFixed(2) + '%'; }
 function fmtPrice(v) { return Number(v).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
 
 const params = new URLSearchParams(window.location.search);
-const portfolioId = parseInt(params.get('id'), 10);
+const portfolioId = params.get('id') !== null ? parseInt(params.get('id'), 10) : null;
 
 fetch('data/portfolios.json')
     .then(r => r.json())
     .then(data => {
         const portfolios = data.portfolios || [];
+
+        // No id param → show portfolio listing
+        if (portfolioId === null) {
+            let html = '<h2 style="margin-bottom:1.25rem;font-size:1.3rem;">📊 All Portfolios</h2>';
+            html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">';
+            portfolios.forEach((p, idx) => {
+                const isPending = p.purchaseStatus === 'pending';
+                const retClass = p.totalReturn >= 0 ? 'gain' : 'loss';
+                const retStr = isPending ? '<span style="color:var(--warn);">⏳ Pending</span>' : '<span class="' + retClass + '">' + fmtPct(p.totalReturn) + '</span>';
+                html += '<a href="portfolio.html?id=' + idx + '" style="text-decoration:none;color:inherit;display:block;background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:1.25rem;transition:background 0.15s;"'
+                    + ' onmouseover="this.style.background=\'var(--bg-card-hover)\'" onmouseout="this.style.background=\'var(--bg-card)\'">'
+                    + '<div style="font-weight:700;font-size:1.05rem;">' + p.name + '</div>'
+                    + '<div style="font-size:0.75rem;color:var(--text-muted);margin:0.25rem 0 0.5rem;">' + (p.style || '') + '</div>'
+                    + '<div style="display:flex;justify-content:space-between;align-items:baseline;">'
+                    + '<span style="font-size:1.1rem;font-weight:600;">' + fmt$(p.totalValue) + '</span>'
+                    + '<span style="font-size:0.95rem;font-weight:700;">' + retStr + '</span>'
+                    + '</div>'
+                    + '<div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.4rem;">' + (p.holdings || []).length + ' holdings · Created ' + p.createdAt + '</div>'
+                    + '</a>';
+            });
+            html += '</div>';
+            document.getElementById('content').innerHTML = html;
+            document.getElementById('footer').innerHTML = '<div>Data as of ' + (data.lastUpdate || 'Unknown') + '</div><div style="margin-top:0.5rem;">BigClaw AI — AI-powered investment research. Not financial advice.</div>';
+            return;
+        }
+
         if (isNaN(portfolioId) || portfolioId < 0 || portfolioId >= portfolios.length) {
-            document.getElementById('content').innerHTML = '<div style="text-align:center;padding:3rem;color:var(--loss);">Portfolio not found. <a href="index.html" style="color:var(--gold);">Back to Dashboard</a></div>';
+            document.getElementById('content').innerHTML = '<div style="text-align:center;padding:3rem;color:var(--loss);">Portfolio not found. <a href="portfolio.html" style="color:var(--gold);">View All Portfolios</a></div>';
             return;
         }
         const p = portfolios[portfolioId];
