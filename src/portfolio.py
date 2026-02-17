@@ -457,7 +457,8 @@ def list_portfolios() -> list[dict]:
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT id, name, investment_style, starting_cash, current_cash, created_at, is_active, report_channel
+        SELECT id, name, investment_style, starting_cash, current_cash, created_at, is_active, report_channel,
+               COALESCE(purchase_status, 'active') as purchase_status
         FROM portfolios
         ORDER BY created_at DESC
     """)

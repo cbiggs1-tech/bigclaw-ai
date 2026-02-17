@@ -113,6 +113,7 @@ def export_portfolios() -> dict:
             'starting_cash': portfolio.starting_cash,
             'current_cash': portfolio.current_cash,
             'created_at': portfolio.created_at,
+            'purchase_status': p_info.get('purchase_status', 'active'),
             'holdings_raw': holdings  # Will be enriched with prices
         })
 
@@ -159,6 +160,7 @@ def export_portfolios() -> dict:
             'startingCash': round(p['starting_cash'], 2),
             'totalReturn': round(total_return, 2),
             'createdAt': p['created_at'],
+            'purchaseStatus': p.get('purchase_status', 'active'),
             'holdings': holdings
         })
 
