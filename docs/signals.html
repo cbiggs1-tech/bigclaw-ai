@@ -131,6 +131,23 @@
         .ticker-label { font-size: 0.72rem; font-weight: 600; min-width: 90px; }
         .ticker-price { font-size: 0.78rem; color: var(--text-secondary); min-width: 65px; text-align: right; }
         .ticker-reasons { font-size: 0.72rem; color: var(--text-muted); flex: 1; }
+        .ticker-row { cursor: pointer; transition: background 0.15s; border-radius: 4px; padding-left: 0.5rem; padding-right: 0.5rem; }
+        .ticker-row:hover { background: var(--bg-card-hover); }
+        .ticker-row .expand-hint { font-size: 0.65rem; color: var(--text-muted); margin-left: auto; opacity: 0.5; }
+        .ticker-row:hover .expand-hint { opacity: 1; }
+        .reasons-detail {
+            display: none; padding: 0.5rem 0.75rem 0.75rem 0.75rem; margin: -0.25rem 0 0.5rem 0;
+            background: var(--bg-elevated); border-radius: 0 0 6px 6px;
+            border: 1px solid var(--border-color); border-top: none;
+            font-size: 0.75rem; line-height: 1.6;
+        }
+        .reasons-detail.open { display: block; }
+        .reasons-detail ul { list-style: none; padding: 0; margin: 0; }
+        .reasons-detail li { padding: 0.2rem 0; color: var(--text-secondary); }
+        .reasons-detail li::before { content: '•'; margin-right: 0.5rem; font-weight: 700; }
+        .reasons-detail li.bullish::before { color: var(--gain); }
+        .reasons-detail li.bearish::before { color: var(--loss); }
+        .reasons-detail li.neutral::before { color: var(--text-muted); }
 
         /* Dimension scores */
         .dim-scores {
@@ -339,14 +356,46 @@
                     (s.score >= 0 ? '+' : '') + s.score);
                 const badge = el('span', 'badge badge-' + scoreClass(s.score), s.label || scoreEmoji(s.score));
                 const price = el('span', 'ticker-price', s.price ? '$' + s.price.toFixed(2) : '');
-                const reasons = el('span', 'ticker-reasons', (s.reasons || []).slice(0, 4).join(' · '));
+                const summary = el('span', 'ticker-reasons', (s.reasons || []).slice(0, 3).join(' · '));
+                const hint = el('span', 'expand-hint', '▶ details');
 
                 row.appendChild(sym);
                 row.appendChild(sc);
                 row.appendChild(badge);
                 row.appendChild(price);
-                row.appendChild(reasons);
+                row.appendChild(summary);
+                row.appendChild(hint);
                 section.appendChild(row);
+
+                // Expandable reasons detail panel
+                const detail = el('div', 'reasons-detail');
+                const ul = document.createElement('ul');
+                (s.reasons || []).forEach(r => {
+                    const li = document.createElement('li');
+                    li.textContent = r;
+                    // Color-code based on content
+                    const rl = r.toLowerCase();
+                    if (rl.includes('above') || rl.includes('bullish') || rl.includes('buy') || rl.includes('oversold') || rl.includes('golden') || rl.includes('positive') || rl.includes('strong') || rl.includes('uptrend'))
+                        li.className = 'bullish';
+                    else if (rl.includes('below') || rl.includes('bearish') || rl.includes('sell') || rl.includes('overbought') || rl.includes('death') || rl.includes('negative') || rl.includes('weak') || rl.includes('downtrend') || rl.includes('insider sell'))
+                        li.className = 'bearish';
+                    else
+                        li.className = 'neutral';
+                    ul.appendChild(li);
+                });
+                detail.appendChild(ul);
+                section.appendChild(detail);
+
+                row.addEventListener('click', () => {
+                    const isOpen = detail.classList.contains('open');
+                    // Close all others
+                    document.querySelectorAll('.reasons-detail.open').forEach(d => d.classList.remove('open'));
+                    document.querySelectorAll('.expand-hint').forEach(h => h.textContent = '▶ details');
+                    if (!isOpen) {
+                        detail.classList.add('open');
+                        hint.textContent = '▼ hide';
+                    }
+                });
             });
 
             container.appendChild(section);
