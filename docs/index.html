@@ -586,6 +586,45 @@
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+
+        /* ── Ticker Search ── */
+        .ticker-search { display: flex; align-items: center; gap: 0.3rem; }
+        .ticker-search input {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px;
+            color: var(--text-primary); padding: 0.35rem 0.6rem; font-size: 0.8rem; width: 130px;
+            font-family: inherit; outline: none; transition: border-color 0.2s;
+        }
+        .ticker-search input:focus { border-color: var(--gold); }
+        .ticker-search input::placeholder { color: var(--text-muted); }
+        .ticker-search button {
+            background: none; border: none; cursor: pointer; font-size: 0.85rem; padding: 0.3rem;
+            color: var(--text-secondary); transition: color 0.2s;
+        }
+        .ticker-search button:hover { color: var(--gold); }
+
+        /* ── Quote Overlay ── */
+        .quote-overlay {
+            display: none; position: fixed; top: 60px; right: 20px; z-index: 9999;
+            width: 520px; height: 420px; background: var(--bg-card); border: 1px solid var(--gold-dim);
+            border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); flex-direction: column;
+            overflow: hidden;
+        }
+        .quote-overlay.visible { display: flex; }
+        .quote-overlay-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.6rem 1rem; background: var(--bg-elevated); border-bottom: 1px solid var(--border-color);
+        }
+        .quote-overlay-title { color: var(--gold); font-weight: 700; font-size: 1rem; }
+        .quote-overlay-close {
+            background: none; border: none; color: var(--text-secondary); font-size: 1.1rem;
+            cursor: pointer; padding: 0.2rem 0.4rem; border-radius: 4px;
+        }
+        .quote-overlay-close:hover { color: var(--loss); background: var(--loss-bg); }
+        .quote-overlay-body { flex: 1; overflow: hidden; }
+        @media (max-width: 600px) {
+            .quote-overlay { width: calc(100vw - 20px); right: 10px; height: 360px; }
+            .ticker-search input { width: 90px; font-size: 0.75rem; }
+        }
     </style>
 </head>
 <body>
@@ -606,8 +645,21 @@
                 <a href="chart-detail.html">Charts</a>
             </div>
         </div>
+        <div class="ticker-search">
+            <input type="text" id="ticker-input" placeholder="Ticker lookup…" spellcheck="false" autocomplete="off">
+            <button id="ticker-search-btn" title="Search">🔍</button>
+        </div>
     </div>
 </nav>
+
+<!-- Quote Widget Overlay -->
+<div id="quote-widget" class="quote-overlay">
+    <div class="quote-overlay-header">
+        <span id="quote-ticker" class="quote-overlay-title">AAPL</span>
+        <button id="quote-close" class="quote-overlay-close">✕</button>
+    </div>
+    <div id="quote-body" class="quote-overlay-body"></div>
+</div>
 
 <!-- Report Banner -->
 <div class="report-banner">
@@ -1146,6 +1198,55 @@ function loadTimestamp() {
         document.getElementById('headerTimestamp').textContent = '';
     });
 }
+
+/* ── Ticker Search ── */
+(function() {
+    const input = document.getElementById('ticker-input');
+    const btn = document.getElementById('ticker-search-btn');
+    const overlay = document.getElementById('quote-widget');
+    const body = document.getElementById('quote-body');
+    const title = document.getElementById('quote-ticker');
+    const closeBtn = document.getElementById('quote-close');
+
+    function search() {
+        const t = input.value.trim().toUpperCase();
+        if (!t) return;
+        title.textContent = t;
+        overlay.classList.add('visible');
+        body.innerHTML = '';
+        const c = document.createElement('div');
+        c.className = 'tradingview-widget-container';
+        c.style.height = '100%'; c.style.width = '100%';
+        const w = document.createElement('div');
+        w.className = 'tradingview-widget-container__widget';
+        w.style.height = '100%'; w.style.width = '100%';
+        c.appendChild(w);
+        const s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
+        s.async = true;
+        s.innerHTML = JSON.stringify({
+            symbols: [[t, t + '|1D']],
+            chartOnly: false, width: '100%', height: '100%',
+            locale: 'en', colorTheme: 'dark', autosize: true,
+            showVolume: false, showMA: false, hideDateRanges: false,
+            hideMarketStatus: false, hideSymbolLogo: false,
+            scalePosition: 'right', scaleMode: 'Normal',
+            fontFamily: '-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif',
+            fontSize: '10', noTimeScale: false, valuesTracking: '1',
+            changeMode: 'price-and-percent', chartType: 'area',
+            lineWidth: 2, lineType: 0,
+            dateRanges: ['1d|1', '1m|30', '3m|60', '12m|1D', '60m|1W', 'all|1M']
+        });
+        c.appendChild(s);
+        body.appendChild(c);
+        input.value = '';
+    }
+
+    btn.addEventListener('click', search);
+    input.addEventListener('keydown', function(e) { if (e.key === 'Enter') search(); });
+    closeBtn.addEventListener('click', function() { overlay.classList.remove('visible'); body.innerHTML = ''; });
+})();
 </script>
 </body>
 </html>
