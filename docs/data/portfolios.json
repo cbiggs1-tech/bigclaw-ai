@@ -1,12 +1,12 @@
 {
-  "lastUpdate": "2026-02-18T20:30:10.304131Z",
+  "lastUpdate": "2026-02-18T21:00:08.662231Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
-      "totalValue": 102147.71,
+      "totalValue": 102760.32,
       "startingCash": 100000.0,
-      "totalReturn": 2.15,
+      "totalReturn": 2.76,
       "createdAt": "2026-02-16 13:51:57",
       "purchaseStatus": "pending",
       "holdings": [
@@ -14,28 +14,28 @@
           "ticker": "BWXT",
           "shares": 79.0,
           "avgCost": 175.5,
-          "currentPrice": 201.07,
+          "currentPrice": 202.43,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "CCJ",
           "shares": 220.0,
           "avgCost": 112.91,
-          "currentPrice": 115.14,
+          "currentPrice": 116.48,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "GEV",
           "shares": 18.0,
           "avgCost": 807.8,
-          "currentPrice": 812.38,
+          "currentPrice": 818.33,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "TLN",
           "shares": 38.0,
           "avgCost": 380.36,
-          "currentPrice": 377.37,
+          "currentPrice": 380.09,
           "purchasedAt": "Feb 16, 2026"
         }
       ]
@@ -43,9 +43,9 @@
     {
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
-      "totalValue": 101107.7,
+      "totalValue": 101212.97,
       "startingCash": 100000.0,
-      "totalReturn": 1.11,
+      "totalReturn": 1.21,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -53,42 +53,42 @@
           "ticker": "ED",
           "shares": 183.0,
           "avgCost": 113.55,
-          "currentPrice": 111.51,
+          "currentPrice": 111.53,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "JNJ",
           "shares": 64.0,
           "avgCost": 243.41,
-          "currentPrice": 244.21,
+          "currentPrice": 244.88,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "O",
           "shares": 273.0,
           "avgCost": 65.89,
-          "currentPrice": 65.14,
+          "currentPrice": 65.11,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "PG",
           "shares": 102.0,
           "avgCost": 160.69,
-          "currentPrice": 156.64,
+          "currentPrice": 156.69,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "VZ",
           "shares": 485.0,
           "avgCost": 48.73,
-          "currentPrice": 47.96,
+          "currentPrice": 48.01,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "XOM",
           "shares": 140.0,
           "avgCost": 132.34,
-          "currentPrice": 150.49,
+          "currentPrice": 150.76,
           "purchasedAt": "Feb 16, 2026"
         }
       ]
@@ -96,9 +96,9 @@
     {
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
-      "totalValue": 104789.86,
+      "totalValue": 105421.14,
       "startingCash": 100000.0,
-      "totalReturn": 4.79,
+      "totalReturn": 5.42,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -106,35 +106,35 @@
           "ticker": "ANET",
           "shares": 175.0,
           "avgCost": 141.79,
-          "currentPrice": 139.05,
+          "currentPrice": 139.54,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "AVGO",
           "shares": 45.0,
           "avgCost": 327.63,
-          "currentPrice": 331.94,
+          "currentPrice": 333.43,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "DECK",
           "shares": 257.0,
           "avgCost": 116.0,
-          "currentPrice": 118.5,
+          "currentPrice": 118.82,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "GE",
           "shares": 87.0,
           "avgCost": 281.84,
-          "currentPrice": 327.02,
+          "currentPrice": 329.42,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "LLY",
           "shares": 19.0,
           "avgCost": 985.23,
-          "currentPrice": 1011.6,
+          "currentPrice": 1021.37,
           "purchasedAt": "Feb 16, 2026"
         }
       ]
@@ -142,9 +142,9 @@
     {
       "name": "AI Defense & Autonomous",
       "style": "AI Defense / Autonomous Systems",
-      "totalValue": 104472.12,
+      "totalValue": 105098.35,
       "startingCash": 100000.0,
-      "totalReturn": 4.47,
+      "totalReturn": 5.1,
       "createdAt": "2026-02-16",
       "purchaseStatus": "pending",
       "holdings": [
@@ -152,49 +152,49 @@
           "ticker": "KTOS",
           "shares": 184.0,
           "avgCost": 89.86,
-          "currentPrice": 95.57,
+          "currentPrice": 97.21,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "LHX",
           "shares": 38.0,
           "avgCost": 293.56,
-          "currentPrice": 351.13,
+          "currentPrice": 352.54,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "LMT",
           "shares": 22.0,
           "avgCost": 651.63,
-          "currentPrice": 648.72,
+          "currentPrice": 650.35,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "NOC",
           "shares": 24.0,
           "avgCost": 702.15,
-          "currentPrice": 717.91,
+          "currentPrice": 725.22,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "PLTR",
           "shares": 78.0,
           "avgCost": 132.1,
-          "currentPrice": 135.29,
+          "currentPrice": 135.32,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "RTX",
           "shares": 83.0,
           "avgCost": 201.05,
-          "currentPrice": 204.36,
+          "currentPrice": 204.77,
           "purchasedAt": "Feb 16, 2026"
         },
         {
           "ticker": "TXT",
           "shares": 100.0,
           "avgCost": 98.89,
-          "currentPrice": 100.0,
+          "currentPrice": 100.23,
           "purchasedAt": "Feb 16, 2026"
         }
       ]
@@ -202,9 +202,9 @@
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 101479.33,
+      "totalValue": 101655.72,
       "startingCash": 100000.0,
-      "totalReturn": 1.48,
+      "totalReturn": 1.66,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -212,49 +212,49 @@
           "ticker": "BAC",
           "shares": 556.02,
           "avgCost": 53.88,
-          "currentPrice": 53.25,
+          "currentPrice": 53.35,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "BRK-B",
           "shares": 12.0,
           "avgCost": 500.83,
-          "currentPrice": 499.03,
+          "currentPrice": 499.16,
           "purchasedAt": "Feb 04, 2026"
         },
         {
           "ticker": "JNJ",
           "shares": 135.19,
           "avgCost": 234.5,
-          "currentPrice": 244.21,
+          "currentPrice": 244.88,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "JPM",
           "shares": 42.88,
           "avgCost": 302.6,
-          "currentPrice": 308.94,
+          "currentPrice": 308.66,
           "purchasedAt": "Feb 11, 2026"
         },
         {
           "ticker": "KO",
           "shares": 103.0,
           "avgCost": 76.38,
-          "currentPrice": 79.2,
+          "currentPrice": 79.49,
           "purchasedAt": "Feb 05, 2026"
         },
         {
           "ticker": "PG",
           "shares": 200.54,
           "avgCost": 156.91,
-          "currentPrice": 156.64,
+          "currentPrice": 156.69,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "WFC",
           "shares": 3.68,
           "avgCost": 88.2,
-          "currentPrice": 88.43,
+          "currentPrice": 88.55,
           "purchasedAt": "Feb 12, 2026"
         }
       ]
@@ -262,9 +262,9 @@
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 98827.0,
+      "totalValue": 99161.69,
       "startingCash": 100000.0,
-      "totalReturn": -1.17,
+      "totalReturn": -0.84,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -272,42 +272,42 @@
           "ticker": "ARKK",
           "shares": 198.72,
           "avgCost": 66.14,
-          "currentPrice": 71.03,
+          "currentPrice": 71.44,
           "purchasedAt": "Feb 09, 2026"
         },
         {
           "ticker": "CRSP",
           "shares": 73.36,
           "avgCost": 51.42,
-          "currentPrice": 53.16,
+          "currentPrice": 53.52,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "NVDA",
           "shares": 206.57,
           "avgCost": 182.02,
-          "currentPrice": 186.99,
+          "currentPrice": 187.73,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "PLTR",
           "shares": 152.49,
           "avgCost": 145.01,
-          "currentPrice": 135.29,
+          "currentPrice": 135.32,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "QBTS",
           "shares": 48.5,
           "avgCost": 19.03,
-          "currentPrice": 18.54,
+          "currentPrice": 19.09,
           "purchasedAt": "Feb 12, 2026"
         },
         {
           "ticker": "TSLA",
           "shares": 59.75,
           "avgCost": 418.43,
-          "currentPrice": 410.61,
+          "currentPrice": 411.34,
           "purchasedAt": "Feb 03, 2026"
         }
       ]
@@ -315,9 +315,9 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 99430.91,
+      "totalValue": 99529.99,
       "startingCash": 100000.0,
-      "totalReturn": -0.57,
+      "totalReturn": -0.47,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -325,49 +325,49 @@
           "ticker": "AAPL",
           "shares": 143.12,
           "avgCost": 267.73,
-          "currentPrice": 263.81,
+          "currentPrice": 264.27,
           "purchasedAt": "Feb 04, 2026"
         },
         {
           "ticker": "AVGO",
           "shares": 14.0,
           "avgCost": 332.54,
-          "currentPrice": 331.94,
+          "currentPrice": 333.43,
           "purchasedAt": "Feb 18, 2026"
         },
         {
           "ticker": "JPM",
           "shares": 84.07,
           "avgCost": 309.06,
-          "currentPrice": 308.94,
+          "currentPrice": 308.66,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "MSFT",
           "shares": 18.66,
           "avgCost": 409.15,
-          "currentPrice": 399.46,
+          "currentPrice": 399.44,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "NVDA",
           "shares": 76.9,
           "avgCost": 181.44,
-          "currentPrice": 186.99,
+          "currentPrice": 187.73,
           "purchasedAt": "Feb 05, 2026"
         },
         {
           "ticker": "TSLA",
           "shares": 9.83,
           "avgCost": 428.45,
-          "currentPrice": 410.61,
+          "currentPrice": 411.34,
           "purchasedAt": "Feb 10, 2026"
         },
         {
           "ticker": "UNH",
           "shares": 38.47,
           "avgCost": 282.6,
-          "currentPrice": 288.94,
+          "currentPrice": 288.22,
           "purchasedAt": "Feb 03, 2026"
         }
       ]
