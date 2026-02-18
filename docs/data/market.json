@@ -1,25 +1,15 @@
 {
-  "lastUpdate": "2026-02-18T21:00:08.948937Z",
-  "indices": [
-    {
-      "name": "S&P 500",
-      "value": 6881.32,
-      "change": 0.52
-    },
-    {
-      "name": "Dow Jones",
-      "value": 49663.03,
-      "change": 0.23
-    },
-    {
-      "name": "NASDAQ",
-      "value": 22753.63,
-      "change": 0.78
-    },
-    {
-      "name": "VIX",
-      "value": 19.56,
-      "change": -3.6
-    }
-  ]
+  "lastUpdate": "2026-02-18T21:30:34.065262Z",
+  "spy": {
+    "price": 686.29,
+    "change": 0.5
+  },
+  "dji": {
+    "price": 497.0,
+    "change": 0.23
+  },
+  "nasdaq": {
+    "price": 605.79,
+    "change": 0.75
+  }
 }
