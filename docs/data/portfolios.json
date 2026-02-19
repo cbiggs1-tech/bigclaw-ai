@@ -1,12 +1,14 @@
 {
-  "lastUpdate": "2026-02-18T21:31:32.271578Z",
+  "lastUpdate": "2026-02-19T13:02:46.477148Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
       "totalValue": 102744.06,
+      "prevTotalValue": 102201.64,
       "startingCash": 100000.0,
       "totalReturn": 2.74,
+      "dailyReturn": 0.53,
       "createdAt": "2026-02-16 13:51:57",
       "purchaseStatus": "pending",
       "holdings": [
@@ -44,8 +46,10 @@
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
       "totalValue": 101252.25,
+      "prevTotalValue": 102028.98,
       "startingCash": 100000.0,
       "totalReturn": 1.25,
+      "dailyReturn": -0.76,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -97,8 +101,10 @@
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
       "totalValue": 105439.54,
+      "prevTotalValue": 105608.92,
       "startingCash": 100000.0,
       "totalReturn": 5.44,
+      "dailyReturn": -0.16,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -143,8 +149,10 @@
       "name": "AI Defense & Autonomous",
       "style": "AI Defense / Autonomous Systems",
       "totalValue": 105070.77,
+      "prevTotalValue": 102974.56,
       "startingCash": 100000.0,
       "totalReturn": 5.07,
+      "dailyReturn": 2.04,
       "createdAt": "2026-02-16",
       "purchaseStatus": "pending",
       "holdings": [
@@ -203,8 +211,10 @@
       "name": "Value Picks",
       "style": "Deep Value Investing",
       "totalValue": 101714.7,
+      "prevTotalValue": 101669.27,
       "startingCash": 100000.0,
       "totalReturn": 1.71,
+      "dailyReturn": 0.04,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -263,8 +273,10 @@
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
       "totalValue": 99209.22,
+      "prevTotalValue": 97913.5,
       "startingCash": 100000.0,
       "totalReturn": -0.79,
+      "dailyReturn": 1.32,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -316,8 +328,10 @@
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
       "totalValue": 99573.58,
+      "prevTotalValue": 99098.87,
       "startingCash": 100000.0,
       "totalReturn": -0.43,
+      "dailyReturn": 0.48,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
