@@ -1020,22 +1020,32 @@ function loadPortfolios() {
 
         const totalVal = portfolios.reduce((s, p) => s + (p.totalValue || 0), 0);
         const totalBasis = portfolios.reduce((s, p) => s + (p.startingCash || 0), 0);
+        const totalPrev = portfolios.reduce((s, p) => s + (p.prevTotalValue || p.totalValue || 0), 0);
         const totalRet = totalBasis > 0 ? ((totalVal - totalBasis) / totalBasis * 100) : 0;
+        const totalDaily = totalPrev > 0 ? ((totalVal - totalPrev) / totalPrev * 100) : 0;
         const retClass = totalRet >= 0 ? 'gain' : 'loss';
+        const dailyClass = totalDaily >= 0 ? 'gain' : 'loss';
 
         summary.innerHTML = `
             <div><div class="portfolio-total-label">Combined Value</div><div class="portfolio-total-value">${fmt$(totalVal)}</div></div>
-            <span class="portfolio-total-return ${retClass}">${fmtPct(totalRet)}</span>
+            <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+                <span class="portfolio-total-return ${retClass}" title="Since inception">${fmtPct(totalRet)} overall</span>
+                <span class="portfolio-total-return ${dailyClass}" title="Today's change" style="font-size:0.85em;opacity:0.85;">${fmtPct(totalDaily)} today</span>
+            </div>
             <span class="portfolio-total-label">across ${portfolios.length} portfolios</span>
         `;
 
         grid.innerHTML = portfolios.map((p, idx) => {
             const isPending = p.purchaseStatus === 'pending';
             const isGain = p.totalReturn >= 0;
+            const dailyGain = (p.dailyReturn || 0) >= 0;
             const cardClass = isPending ? 'pending' : (isGain ? 'positive' : 'negative');
             const returnHtml = isPending
                 ? '<div class="pf-return pending-badge">⏳ Pending</div>'
-                : `<div class="pf-return ${isGain ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}</div>`;
+                : `<div style="text-align:right;">
+                    <div class="pf-return ${isGain ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}</div>
+                    <div style="font-size:0.7rem;color:${dailyGain ? 'var(--gain)' : 'var(--loss)'};opacity:0.8;margin-top:2px;">${fmtPct(p.dailyReturn || 0)} today</div>
+                   </div>`;
             return `<a href="portfolio.html?id=${idx}" class="pf-card ${cardClass}" style="text-decoration:none;color:inherit;display:block;">
                 <div class="pf-top">
                     <div>

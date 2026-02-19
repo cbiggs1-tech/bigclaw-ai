@@ -120,17 +120,37 @@ def export_portfolios() -> dict:
     # Fetch all current prices at once
     prices = get_current_prices(list(all_tickers))
 
+    # Fetch previous close prices for daily return
+    prev_closes = {}
+    try:
+        import yfinance as _yf
+        _data = _yf.download(list(all_tickers), period="5d", progress=False, threads=True)
+        if 'Close' in _data.columns or len(all_tickers) == 1:
+            _close = _data['Close'] if len(all_tickers) > 1 else _data[['Close']]
+            if hasattr(_close, 'iloc') and len(_close) >= 2:
+                _row = _close.iloc[-2]
+                for _t in all_tickers:
+                    _col = _t if _t in _row.index else None
+                    if _col and not (_row[_col] != _row[_col]):
+                        prev_closes[_t] = float(_row[_col])
+    except Exception:
+        pass
+
     # Calculate values and format output
     output_portfolios = []
     for p in portfolios_data:
         holdings = []
         holdings_value = 0
+        prev_holdings_value = 0
 
         for h in p['holdings_raw']:
             ticker = h['ticker']
             current_price = prices.get(ticker, h['avg_cost'])
+            prev_price = prev_closes.get(ticker, current_price)
             value = h['shares'] * current_price
+            prev_value = h['shares'] * prev_price
             holdings_value += value
+            prev_holdings_value += prev_value
 
             # Format purchase date
             purchased_at = h.get('first_bought_at', '')
@@ -151,14 +171,18 @@ def export_portfolios() -> dict:
             })
 
         total_value = p['current_cash'] + holdings_value
+        prev_total_value = p['current_cash'] + prev_holdings_value
         total_return = ((total_value - p['starting_cash']) / p['starting_cash']) * 100
+        daily_return = ((total_value - prev_total_value) / prev_total_value * 100) if prev_total_value > 0 else 0
 
         output_portfolios.append({
             'name': p['name'],
             'style': p['style'],
             'totalValue': round(total_value, 2),
+            'prevTotalValue': round(prev_total_value, 2),
             'startingCash': round(p['starting_cash'], 2),
             'totalReturn': round(total_return, 2),
+            'dailyReturn': round(daily_return, 2),
             'createdAt': p['created_at'],
             'purchaseStatus': p.get('purchase_status', 'active'),
             'holdings': holdings
