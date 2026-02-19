@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigClaw AI — Data Sources & Infrastructure</title>
+    <meta name="description" content="Data sources, APIs, and automated systems that power BigClaw AI research.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="bigclaw-icon.jpg">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #161b28;
+            --bg-card-hover: #1c2333;
+            --bg-elevated: #1e2536;
+            --border-color: #1e2a3a;
+            --border-subtle: #151d2b;
+            --text-primary: #e8edf5;
+            --text-secondary: #8b95a8;
+            --text-muted: #505a6e;
+            --gold: #f0b90b;
+            --gold-dim: #c49a09;
+            --accent: #3b82f6;
+            --gain: #00c48c;
+            --gain-bg: rgba(0, 196, 140, 0.08);
+            --gain-border: rgba(0, 196, 140, 0.2);
+            --warn: #f59e0b;
+            --warn-bg: rgba(245, 158, 11, 0.08);
+            --warn-border: rgba(245, 158, 11, 0.2);
+            --info: #3b82f6;
+            --info-bg: rgba(59, 130, 246, 0.08);
+            --info-border: rgba(59, 130, 246, 0.2);
+            --purple: #a78bfa;
+            --purple-bg: rgba(167, 139, 250, 0.08);
+            --purple-border: rgba(167, 139, 250, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Nav Bar ── */
+        .topbar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 200;
+        }
+        .topbar-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.5rem; height: 48px;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 1.5rem; }
+        .brand {
+            display: flex; align-items: center; gap: 0.5rem;
+            text-decoration: none; color: var(--text-primary); font-weight: 700; font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .brand-name {
+            background: linear-gradient(135deg, var(--gold) 0%, #f59e0b 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .nav-links { display: flex; gap: 0; height: 48px; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.8rem; font-weight: 500;
+            padding: 0 0.85rem; display: flex; align-items: center; height: 100%;
+            border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary); border-bottom-color: var(--gold);
+        }
+
+        /* ── Page Header ── */
+        .page-header {
+            max-width: 1000px;
+            margin: 2.5rem auto 0;
+            padding: 0 1.5rem 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .page-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.4rem;
+        }
+        .page-header h1 span { color: var(--gold); }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            max-width: 620px;
+        }
+
+        /* ── Main Content ── */
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            flex: 1;
+        }
+
+        /* ── Section Header ── */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+        }
+        .section-label:first-child { margin-top: 0; }
+        .section-label .icon { font-size: 1.2rem; }
+        .section-label h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+        }
+        .section-label .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* ── Source Cards Grid ── */
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .source-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem 1.25rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .source-card:hover {
+            border-color: #2a3a52;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .source-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.2rem;
+        }
+        .source-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .source-link {
+            font-size: 0.72rem;
+            color: var(--accent);
+            text-decoration: none;
+            opacity: 0.8;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .source-link:hover { opacity: 1; text-decoration: underline; }
+
+        .source-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .source-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.4rem;
+        }
+        .tag {
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .tag-free    { background: var(--gain-bg);   color: var(--gain);   border: 1px solid var(--gain-border); }
+        .tag-api     { background: var(--info-bg);   color: var(--info);   border: 1px solid var(--info-border); }
+        .tag-key     { background: var(--warn-bg);   color: var(--warn);   border: 1px solid var(--warn-border); }
+        .tag-scrape  { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+        .tag-lib     { background: rgba(148,163,184,0.08); color: #94a3b8; border: 1px solid rgba(148,163,184,0.15); }
+
+        /* ── Cron Table ── */
+        .cron-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .cron-table thead tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .cron-table thead th {
+            text-align: left;
+            padding: 0.6rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .cron-table tbody tr {
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background 0.15s;
+        }
+        .cron-table tbody tr:last-child { border-bottom: none; }
+        .cron-table tbody tr:hover { background: var(--bg-elevated); }
+        .cron-table td {
+            padding: 0.85rem 1rem;
+            vertical-align: top;
+        }
+        .cron-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .cron-icon { font-size: 1rem; }
+        .cron-schedule {
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+        .cron-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        .cron-publishes {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+        .cron-publishes span {
+            display: inline-block;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.05rem 0.4rem;
+            margin: 0.1rem 0.15rem 0.1rem 0;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+        .cron-table-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* ── Frontend Section ── */
+        .frontend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        /* ── Disclaimer ── */
+        .disclaimer-box {
+            background: var(--warn-bg);
+            border: 1px solid var(--warn-border);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            font-size: 0.82rem;
+            color: var(--warn);
+            margin-top: 2.5rem;
+            line-height: 1.6;
+        }
+        .disclaimer-box strong { display: block; margin-bottom: 0.25rem; font-size: 0.85rem; }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 1.5rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer .updated { margin-top: 0.3rem; font-size: 0.72rem; }
+
+        @media (max-width: 640px) {
+            .topbar-inner { padding: 0 0.75rem; }
+            .nav-links a { padding: 0 0.5rem; font-size: 0.72rem; }
+            .brand-name { display: none; }
+            .topbar-left { gap: 0.5rem; }
+            .source-grid { grid-template-columns: 1fr; }
+            .cron-table thead { display: none; }
+            .cron-table td { display: block; padding: 0.4rem 1rem; }
+            .cron-table tr { display: block; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav class="topbar">
+    <div class="topbar-inner">
+        <div class="topbar-left">
+            <a href="nav.html" class="brand">
+                <img src="bigclaw-icon.jpg" alt="BigClaw" style="height:24px;vertical-align:middle;border-radius:50%;">
+                <span class="brand-name">BigClaw</span>
+            </a>
+            <div class="nav-links">
+                <a href="nav.html">Home</a>
+                <a href="index.html">Dashboard</a>
+                <a href="signals.html">Signals</a>
+                <a href="portfolio.html">Portfolios</a>
+                <a href="chart-detail.html">Charts</a>
+                <a href="sources.html" class="active">Sources</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ── Page Header ── -->
+<div class="page-header">
+    <h1>📚 <span>Data Sources</span> &amp; Infrastructure</h1>
+    <p>Every data feed, API, library, and automated system that powers BigClaw's research and this website.</p>
+</div>
+
+<!-- ── Main Content ── -->
+<div class="content">
+
+    <!-- Market Data -->
+    <div class="section-label">
+        <span class="icon">📈</span>
+        <h2>Market Data &amp; Prices</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Alpaca Markets</div>
+                <a href="https://alpaca.markets" target="_blank" class="source-link">alpaca.markets ↗</a>
+            </div>
+            <div class="source-desc">Real-time and extended-hours price quotes, portfolio positions, and order execution for model portfolios.</div>
+            <div class="source-tags">
+                <span class="tag tag-key">API Key</span>
+                <span class="tag tag-api">REST API</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Yahoo Finance</div>
+                <a href="https://finance.yahoo.com" target="_blank" class="source-link">finance.yahoo.com ↗</a>
+            </div>
+            <div class="source-desc">Price history, ticker fundamentals, earnings dates, and per-ticker news. Fallback when Alpaca data is unavailable.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-lib">yfinance</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">FRED</div>
+                <a href="https://fred.stlouisfed.org" target="_blank" class="source-link">fred.stlouisfed.org ↗</a>
+            </div>
+            <div class="source-desc">Federal Reserve Economic Data — Michigan Consumer Sentiment, Personal Saving Rate, Treasury yield curve, and credit spreads.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">CSV API</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sentiment & Social -->
+    <div class="section-label">
+        <span class="icon">🗣️</span>
+        <h2>Sentiment &amp; Social</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">X / Twitter</div>
+                <a href="https://developer.twitter.com" target="_blank" class="source-link">developer.twitter.com ↗</a>
+            </div>
+            <div class="source-desc">Real-time ticker mentions and financial commentary via API v2 recent search.</div>
+            <div class="source-tags">
+                <span class="tag tag-key">API Key</span>
+                <span class="tag tag-api">REST API v2</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Reddit / WallStreetBets</div>
+                <a href="https://reddit.com/r/wallstreetbets" target="_blank" class="source-link">reddit.com ↗</a>
+            </div>
+            <div class="source-desc">Retail investor sentiment from r/wallstreetbets and related subreddits via the public JSON API.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">Public JSON</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Stocktwits</div>
+                <a href="https://stocktwits.com" target="_blank" class="source-link">stocktwits.com ↗</a>
+            </div>
+            <div class="source-desc">Per-ticker social sentiment stream from the trader community. Apify used as fallback when direct API is unavailable.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">REST API</span>
+                <span class="tag tag-scrape">Apify fallback</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">CNN Fear &amp; Greed Index</div>
+                <a href="https://www.cnn.com/markets/fear-and-greed" target="_blank" class="source-link">cnn.com ↗</a>
+            </div>
+            <div class="source-desc">Composite market sentiment score (0–100) used as a contrarian indicator in macro analysis.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">JSON endpoint</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- News -->
+    <div class="section-label">
+        <span class="icon">📰</span>
+        <h2>News</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">The Motley Fool</div>
+                <a href="https://www.fool.com" target="_blank" class="source-link">fool.com ↗</a>
+            </div>
+            <div class="source-desc">Investing, personal finance, and retirement news via four RSS feeds parsed on each report cycle.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">RSS</span>
+                <span class="tag tag-lib">feedparser</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Yahoo Finance News</div>
+                <a href="https://finance.yahoo.com" target="_blank" class="source-link">finance.yahoo.com ↗</a>
+            </div>
+            <div class="source-desc">Per-ticker headlines pulled alongside price data for each portfolio holding.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-lib">yfinance</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Brave Search</div>
+                <a href="https://brave.com/search/api/" target="_blank" class="source-link">brave.com ↗</a>
+            </div>
+            <div class="source-desc">Web search used for live fact-checking, catalyst verification, and on-demand research queries.</div>
+            <div class="source-tags">
+                <span class="tag tag-key">API Key</span>
+                <span class="tag tag-api">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research & Fundamentals -->
+    <div class="section-label">
+        <span class="icon">🔬</span>
+        <h2>Research &amp; Fundamentals</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">SEC EDGAR</div>
+                <a href="https://efts.sec.gov" target="_blank" class="source-link">efts.sec.gov ↗</a>
+            </div>
+            <div class="source-desc">Official SEC filings — insider trades (Form 4), annual reports (10-K), and other regulatory disclosures.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">REST API</span>
+                <span class="tag tag-lib">edgartools</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Finviz</div>
+                <a href="https://finviz.com" target="_blank" class="source-link">finviz.com ↗</a>
+            </div>
+            <div class="source-desc">Stock fundamentals, screener data, analyst ratings, and price targets for holdings and watchlist stocks.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-lib">finvizfinance</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Polymarket</div>
+                <a href="https://polymarket.com" target="_blank" class="source-link">polymarket.com ↗</a>
+            </div>
+            <div class="source-desc">Prediction market probabilities on finance-relevant events — earnings beats, macro outcomes, regulatory decisions.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">Gamma API</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ARK Invest -->
+    <div class="section-label">
+        <span class="icon">🚀</span>
+        <h2>ARK Invest Tracking</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">CathieArk.com</div>
+                <a href="https://cathiesark.com" target="_blank" class="source-link">cathiesark.com ↗</a>
+            </div>
+            <div class="source-desc">Daily ARK fund trade notifications — buys, sells, and position changes across ARKK, ARKG, ARKW, and others.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-scrape">Web Scrape</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">ARKFunds.io</div>
+                <a href="https://arkfunds.io" target="_blank" class="source-link">arkfunds.io ↗</a>
+            </div>
+            <div class="source-desc">Structured ETF trade data from ARK's daily disclosures — used as primary source when available.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-api">REST API</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">YouTube / ARK ITK</div>
+                <a href="https://www.youtube.com/@ARKInvest" target="_blank" class="source-link">youtube.com ↗</a>
+            </div>
+            <div class="source-desc">ARK's weekly "In the Know" video — auto-discovered via YouTube Data API, transcribed, and summarized each Friday.</div>
+            <div class="source-tags">
+                <span class="tag tag-key">API Key</span>
+                <span class="tag tag-lib">youtube-transcript-api</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Economic Calendar -->
+    <div class="section-label">
+        <span class="icon">📅</span>
+        <h2>Economic Calendar</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Federal Reserve</div>
+                <a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" class="source-link">federalreserve.gov ↗</a>
+            </div>
+            <div class="source-desc">Official FOMC meeting schedule — interest rate decision dates and policy meeting calendar.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-scrape">Scrape</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Bureau of Labor Statistics</div>
+                <a href="https://www.bls.gov" target="_blank" class="source-link">bls.gov ↗</a>
+            </div>
+            <div class="source-desc">CPI inflation and Nonfarm Payrolls release schedule — two of the most market-moving macro reports.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-scrape">Scrape</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Bureau of Economic Analysis</div>
+                <a href="https://www.bea.gov" target="_blank" class="source-link">bea.gov ↗</a>
+            </div>
+            <div class="source-desc">GDP release schedule — quarterly growth data that sets the tone for risk appetite.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-scrape">Scrape</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Yahoo Finance (Earnings)</div>
+                <a href="https://finance.yahoo.com" target="_blank" class="source-link">finance.yahoo.com ↗</a>
+            </div>
+            <div class="source-desc">Earnings dates for portfolio holdings — next expected report date and EPS estimates.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+                <span class="tag tag-lib">yfinance</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weather -->
+    <div class="section-label">
+        <span class="icon">🌦️</span>
+        <h2>Weather</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Open-Meteo</div>
+                <a href="https://open-meteo.com" target="_blank" class="source-link">open-meteo.com ↗</a>
+            </div>
+            <div class="source-desc">Daily weather forecasts for Alvarado, TX — used in morning briefings. No API key required.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free / No Auth</span>
+                <span class="tag tag-api">REST API</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frontend -->
+    <div class="section-label">
+        <span class="icon">🎨</span>
+        <h2>Website Frontend</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Chart.js</div>
+                <a href="https://www.chartjs.org" target="_blank" class="source-link">chartjs.org ↗</a>
+            </div>
+            <div class="source-desc">Portfolio performance charts — line charts showing returns over time across all model portfolios.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Open Source</span>
+                <span class="tag tag-lib">jsDelivr CDN</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">TradingView</div>
+                <a href="https://www.tradingview.com/widget/" target="_blank" class="source-link">tradingview.com ↗</a>
+            </div>
+            <div class="source-desc">Embedded symbol overview widget for live ticker lookup and price visualization on the dashboard.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free widget</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Google Fonts</div>
+                <a href="https://fonts.google.com/specimen/Inter" target="_blank" class="source-link">fonts.google.com ↗</a>
+            </div>
+            <div class="source-desc">Inter typeface — used across all UI text for clean, readable financial data presentation.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">GitHub Pages</div>
+                <a href="https://pages.github.com" target="_blank" class="source-link">pages.github.com ↗</a>
+            </div>
+            <div class="source-desc">Site hosting — static files pushed from the Pi via git. Zero infrastructure cost. Repo: cbiggs1-tech/bigclaw-ai.</div>
+            <div class="source-tags">
+                <span class="tag tag-free">Free</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Automated Systems -->
+    <div class="section-label">
+        <span class="icon">⏰</span>
+        <h2>Automated Systems</h2>
+        <div class="line"></div>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.25rem;">
+        BigClaw runs on a Raspberry Pi. These scheduled jobs automatically fetch data, generate analysis, and publish updates to this site.
+    </p>
+    <div class="cron-table-wrapper">
+        <table class="cron-table">
+            <thead>
+                <tr>
+                    <th>Job</th>
+                    <th>Schedule</th>
+                    <th>What It Does</th>
+                    <th>Publishes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">🌅</span> Morning Market Analysis</div></td>
+                    <td><div class="cron-schedule">9:00 AM ET<br>Mon – Fri</div></td>
+                    <td><div class="cron-desc">Macro scan, sector rotation check, bond market signals, consumer sentiment, risk-on/off verdict, and AI-written narrative summary.</div></td>
+                    <td><div class="cron-publishes"><span>analysis.json</span></div></td>
+                </tr>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">📊</span> Afternoon Portfolio Report</div></td>
+                    <td><div class="cron-schedule">4:30 PM ET<br>Mon – Fri</div></td>
+                    <td><div class="cron-desc">Full portfolio valuation, trading signals across all holdings, sentiment scores, news digest, and portfolio-level analysis. Primary daily update.</div></td>
+                    <td><div class="cron-publishes"><span>portfolios.json</span><span>signals.json</span><span>sentiment.json</span><span>news.json</span><span>portfolio_analysis.json</span><span>metadata.json</span></div></td>
+                </tr>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">🔄</span> Price Refresh</div></td>
+                    <td><div class="cron-schedule">Every 30 min<br>9 AM – 4 PM ET<br>Mon – Fri</div></td>
+                    <td><div class="cron-desc">Lightweight intraday price fetch for all holdings and major indices. Keeps portfolio cards and market pulse current throughout the trading day.</div></td>
+                    <td><div class="cron-publishes"><span>portfolios.json</span><span>market.json</span></div></td>
+                </tr>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">🚀</span> ARK ITK Weekly Summary</div></td>
+                    <td><div class="cron-schedule">5:00 PM ET<br>Fridays</div></td>
+                    <td><div class="cron-desc">Fetches ARK daily trade data, discovers the latest ARK "In the Know" YouTube episode, transcribes it, and delivers a weekly thesis summary.</div></td>
+                    <td><div class="cron-publishes"><span>Slack report</span></div></td>
+                </tr>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">🔒</span> Security Audit</div></td>
+                    <td><div class="cron-schedule">6:00 AM CST<br>Daily</div></td>
+                    <td><div class="cron-desc">Checks firewall status, SSH configuration, fail2ban bans, unattended-upgrade health, and open ports on the Pi. Alerts on anomalies.</div></td>
+                    <td><div class="cron-publishes"><span>Slack alert</span></div></td>
+                </tr>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">📬</span> Email Check</div></td>
+                    <td><div class="cron-schedule">8 AM · 12 PM · 5 PM CST<br>Daily</div></td>
+                    <td><div class="cron-desc">Checks fixit@grandpapa.net inbox for game support inquiries. Drafts replies for approval — never sends autonomously.</div></td>
+                    <td><div class="cron-publishes"><span>Slack summary</span></div></td>
+                </tr>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">🦀</span> OpenClaw Version Check</div></td>
+                    <td><div class="cron-schedule">9:00 AM CST<br>Sundays</div></td>
+                    <td><div class="cron-desc">Checks npm registry for new OpenClaw releases. Auto-updates and restarts the gateway if a new stable version is available.</div></td>
+                    <td><div class="cron-publishes"><span>Slack notice</span></div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer-box">
+        <strong>⚠️ Not Financial Advice</strong>
+        All analysis, signals, and data presented on this site are for informational and educational purposes only.
+        BigClaw AI is an autonomous research tool — not a licensed financial advisor. Always conduct your own due diligence
+        before making any investment decisions. Past performance of model portfolios does not guarantee future results.
+    </div>
+
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+    <div>Powered by BigClaw 🦀 — Running on Raspberry Pi · Hosted on GitHub Pages</div>
+    <div class="updated" id="lastUpdated"></div>
+</footer>
+
+<script>
+    fetch('data/metadata.json')
+        .then(r => r.json())
+        .then(d => {
+            if (d.last_updated) {
+                document.getElementById('lastUpdated').textContent = 'Last updated: ' + d.last_updated;
+            }
+        })
+        .catch(() => {});
+</script>
+
+</body>
+</html>
