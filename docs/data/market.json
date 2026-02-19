@@ -1,25 +1,25 @@
 {
-  "lastUpdate": "2026-02-19T14:30:19.730891Z",
+  "lastUpdate": "2026-02-19T15:00:12.870554Z",
   "indices": [
     {
       "name": "S&P 500",
-      "value": 6856.24,
-      "change": -0.34
+      "value": 6863.77,
+      "change": -0.23
     },
     {
       "name": "Dow Jones",
-      "value": 49529.29,
-      "change": -0.25
+      "value": 49463.28,
+      "change": -0.38
     },
     {
       "name": "NASDAQ",
-      "value": 22753.63,
-      "change": 0.78
+      "value": 22677.57,
+      "change": -0.33
     },
     {
       "name": "VIX",
-      "value": 20.53,
-      "change": 4.64
+      "value": 20.46,
+      "change": 4.28
     }
   ]
 }
