@@ -1040,10 +1040,8 @@ function loadPortfolios() {
             const isGain = p.totalReturn >= 0;
             const dailyGain = (p.dailyReturn || 0) >= 0;
             const cardClass = isPending ? 'pending' : (isGain ? 'positive' : 'negative');
-            const returnHtml = isPending
-                ? '<div class="pf-return pending-badge">⏳ Pending</div>'
-                : `<div style="text-align:right;">
-                    <div class="pf-return ${isGain ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}</div>
+            const returnHtml = `<div style="text-align:right;">
+                    <div class="pf-return ${isGain ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}${isPending ? ' ⏳' : ''}</div>
                     <div style="font-size:0.7rem;color:${dailyGain ? 'var(--gain)' : 'var(--loss)'};opacity:0.8;margin-top:2px;">${fmtPct(p.dailyReturn || 0)} today</div>
                    </div>`;
             return `<a href="portfolio.html?id=${idx}" class="pf-card ${cardClass}" style="text-decoration:none;color:inherit;display:block;">
