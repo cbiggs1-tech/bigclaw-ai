@@ -117,6 +117,19 @@ def export_portfolios() -> dict:
             'holdings_raw': holdings  # Will be enriched with prices
         })
 
+    # Auto-detect pending→active: if cash < 10% of starting, portfolio is deployed
+    import sqlite3 as _sql
+    _db = _sql.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portfolios.db'))
+    for p in portfolios_data:
+        if p['purchase_status'] == 'pending' and p['holdings_raw']:
+            cash_pct = (p['current_cash'] / p['starting_cash'] * 100) if p['starting_cash'] > 0 else 100
+            if cash_pct < 10:
+                _db.execute("UPDATE portfolios SET purchase_status='active' WHERE id=?", (p['id'],))
+                p['purchase_status'] = 'active'
+                logger.info(f"Auto-activated portfolio {p['name']} ({cash_pct:.1f}% cash)")
+    _db.commit()
+    _db.close()
+
     # Fetch all current prices at once
     prices = get_current_prices(list(all_tickers))
 
