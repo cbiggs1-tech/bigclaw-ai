@@ -1152,6 +1152,8 @@ function loadAnalysis() {
             .replace(/`([^`]+)`/g, '<code style="background:var(--bg-elevated);padding:0.1rem 0.3rem;border-radius:3px;color:var(--gold);">$1</code>')
             .replace(/^## (.*$)/gm, '<h3 style="color:var(--text-primary);margin:1rem 0 0.5rem;font-size:1rem;">$1</h3>')
             .replace(/^# (.*$)/gm, '<h2 style="color:var(--gold);margin:1rem 0 0.5rem;font-size:1.1rem;">$1</h2>')
+            .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">$1</a>')
+            .replace(/(^|[^"'>])(https?:\/\/[^\s<]+)/g, '$1<a href="$2" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">$2</a>')
             .replace(/\n/g, '<br>');
         content.innerHTML = formatted;
         meta.textContent = `${data.reportType || 'Analysis'} · ${data.timestamp || ''}`;
