@@ -1018,6 +1018,13 @@ function loadPortfolios() {
 
         if (portfolios.length === 0) { grid.innerHTML = '<div class="placeholder">No portfolio data</div>'; return; }
 
+        // Determine if market is currently open (9:30-16:00 ET, Mon-Fri)
+        const nowET = new Date(new Date().toLocaleString('en-US', {timeZone: 'America/New_York'}));
+        const dow = nowET.getDay();
+        const hhmm = nowET.getHours() * 100 + nowET.getMinutes();
+        const marketOpen = dow >= 1 && dow <= 5 && hhmm >= 930 && hhmm < 1600;
+        const dailyLabel = marketOpen ? 'today' : 'last close';
+
         const totalVal = portfolios.reduce((s, p) => s + (p.totalValue || 0), 0);
         const totalBasis = portfolios.reduce((s, p) => s + (p.startingCash || 0), 0);
         const totalPrev = portfolios.reduce((s, p) => s + (p.prevTotalValue || p.totalValue || 0), 0);
@@ -1030,7 +1037,7 @@ function loadPortfolios() {
             <div><div class="portfolio-total-label">Combined Value</div><div class="portfolio-total-value">${fmt$(totalVal)}</div></div>
             <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
                 <span class="portfolio-total-return ${retClass}" title="Since inception">${fmtPct(totalRet)} overall</span>
-                <span class="portfolio-total-return ${dailyClass}" title="Today's change" style="font-size:0.85em;opacity:0.85;">${fmtPct(totalDaily)} today</span>
+                <span class="portfolio-total-return ${dailyClass}" title="Today's change" style="font-size:0.85em;opacity:0.85;">${fmtPct(totalDaily)} ${dailyLabel}</span>
             </div>
             <span class="portfolio-total-label">across ${portfolios.length} portfolios</span>
         `;
@@ -1042,7 +1049,7 @@ function loadPortfolios() {
             const cardClass = isPending ? 'pending' : (isGain ? 'positive' : 'negative');
             const returnHtml = `<div style="text-align:right;">
                     <div class="pf-return ${isGain ? 'gain' : 'loss'}">${fmtPct(p.totalReturn)}${isPending ? ' ⏳' : ''}</div>
-                    <div style="font-size:0.7rem;color:${dailyGain ? 'var(--gain)' : 'var(--loss)'};opacity:0.8;margin-top:2px;">${fmtPct(p.dailyReturn || 0)} today</div>
+                    <div style="font-size:0.7rem;color:${dailyGain ? 'var(--gain)' : 'var(--loss)'};opacity:0.8;margin-top:2px;">${fmtPct(p.dailyReturn || 0)} ${dailyLabel}</div>
                    </div>`;
             return `<a href="portfolio.html?id=${idx}" class="pf-card ${cardClass}" style="text-decoration:none;color:inherit;display:block;">
                 <div class="pf-top">
