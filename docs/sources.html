@@ -389,6 +389,53 @@
         </div>
     </div>
 
+    <!-- Options Flow & Dark Pool -->
+    <div class="section-label">
+        <span class="icon">🦈</span>
+        <h2>Options Flow &amp; Dark Pool</h2>
+        <div class="line"></div>
+    </div>
+    <div class="source-grid">
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Unusual Whales</div>
+                <a href="https://unusualwhales.com" target="_blank" class="source-link">unusualwhales.com ↗</a>
+            </div>
+            <div class="source-desc">Institutional-grade options flow data, dark pool prints, and congressional trading disclosures. BigClaw monitors large call/put sweeps, multi-exchange flow alerts, and dark pool blocks across watched tickers in real time.</div>
+            <div class="source-tags">
+                <span class="tag tag-key">API Key</span>
+                <span class="tag tag-api">REST API</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Options Contracts Flow</div>
+            </div>
+            <div class="source-desc">Per-ticker unusual options contracts — strike, expiry, volume, sweep count, and total premium. Flags large bullish/bearish bets as they print.</div>
+            <div class="source-tags">
+                <span class="tag tag-api">Unusual Whales</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Dark Pool Prints</div>
+            </div>
+            <div class="source-desc">Real-time off-exchange (dark pool) block trades — share count, execution price, and notional value. Institutional accumulation or distribution signals.</div>
+            <div class="source-tags">
+                <span class="tag tag-api">Unusual Whales</span>
+            </div>
+        </div>
+        <div class="source-card">
+            <div class="source-card-top">
+                <div class="source-name">Congressional Trading</div>
+            </div>
+            <div class="source-desc">SEC-disclosed trades by U.S. Congress members — recent buys and sells across all tickers. Tracked as a supplemental signal for policy-adjacent stocks.</div>
+            <div class="source-tags">
+                <span class="tag tag-api">Unusual Whales</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Sentiment & Social -->
     <div class="section-label">
         <span class="icon">🗣️</span>
@@ -749,6 +796,12 @@
                     <td><div class="cron-schedule">8 AM · 12 PM · 5 PM CST<br>Daily</div></td>
                     <td><div class="cron-desc">Checks fixit@grandpapa.net inbox for game support inquiries. Drafts replies for approval — never sends autonomously.</div></td>
                     <td><div class="cron-publishes"><span>Slack summary</span></div></td>
+                </tr>
+                <tr>
+                    <td><div class="cron-name"><span class="cron-icon">🦈</span> TSLA Options Watchdog</div></td>
+                    <td><div class="cron-schedule">Every 2 hrs<br>9 AM – 4 PM ET<br>Mon – Fri</div></td>
+                    <td><div class="cron-desc">Polls Unusual Whales for large TSLA options sweeps, dark pool prints, and market-wide flow alerts. Flags unusual call/put activity with premium, volume, and sweep count.</div></td>
+                    <td><div class="cron-publishes"><span>Slack alert</span></div></td>
                 </tr>
                 <tr>
                     <td><div class="cron-name"><span class="cron-icon">🦀</span> OpenClaw Version Check</div></td>
