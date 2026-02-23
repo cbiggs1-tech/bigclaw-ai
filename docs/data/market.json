@@ -1,12 +1,12 @@
 {
-  "lastUpdate": "2026-02-20T21:34:06.596174Z",
+  "lastUpdate": "2026-02-23T14:00:41.627315Z",
   "spy": {
     "price": 689.43,
     "change": 0.72
   },
   "dji": {
     "price": 496.08,
-    "change": 0.34
+    "change": 0.47
   },
   "nasdaq": {
     "price": 608.81,
