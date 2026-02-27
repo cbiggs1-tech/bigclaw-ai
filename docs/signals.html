@@ -550,9 +550,7 @@
                 const days = e.days || e.days_away;
                 alerts.push({ icon: '⚡', text: e.ticker + ' earnings in ' + days + (days === 1 ? ' day' : ' days') + ' (' + e.date + ')' });
             });
-            (signals.overlap || []).forEach(o => {
-                alerts.push({ icon: '🔗', text: o.ticker + ' appears in: ' + o.portfolios.join(' & ') });
-            });
+            // Portfolio overlap removed — noise, not actionable
             // Sell signals
             (signals.signals || []).filter(s => s.score <= -3).forEach(s => {
                 alerts.push({ icon: '🔴', text: s.ticker + ' (score: ' + s.score + ') — consider selling/trimming' });
