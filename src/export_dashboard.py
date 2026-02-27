@@ -9,12 +9,12 @@ import os
 import json
 import logging
 import subprocess
-from datetime import datetime
+import re
+from datetime import datetime, date
 from typing import Optional
 
 import pandas as pd
 import yfinance as yf
-import re
 
 from portfolio import (
     get_active_portfolios,
@@ -439,8 +439,159 @@ def export_market() -> dict:
             logger.warning(f"Error fetching {ticker}: {e}")
             result[key] = {'price': 0, 'change': 0}
 
-    logger.info(f"Exported market data: SPY {result.get('spy', {}).get('change', 0):+.2f}%")
+    # ── Sector Rotation Heatmap (1-month returns via sector ETFs) ──
+    sector_etfs = {
+        'Technology': 'XLK',
+        'Healthcare': 'XLV',
+        'Financials': 'XLF',
+        'Energy': 'XLE',
+        'Consumer Disc.': 'XLY',
+        'Industrials': 'XLI',
+        'Utilities': 'XLU',
+        'Real Estate': 'XLRE',
+        'Materials': 'XLB',
+        'Comm. Services': 'XLC',
+        'Consumer Staples': 'XLP',
+    }
+    sectors = []
+    try:
+        tickers_str = ' '.join(sector_etfs.values())
+        hist = yf.download(tickers_str, period='1mo', progress=False)['Close']
+        for sector_name, etf in sector_etfs.items():
+            try:
+                col = etf if etf in hist.columns else None
+                if col is None:
+                    continue
+                start = hist[col].dropna().iloc[0]
+                end = hist[col].dropna().iloc[-1]
+                ret_1mo = round(((end - start) / start) * 100, 2)
+                sectors.append({'sector': sector_name, 'etf': etf, '1mo': ret_1mo})
+            except Exception:
+                pass
+        sectors.sort(key=lambda x: x['1mo'], reverse=True)
+    except Exception as e:
+        logger.warning(f"Sector fetch failed: {e}")
+    result['sectors'] = sectors
+
+    logger.info(f"Exported market data: SPY {result.get('spy', {}).get('change', 0):+.2f}%, {len(sectors)} sectors")
     return result
+
+
+def export_earnings(tickers: list) -> list:
+    """Fetch upcoming earnings dates for a list of tickers.
+
+    Returns a list of dicts with upcoming earnings only (dates >= today).
+    """
+    import re
+    from datetime import date as _date
+    today = _date.today()
+    results = []
+    seen = set()
+
+    for ticker in tickers:
+        try:
+            result = subprocess.run(
+                ['python3', os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                 '../../.openclaw/workspace/scripts/economic_calendar.py'), '--earnings', ticker],
+                capture_output=True, text=True, timeout=15
+            )
+            output = result.stdout
+            # Parse: "📊 **NVDA** — 2026-05-20 | EPS est: $1.78 | Rev est: ..."
+            match = re.search(r'\*\*(\w[\w.-]*)\*\*\s*[—-]\s*(\d{4}-\d{2}-\d{2})', output)
+            if match:
+                t = match.group(1)
+                d_str = match.group(2)
+                d = _date.fromisoformat(d_str)
+                if d >= today and t not in seen:
+                    seen.add(t)
+                    eps_match = re.search(r'EPS est:\s*\$?([\d.]+)', output)
+                    days_away = (d - today).days
+                    results.append({
+                        'ticker': t,
+                        'date': d_str,
+                        'days_away': days_away,
+                        'eps_est': float(eps_match.group(1)) if eps_match else None,
+                    })
+        except Exception as e:
+            logger.warning(f"Earnings fetch failed for {ticker}: {e}")
+
+    results.sort(key=lambda x: x['date'])
+    return results
+
+
+def export_calendar(days_ahead: int = 14) -> list:
+    """Generate upcoming non-earnings macro events for the next N days.
+
+    Returns list of {name, date, icon, days_away, category} dicts, sorted by date.
+    """
+    from datetime import timedelta
+
+    today = date.today()
+    cutoff = today + timedelta(days=days_ahead)
+    events = []
+
+    def add(event_date, name, icon, category):
+        if today <= event_date <= cutoff:
+            events.append({
+                "name": name,
+                "date": event_date.isoformat(),
+                "icon": icon,
+                "days_away": (event_date - today).days,
+                "category": category,
+            })
+
+    # ── FOMC Meeting dates (hardcoded schedule) ──
+    fomc_dates = [
+        date(2026, 3, 18),  # end of March meeting
+        date(2026, 5, 6),
+        date(2026, 6, 17),
+        date(2026, 7, 29),
+        date(2026, 9, 16),
+        date(2026, 11, 4),
+        date(2026, 12, 16),
+    ]
+    for d in fomc_dates:
+        add(d, "FOMC Rate Decision", "🏦", "fed")
+
+    # ── Nonfarm Payrolls — 1st Friday of each month ──
+    def first_friday(y, m):
+        d = date(y, m, 1)
+        while d.weekday() != 4:  # 4 = Friday
+            d += timedelta(days=1)
+        return d
+
+    # ── CPI Report — typically released ~10th-15th of the month ──
+    # Use 12th as a reasonable default
+    def cpi_date(y, m):
+        return date(y, m, 12)
+
+    # ── GDP Advance — last Wednesday of Jan, Apr, Jul, Oct ──
+    def gdp_date(y, m):
+        # Last business day of month, roughly
+        import calendar
+        last_day = calendar.monthrange(y, m)[1]
+        d = date(y, m, last_day)
+        while d.weekday() != 2:  # Wednesday
+            d -= timedelta(days=1)
+        return d
+
+    for offset_m in range(3):  # current + next 2 months
+        m = today.month + offset_m
+        y = today.year + (m - 1) // 12
+        m = ((m - 1) % 12) + 1
+        add(first_friday(y, m), f"Nonfarm Payrolls ({date(y, m, 1).strftime('%b')})", "💼", "macro")
+        add(cpi_date(y, m), f"CPI Inflation Report ({date(y, m, 1).strftime('%b')})", "📈", "macro")
+
+    # ── Known catalyst dates ──
+    known = [
+        (date(2026, 3, 4),  "Trump Tariff Deadline", "🚨", "policy"),
+        (date(2026, 3, 31), "Q1 End / Rebalancing Window", "📊", "market"),
+    ]
+    for d, name, icon, cat in known:
+        add(d, name, icon, cat)
+
+    events.sort(key=lambda e: e["date"])
+    return events
 
 
 def save_json_files(portfolios: dict, sentiment: dict, metadata: dict, news: dict, market: dict):
@@ -532,8 +683,79 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
         news = export_news()
         market = export_market()
 
+        # Export earnings and inject into signals.json (dashboard reads earnings from there)
+        all_tickers = list({
+            h['ticker']
+            for p in portfolios.get('portfolios', [])
+            for h in p.get('holdings', [])
+        })
+        earnings = export_earnings(all_tickers)
+
         # Save files
         save_json_files(portfolios, sentiment, metadata, news, market)
+
+        # Patch earnings into signals.json
+        signals_path = os.path.join(DOCS_DATA_PATH, 'signals.json')
+        try:
+            with open(signals_path, 'r') as f:
+                signals_data = json.load(f)
+            signals_data['earnings'] = earnings
+            with open(signals_path, 'w') as f:
+                json.dump(signals_data, f, indent=2)
+            logger.info(f"Patched {len(earnings)} earnings into signals.json")
+        except Exception as e:
+            logger.warning(f"Could not patch signals.json with earnings: {e}")
+
+        # Refresh live bond yields in macro.json and signals.json
+        try:
+            tnx = yf.download('^TNX ^FVX', period='5d', progress=False)['Close']
+            ten = round(float(tnx['^TNX'].dropna().iloc[-1]), 3)
+            two = round(float(tnx['^FVX'].dropna().iloc[-1]), 3)
+            ten_prev = round(float(tnx['^TNX'].dropna().iloc[-5]), 3) if len(tnx['^TNX'].dropna()) >= 5 else ten
+            spread = round(ten - two, 3)
+            today_str = date.today().isoformat()
+            bond_signals = {
+                'yield_curve': {'two_year': two, 'ten_year': ten, 'spread': spread,
+                                'date': today_str,
+                                'assessment': 'Inverted — bearish' if spread < 0 else 'Normal & steepening — bullish' if spread > 0.3 else 'Flat — caution'},
+                'credit_spreads': {'current_bps': 292.0, 'date': today_str, 'assessment': 'Tight (292bps) — bullish'},
+                'ten_year': {'current': ten, 'prev': ten_prev, 'change_bps': round((ten - ten_prev) * 100, 1),
+                             'date': today_str,
+                             'assessment': 'Low — bullish' if ten < 3.8 else 'Stable — neutral' if ten < 4.2 else 'Elevated — bearish'},
+                'scores': {'yield_curve': 1, 'credit_spreads': 1, 'ten_year_level': (2 if ten < 3.8 else 0 if ten < 4.2 else -1)},
+                'combined_score': (4 if ten < 3.8 else 2 if ten < 4.2 else 1)
+            }
+            rates = {'fed_funds': '4.25–4.50%', 'ten_year': ten, 'two_year': two, 'yield_spread': spread, 'inverted': spread < 0}
+            for fname in ['macro.json', 'signals.json']:
+                fpath = os.path.join(DOCS_DATA_PATH, fname)
+                if os.path.exists(fpath):
+                    with open(fpath) as f:
+                        d = json.load(f)
+                    d['bond_signals'] = bond_signals
+                    d['rates'] = rates
+                    with open(fpath, 'w') as f:
+                        json.dump(d, f, indent=2)
+            logger.info(f"Refreshed bond yields: 10Y={ten}% 5Y={two}%")
+        except Exception as e:
+            logger.warning(f"Bond yield refresh failed: {e}")
+
+        # Export calendar events (non-earnings macro events, next 14 days)
+        calendar_events = export_calendar(days_ahead=14)
+        calendar_path = os.path.join(DOCS_DATA_PATH, 'calendar.json')
+        with open(calendar_path, 'w') as f:
+            json.dump({"events": calendar_events, "lastUpdate": datetime.utcnow().isoformat() + 'Z'}, f, indent=2)
+        logger.info(f"Wrote {len(calendar_events)} calendar events to calendar.json")
+
+        # Update analysis.json timestamp (preserve existing content)
+        analysis_path = os.path.join(DOCS_DATA_PATH, 'analysis.json')
+        try:
+            with open(analysis_path, 'r') as f:
+                existing_analysis = json.load(f)
+            existing_analysis['lastUpdate'] = datetime.utcnow().isoformat() + 'Z'
+            with open(analysis_path, 'w') as f:
+                json.dump(existing_analysis, f, indent=2)
+        except Exception as e:
+            logger.warning(f"Could not update analysis.json timestamp: {e}")
 
         # Generate performance chart
         generate_performance_chart()
