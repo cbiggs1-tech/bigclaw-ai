@@ -544,8 +544,11 @@
             (signals.concentration || []).forEach(c => {
                 alerts.push({ icon: '⚠️', text: c.ticker + ': ' + c.pct.toFixed(0) + '% of ' + c.portfolio + ' (>15% threshold)' });
             });
-            (signals.earnings || []).forEach(e => {
-                alerts.push({ icon: '📅', text: e.ticker + ' earnings: ' + e.date + ' (' + e.days + ' days)' });
+            // Earnings shown in dashboard Earnings Calendar — not duplicated here
+            // Only flag imminent earnings (≤3 days) as a genuine alert
+            (signals.earnings || []).filter(e => (e.days || e.days_away || 99) <= 3).forEach(e => {
+                const days = e.days || e.days_away;
+                alerts.push({ icon: '⚡', text: e.ticker + ' earnings in ' + days + (days === 1 ? ' day' : ' days') + ' (' + e.date + ')' });
             });
             (signals.overlap || []).forEach(o => {
                 alerts.push({ icon: '🔗', text: o.ticker + ' appears in: ' + o.portfolios.join(' & ') });
