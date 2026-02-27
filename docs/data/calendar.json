@@ -1,0 +1,26 @@
+{
+  "events": [
+    {
+      "name": "Trump Tariff Deadline",
+      "date": "2026-03-04",
+      "icon": "\ud83d\udea8",
+      "days_away": 5,
+      "category": "policy"
+    },
+    {
+      "name": "Nonfarm Payrolls (Mar)",
+      "date": "2026-03-06",
+      "icon": "\ud83d\udcbc",
+      "days_away": 7,
+      "category": "macro"
+    },
+    {
+      "name": "CPI Inflation Report (Mar)",
+      "date": "2026-03-12",
+      "icon": "\ud83d\udcc8",
+      "days_away": 13,
+      "category": "macro"
+    }
+  ],
+  "lastUpdate": "2026-02-27T16:52:14.484218Z"
+}

@@ -723,10 +723,10 @@
       "eps_est": 2.02
     },
     {
-      "ticker": "JPM",
+      "ticker": "JNJ",
       "date": "2026-04-14",
       "days_away": 46,
-      "eps_est": 5.5
+      "eps_est": 2.69
     },
     {
       "ticker": "WFC",
@@ -735,10 +735,10 @@
       "eps_est": 1.58
     },
     {
-      "ticker": "JNJ",
+      "ticker": "JPM",
       "date": "2026-04-14",
       "days_away": 46,
-      "eps_est": 2.69
+      "eps_est": 5.5
     },
     {
       "ticker": "BAC",
@@ -753,10 +753,10 @@
       "eps_est": 6.88
     },
     {
-      "ticker": "LMT",
+      "ticker": "VZ",
       "date": "2026-04-21",
       "days_away": 53,
-      "eps_est": 6.82
+      "eps_est": 1.21
     },
     {
       "ticker": "RTX",
@@ -765,10 +765,10 @@
       "eps_est": 1.51
     },
     {
-      "ticker": "VZ",
+      "ticker": "NOC",
       "date": "2026-04-21",
       "days_away": 53,
-      "eps_est": 1.21
+      "eps_est": 6.01
     },
     {
       "ticker": "GE",
@@ -777,16 +777,16 @@
       "eps_est": 1.59
     },
     {
+      "ticker": "LMT",
+      "date": "2026-04-21",
+      "days_away": 53,
+      "eps_est": 6.82
+    },
+    {
       "ticker": "TSLA",
       "date": "2026-04-21",
       "days_away": 53,
       "eps_est": 0.41
-    },
-    {
-      "ticker": "NOC",
-      "date": "2026-04-21",
-      "days_away": 53,
-      "eps_est": 6.01
     },
     {
       "ticker": "TXT",
@@ -807,28 +807,16 @@
       "eps_est": 0.81
     },
     {
-      "ticker": "MSFT",
-      "date": "2026-04-29",
-      "days_away": 61,
-      "eps_est": 4.06
-    },
-    {
       "ticker": "GEV",
       "date": "2026-04-29",
       "days_away": 61,
       "eps_est": 1.64
     },
     {
-      "ticker": "ED",
-      "date": "2026-04-30",
-      "days_away": 62,
-      "eps_est": 2.33
-    },
-    {
-      "ticker": "LLY",
-      "date": "2026-04-30",
-      "days_away": 62,
-      "eps_est": 7.22
+      "ticker": "MSFT",
+      "date": "2026-04-29",
+      "days_away": 61,
+      "eps_est": 4.06
     },
     {
       "ticker": "AAPL",
@@ -837,16 +825,34 @@
       "eps_est": 1.95
     },
     {
+      "ticker": "ED",
+      "date": "2026-04-30",
+      "days_away": 62,
+      "eps_est": 2.33
+    },
+    {
       "ticker": "LHX",
       "date": "2026-04-30",
       "days_away": 62,
       "eps_est": 2.58
     },
     {
+      "ticker": "LLY",
+      "date": "2026-04-30",
+      "days_away": 62,
+      "eps_est": 7.22
+    },
+    {
       "ticker": "XOM",
       "date": "2026-05-01",
       "days_away": 63,
       "eps_est": 1.49
+    },
+    {
+      "ticker": "O",
+      "date": "2026-05-04",
+      "days_away": 66,
+      "eps_est": 0.41
     },
     {
       "ticker": "BWXT",
@@ -861,10 +867,10 @@
       "eps_est": 0.28
     },
     {
-      "ticker": "O",
-      "date": "2026-05-04",
-      "days_away": 66,
-      "eps_est": 0.41
+      "ticker": "CCJ",
+      "date": "2026-05-05",
+      "days_away": 67,
+      "eps_est": 0.36
     },
     {
       "ticker": "ANET",
@@ -873,22 +879,16 @@
       "eps_est": 0.81
     },
     {
-      "ticker": "CCJ",
-      "date": "2026-05-05",
-      "days_away": 67,
-      "eps_est": 0.36
+      "ticker": "KTOS",
+      "date": "2026-05-07",
+      "days_away": 69,
+      "eps_est": 0.13
     },
     {
       "ticker": "TLN",
       "date": "2026-05-07",
       "days_away": 69,
       "eps_est": 3.7
-    },
-    {
-      "ticker": "KTOS",
-      "date": "2026-05-07",
-      "days_away": 69,
-      "eps_est": 0.13
     },
     {
       "ticker": "QBTS",
