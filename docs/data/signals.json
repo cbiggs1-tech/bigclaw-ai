@@ -1132,7 +1132,7 @@
   "bond_signals": {
     "yield_curve": {
       "two_year": 3.47,
-      "ten_year": 4.09,
+      "ten_year": 3.96,
       "spread": 0.62,
       "spread_1mo_ago": 0.65,
       "spread_change": -0.03,
@@ -1147,13 +1147,7 @@
       "date": "2026-02-12",
       "assessment": "Tight (292bps) \u2014 bullish"
     },
-    "ten_year": {
-      "current": 4.09,
-      "prev": 4.18,
-      "change_bps": -9.0,
-      "date": "2026-02-12",
-      "assessment": "Stable \u2014 neutral"
-    },
+    "ten_year": 3.96,
     "scores": {
       "yield_curve": 1,
       "credit_spreads": 1,

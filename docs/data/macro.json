@@ -7,9 +7,9 @@
   },
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.052,
-    "two_year": 3.448,
-    "yield_spread": 0.604,
+    "ten_year": 3.96,
+    "two_year": 3.51,
+    "yield_spread": 0.45,
     "inverted": false
   },
   "market": {
