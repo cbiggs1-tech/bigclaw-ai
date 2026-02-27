@@ -1,12 +1,12 @@
 {
-  "lastUpdate": "2026-02-27T21:21:39.101349Z",
+  "lastUpdate": "2026-02-27T21:30:27.843199Z",
   "spy": {
     "price": 685.99,
     "change": -0.48
   },
   "dji": {
-    "price": 489.58,
-    "change": -1.07
+    "price": 489.66,
+    "change": -1.05
   },
   "nasdaq": {
     "price": 607.29,
@@ -56,7 +56,7 @@
     {
       "sector": "Financials",
       "etf": "XLF",
-      "1mo": -3.0
+      "1mo": -2.94
     },
     {
       "sector": "Consumer Disc.",
