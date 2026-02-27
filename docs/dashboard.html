@@ -937,6 +937,8 @@ function renderSignalsSection(data) {
 function loadMacro() {
     safeFetch('data/macro.json').then(data => {
         renderMarketBar(data);
+    }).catch(() => {});
+    safeFetch('data/market.json').then(data => {
         renderSectors(data);
     }).catch(() => {});
 }
