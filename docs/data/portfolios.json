@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-02-27T21:30:26.974887Z",
+  "lastUpdate": "2026-02-28T21:01:01.355806Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -46,10 +46,10 @@
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
       "totalValue": 104488.96,
-      "prevTotalValue": 102227.69,
+      "prevTotalValue": 102153.98,
       "startingCash": 100000.0,
       "totalReturn": 4.49,
-      "dailyReturn": 2.21,
+      "dailyReturn": 2.29,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
