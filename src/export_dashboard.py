@@ -676,6 +676,24 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
     logger.info("Exporting dashboard data...")
 
     try:
+        # Regenerate macro.json via macro_scanner.py
+        try:
+            macro_script = os.path.expanduser('~/.openclaw/workspace/scripts/macro_scanner.py')
+            result = subprocess.run(
+                ['python3', macro_script, '--json'],
+                capture_output=True, text=True, timeout=120
+            )
+            if result.returncode == 0 and result.stdout.strip():
+                macro_data = json.loads(result.stdout)
+                macro_path = os.path.join(DOCS_DATA_PATH, 'macro.json')
+                with open(macro_path, 'w') as f:
+                    json.dump(macro_data, f, indent=2)
+                logger.info(f"Refreshed macro.json (timestamp: {macro_data.get('timestamp', 'unknown')})")
+            else:
+                logger.warning(f"macro_scanner.py failed: {result.stderr[:200]}")
+        except Exception as e:
+            logger.warning(f"Macro scanner refresh failed: {e}")
+
         # Export all data
         portfolios = export_portfolios()
         sentiment = export_sentiment(sentiment_data)
@@ -746,16 +764,29 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
             json.dump({"events": calendar_events, "lastUpdate": datetime.utcnow().isoformat() + 'Z'}, f, indent=2)
         logger.info(f"Wrote {len(calendar_events)} calendar events to calendar.json")
 
-        # Update analysis.json timestamp (preserve existing content)
+        # Regenerate analysis.json with fresh macro scanner report
         analysis_path = os.path.join(DOCS_DATA_PATH, 'analysis.json')
         try:
-            with open(analysis_path, 'r') as f:
-                existing_analysis = json.load(f)
-            existing_analysis['lastUpdate'] = datetime.utcnow().isoformat() + 'Z'
-            with open(analysis_path, 'w') as f:
-                json.dump(existing_analysis, f, indent=2)
+            macro_text_result = subprocess.run(
+                ['python3', os.path.expanduser('~/.openclaw/workspace/scripts/macro_scanner.py')],
+                capture_output=True, text=True, timeout=120
+            )
+            if macro_text_result.returncode == 0 and macro_text_result.stdout.strip():
+                from datetime import timezone
+                now_utc = datetime.now(timezone.utc)
+                analysis_data = {
+                    'lastUpdate': now_utc.isoformat(),
+                    'timestamp': now_utc.strftime('%B %d, %Y at %I:%M %p') + ' UTC',
+                    'reportType': 'Macro Market Scanner',
+                    'content': macro_text_result.stdout.strip()
+                }
+                with open(analysis_path, 'w') as f:
+                    json.dump(analysis_data, f, indent=2)
+                logger.info(f"Refreshed analysis.json with macro scanner report")
+            else:
+                logger.warning(f"macro_scanner.py text output failed: {macro_text_result.stderr[:200]}")
         except Exception as e:
-            logger.warning(f"Could not update analysis.json timestamp: {e}")
+            logger.warning(f"Could not regenerate analysis.json: {e}")
 
         # Generate performance chart
         generate_performance_chart()
