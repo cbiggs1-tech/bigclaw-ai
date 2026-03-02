@@ -717,10 +717,10 @@
       "eps_est": 2.02
     },
     {
-      "ticker": "JPM",
+      "ticker": "WFC",
       "date": "2026-04-14",
       "days_away": 43,
-      "eps_est": 5.5
+      "eps_est": 1.58
     },
     {
       "ticker": "JNJ",
@@ -729,10 +729,10 @@
       "eps_est": 2.69
     },
     {
-      "ticker": "WFC",
+      "ticker": "JPM",
       "date": "2026-04-14",
       "days_away": 43,
-      "eps_est": 1.58
+      "eps_est": 5.5
     },
     {
       "ticker": "BAC",
@@ -747,10 +747,10 @@
       "eps_est": 6.88
     },
     {
-      "ticker": "TSLA",
+      "ticker": "NOC",
       "date": "2026-04-21",
       "days_away": 50,
-      "eps_est": 0.41
+      "eps_est": 6.01
     },
     {
       "ticker": "LMT",
@@ -765,10 +765,10 @@
       "eps_est": 1.59
     },
     {
-      "ticker": "NOC",
+      "ticker": "VZ",
       "date": "2026-04-21",
       "days_away": 50,
-      "eps_est": 6.01
+      "eps_est": 1.21
     },
     {
       "ticker": "RTX",
@@ -777,10 +777,10 @@
       "eps_est": 1.51
     },
     {
-      "ticker": "VZ",
+      "ticker": "TSLA",
       "date": "2026-04-21",
       "days_away": 50,
-      "eps_est": 1.21
+      "eps_est": 0.41
     },
     {
       "ticker": "TXT",
@@ -804,7 +804,7 @@
       "ticker": "GEV",
       "date": "2026-04-29",
       "days_away": 58,
-      "eps_est": 1.64
+      "eps_est": 1.63
     },
     {
       "ticker": "MSFT",
@@ -813,22 +813,10 @@
       "eps_est": 4.06
     },
     {
-      "ticker": "AAPL",
-      "date": "2026-04-30",
-      "days_away": 59,
-      "eps_est": 1.95
-    },
-    {
       "ticker": "ED",
       "date": "2026-04-30",
       "days_away": 59,
       "eps_est": 2.33
-    },
-    {
-      "ticker": "LHX",
-      "date": "2026-04-30",
-      "days_away": 59,
-      "eps_est": 2.58
     },
     {
       "ticker": "LLY",
@@ -837,16 +825,34 @@
       "eps_est": 7.25
     },
     {
+      "ticker": "AAPL",
+      "date": "2026-04-30",
+      "days_away": 59,
+      "eps_est": 1.95
+    },
+    {
+      "ticker": "LHX",
+      "date": "2026-04-30",
+      "days_away": 59,
+      "eps_est": 2.58
+    },
+    {
       "ticker": "XOM",
       "date": "2026-05-01",
       "days_away": 60,
-      "eps_est": 1.49
+      "eps_est": 1.51
     },
     {
       "ticker": "BRK-B",
       "date": "2026-05-02",
       "days_away": 61,
       "eps_est": 5.21
+    },
+    {
+      "ticker": "PLTR",
+      "date": "2026-05-04",
+      "days_away": 63,
+      "eps_est": 0.28
     },
     {
       "ticker": "O",
@@ -861,10 +867,10 @@
       "eps_est": 0.93
     },
     {
-      "ticker": "PLTR",
-      "date": "2026-05-04",
-      "days_away": 63,
-      "eps_est": 0.28
+      "ticker": "ANET",
+      "date": "2026-05-05",
+      "days_away": 64,
+      "eps_est": 0.81
     },
     {
       "ticker": "CCJ",
@@ -873,16 +879,10 @@
       "eps_est": 0.36
     },
     {
-      "ticker": "ANET",
-      "date": "2026-05-05",
-      "days_away": 64,
-      "eps_est": 0.81
-    },
-    {
-      "ticker": "QBTS",
+      "ticker": "TLN",
       "date": "2026-05-07",
       "days_away": 66,
-      "eps_est": null
+      "eps_est": 3.7
     },
     {
       "ticker": "KTOS",
@@ -891,10 +891,10 @@
       "eps_est": 0.13
     },
     {
-      "ticker": "TLN",
+      "ticker": "QBTS",
       "date": "2026-05-07",
       "days_away": 66,
-      "eps_est": 3.7
+      "eps_est": null
     },
     {
       "ticker": "CRSP",
@@ -1131,9 +1131,9 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.567,
-      "ten_year": 4.002,
-      "spread": 0.435,
+      "two_year": 3.621,
+      "ten_year": 4.048,
+      "spread": 0.427,
       "date": "2026-03-02",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -1143,9 +1143,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.002,
+      "current": 4.048,
       "prev": 4.033,
-      "change_bps": -3.1,
+      "change_bps": 1.5,
       "date": "2026-03-02",
       "assessment": "Stable \u2014 neutral"
     },
@@ -1159,9 +1159,9 @@
   "priceRefreshedAt": "2026-03-02T20:00:12.342156Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.002,
-    "two_year": 3.567,
-    "yield_spread": 0.435,
+    "ten_year": 4.048,
+    "two_year": 3.621,
+    "yield_spread": 0.427,
     "inverted": false
   }
 }
