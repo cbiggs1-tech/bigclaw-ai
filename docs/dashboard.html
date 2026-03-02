@@ -588,16 +588,16 @@
         ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
 
         /* ── Ticker Search ── */
-        .ticker-search { display: flex; align-items: center; gap: 0.3rem; }
+        .ticker-search { display: flex; align-items: center; gap: 0.4rem; margin-left: auto; }
         .ticker-search input {
             background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px;
-            color: var(--text-primary); padding: 0.35rem 0.6rem; font-size: 0.8rem; width: 130px;
+            color: var(--text-primary); padding: 0.45rem 0.75rem; font-size: 0.85rem; width: 160px;
             font-family: inherit; outline: none; transition: border-color 0.2s;
         }
         .ticker-search input:focus { border-color: var(--gold); }
         .ticker-search input::placeholder { color: var(--text-muted); }
         .ticker-search button {
-            background: none; border: none; cursor: pointer; font-size: 0.85rem; padding: 0.3rem;
+            background: none; border: none; cursor: pointer; font-size: 1rem; padding: 0.3rem;
             color: var(--text-secondary); transition: color 0.2s;
         }
         .ticker-search button:hover { color: var(--gold); }
@@ -623,7 +623,7 @@
         .quote-overlay-body { flex: 1; overflow: hidden; }
         @media (max-width: 600px) {
             .quote-overlay { width: calc(100vw - 20px); right: 10px; height: 360px; }
-            .ticker-search input { width: 90px; font-size: 0.75rem; }
+            .ticker-search input { width: 110px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -645,10 +645,6 @@
                 <a href="chart-detail.html">Charts</a>
                 <a href="sources.html">Sources</a>
             </div>
-        </div>
-        <div class="ticker-search">
-            <input type="text" id="ticker-input" placeholder="Ticker lookup…" spellcheck="false" autocomplete="off">
-            <button id="ticker-search-btn" title="Search">🔍</button>
         </div>
     </div>
 </nav>
@@ -727,6 +723,11 @@
         </div>
         <div class="market-sep"></div>
         <span class="risk-badge" id="riskBadge">--</span>
+        <div class="market-sep"></div>
+        <div class="ticker-search">
+            <input type="text" id="ticker-input" placeholder="Ticker lookup…" spellcheck="false" autocomplete="off">
+            <button id="ticker-search-btn" title="Search">🔍</button>
+        </div>
     </div>
 </div>
 
