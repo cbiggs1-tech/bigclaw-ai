@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-03-02T21:31:22.064053Z",
+  "lastUpdate": "2026-03-03T14:03:00.589947Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -149,10 +149,10 @@
       "name": "AI Defense & Autonomous",
       "style": "AI Defense / Autonomous Systems",
       "totalValue": 107923.1,
-      "prevTotalValue": 103483.76,
+      "prevTotalValue": 103407.86,
       "startingCash": 100000.0,
       "totalReturn": 7.92,
-      "dailyReturn": 4.29,
+      "dailyReturn": 4.37,
       "createdAt": "2026-02-16",
       "purchaseStatus": "active",
       "holdings": [
