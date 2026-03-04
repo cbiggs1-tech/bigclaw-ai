@@ -4,23 +4,30 @@
       "name": "Trump Tariff Deadline",
       "date": "2026-03-04",
       "icon": "\ud83d\udea8",
-      "days_away": 1,
+      "days_away": 0,
       "category": "policy"
     },
     {
       "name": "Nonfarm Payrolls (Mar)",
       "date": "2026-03-06",
       "icon": "\ud83d\udcbc",
-      "days_away": 3,
+      "days_away": 2,
       "category": "macro"
     },
     {
       "name": "CPI Inflation Report (Mar)",
       "date": "2026-03-12",
       "icon": "\ud83d\udcc8",
-      "days_away": 9,
+      "days_away": 8,
       "category": "macro"
+    },
+    {
+      "name": "FOMC Rate Decision",
+      "date": "2026-03-18",
+      "icon": "\ud83c\udfe6",
+      "days_away": 14,
+      "category": "fed"
     }
   ],
-  "lastUpdate": "2026-03-03T21:32:43.561164Z"
+  "lastUpdate": "2026-03-04T14:03:50.095366Z"
 }
