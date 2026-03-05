@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-05T08:00:43.311825",
+  "timestamp": "2026-03-05T08:28:02.357776",
   "context": {
     "ticker": null,
     "sector": null,
@@ -7,9 +7,9 @@
   },
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.136,
-    "two_year": 3.732,
-    "yield_spread": 0.404,
+    "ten_year": 4.142,
+    "two_year": 3.736,
+    "yield_spread": 0.406,
     "inverted": false
   },
   "market": {
@@ -42,9 +42,9 @@
       "3mo": 4.14
     },
     "VIX": {
-      "level": 22.01,
+      "level": 22.46,
       "classification": "Elevated",
-      "1mo_change": 22.28
+      "1mo_change": 24.78
     }
   },
   "sectors": [
@@ -150,9 +150,9 @@
   ],
   "risk": {
     "vix": {
-      "level": 22.01,
+      "level": 22.46,
       "classification": "Elevated",
-      "1mo_change": 22.28
+      "1mo_change": 24.78
     },
     "Gold (GLD)": {
       "price": 471.8,
@@ -163,11 +163,11 @@
       "1mo": 1.56
     },
     "Bitcoin": {
-      "price": 72484.33,
-      "1mo": -4.16
+      "price": 72479.16,
+      "1mo": -4.17
     },
     "yield_curve": {
-      "spread": 0.728,
+      "spread": 0.73,
       "inverted": false
     }
   },
@@ -183,7 +183,7 @@
       "mom_change": 3.5
     },
     "fear_greed": {
-      "score": 37.4,
+      "score": 37.3,
       "rating": "fear",
       "previous": 37.2,
       "1w_ago": 42.2,
@@ -208,9 +208,9 @@
   },
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.732,
-      "ten_year": 4.136,
-      "spread": 0.404,
+      "two_year": 3.736,
+      "ten_year": 4.142,
+      "spread": 0.406,
       "date": "2026-03-05",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -220,9 +220,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.136,
+      "current": 4.142,
       "prev": 3.962,
-      "change_bps": 17.4,
+      "change_bps": 18.0,
       "date": "2026-03-05",
       "assessment": "Stable \u2014 neutral"
     },

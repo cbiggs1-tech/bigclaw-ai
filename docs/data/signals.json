@@ -711,12 +711,6 @@
   ],
   "earnings": [
     {
-      "ticker": "JPM",
-      "date": "2026-04-14",
-      "days_away": 40,
-      "eps_est": 5.5
-    },
-    {
       "ticker": "JNJ",
       "date": "2026-04-14",
       "days_away": 40,
@@ -727,6 +721,12 @@
       "date": "2026-04-14",
       "days_away": 40,
       "eps_est": 1.58
+    },
+    {
+      "ticker": "JPM",
+      "date": "2026-04-14",
+      "days_away": 40,
+      "eps_est": 5.5
     },
     {
       "ticker": "BAC",
@@ -741,12 +741,6 @@
       "eps_est": 6.88
     },
     {
-      "ticker": "TSLA",
-      "date": "2026-04-21",
-      "days_away": 47,
-      "eps_est": 0.4
-    },
-    {
       "ticker": "RTX",
       "date": "2026-04-21",
       "days_away": 47,
@@ -759,10 +753,16 @@
       "eps_est": 1.58
     },
     {
-      "ticker": "NOC",
+      "ticker": "TSLA",
       "date": "2026-04-21",
       "days_away": 47,
-      "eps_est": 6.01
+      "eps_est": 0.4
+    },
+    {
+      "ticker": "VZ",
+      "date": "2026-04-21",
+      "days_away": 47,
+      "eps_est": 1.21
     },
     {
       "ticker": "LMT",
@@ -771,10 +771,10 @@
       "eps_est": 6.82
     },
     {
-      "ticker": "VZ",
+      "ticker": "NOC",
       "date": "2026-04-21",
       "days_away": 47,
-      "eps_est": 1.21
+      "eps_est": 6.01
     },
     {
       "ticker": "TXT",
@@ -807,28 +807,28 @@
       "eps_est": 1.66
     },
     {
-      "ticker": "ED",
-      "date": "2026-04-30",
-      "days_away": 56,
-      "eps_est": 2.33
-    },
-    {
       "ticker": "LLY",
       "date": "2026-04-30",
       "days_away": 56,
       "eps_est": 7.25
     },
     {
-      "ticker": "LHX",
-      "date": "2026-04-30",
-      "days_away": 56,
-      "eps_est": 2.59
-    },
-    {
       "ticker": "AAPL",
       "date": "2026-04-30",
       "days_away": 56,
       "eps_est": 1.96
+    },
+    {
+      "ticker": "ED",
+      "date": "2026-04-30",
+      "days_away": 56,
+      "eps_est": 2.33
+    },
+    {
+      "ticker": "LHX",
+      "date": "2026-04-30",
+      "days_away": 56,
+      "eps_est": 2.59
     },
     {
       "ticker": "XOM",
@@ -843,10 +843,10 @@
       "eps_est": 5.41
     },
     {
-      "ticker": "BWXT",
+      "ticker": "O",
       "date": "2026-05-04",
       "days_away": 60,
-      "eps_est": 0.93
+      "eps_est": 0.41
     },
     {
       "ticker": "PLTR",
@@ -855,16 +855,10 @@
       "eps_est": 0.28
     },
     {
-      "ticker": "O",
+      "ticker": "BWXT",
       "date": "2026-05-04",
       "days_away": 60,
-      "eps_est": 0.41
-    },
-    {
-      "ticker": "CCJ",
-      "date": "2026-05-05",
-      "days_away": 61,
-      "eps_est": 0.36
+      "eps_est": 0.93
     },
     {
       "ticker": "ANET",
@@ -873,10 +867,10 @@
       "eps_est": 0.81
     },
     {
-      "ticker": "TLN",
-      "date": "2026-05-07",
-      "days_away": 63,
-      "eps_est": 3.7
+      "ticker": "CCJ",
+      "date": "2026-05-05",
+      "days_away": 61,
+      "eps_est": 0.36
     },
     {
       "ticker": "KTOS",
@@ -889,6 +883,12 @@
       "date": "2026-05-07",
       "days_away": 63,
       "eps_est": null
+    },
+    {
+      "ticker": "TLN",
+      "date": "2026-05-07",
+      "days_away": 63,
+      "eps_est": 3.7
     },
     {
       "ticker": "CRSP",
@@ -1131,9 +1131,9 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.732,
-      "ten_year": 4.136,
-      "spread": 0.404,
+      "two_year": 3.736,
+      "ten_year": 4.142,
+      "spread": 0.406,
       "date": "2026-03-05",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -1143,9 +1143,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.136,
+      "current": 4.142,
       "prev": 3.962,
-      "change_bps": 17.4,
+      "change_bps": 18.0,
       "date": "2026-03-05",
       "assessment": "Stable \u2014 neutral"
     },
@@ -1159,9 +1159,9 @@
   "priceRefreshedAt": "2026-03-05T14:04:47.230552Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.136,
-    "two_year": 3.732,
-    "yield_spread": 0.404,
+    "ten_year": 4.142,
+    "two_year": 3.736,
+    "yield_spread": 0.406,
     "inverted": false
   }
 }
