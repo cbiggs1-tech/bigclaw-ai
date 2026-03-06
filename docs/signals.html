@@ -134,7 +134,11 @@
             padding: 0.6rem 0; border-bottom: 1px solid var(--border-subtle);
         }
         .ticker-row:last-child { border-bottom: none; }
-        .ticker-symbol { font-weight: 700; font-size: 0.85rem; min-width: 55px; }
+        .ticker-symbol {
+            font-weight: 700; font-size: 0.85rem; min-width: 55px;
+            color: var(--gold); text-decoration: none; cursor: pointer;
+        }
+        .ticker-symbol:hover { text-decoration: underline; color: var(--text-primary); }
         .ticker-score { font-weight: 700; font-size: 0.85rem; min-width: 40px; text-align: center; }
         .ticker-label { font-size: 0.72rem; font-weight: 600; min-width: 90px; }
         .ticker-price { font-size: 0.78rem; color: var(--text-secondary); min-width: 65px; text-align: right; }
@@ -360,7 +364,12 @@
 
             items.forEach(s => {
                 const row = el('div', 'ticker-row');
-                const sym = el('span', 'ticker-symbol', s.ticker);
+                const sym = document.createElement('a');
+                sym.className = 'ticker-symbol';
+                sym.textContent = s.ticker;
+                sym.href = 'ticker.html?ticker=' + encodeURIComponent(s.ticker) + '&from=signals';
+                sym.title = 'View ' + s.ticker + ' charts';
+                sym.addEventListener('click', function(e) { e.stopPropagation(); });
                 const sc = el('span', 'ticker-score signal-' + scoreClass(s.score),
                     (s.score >= 0 ? '+' : '') + s.score);
                 const badge = el('span', 'badge badge-' + scoreClass(s.score), s.label || scoreEmoji(s.score));

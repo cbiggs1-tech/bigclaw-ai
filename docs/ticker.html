@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigClaw AI - Ticker Chart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="bigclaw-icon.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #161b28;
+            --bg-card-hover: #1c2333;
+            --bg-elevated: #1e2536;
+            --border-color: #1e2a3a;
+            --border-subtle: #151d2b;
+            --text-primary: #e8edf5;
+            --text-secondary: #8b95a8;
+            --text-muted: #505a6e;
+            --gain: #00c48c;
+            --gain-bg: rgba(0, 196, 140, 0.08);
+            --loss: #ff4757;
+            --loss-bg: rgba(255, 71, 87, 0.08);
+            --gold: #f0b90b;
+            --gold-dim: #c49a09;
+            --accent: #3b82f6;
+            --accent-dim: #2563eb;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .topbar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 200;
+        }
+        .topbar-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.5rem; height: 48px;
+        }
+        .topbar-left { display: flex; align-items: center; gap: 1.5rem; }
+        .brand {
+            display: flex; align-items: center; gap: 0.5rem;
+            text-decoration: none; color: var(--text-primary); font-weight: 700; font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .brand-name {
+            background: linear-gradient(135deg, var(--gold) 0%, #f59e0b 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .nav-links { display: flex; gap: 0; height: 48px; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.8rem; font-weight: 500;
+            padding: 0 0.85rem; display: flex; align-items: center; height: 100%;
+            border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary); border-bottom-color: var(--gold);
+        }
+        @media (max-width: 600px) {
+            .topbar-inner { padding: 0 0.75rem; }
+            .nav-links a { padding: 0 0.5rem; font-size: 0.72rem; }
+            .brand-name { display: none; }
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 1.25rem;
+        }
+
+        /* Header */
+        .ticker-header {
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;
+        }
+        .ticker-info { display: flex; align-items: baseline; gap: 0.75rem; }
+        .ticker-symbol-lg { font-size: 1.5rem; font-weight: 800; color: var(--gold); }
+        .ticker-price { font-size: 1.1rem; font-weight: 600; }
+        .ticker-change { font-size: 0.85rem; font-weight: 600; }
+        .ticker-change.up { color: var(--gain); }
+        .ticker-change.down { color: var(--loss); }
+        .back-link {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.8rem;
+            transition: color 0.15s;
+        }
+        .back-link:hover { color: var(--text-primary); }
+
+        /* Controls */
+        .controls { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .tab-group { display: flex; gap: 0; border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; }
+        .tab-btn {
+            background: transparent; border: none; color: var(--text-secondary);
+            padding: 0.4rem 0.85rem; font-size: 0.75rem; font-weight: 600; cursor: pointer;
+            font-family: inherit; transition: all 0.15s;
+        }
+        .tab-btn:hover { color: var(--text-primary); background: var(--bg-elevated); }
+        .tab-btn.active { color: var(--gold); background: var(--bg-elevated); }
+        .tab-btn + .tab-btn { border-left: 1px solid var(--border-color); }
+
+        /* Chart area */
+        .chart-card { margin-bottom: 1rem; min-height: 420px; }
+        #chartContainer { width: 100%; min-height: 400px; }
+
+        /* Signal context */
+        .signal-card { margin-bottom: 1rem; }
+        .signal-badge {
+            display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px;
+            font-size: 0.75rem; font-weight: 700;
+        }
+        .signal-badge.buy { background: var(--gain-bg); color: var(--gain); border: 1px solid rgba(0,196,140,0.3); }
+        .signal-badge.sell { background: var(--loss-bg); color: var(--loss); border: 1px solid rgba(255,71,87,0.3); }
+        .signal-badge.hold { background: rgba(245,158,11,0.08); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+        .signal-reasons {
+            margin-top: 0.5rem; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.8;
+        }
+        .signal-reasons li { list-style: none; }
+        .signal-reasons li::before { content: "  "; }
+
+        /* Loading / error */
+        .status-msg { text-align: center; padding: 4rem 1rem; color: var(--text-muted); font-size: 0.9rem; }
+        .status-msg.error { color: var(--loss); }
+
+        /* MC info */
+        .mc-info { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center; }
+
+        @media (max-width: 600px) {
+            .ticker-header { flex-direction: column; align-items: flex-start; }
+            .controls { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="topbar">
+    <div class="topbar-inner">
+        <div class="topbar-left">
+            <a href="index.html" class="brand">
+                <img src="bigclaw-icon.jpg" alt="BigClaw" style="height:24px;vertical-align:middle;border-radius:50%;">
+                <span class="brand-name">BigClaw</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="signals.html">Signals</a>
+                <a href="portfolio.html">Portfolios</a>
+                <a href="chart-detail.html">Charts</a>
+                <a href="sources.html">Sources</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="ticker-header">
+        <div class="ticker-info">
+            <span class="ticker-symbol-lg" id="tickerSymbol">---</span>
+            <span class="ticker-price" id="tickerPrice"></span>
+            <span class="ticker-change" id="tickerChange"></span>
+        </div>
+        <a href="signals.html" class="back-link" id="backLink">&larr; Back to Signals</a>
+    </div>
+
+    <div class="controls">
+        <div class="tab-group" id="chartTabs">
+            <button class="tab-btn active" data-chart="candlestick">Candlestick</button>
+            <button class="tab-btn" data-chart="macd">MACD</button>
+            <button class="tab-btn" data-chart="rsi">RSI</button>
+            <button class="tab-btn" data-chart="montecarlo">Monte Carlo</button>
+        </div>
+        <div class="tab-group" id="periodTabs">
+            <button class="tab-btn" data-period="1mo">1M</button>
+            <button class="tab-btn" data-period="3mo">3M</button>
+            <button class="tab-btn active" data-period="6mo">6M</button>
+            <button class="tab-btn" data-period="1y">1Y</button>
+        </div>
+    </div>
+
+    <div class="card chart-card">
+        <div id="chartLoading" class="status-msg">Loading chart data...</div>
+        <div id="chartError" class="status-msg error" style="display:none;"></div>
+        <div id="chartContainer" style="display:none;"></div>
+        <div id="mcInfo" class="mc-info" style="display:none;"></div>
+    </div>
+
+    <div class="card signal-card" id="signalCard" style="display:none;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;">Signal</span>
+            <span class="signal-badge" id="signalBadge"></span>
+            <span style="font-size:0.8rem;color:var(--text-muted);" id="signalScore"></span>
+        </div>
+        <ul class="signal-reasons" id="signalReasons"></ul>
+    </div>
+</div>
+
+<script>
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const ticker = (params.get('ticker') || '').toUpperCase();
+    const fromPage = params.get('from') || 'signals';
+    let period = params.get('period') || '6mo';
+    let chartType = 'candlestick';
+    let chartData = null;
+    let currentChart = null;
+
+    if (!ticker) {
+        document.getElementById('chartLoading').style.display = 'none';
+        document.getElementById('chartError').style.display = 'block';
+        document.getElementById('chartError').textContent = 'No ticker specified. Use ?ticker=TSLA';
+        return;
+    }
+
+    // Set page title and header
+    document.title = `BigClaw AI - ${ticker}`;
+    document.getElementById('tickerSymbol').textContent = ticker;
+
+    // Back link
+    const backMap = {
+        portfolio: { href: 'portfolio.html', text: '\u2190 Back to Portfolios' },
+        signals:   { href: 'signals.html',   text: '\u2190 Back to Signals' },
+        dashboard: { href: 'dashboard.html', text: '\u2190 Back to Dashboard' }
+    };
+    const back = backMap[fromPage] || backMap.signals;
+    document.getElementById('backLink').href = back.href;
+    document.getElementById('backLink').textContent = back.text;
+
+    // Tab click handlers
+    document.getElementById('chartTabs').addEventListener('click', function(e) {
+        const btn = e.target.closest('.tab-btn');
+        if (!btn) return;
+        chartType = btn.dataset.chart;
+        this.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Show/hide period tabs (MC doesn't use periods)
+        document.getElementById('periodTabs').style.display = chartType === 'montecarlo' ? 'none' : 'flex';
+        renderChart();
+    });
+
+    document.getElementById('periodTabs').addEventListener('click', function(e) {
+        const btn = e.target.closest('.tab-btn');
+        if (!btn) return;
+        period = btn.dataset.period;
+        this.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderChart();
+    });
+
+    // Fetch chart data + signals in parallel
+    Promise.allSettled([
+        fetch('data/charts/' + ticker + '.json').then(r => r.ok ? r.json() : Promise.reject(r.status)),
+        fetch('data/signals.json').then(r => r.ok ? r.json() : null)
+    ]).then(function(results) {
+        document.getElementById('chartLoading').style.display = 'none';
+
+        if (results[0].status === 'rejected') {
+            document.getElementById('chartError').style.display = 'block';
+            document.getElementById('chartError').textContent =
+                'Chart data not available for ' + ticker + '. Data refreshes every 2 hours during market hours.';
+            return;
+        }
+
+        chartData = results[0].value;
+
+        // Set price info from last OHLCV
+        if (chartData.ohlcv && chartData.ohlcv.length > 0) {
+            var last = chartData.ohlcv[chartData.ohlcv.length - 1];
+            var prev = chartData.ohlcv.length > 1 ? chartData.ohlcv[chartData.ohlcv.length - 2] : last;
+            var price = last.c;
+            var change = price - prev.c;
+            var changePct = (change / prev.c) * 100;
+            document.getElementById('tickerPrice').textContent = '$' + price.toFixed(2);
+            var changeEl = document.getElementById('tickerChange');
+            changeEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + ' (' + (change >= 0 ? '+' : '') + changePct.toFixed(2) + '%)';
+            changeEl.className = 'ticker-change ' + (change >= 0 ? 'up' : 'down');
+        }
+
+        document.getElementById('chartContainer').style.display = 'block';
+        renderChart();
+
+        // Signal context
+        if (results[1].status === 'fulfilled' && results[1].value) {
+            var signals = results[1].value.signals || [];
+            var sig = signals.find(function(s) { return s.ticker === ticker; });
+            if (sig) {
+                var card = document.getElementById('signalCard');
+                card.style.display = 'block';
+                var badge = document.getElementById('signalBadge');
+                badge.textContent = sig.label || '';
+                badge.className = 'signal-badge ' + (sig.score >= 3 ? 'buy' : sig.score <= -3 ? 'sell' : 'hold');
+                document.getElementById('signalScore').textContent = 'Score: ' + (sig.score >= 0 ? '+' : '') + sig.score;
+                var reasonsList = document.getElementById('signalReasons');
+                reasonsList.innerHTML = '';
+                (sig.reasons || []).forEach(function(r) {
+                    var li = document.createElement('li');
+                    li.textContent = r;
+                    reasonsList.appendChild(li);
+                });
+            }
+        }
+    });
+
+    function periodCutoff(p) {
+        var d = new Date();
+        switch(p) {
+            case '1mo': d.setMonth(d.getMonth() - 1); break;
+            case '3mo': d.setMonth(d.getMonth() - 3); break;
+            case '6mo': d.setMonth(d.getMonth() - 6); break;
+            case '1y':  d.setFullYear(d.getFullYear() - 1); break;
+        }
+        return d;
+    }
+
+    function filterByPeriod(dates, values, p) {
+        var cutoff = periodCutoff(p);
+        var filtered = [];
+        for (var i = 0; i < dates.length; i++) {
+            if (new Date(dates[i]) >= cutoff) {
+                filtered.push({ date: dates[i], value: values[i] });
+            }
+        }
+        return filtered;
+    }
+
+    function renderChart() {
+        if (!chartData) return;
+
+        // Destroy previous chart
+        if (currentChart) {
+            currentChart.destroy();
+            currentChart = null;
+        }
+
+        document.getElementById('mcInfo').style.display = 'none';
+
+        var container = document.getElementById('chartContainer');
+        container.innerHTML = '';
+
+        switch(chartType) {
+            case 'candlestick': renderCandlestick(); break;
+            case 'macd': renderMACD(); break;
+            case 'rsi': renderRSI(); break;
+            case 'montecarlo': renderMonteCarlo(); break;
+        }
+    }
+
+    var THEME = {
+        chart: { background: 'transparent', foreColor: '#8b95a8' },
+        grid: { borderColor: '#1e2a3a', strokeDashArray: 2 },
+        tooltip: { theme: 'dark' },
+        xaxis: {
+            type: 'datetime',
+            labels: { style: { colors: '#8b95a8', fontSize: '10px' } },
+            axisBorder: { color: '#1e2a3a' },
+            axisTicks: { color: '#1e2a3a' }
+        }
+    };
+
+    function renderCandlestick() {
+        var cutoff = periodCutoff(period);
+        var ohlcv = chartData.ohlcv.filter(function(d) { return new Date(d.t) >= cutoff; });
+
+        var candleData = ohlcv.map(function(d) {
+            return { x: new Date(d.t).getTime(), y: [d.o, d.h, d.l, d.c] };
+        });
+        var volData = ohlcv.map(function(d) {
+            return { x: new Date(d.t).getTime(), y: d.v, fillColor: d.c >= d.o ? '#00c48c44' : '#ff475744' };
+        });
+
+        currentChart = new ApexCharts(document.getElementById('chartContainer'), {
+            chart: {
+                type: 'candlestick', height: 400, background: 'transparent',
+                foreColor: '#8b95a8',
+                toolbar: { show: true, tools: { download: false } }
+            },
+            series: [
+                { name: 'Price', type: 'candlestick', data: candleData },
+                { name: 'Volume', type: 'bar', data: volData }
+            ],
+            plotOptions: {
+                candlestick: { colors: { upward: '#00c48c', downward: '#ff4757' } },
+                bar: { columnWidth: '60%' }
+            },
+            grid: THEME.grid,
+            xaxis: THEME.xaxis,
+            yaxis: [
+                { labels: { style: { colors: '#8b95a8' }, formatter: function(v) { return '$' + v.toFixed(0); } }, tooltip: { enabled: true } },
+                { opposite: true, labels: { show: false }, max: function(max) { return max * 4; } }
+            ],
+            tooltip: { theme: 'dark' },
+            title: { text: ticker + ' Price', style: { color: '#e8edf5', fontSize: '14px' } }
+        });
+        currentChart.render();
+    }
+
+    function renderMACD() {
+        var macd = chartData.macd;
+        var cutoff = periodCutoff(period);
+        var indices = [];
+        for (var i = 0; i < macd.dates.length; i++) {
+            if (new Date(macd.dates[i]) >= cutoff && macd.macd[i] !== null) indices.push(i);
+        }
+
+        var macdLine = indices.map(function(i) { return { x: new Date(macd.dates[i]).getTime(), y: parseFloat(macd.macd[i].toFixed(4)) }; });
+        var signalLine = indices.map(function(i) { return { x: new Date(macd.dates[i]).getTime(), y: parseFloat(macd.signal[i].toFixed(4)) }; });
+        var histData = indices.map(function(i) {
+            return { x: new Date(macd.dates[i]).getTime(), y: parseFloat(macd.histogram[i].toFixed(4)) };
+        });
+        var histColors = indices.map(function(i) { return macd.histogram[i] >= 0 ? '#00c48c' : '#ff4757'; });
+
+        currentChart = new ApexCharts(document.getElementById('chartContainer'), {
+            chart: { type: 'line', height: 400, background: 'transparent', foreColor: '#8b95a8',
+                     toolbar: { show: true, tools: { download: false } } },
+            series: [
+                { name: 'MACD', type: 'line', data: macdLine },
+                { name: 'Signal', type: 'line', data: signalLine },
+                { name: 'Histogram', type: 'bar', data: histData }
+            ],
+            colors: ['#3b82f6', '#f59e0b', '#00c48c'],
+            stroke: { width: [2, 2, 0] },
+            plotOptions: { bar: { columnWidth: '60%', colors: { ranges: [
+                { from: -999, to: 0, color: '#ff4757' },
+                { from: 0, to: 999, color: '#00c48c' }
+            ]}}},
+            grid: THEME.grid,
+            xaxis: THEME.xaxis,
+            yaxis: { labels: { style: { colors: '#8b95a8' }, formatter: function(v) { return v.toFixed(2); } } },
+            annotations: { yaxis: [{ y: 0, borderColor: '#505a6e', strokeDashArray: 4 }] },
+            tooltip: { theme: 'dark' },
+            title: { text: ticker + ' MACD (12, 26, 9)', style: { color: '#e8edf5', fontSize: '14px' } },
+            legend: { labels: { colors: '#8b95a8' } }
+        });
+        currentChart.render();
+    }
+
+    function renderRSI() {
+        var rsi = chartData.rsi;
+        var cutoff = periodCutoff(period);
+        var data = [];
+        for (var i = 0; i < rsi.dates.length; i++) {
+            if (new Date(rsi.dates[i]) >= cutoff && rsi.values[i] !== null) {
+                data.push({ x: new Date(rsi.dates[i]).getTime(), y: rsi.values[i] });
+            }
+        }
+
+        currentChart = new ApexCharts(document.getElementById('chartContainer'), {
+            chart: { type: 'line', height: 400, background: 'transparent', foreColor: '#8b95a8',
+                     toolbar: { show: true, tools: { download: false } } },
+            series: [{ name: 'RSI', data: data }],
+            colors: ['#3b82f6'],
+            stroke: { width: 2 },
+            grid: THEME.grid,
+            xaxis: THEME.xaxis,
+            yaxis: {
+                min: 0, max: 100, tickAmount: 5,
+                labels: { style: { colors: '#8b95a8' } }
+            },
+            annotations: {
+                yaxis: [
+                    { y: 70, borderColor: '#ff4757', strokeDashArray: 4, label: { text: 'Overbought (70)', style: { color: '#ff4757', background: 'transparent', fontSize: '10px' }, position: 'front' } },
+                    { y: 30, borderColor: '#00c48c', strokeDashArray: 4, label: { text: 'Oversold (30)', style: { color: '#00c48c', background: 'transparent', fontSize: '10px' }, position: 'front' } }
+                ]
+            },
+            fill: {
+                type: 'gradient',
+                gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.1, stops: [0, 100] }
+            },
+            tooltip: { theme: 'dark' },
+            title: { text: ticker + ' RSI (14)', style: { color: '#e8edf5', fontSize: '14px' } }
+        });
+        currentChart.render();
+    }
+
+    function renderMonteCarlo() {
+        var mc = chartData.montecarlo;
+        if (!mc) {
+            document.getElementById('chartContainer').innerHTML = '<div class="status-msg">Monte Carlo data not available.</div>';
+            return;
+        }
+
+        var days = [];
+        for (var i = 0; i < mc.days; i++) days.push(i + 1);
+
+        currentChart = new ApexCharts(document.getElementById('chartContainer'), {
+            chart: { type: 'area', height: 400, background: 'transparent', foreColor: '#8b95a8',
+                     toolbar: { show: true, tools: { download: false } } },
+            series: [
+                { name: '95th %ile', data: mc.p95 },
+                { name: '75th %ile', data: mc.p75 },
+                { name: 'Median',    data: mc.p50 },
+                { name: '25th %ile', data: mc.p25 },
+                { name: '5th %ile',  data: mc.p5 }
+            ],
+            colors: ['#ff475744', '#f59e0b66', '#3b82f6', '#f59e0b66', '#ff475744'],
+            stroke: { width: [1, 1, 2.5, 1, 1], dashArray: [4, 4, 0, 4, 4] },
+            fill: { type: 'solid', opacity: [0.05, 0.08, 0, 0.08, 0.05] },
+            grid: THEME.grid,
+            xaxis: {
+                type: 'numeric',
+                title: { text: 'Trading Days Forward', style: { color: '#8b95a8' } },
+                labels: { style: { colors: '#8b95a8', fontSize: '10px' } }
+            },
+            yaxis: {
+                labels: {
+                    style: { colors: '#8b95a8' },
+                    formatter: function(v) { return '$' + v.toFixed(0); }
+                }
+            },
+            annotations: {
+                yaxis: [{ y: mc.currentPrice, borderColor: '#f0b90b', strokeDashArray: 4,
+                    label: { text: 'Current $' + mc.currentPrice.toFixed(2), style: { color: '#f0b90b', background: 'transparent', fontSize: '10px' } }
+                }]
+            },
+            tooltip: {
+                theme: 'dark',
+                y: { formatter: function(v) { return '$' + v.toFixed(2); } }
+            },
+            title: { text: ticker + ' Monte Carlo Simulation', style: { color: '#e8edf5', fontSize: '14px' } },
+            legend: { labels: { colors: '#8b95a8' }, position: 'top' }
+        });
+        currentChart.render();
+
+        var info = document.getElementById('mcInfo');
+        info.style.display = 'block';
+        var endMedian = mc.p50[mc.p50.length - 1];
+        var endP5 = mc.p5[mc.p5.length - 1];
+        var endP95 = mc.p95[mc.p95.length - 1];
+        info.textContent = mc.simulations + ' simulations, ' + mc.days + ' trading days forward | '
+            + 'Median: $' + endMedian.toFixed(2) + ' | '
+            + '90% range: $' + endP5.toFixed(2) + ' - $' + endP95.toFixed(2);
+    }
+})();
+</script>
+
+</body>
+</html>

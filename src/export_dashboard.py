@@ -791,6 +791,14 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
         # Generate performance chart
         generate_performance_chart()
 
+        # Generate per-ticker chart data (OHLCV, MACD, RSI, Monte Carlo)
+        try:
+            from export_charts import run as export_chart_data
+            export_chart_data()
+            logger.info("Chart data export complete")
+        except Exception as e:
+            logger.warning(f"Chart data export failed (non-fatal): {e}")
+
         # Push to GitHub
         success = push_to_github()
 

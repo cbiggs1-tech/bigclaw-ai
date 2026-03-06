@@ -131,6 +131,8 @@
         tr:last-child td { border-bottom: none; }
         tr:hover { background: var(--bg-card-hover); }
         .ticker-cell { font-weight: 700; color: var(--gold); }
+        .ticker-link { color: var(--gold); text-decoration: none; }
+        .ticker-link:hover { text-decoration: underline; color: var(--text-primary); }
         .gain { color: var(--gain); }
         .loss { color: var(--loss); }
         .right { text-align: right; }
@@ -333,7 +335,7 @@ fetch('data/portfolios.json')
             const weight = (h.value / totalValue * 100).toFixed(1);
             const pnlClass = h.pnl >= 0 ? 'gain' : 'loss';
             html += `<tr>
-                <td class="ticker-cell">${h.ticker}</td>
+                <td class="ticker-cell"><a href="ticker.html?ticker=${encodeURIComponent(h.ticker)}&from=portfolio" class="ticker-link">${h.ticker}</a></td>
                 <td>${h.shares % 1 === 0 ? h.shares : h.shares.toFixed(2)}</td>
                 <td class="right">$${fmtPrice(h.avgCost)}</td>
                 <td class="right">$${fmtPrice(h.currentPrice)}</td>
@@ -351,7 +353,7 @@ fetch('data/portfolios.json')
             const weight = (h.value / totalValue * 100).toFixed(1);
             const pnlClass = h.pnl >= 0 ? 'gain' : 'loss';
             html += `<div class="holding-card">
-                <div class="holding-ticker">${h.ticker}</div>
+                <div class="holding-ticker"><a href="ticker.html?ticker=${encodeURIComponent(h.ticker)}&from=portfolio" class="ticker-link">${h.ticker}</a></div>
                 <div class="holding-company">${TICKER_NAMES[h.ticker] || ''}</div>
                 <div class="holding-price">$${fmtPrice(h.currentPrice)}</div>
                 <div class="holding-detail">${h.shares % 1 === 0 ? h.shares : h.shares.toFixed(2)} shares · ${weight}% weight</div>
