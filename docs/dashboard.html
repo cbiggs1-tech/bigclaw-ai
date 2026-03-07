@@ -309,6 +309,7 @@
             color: var(--gold);
             min-width: 55px;
         }
+        a.signal-ticker:hover { text-decoration: underline; }
         .signal-score {
             font-weight: 700;
             min-width: 35px;
@@ -909,7 +910,7 @@ function renderSignalsSection(data) {
             const reasons = Array.isArray(s.reasons) ? s.reasons.slice(0, 3).join(', ') : (s.reasons || '');
             const price = s.price ? '$' + fmtPrice(s.price) : '';
             html += `<div class="signal-row">
-                <span class="signal-ticker">${s.ticker}</span>
+                <a href="ticker.html?ticker=${encodeURIComponent(s.ticker)}&from=dashboard" class="signal-ticker" style="text-decoration:none;color:var(--gold)">${s.ticker}</a>
                 <span class="signal-score ${scoreClass}">${s.score > 0 ? '+' : ''}${s.score}</span>
                 <span class="signal-price">${price}</span>
                 <span class="signal-reasons">${reasons}</span>
