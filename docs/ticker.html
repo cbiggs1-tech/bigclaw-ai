@@ -458,7 +458,7 @@
                      toolbar: { show: true, tools: { download: false } } },
             series: [{ name: 'RSI', data: data }],
             colors: ['#ffffff'],
-            stroke: { width: 2.5 },
+            stroke: { width: 3, colors: ['#ffffff'] },
             grid: THEME.grid,
             xaxis: THEME.xaxis,
             yaxis: {
@@ -471,10 +471,7 @@
                     { y: 30, borderColor: '#00c48c', strokeDashArray: 4, label: { text: 'Oversold (30)', style: { color: '#00c48c', background: 'transparent', fontSize: '10px' }, position: 'front' } }
                 ]
             },
-            fill: {
-                type: 'gradient',
-                gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.1, stops: [0, 100] }
-            },
+            fill: { type: 'solid', opacity: 0 },
             tooltip: { theme: 'dark' },
             title: { text: ticker + ' RSI (14)', style: { color: '#e8edf5', fontSize: '14px' } }
         });
