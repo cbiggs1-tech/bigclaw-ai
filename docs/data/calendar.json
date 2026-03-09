@@ -1,26 +1,19 @@
 {
   "events": [
     {
-      "name": "Nonfarm Payrolls (Mar)",
-      "date": "2026-03-06",
-      "icon": "\ud83d\udcbc",
-      "days_away": 0,
-      "category": "macro"
-    },
-    {
       "name": "CPI Inflation Report (Mar)",
       "date": "2026-03-12",
       "icon": "\ud83d\udcc8",
-      "days_away": 6,
+      "days_away": 3,
       "category": "macro"
     },
     {
       "name": "FOMC Rate Decision",
       "date": "2026-03-18",
       "icon": "\ud83c\udfe6",
-      "days_away": 12,
+      "days_away": 9,
       "category": "fed"
     }
   ],
-  "lastUpdate": "2026-03-06T21:32:11.018524Z"
+  "lastUpdate": "2026-03-09T13:02:53.530437Z"
 }
