@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-03-09T20:30:39.279540Z",
+  "lastUpdate": "2026-03-10T13:03:01.012633Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -101,10 +101,10 @@
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
       "totalValue": 100934.32,
-      "prevTotalValue": 99239.7,
+      "prevTotalValue": 99198.81,
       "startingCash": 100000.0,
       "totalReturn": 0.93,
-      "dailyReturn": 1.71,
+      "dailyReturn": 1.75,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -328,10 +328,10 @@
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
       "totalValue": 97051.95,
-      "prevTotalValue": 96106.21,
+      "prevTotalValue": 96021.19,
       "startingCash": 100000.0,
       "totalReturn": -2.95,
-      "dailyReturn": 0.98,
+      "dailyReturn": 1.07,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
