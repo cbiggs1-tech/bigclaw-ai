@@ -16,7 +16,7 @@
         "outperforming XLK by 3.2%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 261.44
+      "price": 260.28
     },
     {
       "ticker": "ANET",
@@ -32,7 +32,7 @@
         "bond mkt +2 (wt 1.5x)",
         "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 140.42,
+      "price": 138.87,
       "value_override": {
         "total_score": 1,
         "base_score_before": 6,
@@ -56,7 +56,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 39 oversold)"
       ],
-      "price": 73.04,
+      "price": 72.98,
       "value_override": {
         "total_score": 1,
         "base_score_before": 0,
@@ -83,7 +83,7 @@
         "bond mkt +2 (wt 1.5x)",
         "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 342.21,
+      "price": 340.51,
       "value_override": {
         "total_score": 2,
         "base_score_before": 2,
@@ -111,7 +111,7 @@
         "\u26a1 VALUE OVERRIDE: +1 (16% below target)",
         "correlated with WFC (0.90)"
       ],
-      "price": 48.81,
+      "price": 48.28,
       "value_override": {
         "total_score": 1,
         "base_score_before": 1,
@@ -137,7 +137,7 @@
         "insider net selling (3B/12S)",
         "outperforming XLF by 6.0%"
       ],
-      "price": 495.7
+      "price": 490.92
     },
     {
       "ticker": "BWXT",
@@ -153,7 +153,7 @@
         "underperforming XLI by 11.1%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 197.76
+      "price": 195.21
     },
     {
       "ticker": "CCJ",
@@ -168,7 +168,7 @@
         "underperforming XLE by 14.1%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 120.44
+      "price": 114.75
     },
     {
       "ticker": "CRSP",
@@ -186,7 +186,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +2 (37% below target)"
       ],
-      "price": 51.96,
+      "price": 50.55,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3,
@@ -212,7 +212,7 @@
         "outperforming XLY by 17.6%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 105.58
+      "price": 102.56
     },
     {
       "ticker": "ED",
@@ -229,7 +229,7 @@
         "outperforming XLU by 4.2%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 112.06
+      "price": 111.85
     },
     {
       "ticker": "GD",
@@ -244,7 +244,7 @@
         "underperforming XLI by 10.4%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 356.62
+      "price": 353.6
     },
     {
       "ticker": "GE",
@@ -260,7 +260,7 @@
         "underperforming XLI by 6.5%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 329.0
+      "price": 323.57
     },
     {
       "ticker": "GEV",
@@ -275,7 +275,7 @@
         "outperforming XLI by 19.8%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 844.48
+      "price": 842.98
     },
     {
       "ticker": "JNJ",
@@ -291,7 +291,7 @@
         "outperforming XLV by 10.4%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 244.15
+      "price": 242.37
     },
     {
       "ticker": "JPM",
@@ -307,7 +307,7 @@
         "outperforming XLF by 2.8%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 289.77
+      "price": 286.26
     },
     {
       "ticker": "KO",
@@ -323,7 +323,7 @@
         "outperforming XLP by 3.0%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 78.08
+      "price": 77.42
     },
     {
       "ticker": "KTOS",
@@ -339,7 +339,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (24% below target)"
       ],
-      "price": 89.64,
+      "price": 88.67,
       "value_override": {
         "total_score": 1,
         "base_score_before": 1,
@@ -365,7 +365,7 @@
         "underperforming XLI by 3.6%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 363.18
+      "price": 364.75
     },
     {
       "ticker": "LLY",
@@ -380,7 +380,7 @@
         "insider net selling (0B/11S)",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 1004.88
+      "price": 996.48
     },
     {
       "ticker": "LMT",
@@ -397,7 +397,7 @@
         "outperforming XLI by 7.9%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 653.92
+      "price": 649.15
     },
     {
       "ticker": "MSFT",
@@ -413,7 +413,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +3 (33% below target, RSI 32 oversold)"
       ],
-      "price": 404.42,
+      "price": 404.45,
       "value_override": {
         "total_score": 3,
         "base_score_before": -3,
@@ -444,7 +444,7 @@
         "outperforming XLI by 2.3%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 736.27
+      "price": 735.44
     },
     {
       "ticker": "NVDA",
@@ -459,7 +459,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       ],
-      "price": 184.33,
+      "price": 185.6,
       "value_override": {
         "total_score": 2,
         "base_score_before": 2,
@@ -486,7 +486,7 @@
         "outperforming XLRE by 4.3%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 65.08
+      "price": 64.46
     },
     {
       "ticker": "PG",
@@ -502,7 +502,7 @@
         "outperforming XLP by 2.8%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 156.52
+      "price": 152.65
     },
     {
       "ticker": "PLTR",
@@ -518,7 +518,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +3 (31% below target, RSI 34 oversold)"
       ],
-      "price": 150.9,
+      "price": 151.39,
       "value_override": {
         "total_score": 3,
         "base_score_before": -1,
@@ -549,7 +549,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +2 (50% below target)"
       ],
-      "price": 18.82,
+      "price": 18.66,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3,
@@ -575,7 +575,7 @@
         "underperforming XLI by 4.9%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 207.32
+      "price": 207.35
     },
     {
       "ticker": "TLN",
@@ -592,7 +592,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (19% below target)"
       ],
-      "price": 339.13,
+      "price": 317.64,
       "value_override": {
         "total_score": 1,
         "base_score_before": 2,
@@ -618,7 +618,7 @@
         "insider net selling (1B/14S)",
         "bond mkt +2 (wt 1.25x)"
       ],
-      "price": 400.67
+      "price": 406.33
     },
     {
       "ticker": "TXT",
@@ -632,7 +632,7 @@
         "insider net selling (0B/7S)",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 92.93
+      "price": 93.13
     },
     {
       "ticker": "UNH",
@@ -649,7 +649,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 282.88,
+      "price": 285.15,
       "value_override": {
         "total_score": 1,
         "base_score_before": 0,
@@ -677,7 +677,7 @@
         "outperforming XLC by 25.9%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 50.7
+      "price": 50.42
     },
     {
       "ticker": "WFC",
@@ -691,7 +691,7 @@
         "outperforming XLF by 3.3%",
         "correlated with BAC (0.90)"
       ],
-      "price": 78.94
+      "price": 76.89
     },
     {
       "ticker": "XOM",
@@ -706,21 +706,21 @@
         "insider net selling (0B/6S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 148.38
+      "price": 151.59
     }
   ],
   "earnings": [
-    {
-      "ticker": "JNJ",
-      "date": "2026-04-14",
-      "days_away": 34,
-      "eps_est": 2.69
-    },
     {
       "ticker": "JPM",
       "date": "2026-04-14",
       "days_away": 34,
       "eps_est": 5.5
+    },
+    {
+      "ticker": "JNJ",
+      "date": "2026-04-14",
+      "days_away": 34,
+      "eps_est": 2.69
     },
     {
       "ticker": "BAC",
@@ -735,6 +735,30 @@
       "eps_est": 6.86
     },
     {
+      "ticker": "GE",
+      "date": "2026-04-21",
+      "days_away": 41,
+      "eps_est": 1.58
+    },
+    {
+      "ticker": "VZ",
+      "date": "2026-04-21",
+      "days_away": 41,
+      "eps_est": 1.21
+    },
+    {
+      "ticker": "RTX",
+      "date": "2026-04-21",
+      "days_away": 41,
+      "eps_est": 1.51
+    },
+    {
+      "ticker": "NOC",
+      "date": "2026-04-21",
+      "days_away": 41,
+      "eps_est": 6.01
+    },
+    {
       "ticker": "LMT",
       "date": "2026-04-21",
       "days_away": 41,
@@ -745,30 +769,6 @@
       "date": "2026-04-21",
       "days_away": 41,
       "eps_est": 0.4
-    },
-    {
-      "ticker": "GE",
-      "date": "2026-04-21",
-      "days_away": 41,
-      "eps_est": 1.58
-    },
-    {
-      "ticker": "NOC",
-      "date": "2026-04-21",
-      "days_away": 41,
-      "eps_est": 6.01
-    },
-    {
-      "ticker": "RTX",
-      "date": "2026-04-21",
-      "days_away": 41,
-      "eps_est": 1.51
-    },
-    {
-      "ticker": "VZ",
-      "date": "2026-04-21",
-      "days_away": 41,
-      "eps_est": 1.21
     },
     {
       "ticker": "TXT",
@@ -789,16 +789,22 @@
       "eps_est": 0.81
     },
     {
+      "ticker": "MSFT",
+      "date": "2026-04-29",
+      "days_away": 49,
+      "eps_est": 4.06
+    },
+    {
       "ticker": "GEV",
       "date": "2026-04-29",
       "days_away": 49,
       "eps_est": 1.66
     },
     {
-      "ticker": "MSFT",
-      "date": "2026-04-29",
-      "days_away": 49,
-      "eps_est": 4.06
+      "ticker": "LHX",
+      "date": "2026-04-30",
+      "days_away": 50,
+      "eps_est": 2.59
     },
     {
       "ticker": "AAPL",
@@ -811,12 +817,6 @@
       "date": "2026-04-30",
       "days_away": 50,
       "eps_est": 7.25
-    },
-    {
-      "ticker": "LHX",
-      "date": "2026-04-30",
-      "days_away": 50,
-      "eps_est": 2.59
     },
     {
       "ticker": "ED",
@@ -837,10 +837,10 @@
       "eps_est": 5.13
     },
     {
-      "ticker": "PLTR",
+      "ticker": "BWXT",
       "date": "2026-05-04",
       "days_away": 54,
-      "eps_est": 0.28
+      "eps_est": 0.93
     },
     {
       "ticker": "O",
@@ -849,10 +849,16 @@
       "eps_est": 0.4
     },
     {
-      "ticker": "BWXT",
+      "ticker": "PLTR",
       "date": "2026-05-04",
       "days_away": 54,
-      "eps_est": 0.93
+      "eps_est": 0.28
+    },
+    {
+      "ticker": "ANET",
+      "date": "2026-05-05",
+      "days_away": 55,
+      "eps_est": 0.81
     },
     {
       "ticker": "CCJ",
@@ -861,10 +867,10 @@
       "eps_est": 0.36
     },
     {
-      "ticker": "ANET",
-      "date": "2026-05-05",
-      "days_away": 55,
-      "eps_est": 0.81
+      "ticker": "KTOS",
+      "date": "2026-05-07",
+      "days_away": 57,
+      "eps_est": 0.13
     },
     {
       "ticker": "TLN",
@@ -877,12 +883,6 @@
       "date": "2026-05-07",
       "days_away": 57,
       "eps_est": null
-    },
-    {
-      "ticker": "KTOS",
-      "date": "2026-05-07",
-      "days_away": 57,
-      "eps_est": 0.13
     },
     {
       "ticker": "CRSP",
@@ -1131,9 +1131,9 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.766,
-      "ten_year": 4.189,
-      "spread": 0.423,
+      "two_year": 3.782,
+      "ten_year": 4.208,
+      "spread": 0.426,
       "date": "2026-03-11",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -1143,25 +1143,25 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.189,
+      "current": 4.208,
       "prev": 4.146,
-      "change_bps": 4.3,
+      "change_bps": 6.2,
       "date": "2026-03-11",
-      "assessment": "Stable \u2014 neutral"
+      "assessment": "Elevated \u2014 bearish"
     },
     "scores": {
       "yield_curve": 1,
       "credit_spreads": 1,
-      "ten_year_level": 0
+      "ten_year_level": -1
     },
-    "combined_score": 2
+    "combined_score": 1
   },
-  "priceRefreshedAt": "2026-03-10T19:00:18.463036Z",
+  "priceRefreshedAt": "2026-03-11T19:01:05.455807Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.189,
-    "two_year": 3.766,
-    "yield_spread": 0.423,
+    "ten_year": 4.208,
+    "two_year": 3.782,
+    "yield_spread": 0.426,
     "inverted": false
   }
 }
