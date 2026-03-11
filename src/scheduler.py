@@ -122,50 +122,60 @@ class TradingScheduler:
             logger.error(f"Dashboard export failed: {e}")
 
     def _generate_market_sentiment_report(self):
-        """Generate a comprehensive market sentiment report for the website."""
-        from agent import BigClawAgent
+        """Generate market sentiment report — data gathered directly, summarized with Gemini Flash.
 
-        logger.info("Generating market sentiment report")
+        Token optimization: No LLM tool-use loop. Tools are called as Python functions,
+        then raw data is sent to Gemini Flash (via OpenRouter) for cheap summarization.
+        """
+        from data_gather import gather_market_sentiment
+        from llm_router import summarize_with_flash
 
-        prompt = """Generate a comprehensive **Market Sentiment Report** for today.
+        logger.info("Generating market sentiment report (Gemini Flash)")
 
-You MUST gather data from these sources using the available tools:
+        # Step 1: Gather all data directly (no LLM needed)
+        raw_data = gather_market_sentiment(
+            tickers=["$SPY", "$AAPL", "$NVDA", "$TSLA"]
+        )
+        logger.info(f"Raw sentiment data gathered: {len(raw_data)} chars")
 
-1. **X/Twitter Sentiment** - Use get_x_sentiment for key tickers like $SPY, $AAPL, $NVDA, $TSLA to check real-time social sentiment
-2. **Institutional Sentiment (Motley Fool)** - Use get_motley_fool_news to see what the smart money is focused on
-3. **Retail Trader Sentiment (WSB/Reddit)** - Use get_wsb_trending and search_reddit_stocks to check retail mood
-4. **Macro Prediction Markets (Polymarket)** - Use get_polymarket_trending to see what traders are betting on
+        # Step 2: Summarize with Gemini Flash (cheap)
+        instruction = """Synthesize the raw market data below into a concise **Market Sentiment Report**.
 
-After gathering data from ALL FOUR sources, synthesize it into a report with this exact format:
+Use this exact format:
 
 # **Market Sentiment Report** - [Today's Date]
 
 Let me pinch together the current market vibes from across the trading ecosystem:
 
 ## 𝕏 X/Twitter Sentiment
-[Include bullish/bearish percentages for key tickers like $SPY, $AAPL, $NVDA, $TSLA]
+[Include bullish/bearish percentages for key tickers]
 
 ## 🏛️ Institutional Sentiment (Motley Fool)
-[Summarize key themes, stocks being discussed, bullish/bearish takes]
+[Summarize key themes, stocks being discussed]
 
 ## 🎰 Retail Trader Sentiment (WSB)
-[Summarize hot tickers, mood, key catalysts, meme potential]
+[Summarize hot tickers, mood, key catalysts]
 
 ## 🔮 Macro Prediction Markets (Polymarket)
-[Summarize what traders are betting on, any market-related predictions]
+[Summarize what traders are betting on]
 
 ## 🦀 BigClaw's Take
-[Your synthesis: overall market mood, what to watch, your signature crab wisdom]
+[Your synthesis: overall market mood, what to watch, crab wisdom]
 
 ---
-This is for educational purposes only, not financial advice. Markets can stay irrational longer than you can stay liquid.
+This is for educational purposes only, not financial advice.
 
-IMPORTANT: You MUST call the tools to get real data before writing the report. Do not make up information."""
+IMPORTANT: Only use data provided below. Do not make up information."""
 
-        agent = BigClawAgent(self.anthropic_client)
         try:
-            response = agent.run(prompt)
-            logger.info("Market sentiment report generated")
+            response = summarize_with_flash(raw_data, instruction, max_tokens=2048)
+
+            if response.startswith("ERROR:"):
+                logger.error(f"Gemini Flash failed: {response}")
+                # Fallback: return truncated raw data
+                response = f"# Market Sentiment Report - {datetime.now().strftime('%B %d, %Y')}\n\n{raw_data[:3000]}"
+
+            logger.info("Market sentiment report generated via Gemini Flash")
 
             # Save to analysis.json for the website
             save_analysis_report(response, "Market Overview")
@@ -335,13 +345,18 @@ IMPORTANT: You MUST call the tools to get real data before writing the report. D
     def _analyze_and_trade(self, portfolio) -> str:
         """Analyze market and execute trades for a portfolio.
 
+        Token optimization: Data is gathered directly via Python tool calls (free).
+        Only the trade DECISION uses Sonnet — a single API call with pre-gathered
+        data, no tool-use loop. Cuts ~90% of token usage per portfolio.
+
         Args:
             portfolio: Portfolio object to trade
 
         Returns:
             The agent's response describing actions taken
         """
-        from agent import BigClawAgent
+        from data_gather import gather_portfolio_data
+        from tools import TOOL_MAP
 
         logger.info(f"Analyzing portfolio: {portfolio.name} ({portfolio.investment_style})")
 
@@ -356,117 +371,102 @@ IMPORTANT: You MUST call the tools to get real data before writing the report. D
         else:
             holdings_str = "No current holdings"
 
-        # Build tickers list for sentiment analysis
         holding_tickers = [h['ticker'] for h in holdings] if holdings else []
 
         # Style-specific risk management guidance
         style_lower = portfolio.investment_style.lower()
         if "cathie" in style_lower or "ark" in style_lower or "wood" in style_lower:
             risk_guidance = """**Risk Management (Cathie Wood/ARK Style):**
-- DO NOT use stop losses - ARK holds through volatility on high-conviction disruptive innovation plays
-- Only exit positions when the investment thesis changes, NOT based on price action
-- Accept volatility as the price of innovation exposure
-- Use position sizing (not stops) for risk management - no single position > 10% of portfolio
-- Consider adding to positions on significant pullbacks if thesis remains intact
-- Focus on 5-year time horizons for disruptive technology themes"""
+- DO NOT use stop losses - ARK holds through volatility
+- Only exit when investment thesis changes, NOT based on price action
+- Use position sizing for risk management - no single position > 10%
+- Consider adding on significant pullbacks if thesis intact
+- 5-year time horizons for disruptive technology themes"""
         elif "buffett" in style_lower or "value" in style_lower:
             risk_guidance = """**Risk Management (Value/Buffett Style):**
-- Use wide stop losses (15-20% below cost) only as a safety net
-- Primary exit signal is thesis change, not price movement
-- Look for margin of safety in all positions
-- Consider using set_stop_loss for catastrophic protection only
-- Be patient - value takes time to be recognized by the market"""
+- Wide stop losses (15-20%) only as safety net
+- Primary exit signal is thesis change, not price
+- Look for margin of safety in all positions"""
         elif "momentum" in style_lower:
             risk_guidance = """**Risk Management (Momentum Style):**
-- Use tight stop losses (5-10% below entry)
+- Tight stop losses (5-10% below entry)
 - Cut losers quickly, let winners run
-- Use set_stop_loss on all new positions
-- Consider trailing stops to protect gains
 - Exit when momentum indicators turn negative"""
         else:
             risk_guidance = """**Risk Management:**
-- Consider appropriate stop losses based on position volatility
-- Use set_stop_loss for downside protection
-- Use set_limit_sell for profit targets"""
+- Appropriate stop losses based on volatility
+- set_stop_loss for downside protection
+- set_limit_sell for profit targets"""
 
-        # Build analysis prompt with sentiment tools
+        # Step 1: Gather all sentiment/quote data directly (NO LLM, NO TOKENS)
+        logger.info(f"Gathering data for {portfolio.name} (direct tool calls)...")
+        raw_data = gather_portfolio_data(portfolio, holding_tickers)
+        logger.info(f"Data gathered for {portfolio.name}: {len(raw_data)} chars")
+
+        # Step 2: Single Sonnet call for trade decision (no tool loop)
         analysis_prompt = f"""You are managing the "{portfolio.name}" portfolio with a {portfolio.investment_style} investment style.
 
 **Current Portfolio Status:**
-- Portfolio Name: {portfolio.name}
 - Cash Available: ${portfolio.current_cash:,.2f}
 - Starting Capital: ${portfolio.starting_cash:,.2f}
 
 **Current Holdings:**
 {holdings_str}
 
-**Your Analysis Process:**
-
-**Step 1 - X/Twitter Sentiment (CRITICAL - DO THIS FIRST):**
-X sentiment is the PRIMARY indicator for market mood. For EACH stock you're considering:
-- Use get_x_sentiment with the ticker (e.g., "$AAPL", "$NVDA", "$TSLA")
-- Check at least 3-4 key tickers relevant to this portfolio style
-- This data drives your trading decisions
-
-**Step 2 - Additional Sentiment Sources:**
-- Use get_stocktwits_sentiment for real-time trader sentiment
-- Use search_reddit_stocks to see retail investor discussion
-
-**Step 3 - Price Data:**
-- Use get_stock_quote for current prices on stocks you're considering
-
-**Step 4 - Make Trading Decisions:**
-Based primarily on X sentiment:
-- Strongly bullish X sentiment + solid fundamentals = consider buying
-- Strongly bearish X sentiment on a holding = consider reducing/selling
-- Mixed sentiment = hold current position
-- Aim for 2-3 positions to start if no holdings
-
-**Step 5 - EXECUTE Trades:**
-Use buy_stock or sell_stock to execute your decisions.
-
-**How to buy stocks:**
-Call buy_stock with these exact parameters:
-- portfolio_name: "{portfolio.name}"
-- ticker: the stock symbol (e.g., "AAPL")
-- amount: dollar amount to invest (e.g., 10000 for $10,000)
-
-Example: buy_stock(portfolio_name="{portfolio.name}", ticker="AAPL", amount=15000)
-
-**Guidelines for {portfolio.investment_style} style:**
-- Apply the principles of this investment philosophy
-- With ${portfolio.current_cash:,.0f} available, consider 3-5 positions of $15,000-$25,000 each
-- Diversify across different sectors
-- Include sentiment findings in your rationale for each trade
-
 {risk_guidance}
 
-**IMPORTANT:**
-- ALWAYS start with get_x_sentiment - this is your PRIMARY data source
-- Check X sentiment for at least 3-4 tickers before doing anything else
-- Include X sentiment percentages in your trading rationale
-- Execute buy_stock/sell_stock calls based on your analysis
-- Provide a clear summary of X sentiment findings in your response
+**MARKET DATA (pre-gathered):**
+{raw_data[:6000]}
+
+**YOUR TASK:**
+Based on the sentiment and price data above:
+1. Assess each holding's sentiment (bullish/bearish/mixed)
+2. Identify any new opportunities matching {portfolio.investment_style} style
+3. Make specific trade recommendations with rationale
+
+For each trade decision, output EXACTLY one line per trade in this format:
+TRADE: BUY <ticker> <dollar_amount>
+TRADE: SELL <ticker> <shares>
+
+After the trade lines, provide a brief summary of your reasoning.
+
+Guidelines:
+- With ${portfolio.current_cash:,.0f} available, consider positions of $15,000-$25,000
+- Include X sentiment percentages in your rationale
+- Only trade when sentiment strongly supports it
+- If no strong signals, output: TRADE: NONE
 
 Begin your analysis now."""
 
-        # Run the agent
-        agent = BigClawAgent(self.anthropic_client)
         try:
-            response = agent.run(analysis_prompt)
+            # Single Sonnet API call — no tool loop, no iterations
+            response = self.anthropic_client.messages.create(
+                model=self.model,
+                max_tokens=2048,
+                system="You are BigClaw AI, an autonomous trading assistant. Analyze the pre-gathered market data and make trading decisions. Be concise and decisive.",
+                messages=[{"role": "user", "content": analysis_prompt}]
+            )
+
+            # Extract text response
+            response_text = ""
+            for block in response.content:
+                if block.type == "text":
+                    response_text = block.text
+                    break
+
             logger.info(f"Trading analysis complete for {portfolio.name}")
-            logger.info(f"Response: {response[:500]}...")
+
+            # Step 3: Execute any trades from the response
+            self._execute_trades_from_response(portfolio, response_text)
 
             # Send summary to Slack if report channel is set
             if portfolio.report_channel:
                 self._send_message(
                     portfolio.report_channel,
-                    f"**🤖 Autonomous Trading: {portfolio.name}**\n\n{response[:2000]}"
+                    f"**🤖 Autonomous Trading: {portfolio.name}**\n\n{response_text[:2000]}"
                 )
-            # Note: Trading analysis goes to Slack/Discord only
-            # The website shows the market sentiment report (generated separately)
 
-            return response
+            return response_text
 
         except Exception as e:
             error_msg = f"Agent error for {portfolio.name}: {e}"
@@ -474,6 +474,57 @@ Begin your analysis now."""
             import traceback
             logger.error(traceback.format_exc())
             return f"Error during analysis: {str(e)}"
+
+    def _execute_trades_from_response(self, portfolio, response_text: str):
+        """Parse and execute TRADE: lines from Sonnet's response.
+
+        Args:
+            portfolio: Portfolio to execute trades on
+            response_text: Sonnet's response containing TRADE: lines
+        """
+        import re
+        from tools import TOOL_MAP
+
+        buy_tool = TOOL_MAP.get("buy_stock")
+        sell_tool = TOOL_MAP.get("sell_stock")
+
+        for line in response_text.split("\n"):
+            line = line.strip()
+            if not line.startswith("TRADE:"):
+                continue
+
+            parts = line.replace("TRADE:", "").strip().split()
+            if len(parts) < 2:
+                continue
+
+            action = parts[0].upper()
+            if action == "NONE":
+                logger.info(f"No trades for {portfolio.name}")
+                continue
+
+            ticker = parts[1].upper().replace("$", "")
+
+            try:
+                if action == "BUY" and len(parts) >= 3 and buy_tool:
+                    amount = float(parts[2].replace(",", "").replace("$", ""))
+                    result = buy_tool.execute(
+                        portfolio_name=portfolio.name,
+                        ticker=ticker,
+                        amount=amount
+                    )
+                    logger.info(f"Executed BUY {ticker} ${amount:,.0f}: {result[:200]}")
+
+                elif action == "SELL" and len(parts) >= 3 and sell_tool:
+                    shares = float(parts[2].replace(",", ""))
+                    result = sell_tool.execute(
+                        portfolio_name=portfolio.name,
+                        ticker=ticker,
+                        shares=shares
+                    )
+                    logger.info(f"Executed SELL {ticker} {shares} shares: {result[:200]}")
+
+            except Exception as e:
+                logger.error(f"Trade execution error ({action} {ticker}): {e}")
 
     def _send_daily_reports(self):
         """Send daily performance reports for all portfolios."""

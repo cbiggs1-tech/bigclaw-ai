@@ -358,7 +358,8 @@ class Portfolio:
                 "current_price": price,
                 "value": value,
                 "gain": gain,
-                "gain_pct": gain_pct
+                "gain_pct": gain_pct,
+                "first_bought_at": h.get("first_bought_at")
             })
 
         total_value = self.current_cash + holdings_value

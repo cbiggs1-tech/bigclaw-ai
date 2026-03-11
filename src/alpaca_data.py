@@ -45,11 +45,35 @@ def get_extended_hours_prices(tickers: list[str]) -> dict[str, dict]:
     Returns:
         Dict of ticker -> {price, pre_market, post_market, is_extended}
     """
-    client = get_alpaca_client()
-    if not client:
-        return {}
+    # BRK-B is not supported by Alpaca — fetch via yfinance and exclude from Alpaca request
+    YFINANCE_ONLY = {"BRK-B", "BRK/B"}
+    yf_tickers = [t for t in tickers if t in YFINANCE_ONLY]
+    alpaca_tickers = [t for t in tickers if t not in YFINANCE_ONLY]
 
     prices = {}
+
+    # Fetch yfinance-only tickers first
+    if yf_tickers:
+        try:
+            import yfinance as yf
+            for t in yf_tickers:
+                yf_symbol = "BRK-B" if t in ("BRK-B", "BRK/B") else t
+                stock = yf.Ticker(yf_symbol)
+                info = stock.fast_info
+                price = getattr(info, "last_price", None) or getattr(info, "regularMarketPrice", None)
+                if price:
+                    prices[t] = {"price": float(price), "is_extended": False}
+        except Exception as e:
+            logger.error(f"yfinance fallback error for {yf_tickers}: {e}")
+
+    if not alpaca_tickers:
+        return prices
+
+    client = get_alpaca_client()
+    if not client:
+        return prices
+
+    tickers = alpaca_tickers  # only pass supported tickers to Alpaca
 
     try:
         from alpaca.data.requests import StockLatestQuoteRequest, StockLatestTradeRequest
