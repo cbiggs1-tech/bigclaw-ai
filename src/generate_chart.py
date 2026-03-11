@@ -149,9 +149,13 @@ def generate_chart(daily_values):
 
     # Color palette
     colors = {
-        'Value Picks': '#4ade80',      # Green
-        'Innovation Fund': '#f87171',  # Red/coral
-        'Growth Value': '#60a5fa'      # Blue
+        'Value Picks': '#4ade80',              # Green
+        'Innovation Fund': '#f87171',          # Red/coral
+        'Growth Value': '#60a5fa',             # Blue
+        'Nuclear Renaissance': '#facc15',      # Yellow
+        'Income Dividends': '#c084fc',         # Purple
+        'Momentum Growth': '#fb923c',          # Orange
+        'AI Defense & Autonomous': '#22d3ee'   # Cyan
     }
 
     # Plot each portfolio
