@@ -711,207 +711,201 @@
   ],
   "earnings": [
     {
-      "ticker": "WFC",
+      "ticker": "JNJ",
       "date": "2026-04-14",
-      "days_away": 35,
-      "eps_est": 1.58
+      "days_away": 34,
+      "eps_est": 2.69
     },
     {
       "ticker": "JPM",
       "date": "2026-04-14",
-      "days_away": 35,
+      "days_away": 34,
       "eps_est": 5.5
-    },
-    {
-      "ticker": "JNJ",
-      "date": "2026-04-14",
-      "days_away": 35,
-      "eps_est": 2.69
     },
     {
       "ticker": "BAC",
       "date": "2026-04-15",
-      "days_away": 36,
-      "eps_est": 0.99
+      "days_away": 35,
+      "eps_est": 1.0
     },
     {
       "ticker": "UNH",
       "date": "2026-04-16",
-      "days_away": 37,
+      "days_away": 36,
       "eps_est": 6.86
-    },
-    {
-      "ticker": "TSLA",
-      "date": "2026-04-21",
-      "days_away": 42,
-      "eps_est": 0.4
     },
     {
       "ticker": "LMT",
       "date": "2026-04-21",
-      "days_away": 42,
+      "days_away": 41,
       "eps_est": 6.82
     },
     {
-      "ticker": "RTX",
+      "ticker": "TSLA",
       "date": "2026-04-21",
-      "days_away": 42,
-      "eps_est": 1.51
-    },
-    {
-      "ticker": "NOC",
-      "date": "2026-04-21",
-      "days_away": 42,
-      "eps_est": 6.01
-    },
-    {
-      "ticker": "VZ",
-      "date": "2026-04-21",
-      "days_away": 42,
-      "eps_est": 1.21
+      "days_away": 41,
+      "eps_est": 0.4
     },
     {
       "ticker": "GE",
       "date": "2026-04-21",
-      "days_away": 42,
+      "days_away": 41,
       "eps_est": 1.58
+    },
+    {
+      "ticker": "NOC",
+      "date": "2026-04-21",
+      "days_away": 41,
+      "eps_est": 6.01
+    },
+    {
+      "ticker": "RTX",
+      "date": "2026-04-21",
+      "days_away": 41,
+      "eps_est": 1.51
+    },
+    {
+      "ticker": "VZ",
+      "date": "2026-04-21",
+      "days_away": 41,
+      "eps_est": 1.21
     },
     {
       "ticker": "TXT",
       "date": "2026-04-23",
-      "days_away": 44,
+      "days_away": 43,
       "eps_est": 1.35
     },
     {
       "ticker": "PG",
       "date": "2026-04-24",
-      "days_away": 45,
+      "days_away": 44,
       "eps_est": 1.57
     },
     {
       "ticker": "KO",
       "date": "2026-04-28",
-      "days_away": 49,
+      "days_away": 48,
       "eps_est": 0.81
     },
     {
       "ticker": "GEV",
       "date": "2026-04-29",
-      "days_away": 50,
+      "days_away": 49,
       "eps_est": 1.66
     },
     {
       "ticker": "MSFT",
       "date": "2026-04-29",
-      "days_away": 50,
+      "days_away": 49,
       "eps_est": 4.06
-    },
-    {
-      "ticker": "ED",
-      "date": "2026-04-30",
-      "days_away": 51,
-      "eps_est": 2.33
     },
     {
       "ticker": "AAPL",
       "date": "2026-04-30",
-      "days_away": 51,
+      "days_away": 50,
       "eps_est": 1.96
     },
     {
       "ticker": "LLY",
       "date": "2026-04-30",
-      "days_away": 51,
+      "days_away": 50,
       "eps_est": 7.25
     },
     {
       "ticker": "LHX",
       "date": "2026-04-30",
-      "days_away": 51,
+      "days_away": 50,
       "eps_est": 2.59
+    },
+    {
+      "ticker": "ED",
+      "date": "2026-04-30",
+      "days_away": 50,
+      "eps_est": 2.33
     },
     {
       "ticker": "XOM",
       "date": "2026-05-01",
-      "days_away": 52,
+      "days_away": 51,
       "eps_est": 1.52
     },
     {
       "ticker": "BRK-B",
       "date": "2026-05-02",
-      "days_away": 53,
+      "days_away": 52,
       "eps_est": 5.13
-    },
-    {
-      "ticker": "O",
-      "date": "2026-05-04",
-      "days_away": 55,
-      "eps_est": 0.41
     },
     {
       "ticker": "PLTR",
       "date": "2026-05-04",
-      "days_away": 55,
+      "days_away": 54,
       "eps_est": 0.28
+    },
+    {
+      "ticker": "O",
+      "date": "2026-05-04",
+      "days_away": 54,
+      "eps_est": 0.4
     },
     {
       "ticker": "BWXT",
       "date": "2026-05-04",
-      "days_away": 55,
+      "days_away": 54,
       "eps_est": 0.93
     },
     {
       "ticker": "CCJ",
       "date": "2026-05-05",
-      "days_away": 56,
+      "days_away": 55,
       "eps_est": 0.36
     },
     {
       "ticker": "ANET",
       "date": "2026-05-05",
-      "days_away": 56,
+      "days_away": 55,
       "eps_est": 0.81
     },
     {
       "ticker": "TLN",
       "date": "2026-05-07",
-      "days_away": 58,
+      "days_away": 57,
       "eps_est": 3.7
     },
     {
       "ticker": "QBTS",
       "date": "2026-05-07",
-      "days_away": 58,
+      "days_away": 57,
       "eps_est": null
     },
     {
       "ticker": "KTOS",
       "date": "2026-05-07",
-      "days_away": 58,
+      "days_away": 57,
       "eps_est": 0.13
     },
     {
       "ticker": "CRSP",
       "date": "2026-05-11",
-      "days_away": 62,
+      "days_away": 61,
       "eps_est": null
     },
     {
       "ticker": "NVDA",
       "date": "2026-05-20",
-      "days_away": 71,
+      "days_away": 70,
       "eps_est": 1.77
     },
     {
       "ticker": "DECK",
       "date": "2026-05-21",
-      "days_away": 72,
+      "days_away": 71,
       "eps_est": 0.82
     },
     {
       "ticker": "AVGO",
       "date": "2026-06-03",
-      "days_away": 85,
+      "days_away": 84,
       "eps_est": 2.39
     }
   ],
@@ -1137,22 +1131,22 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.706,
-      "ten_year": 4.127,
-      "spread": 0.421,
-      "date": "2026-03-10",
+      "two_year": 3.766,
+      "ten_year": 4.189,
+      "spread": 0.423,
+      "date": "2026-03-11",
       "assessment": "Normal & steepening \u2014 bullish"
     },
     "credit_spreads": {
       "current_bps": 292.0,
-      "date": "2026-03-10",
+      "date": "2026-03-11",
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.127,
-      "prev": 4.08,
-      "change_bps": 4.7,
-      "date": "2026-03-10",
+      "current": 4.189,
+      "prev": 4.146,
+      "change_bps": 4.3,
+      "date": "2026-03-11",
       "assessment": "Stable \u2014 neutral"
     },
     "scores": {
@@ -1165,9 +1159,9 @@
   "priceRefreshedAt": "2026-03-10T19:00:18.463036Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.127,
-    "two_year": 3.706,
-    "yield_spread": 0.421,
+    "ten_year": 4.189,
+    "two_year": 3.766,
+    "yield_spread": 0.423,
     "inverted": false
   }
 }

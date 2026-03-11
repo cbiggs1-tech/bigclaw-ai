@@ -4,16 +4,16 @@
       "name": "CPI Inflation Report (Mar)",
       "date": "2026-03-12",
       "icon": "\ud83d\udcc8",
-      "days_away": 2,
+      "days_away": 1,
       "category": "macro"
     },
     {
       "name": "FOMC Rate Decision",
       "date": "2026-03-18",
       "icon": "\ud83c\udfe6",
-      "days_away": 8,
+      "days_away": 7,
       "category": "fed"
     }
   ],
-  "lastUpdate": "2026-03-10T13:04:31.845761Z"
+  "lastUpdate": "2026-03-11T13:05:38.709035Z"
 }
