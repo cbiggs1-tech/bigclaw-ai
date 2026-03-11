@@ -96,34 +96,32 @@ def gather_portfolio_data(portfolio, holding_tickers: list[str] = None) -> str:
 
     sections = []
 
-    # Determine which tickers to research based on investment style
+    # Determine candidate stocks based on investment style (always included)
     style_lower = portfolio.investment_style.lower()
-    research_tickers = list(holding_tickers)  # Always check holdings
+    if "cathie" in style_lower or "ark" in style_lower or "innovation" in style_lower:
+        candidates = ["TSLA", "ROKU", "COIN", "PATH", "PLTR", "CRSP", "SHOP"]
+    elif "value" in style_lower or "buffett" in style_lower:
+        candidates = ["BRK-B", "AAPL", "BAC", "KO", "CVX", "JPM", "PG"]
+    elif "momentum" in style_lower:
+        candidates = ["NVDA", "AVGO", "GE", "LLY", "DECK", "META", "ANET"]
+    elif "nuclear" in style_lower:
+        candidates = ["CCJ", "GEV", "BWXT", "TLN", "CEG", "SMR", "LEU"]
+    elif "defense" in style_lower or "ai defense" in style_lower:
+        candidates = ["NOC", "RTX", "LMT", "PLTR", "KTOS", "AVAV", "LDOS"]
+    elif "income" in style_lower or "dividend" in style_lower:
+        candidates = ["VZ", "O", "XOM", "JNJ", "PG", "ABBV", "T"]
+    else:
+        candidates = ["SPY", "AAPL", "NVDA", "MSFT", "GOOGL", "AMZN"]
 
-    # Add style-relevant tickers if portfolio has few holdings
-    if len(research_tickers) < 3:
-        if "cathie" in style_lower or "ark" in style_lower or "innovation" in style_lower:
-            research_tickers.extend(["TSLA", "ROKU", "COIN", "PATH", "PLTR"])
-        elif "value" in style_lower or "buffett" in style_lower:
-            research_tickers.extend(["BRK-B", "AAPL", "BAC", "KO", "CVX"])
-        elif "momentum" in style_lower:
-            research_tickers.extend(["NVDA", "AVGO", "GE", "LLY", "DECK"])
-        elif "nuclear" in style_lower:
-            research_tickers.extend(["CCJ", "GEV", "BWXT", "TLN", "CEG"])
-        elif "defense" in style_lower or "ai defense" in style_lower:
-            research_tickers.extend(["NOC", "RTX", "LMT", "PLTR", "KTOS"])
-        elif "income" in style_lower or "dividend" in style_lower:
-            research_tickers.extend(["VZ", "O", "XOM", "JNJ", "PG"])
-        else:
-            research_tickers.extend(["SPY", "AAPL", "NVDA", "MSFT"])
+    # Separate holdings from new candidates (always research both)
+    new_candidates = [t for t in candidates if t not in holding_tickers]
+    all_tickers = list(dict.fromkeys(holding_tickers + new_candidates))[:12]
 
-    # Deduplicate
-    research_tickers = list(dict.fromkeys(research_tickers))[:8]
-
-    # 1. X sentiment for relevant tickers (top 4 only to save API calls)
-    logger.info(f"Gathering X sentiment for {research_tickers[:4]}")
+    # 1. X sentiment for holdings + top candidates
+    sentiment_tickers = all_tickers[:6]
+    logger.info(f"Gathering X sentiment for {sentiment_tickers}")
     x_data = []
-    for ticker in research_tickers[:4]:
+    for ticker in sentiment_tickers:
         query = f"${ticker}" if not ticker.startswith("$") else ticker
         result = _call_tool("get_x_sentiment", query=query, limit=10)
         if result and not result.startswith("["):
@@ -131,20 +129,20 @@ def gather_portfolio_data(portfolio, holding_tickers: list[str] = None) -> str:
     if x_data:
         sections.append("## X/Twitter Sentiment\n" + "\n---\n".join(x_data))
 
-    # 2. Stocktwits for top holdings
+    # 2. Stocktwits for holdings + top candidates
     logger.info("Gathering Stocktwits sentiment...")
     st_data = []
-    for ticker in research_tickers[:3]:
+    for ticker in all_tickers[:5]:
         result = _call_tool("get_stocktwits_sentiment", ticker=ticker, limit=5)
         if result and not result.startswith("[") and "unavailable" not in result.lower():
             st_data.append(result)
     if st_data:
         sections.append("## Stocktwits Sentiment\n" + "\n---\n".join(st_data))
 
-    # 3. Stock quotes for all research tickers
-    logger.info(f"Gathering quotes for {research_tickers}")
+    # 3. Stock quotes for ALL tickers (holdings + candidates)
+    logger.info(f"Gathering quotes for {all_tickers}")
     quotes = []
-    for ticker in research_tickers:
+    for ticker in all_tickers:
         result = _call_tool("get_stock_quote", ticker=ticker)
         if result and not result.startswith("["):
             quotes.append(result)
@@ -153,10 +151,14 @@ def gather_portfolio_data(portfolio, holding_tickers: list[str] = None) -> str:
 
     # 4. Reddit mentions for top tickers
     logger.info("Gathering Reddit sentiment...")
-    for ticker in research_tickers[:2]:
+    for ticker in all_tickers[:2]:
         result = _call_tool("search_reddit_stocks", query=ticker, limit=5)
         if result and "No recent" not in result:
             sections.append(f"## Reddit: {ticker}\n" + result)
+
+    # Label which are current holdings vs candidates
+    sections.insert(0, f"**Current holdings:** {', '.join(holding_tickers) or 'None'}\n"
+                       f"**Candidate stocks:** {', '.join(new_candidates[:7])}")
 
     return "\n\n".join(sections)
 

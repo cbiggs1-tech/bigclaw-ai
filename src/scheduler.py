@@ -360,18 +360,31 @@ IMPORTANT: Only use data provided below. Do not make up information."""
 
         logger.info(f"Analyzing portfolio: {portfolio.name} ({portfolio.investment_style})")
 
-        # Get current holdings for context
+        # Get current holdings with gain/loss context
+        from alpaca_data import get_extended_hours_prices
         holdings = portfolio.get_holdings()
-        holdings_str = ""
+        holding_tickers = [h['ticker'] for h in holdings] if holdings else []
+
+        # Fetch live prices for gain/loss calculation
+        current_prices = {}
+        if holding_tickers:
+            price_data = get_extended_hours_prices(holding_tickers)
+            current_prices = {t: d["price"] for t, d in price_data.items() if "price" in d}
+
         if holdings:
-            holdings_str = "\n".join([
-                f"- {h['ticker']}: {h['shares']} shares @ ${h['avg_cost']:.2f}"
-                for h in holdings
-            ])
+            lines = []
+            for h in holdings:
+                ticker = h['ticker']
+                price = current_prices.get(ticker, h['avg_cost'])
+                gain_pct = ((price - h['avg_cost']) / h['avg_cost'] * 100) if h['avg_cost'] > 0 else 0
+                value = h['shares'] * price
+                lines.append(
+                    f"- {ticker}: {h['shares']} shares @ ${h['avg_cost']:.2f} "
+                    f"→ ${price:.2f} ({gain_pct:+.1f}%) = ${value:,.0f}"
+                )
+            holdings_str = "\n".join(lines)
         else:
             holdings_str = "No current holdings"
-
-        holding_tickers = [h['ticker'] for h in holdings] if holdings else []
 
         # Style-specific risk management guidance
         style_lower = portfolio.investment_style.lower()
@@ -404,46 +417,65 @@ IMPORTANT: Only use data provided below. Do not make up information."""
         logger.info(f"Data gathered for {portfolio.name}: {len(raw_data)} chars")
 
         # Step 2: Single Sonnet call for trade decision (no tool loop)
-        analysis_prompt = f"""You are managing the "{portfolio.name}" portfolio with a {portfolio.investment_style} investment style.
+        total_positions = len(holdings)
+        target_positions = min(7, max(3, int(portfolio.starting_cash / 15000)))
 
-**Current Portfolio Status:**
-- Cash Available: ${portfolio.current_cash:,.2f}
-- Starting Capital: ${portfolio.starting_cash:,.2f}
+        analysis_prompt = f"""You are an autonomous portfolio manager for the "{portfolio.name}" portfolio.
+Investment style: {portfolio.investment_style}
 
-**Current Holdings:**
+**Portfolio Status:**
+- Cash: ${portfolio.current_cash:,.2f} | Starting Capital: ${portfolio.starting_cash:,.2f}
+- Positions: {total_positions}/{target_positions} target
+
+**Current Holdings (with P&L):**
 {holdings_str}
 
 {risk_guidance}
 
-**MARKET DATA (pre-gathered):**
+**MARKET DATA (holdings + candidate stocks):**
 {raw_data[:6000]}
 
-**YOUR TASK:**
-Based on the sentiment and price data above:
-1. Assess each holding's sentiment (bullish/bearish/mixed)
-2. Identify any new opportunities matching {portfolio.investment_style} style
-3. Make specific trade recommendations with rationale
+**YOUR JOB — Act like an active portfolio manager:**
 
-For each trade decision, output EXACTLY one line per trade in this format:
+1. **EVALUATE HOLDINGS**: For each current position, assess sentiment and momentum.
+   Flag any that are weakening, losing conviction, or underperforming.
+
+2. **SCOUT CANDIDATES**: Review the candidate stocks in the data. Are any a better
+   fit for the {portfolio.investment_style} style than what's currently held?
+
+3. **MAKE SWAPS**: If a candidate is clearly stronger than a current holding:
+   - SELL the weaker holding (all or partial)
+   - BUY the stronger candidate with the proceeds
+   This is paper trading — execute decisively when conviction is clear.
+
+4. **DEPLOY CASH**: If cash > 15% of portfolio, look for opportunities to put it to work.
+   Don't let cash sit idle unless the market is clearly dangerous.
+
+5. **TRIM WINNERS / CUT LOSERS**: Take partial profits on outsized winners.
+   Cut positions where the thesis has broken or sentiment has turned decisively bearish.
+
+**Output format — one line per trade:**
 TRADE: BUY <ticker> <dollar_amount>
 TRADE: SELL <ticker> <shares>
+TRADE: SELL_ALL <ticker>
+TRADE: NONE
 
-After the trade lines, provide a brief summary of your reasoning.
+After trade lines, give a brief rationale (2-3 sentences per trade).
 
-Guidelines:
-- With ${portfolio.current_cash:,.0f} available, consider positions of $15,000-$25,000
-- Include X sentiment percentages in your rationale
-- Only trade when sentiment strongly supports it
-- If no strong signals, output: TRADE: NONE
+**Rules:**
+- Position size: $10,000-$25,000 per position (scale to portfolio size)
+- Max single position: 15% of portfolio value
+- Always have a reason grounded in the data — don't guess
+- If no compelling action, output TRADE: NONE (no shame in patience)
 
-Begin your analysis now."""
+Begin."""
 
         try:
             # Single Sonnet API call — no tool loop, no iterations
             response = self.anthropic_client.messages.create(
                 model=self.model,
                 max_tokens=2048,
-                system="You are BigClaw AI, an autonomous trading assistant. Analyze the pre-gathered market data and make trading decisions. Be concise and decisive.",
+                system="You are BigClaw AI, an autonomous PAPER TRADING portfolio manager. This is simulated trading only — no real money. Analyze the pre-gathered market data and make decisive trading decisions. Act like an active broker: swap weak holdings for stronger candidates, deploy idle cash, and cut losers.",
                 messages=[{"role": "user", "content": analysis_prompt}]
             )
 
@@ -478,11 +510,13 @@ Begin your analysis now."""
     def _execute_trades_from_response(self, portfolio, response_text: str):
         """Parse and execute TRADE: lines from Sonnet's response.
 
+        NOTE: This is PAPER TRADING only. Trades modify the local portfolio
+        database — no real money is involved.
+
         Args:
             portfolio: Portfolio to execute trades on
             response_text: Sonnet's response containing TRADE: lines
         """
-        import re
         from tools import TOOL_MAP
 
         buy_tool = TOOL_MAP.get("buy_stock")
@@ -522,6 +556,20 @@ Begin your analysis now."""
                         shares=shares
                     )
                     logger.info(f"Executed SELL {ticker} {shares} shares: {result[:200]}")
+
+                elif action == "SELL_ALL" and sell_tool:
+                    # Sell entire position
+                    holdings = portfolio.get_holdings()
+                    holding = next((h for h in holdings if h['ticker'] == ticker), None)
+                    if holding and holding['shares'] > 0:
+                        result = sell_tool.execute(
+                            portfolio_name=portfolio.name,
+                            ticker=ticker,
+                            shares=holding['shares']
+                        )
+                        logger.info(f"Executed SELL_ALL {ticker} ({holding['shares']} shares): {result[:200]}")
+                    else:
+                        logger.warning(f"SELL_ALL {ticker}: no position found in {portfolio.name}")
 
             except Exception as e:
                 logger.error(f"Trade execution error ({action} {ticker}): {e}")
