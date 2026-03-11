@@ -7,21 +7,37 @@ to Sonnet for analytical decisions.
 """
 
 import logging
+import time
 from datetime import datetime
 from tools import TOOL_MAP
 
 logger = logging.getLogger(__name__)
 
+# Simple TTL cache to avoid redundant API calls across portfolios
+_cache = {}
+_CACHE_TTL = 300  # 5 minutes
+
 
 def _call_tool(tool_name: str, **kwargs) -> str:
-    """Safely call a tool by name, returning empty string on failure."""
+    """Safely call a tool by name, with 5-minute TTL cache."""
+    cache_key = f"{tool_name}:{sorted(kwargs.items())}"
+    now = time.time()
+
+    if cache_key in _cache:
+        result, ts = _cache[cache_key]
+        if now - ts < _CACHE_TTL:
+            logger.debug(f"Cache hit: {tool_name}")
+            return result
+
     tool = TOOL_MAP.get(tool_name)
     if not tool:
         logger.warning(f"Tool not found: {tool_name}")
         return ""
     try:
         result = tool.execute(**kwargs)
-        return str(result) if result else ""
+        result = str(result) if result else ""
+        _cache[cache_key] = (result, now)
+        return result
     except Exception as e:
         logger.error(f"Tool {tool_name} failed: {e}")
         return f"[{tool_name} error: {e}]"

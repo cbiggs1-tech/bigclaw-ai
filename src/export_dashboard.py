@@ -118,8 +118,8 @@ def export_portfolios() -> dict:
         })
 
     # Auto-detect pending→active: if cash < 10% of starting, portfolio is deployed
-    import sqlite3 as _sql
-    _db = _sql.connect(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'portfolios.db'))
+    from portfolio import get_db_connection
+    _db = get_db_connection(immediate=True)
     for p in portfolios_data:
         if p['purchase_status'] == 'pending' and p['holdings_raw']:
             cash_pct = (p['current_cash'] / p['starting_cash'] * 100) if p['starting_cash'] > 0 else 100
@@ -616,13 +616,10 @@ def save_json_files(portfolios: dict, sentiment: dict, metadata: dict, news: dic
 def push_to_github():
     """Commit and push changes to GitHub."""
     try:
-        # Change to repo directory
-        os.chdir(REPO_ROOT)
-
-        # Check if there are changes
+        # Check if there are changes (use cwd instead of chdir to avoid side effects)
         result = subprocess.run(
             ['git', 'status', '--porcelain', 'docs/data/'],
-            capture_output=True, text=True
+            capture_output=True, text=True, cwd=REPO_ROOT
         )
 
         if not result.stdout.strip():
@@ -630,24 +627,35 @@ def push_to_github():
             return True
 
         # Add changes
-        subprocess.run(['git', 'add', 'docs/data/'], check=True)
+        result = subprocess.run(
+            ['git', 'add', 'docs/data/'],
+            capture_output=True, text=True, check=True, cwd=REPO_ROOT
+        )
 
         # Commit
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-        commit_msg = f"Update dashboard data - {timestamp}"
-        subprocess.run(
+        commit_msg = f"Price refresh {timestamp}"
+        result = subprocess.run(
             ['git', 'commit', '-m', commit_msg],
-            check=True
+            capture_output=True, text=True, check=True, cwd=REPO_ROOT
         )
+        logger.info(f"Git commit: {result.stdout.strip()}")
 
         # Push
-        subprocess.run(['git', 'push'], check=True)
+        result = subprocess.run(
+            ['git', 'push'],
+            capture_output=True, text=True, check=True, cwd=REPO_ROOT,
+            timeout=60
+        )
+        logger.info(f"Git push: {result.stdout.strip() or 'success'}")
 
-        logger.info("Successfully pushed dashboard updates to GitHub")
         return True
 
     except subprocess.CalledProcessError as e:
-        logger.error(f"Git operation failed: {e}")
+        logger.error(f"Git operation failed: {e.cmd} → {e.stderr.strip()}")
+        return False
+    except subprocess.TimeoutExpired:
+        logger.error("Git push timed out after 60 seconds")
         return False
     except Exception as e:
         logger.error(f"Error pushing to GitHub: {e}")

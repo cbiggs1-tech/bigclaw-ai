@@ -6,14 +6,9 @@ using the Alpaca Markets API.
 
 import os
 import logging
-from datetime import datetime
 from typing import Optional
 
 logger = logging.getLogger(__name__)
-
-# Alpaca API endpoints
-ALPACA_DATA_URL = "https://data.alpaca.markets/v2"
-ALPACA_PAPER_URL = "https://paper-api.alpaca.markets/v2"
 
 
 def get_alpaca_client():

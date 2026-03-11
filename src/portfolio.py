@@ -20,10 +20,16 @@ logger = logging.getLogger(__name__)
 DB_PATH = os.path.join(os.path.dirname(__file__), "portfolios.db")
 
 
-def get_db_connection():
-    """Get a database connection with row factory."""
-    conn = sqlite3.connect(DB_PATH)
+def get_db_connection(immediate=False):
+    """Get a database connection with row factory.
+
+    Args:
+        immediate: If True, use BEGIN IMMEDIATE for write safety.
+    """
+    conn = sqlite3.connect(DB_PATH, timeout=10)
     conn.row_factory = sqlite3.Row
+    if immediate:
+        conn.execute("BEGIN IMMEDIATE")
     return conn
 
 
@@ -181,7 +187,7 @@ class Portfolio:
                 "error": f"Insufficient cash. Need ${total_cost:,.2f}, have ${self.current_cash:,.2f}"
             }
 
-        conn = get_db_connection()
+        conn = get_db_connection(immediate=True)
         cursor = conn.cursor()
 
         try:
@@ -262,7 +268,7 @@ class Portfolio:
         total_value = shares * price
         profit = (price - holding["avg_cost"]) * shares
 
-        conn = get_db_connection()
+        conn = get_db_connection(immediate=True)
         cursor = conn.cursor()
 
         try:
@@ -480,7 +486,7 @@ def get_active_portfolios() -> list[Portfolio]:
 
 def delete_portfolio(name: str) -> bool:
     """Delete a portfolio and all its data."""
-    conn = get_db_connection()
+    conn = get_db_connection(immediate=True)
     cursor = conn.cursor()
 
     cursor.execute("SELECT id FROM portfolios WHERE name = ?", (name,))
