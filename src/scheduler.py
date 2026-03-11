@@ -360,16 +360,16 @@ IMPORTANT: Only use data provided below. Do not make up information."""
 
         logger.info(f"Analyzing portfolio: {portfolio.name} ({portfolio.investment_style})")
 
-        # Get current holdings with gain/loss context
-        from alpaca_data import get_extended_hours_prices
+        # Get current holdings with gain/loss context via PriceOracle
+        from services.price_oracle import get_oracle
         holdings = portfolio.get_holdings()
         holding_tickers = [h['ticker'] for h in holdings] if holdings else []
 
-        # Fetch live prices for gain/loss calculation
+        # Fetch verified prices for gain/loss calculation
         current_prices = {}
         if holding_tickers:
-            price_data = get_extended_hours_prices(holding_tickers)
-            current_prices = {t: d["price"] for t, d in price_data.items() if "price" in d}
+            oracle = get_oracle()
+            current_prices = oracle.get_prices_dict(holding_tickers)
 
         if holdings:
             lines = []
@@ -490,6 +490,13 @@ Begin."""
 
             # Step 3: Execute any trades from the response
             self._execute_trades_from_response(portfolio, response_text)
+
+            # Verify prices in response before publishing
+            try:
+                from services.output_guardrail import verify_before_publish
+                response_text = verify_before_publish(response_text, channel="scheduler")
+            except Exception as e:
+                logger.warning(f"Guardrail check failed: {e}")
 
             # Send summary to Slack if report channel is set
             if portfolio.report_channel:

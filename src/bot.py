@@ -162,7 +162,12 @@ def send_response(reply: str, channel: str, say_func):
         else:
             say_func("Error processing chart response.")
     else:
-        # Regular text response
+        # Verify all prices before publishing to Slack
+        try:
+            from services.output_guardrail import verify_before_publish
+            reply = verify_before_publish(reply, channel=channel)
+        except Exception as e:
+            logger.warning(f"Guardrail check failed (publishing anyway): {e}")
         say_func(reply)
 
 
