@@ -1131,9 +1131,9 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.822,
-      "ten_year": 4.243,
-      "spread": 0.421,
+      "two_year": 3.884,
+      "ten_year": 4.273,
+      "spread": 0.389,
       "date": "2026-03-12",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -1143,9 +1143,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.243,
+      "current": 4.273,
       "prev": 4.133,
-      "change_bps": 11.0,
+      "change_bps": 14.0,
       "date": "2026-03-12",
       "assessment": "Elevated \u2014 bearish"
     },
@@ -1159,9 +1159,9 @@
   "priceRefreshedAt": "2026-03-12T19:00:10.966594Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.243,
-    "two_year": 3.822,
-    "yield_spread": 0.421,
+    "ten_year": 4.273,
+    "two_year": 3.884,
+    "yield_spread": 0.389,
     "inverted": false
   }
 }
