@@ -1,14 +1,14 @@
 {
-  "lastUpdate": "2026-03-11T20:30:56.172219Z",
+  "lastUpdate": "2026-03-12T13:03:02.989409Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
       "totalValue": 91890.36,
-      "prevTotalValue": 92948.44,
+      "prevTotalValue": 92927.11,
       "startingCash": 100000.0,
       "totalReturn": -8.11,
-      "dailyReturn": -1.14,
+      "dailyReturn": -1.12,
       "createdAt": "2026-02-16 13:51:57",
       "purchaseStatus": "pending",
       "holdings": [
@@ -265,11 +265,11 @@
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 101073.48,
-      "prevTotalValue": 100457.81,
+      "totalValue": 101044.03,
+      "prevTotalValue": 100455.74,
       "startingCash": 100000.0,
-      "totalReturn": 1.07,
-      "dailyReturn": 0.61,
+      "totalReturn": 1.04,
+      "dailyReturn": 0.59,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -305,14 +305,14 @@
           "ticker": "QBTS",
           "shares": 48.5,
           "avgCost": 19.03,
-          "currentPrice": 18.9,
+          "currentPrice": 18.65,
           "purchasedAt": "Feb 12, 2026"
         },
         {
           "ticker": "TSLA",
           "shares": 59.75,
           "avgCost": 418.43,
-          "currentPrice": 407.84,
+          "currentPrice": 407.55,
           "purchasedAt": "Feb 03, 2026"
         }
       ]
@@ -320,11 +320,11 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 97165.41,
-      "prevTotalValue": 97035.06,
+      "totalValue": 97128.23,
+      "prevTotalValue": 97034.29,
       "startingCash": 100000.0,
-      "totalReturn": -2.83,
-      "dailyReturn": 0.13,
+      "totalReturn": -2.87,
+      "dailyReturn": 0.1,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -353,7 +353,7 @@
           "ticker": "MSFT",
           "shares": 18.66,
           "avgCost": 409.15,
-          "currentPrice": 404.81,
+          "currentPrice": 402.97,
           "purchasedAt": "Feb 03, 2026"
         },
         {
@@ -367,7 +367,7 @@
           "ticker": "TSLA",
           "shares": 9.83,
           "avgCost": 428.45,
-          "currentPrice": 407.84,
+          "currentPrice": 407.55,
           "purchasedAt": "Feb 10, 2026"
         },
         {

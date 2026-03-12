@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-11T15:30:51.929920",
+  "timestamp": "2026-03-12T08:02:58.903726",
   "context": {
     "ticker": null,
     "sector": null,
@@ -7,8 +7,8 @@
   },
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.208,
-    "two_year": 3.782,
+    "ten_year": 4.218,
+    "two_year": 3.792,
     "yield_spread": 0.426,
     "inverted": false
   },
@@ -42,9 +42,9 @@
       "3mo": -1.84
     },
     "VIX": {
-      "level": 24.23,
+      "level": 25.96,
       "classification": "Elevated",
-      "1mo_change": 39.57
+      "1mo_change": 45.92
     }
   },
   "sectors": [
@@ -150,9 +150,9 @@
   ],
   "risk": {
     "vix": {
-      "level": 24.23,
+      "level": 25.96,
       "classification": "Elevated",
-      "1mo_change": 39.57
+      "1mo_change": 45.92
     },
     "Gold (GLD)": {
       "price": 476.24,
@@ -163,36 +163,22 @@
       "1mo": 2.84
     },
     "Bitcoin": {
-      "price": 70452.71,
-      "1mo": 0.47
+      "price": 70376.82,
+      "1mo": 2.3
     },
     "yield_curve": {
-      "spread": 0.798,
+      "spread": 0.808,
       "inverted": false
     }
   },
   "sentiment": {
-    "michigan": {
-      "current": 56.4,
-      "date": "2026-01-01",
-      "previous": 52.9,
-      "prev_date": "2025-12-01",
-      "year_ago": 52.9,
-      "assessment": "Depressed",
-      "percentile": 11,
-      "mom_change": 3.5
-    },
+    "michigan_error": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=10)",
     "fear_greed": {
-      "score": 27.2,
-      "rating": "fear",
-      "previous": 27.9,
-      "1w_ago": 37.2,
-      "1m_ago": 53.8
-    },
-    "saving_rate": {
-      "current": 3.6,
-      "date": "2025-12-01",
-      "assessment": "Low"
+      "score": 23.1,
+      "rating": "extreme fear",
+      "previous": 27.2,
+      "1w_ago": 28.3,
+      "1m_ago": 38.1
     },
     "sp_gold_ratio": {
       "current": 14.23,
@@ -204,26 +190,26 @@
       "1mo_ago": 89.27,
       "trend": "declining"
     },
-    "contrarian_signal": "\ud83d\udfe2 CONTRARIAN BUY SIGNAL \u2014 Both consumer sentiment and market fear at depressed levels. Historically bullish."
+    "contrarian_signal": null
   },
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.782,
-      "ten_year": 4.208,
+      "two_year": 3.792,
+      "ten_year": 4.218,
       "spread": 0.426,
-      "date": "2026-03-11",
+      "date": "2026-03-12",
       "assessment": "Normal & steepening \u2014 bullish"
     },
     "credit_spreads": {
       "current_bps": 292.0,
-      "date": "2026-03-11",
+      "date": "2026-03-12",
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.208,
-      "prev": 4.146,
-      "change_bps": 6.2,
-      "date": "2026-03-11",
+      "current": 4.218,
+      "prev": 4.133,
+      "change_bps": 8.5,
+      "date": "2026-03-12",
       "assessment": "Elevated \u2014 bearish"
     },
     "scores": {
@@ -251,6 +237,6 @@
       "bearish": 2
     },
     "specific": null,
-    "watch": "Next FOMC meeting & CPI release"
+    "watch": "Elevated VIX at 26.0 \u2014 volatility risk"
   }
 }
