@@ -469,24 +469,38 @@ After trade lines, give a brief rationale (2-3 sentences per trade).
 - Max single position: 15% of portfolio value
 - Always have a reason grounded in the data — don't guess
 - If no compelling action, output TRADE: NONE (no shame in patience)
+- This is PAPER TRADING — you ARE the portfolio manager. Do NOT recommend
+  or suggest trades. EXECUTE them. Your TRADE: lines are automatically
+  parsed and executed by code. Every response MUST begin with TRADE: lines.
 
 Begin."""
 
         try:
-            # Single Sonnet API call — no tool loop, no iterations
-            response = self.anthropic_client.messages.create(
-                model=self.model,
+            # Single Sonnet call via OpenRouter — consolidates billing
+            from llm_router import call_openrouter, SONNET
+            system = "You are BigClaw AI, an autonomous PAPER TRADING portfolio manager. This is simulated trading only — no real money. Analyze the pre-gathered market data and make decisive trading decisions. Act like an active broker: swap weak holdings for stronger candidates, deploy idle cash, and cut losers."
+            response_text = call_openrouter(
+                prompt=analysis_prompt,
+                system=system,
+                model=SONNET,
                 max_tokens=2048,
-                system="You are BigClaw AI, an autonomous PAPER TRADING portfolio manager. This is simulated trading only — no real money. Analyze the pre-gathered market data and make decisive trading decisions. Act like an active broker: swap weak holdings for stronger candidates, deploy idle cash, and cut losers.",
-                messages=[{"role": "user", "content": analysis_prompt}]
+                temperature=0.3,
             )
 
-            # Extract text response
-            response_text = ""
-            for block in response.content:
-                if block.type == "text":
-                    response_text = block.text
-                    break
+            if response_text.startswith("ERROR:"):
+                logger.error(f"OpenRouter Sonnet failed: {response_text}")
+                # Fallback to direct Anthropic API
+                response = self.anthropic_client.messages.create(
+                    model=self.model,
+                    max_tokens=2048,
+                    system=system,
+                    messages=[{"role": "user", "content": analysis_prompt}]
+                )
+                response_text = ""
+                for block in response.content:
+                    if block.type == "text":
+                        response_text = block.text
+                        break
 
             logger.info(f"Trading analysis complete for {portfolio.name}")
 
