@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-13T15:30:24.021244",
+  "timestamp": "2026-03-13T16:30:45.560652",
   "context": {
     "ticker": null,
     "sector": null,
@@ -163,8 +163,8 @@
       "1mo": 3.95
     },
     "Bitcoin": {
-      "price": 71340.82,
-      "1mo": 6.49
+      "price": 71223.8,
+      "1mo": 6.32
     },
     "yield_curve": {
       "spread": 0.875,
@@ -183,7 +183,7 @@
       "mom_change": 3.5
     },
     "fear_greed": {
-      "score": 19.8,
+      "score": 20.0,
       "rating": "extreme fear",
       "previous": 21.2,
       "1w_ago": 25.1,
