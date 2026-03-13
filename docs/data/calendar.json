@@ -1,19 +1,12 @@
 {
   "events": [
     {
-      "name": "CPI Inflation Report (Mar)",
-      "date": "2026-03-12",
-      "icon": "\ud83d\udcc8",
-      "days_away": 0,
-      "category": "macro"
-    },
-    {
       "name": "FOMC Rate Decision",
       "date": "2026-03-18",
       "icon": "\ud83c\udfe6",
-      "days_away": 6,
+      "days_away": 5,
       "category": "fed"
     }
   ],
-  "lastUpdate": "2026-03-12T21:32:38.317731Z"
+  "lastUpdate": "2026-03-13T13:04:01.684125Z"
 }
