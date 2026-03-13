@@ -12,7 +12,8 @@ logger = logging.getLogger(__name__)
 
 # Model IDs on OpenRouter
 GEMINI_FLASH = "google/gemini-2.5-flash"
-GEMINI_FLASH_LITE = "google/gemini-2.5-flash-lite"
+GEMINI_FLASH_LITE = "google/gemini-3.1-flash-lite-preview"
+SONNET = "anthropic/claude-sonnet-4-6"
 
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"

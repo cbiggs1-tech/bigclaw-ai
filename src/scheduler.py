@@ -128,7 +128,7 @@ class TradingScheduler:
         then raw data is sent to Gemini Flash (via OpenRouter) for cheap summarization.
         """
         from data_gather import gather_market_sentiment
-        from llm_router import summarize_with_flash
+        from llm_router import call_openrouter, SONNET
 
         logger.info("Generating market sentiment report (Gemini Flash)")
 
@@ -168,7 +168,9 @@ This is for educational purposes only, not financial advice.
 IMPORTANT: Only use data provided below. Do not make up information."""
 
         try:
-            response = summarize_with_flash(raw_data, instruction, max_tokens=2048)
+            prompt = f"{instruction}\n\n---\nDATA:\n{raw_data}"
+            system = "You are BigClaw AI, a crab-themed investment research assistant. Be concise and actionable. Use markdown formatting."
+            response = call_openrouter(prompt, system=system, model=SONNET, max_tokens=2048)
 
             if response.startswith("ERROR:"):
                 logger.error(f"Gemini Flash failed: {response}")
