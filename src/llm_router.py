@@ -11,7 +11,6 @@ import requests
 logger = logging.getLogger(__name__)
 
 # Model IDs on OpenRouter
-GEMINI_FLASH = "google/gemini-2.5-flash"
 GEMINI_FLASH_LITE = "google/gemini-3.1-flash-lite-preview"
 SONNET = "anthropic/claude-sonnet-4-6"
 
@@ -19,7 +18,7 @@ OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
-def call_openrouter(prompt: str, system: str = "", model: str = GEMINI_FLASH,
+def call_openrouter(prompt: str, system: str = "", model: str = GEMINI_FLASH_LITE,
                     max_tokens: int = 2048, temperature: float = 0.3) -> str:
     """Call a model via OpenRouter API.
 
