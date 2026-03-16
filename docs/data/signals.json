@@ -711,16 +711,16 @@
   ],
   "earnings": [
     {
-      "ticker": "JNJ",
-      "date": "2026-04-14",
-      "days_away": 29,
-      "eps_est": 2.69
-    },
-    {
       "ticker": "JPM",
       "date": "2026-04-14",
       "days_away": 29,
       "eps_est": 5.5
+    },
+    {
+      "ticker": "JNJ",
+      "date": "2026-04-14",
+      "days_away": 29,
+      "eps_est": 2.69
     },
     {
       "ticker": "BAC",
@@ -753,16 +753,16 @@
       "eps_est": 1.51
     },
     {
-      "ticker": "NOC",
-      "date": "2026-04-21",
-      "days_away": 36,
-      "eps_est": 6.01
-    },
-    {
       "ticker": "TSLA",
       "date": "2026-04-21",
       "days_away": 36,
       "eps_est": 0.4
+    },
+    {
+      "ticker": "NOC",
+      "date": "2026-04-21",
+      "days_away": 36,
+      "eps_est": 6.01
     },
     {
       "ticker": "GEV",
@@ -807,6 +807,12 @@
       "eps_est": 7.25
     },
     {
+      "ticker": "LHX",
+      "date": "2026-04-30",
+      "days_away": 45,
+      "eps_est": 2.59
+    },
+    {
       "ticker": "AAPL",
       "date": "2026-04-30",
       "days_away": 45,
@@ -817,12 +823,6 @@
       "date": "2026-04-30",
       "days_away": 45,
       "eps_est": 2.27
-    },
-    {
-      "ticker": "LHX",
-      "date": "2026-04-30",
-      "days_away": 45,
-      "eps_est": 2.59
     },
     {
       "ticker": "XOM",
@@ -837,12 +837,6 @@
       "eps_est": 5.13
     },
     {
-      "ticker": "PLTR",
-      "date": "2026-05-04",
-      "days_away": 49,
-      "eps_est": 0.28
-    },
-    {
       "ticker": "O",
       "date": "2026-05-04",
       "days_away": 49,
@@ -855,10 +849,10 @@
       "eps_est": 0.92
     },
     {
-      "ticker": "ANET",
-      "date": "2026-05-05",
-      "days_away": 50,
-      "eps_est": 0.81
+      "ticker": "PLTR",
+      "date": "2026-05-04",
+      "days_away": 49,
+      "eps_est": 0.28
     },
     {
       "ticker": "CCJ",
@@ -867,10 +861,16 @@
       "eps_est": 0.36
     },
     {
-      "ticker": "QBTS",
+      "ticker": "ANET",
+      "date": "2026-05-05",
+      "days_away": 50,
+      "eps_est": 0.81
+    },
+    {
+      "ticker": "TLN",
       "date": "2026-05-07",
       "days_away": 52,
-      "eps_est": null
+      "eps_est": 3.7
     },
     {
       "ticker": "KTOS",
@@ -879,10 +879,10 @@
       "eps_est": 0.13
     },
     {
-      "ticker": "TLN",
+      "ticker": "QBTS",
       "date": "2026-05-07",
       "days_away": 52,
-      "eps_est": 3.7
+      "eps_est": null
     },
     {
       "ticker": "CRSP",
