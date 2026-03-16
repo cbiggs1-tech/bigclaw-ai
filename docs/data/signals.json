@@ -16,7 +16,7 @@
         "outperforming XLK by 3.2%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 251.0
+      "price": 250.12
     },
     {
       "ticker": "ANET",
@@ -32,7 +32,7 @@
         "bond mkt +2 (wt 1.5x)",
         "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 133.43,
+      "price": 133.57,
       "value_override": {
         "total_score": 1,
         "base_score_before": 6,
@@ -56,7 +56,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 39 oversold)"
       ],
-      "price": 70.22,
+      "price": 70.25,
       "value_override": {
         "total_score": 1,
         "base_score_before": 0,
@@ -83,7 +83,7 @@
         "bond mkt +2 (wt 1.5x)",
         "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 324.58,
+      "price": 322.16,
       "value_override": {
         "total_score": 2,
         "base_score_before": 2,
@@ -111,7 +111,7 @@
         "\u26a1 VALUE OVERRIDE: +1 (16% below target)",
         "correlated with WFC (0.90)"
       ],
-      "price": 46.95,
+      "price": 46.72,
       "value_override": {
         "total_score": 1,
         "base_score_before": 1,
@@ -137,7 +137,7 @@
         "insider net selling (3B/12S)",
         "outperforming XLF by 6.0%"
       ],
-      "price": 492.02
+      "price": 490.03
     },
     {
       "ticker": "BWXT",
@@ -153,7 +153,7 @@
         "underperforming XLI by 11.1%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 195.49
+      "price": 194.13
     },
     {
       "ticker": "CCJ",
@@ -168,7 +168,7 @@
         "underperforming XLE by 14.1%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 109.32
+      "price": 107.92
     },
     {
       "ticker": "CRSP",
@@ -186,7 +186,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +2 (37% below target)"
       ],
-      "price": 48.37,
+      "price": 48.75,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3,
@@ -212,7 +212,7 @@
         "outperforming XLY by 17.6%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 101.18
+      "price": 100.78
     },
     {
       "ticker": "ED",
@@ -229,7 +229,7 @@
         "outperforming XLU by 4.2%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 115.24
+      "price": 114.88
     },
     {
       "ticker": "GD",
@@ -244,7 +244,7 @@
         "underperforming XLI by 10.4%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 352.98
+      "price": 351.52
     },
     {
       "ticker": "GE",
@@ -260,7 +260,7 @@
         "underperforming XLI by 6.5%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 302.75
+      "price": 299.69
     },
     {
       "ticker": "GEV",
@@ -275,7 +275,7 @@
         "outperforming XLI by 19.8%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 812.56
+      "price": 805.02
     },
     {
       "ticker": "JNJ",
@@ -291,7 +291,7 @@
         "outperforming XLV by 10.4%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 243.71
+      "price": 241.52
     },
     {
       "ticker": "JPM",
@@ -307,7 +307,7 @@
         "outperforming XLF by 2.8%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 284.42
+      "price": 283.44
     },
     {
       "ticker": "KO",
@@ -323,7 +323,7 @@
         "outperforming XLP by 3.0%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 77.65
+      "price": 77.34
     },
     {
       "ticker": "KTOS",
@@ -339,7 +339,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (24% below target)"
       ],
-      "price": 88.34,
+      "price": 87.53,
       "value_override": {
         "total_score": 1,
         "base_score_before": 1,
@@ -365,7 +365,7 @@
         "underperforming XLI by 3.6%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 360.4
+      "price": 358.96
     },
     {
       "ticker": "LLY",
@@ -380,7 +380,7 @@
         "insider net selling (0B/11S)",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 990.42
+      "price": 985.08
     },
     {
       "ticker": "LMT",
@@ -397,7 +397,7 @@
         "outperforming XLI by 7.9%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 649.64
+      "price": 646.0
     },
     {
       "ticker": "MSFT",
@@ -413,7 +413,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +3 (33% below target, RSI 32 oversold)"
       ],
-      "price": 395.8,
+      "price": 395.55,
       "value_override": {
         "total_score": 3,
         "base_score_before": -3,
@@ -444,7 +444,7 @@
         "outperforming XLI by 2.3%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 737.42
+      "price": 733.71
     },
     {
       "ticker": "NVDA",
@@ -459,7 +459,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       ],
-      "price": 180.97,
+      "price": 180.25,
       "value_override": {
         "total_score": 2,
         "base_score_before": 2,
@@ -486,7 +486,7 @@
         "outperforming XLRE by 4.3%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 64.86
+      "price": 64.44
     },
     {
       "ticker": "PG",
@@ -502,7 +502,7 @@
         "outperforming XLP by 2.8%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 150.83
+      "price": 150.65
     },
     {
       "ticker": "PLTR",
@@ -518,7 +518,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +3 (31% below target, RSI 34 oversold)"
       ],
-      "price": 151.49,
+      "price": 150.95,
       "value_override": {
         "total_score": 3,
         "base_score_before": -1,
@@ -549,7 +549,7 @@
         "bond mkt +2 (wt 1.25x)",
         "\u26a1 VALUE OVERRIDE: +2 (50% below target)"
       ],
-      "price": 17.57,
+      "price": 17.55,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3,
@@ -575,7 +575,7 @@
         "underperforming XLI by 4.9%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 205.28
+      "price": 204.52
     },
     {
       "ticker": "TLN",
@@ -592,7 +592,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (19% below target)"
       ],
-      "price": 316.31,
+      "price": 316.14,
       "value_override": {
         "total_score": 1,
         "base_score_before": 2,
@@ -618,7 +618,7 @@
         "insider net selling (1B/14S)",
         "bond mkt +2 (wt 1.25x)"
       ],
-      "price": 393.15
+      "price": 391.2
     },
     {
       "ticker": "TXT",
@@ -632,7 +632,7 @@
         "insider net selling (0B/7S)",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 91.58
+      "price": 91.05
     },
     {
       "ticker": "UNH",
@@ -649,7 +649,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 281.83,
+      "price": 282.09,
       "value_override": {
         "total_score": 1,
         "base_score_before": 0,
@@ -677,7 +677,7 @@
         "outperforming XLC by 25.9%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 51.4
+      "price": 51.38
     },
     {
       "ticker": "WFC",
@@ -691,7 +691,7 @@
         "outperforming XLF by 3.3%",
         "correlated with BAC (0.90)"
       ],
-      "price": 74.72
+      "price": 74.1
     },
     {
       "ticker": "XOM",
@@ -706,7 +706,7 @@
         "insider net selling (0B/6S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 156.76
+      "price": 156.12
     }
   ],
   "earnings": [
@@ -1156,7 +1156,7 @@
     },
     "combined_score": 1
   },
-  "priceRefreshedAt": "2026-03-13T19:00:10.728314Z",
+  "priceRefreshedAt": "2026-03-16T13:05:44.019586Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
     "ten_year": 4.232,
