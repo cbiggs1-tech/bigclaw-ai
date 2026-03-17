@@ -711,16 +711,16 @@
   ],
   "earnings": [
     {
-      "ticker": "JNJ",
-      "date": "2026-04-14",
-      "days_away": 28,
-      "eps_est": 2.69
-    },
-    {
       "ticker": "JPM",
       "date": "2026-04-14",
       "days_away": 28,
       "eps_est": 5.5
+    },
+    {
+      "ticker": "JNJ",
+      "date": "2026-04-14",
+      "days_away": 28,
+      "eps_est": 2.69
     },
     {
       "ticker": "BAC",
@@ -735,22 +735,10 @@
       "eps_est": 6.84
     },
     {
-      "ticker": "NOC",
-      "date": "2026-04-21",
-      "days_away": 35,
-      "eps_est": 6.01
-    },
-    {
       "ticker": "RTX",
       "date": "2026-04-21",
       "days_away": 35,
       "eps_est": 1.51
-    },
-    {
-      "ticker": "LMT",
-      "date": "2026-04-21",
-      "days_away": 35,
-      "eps_est": 6.82
     },
     {
       "ticker": "TSLA",
@@ -763,6 +751,18 @@
       "date": "2026-04-21",
       "days_away": 35,
       "eps_est": 1.58
+    },
+    {
+      "ticker": "NOC",
+      "date": "2026-04-21",
+      "days_away": 35,
+      "eps_est": 6.01
+    },
+    {
+      "ticker": "LMT",
+      "date": "2026-04-21",
+      "days_away": 35,
+      "eps_est": 6.82
     },
     {
       "ticker": "GEV",
@@ -801,10 +801,10 @@
       "eps_est": 4.06
     },
     {
-      "ticker": "LLY",
+      "ticker": "ED",
       "date": "2026-04-30",
       "days_away": 44,
-      "eps_est": 7.25
+      "eps_est": 2.27
     },
     {
       "ticker": "AAPL",
@@ -813,16 +813,16 @@
       "eps_est": 1.95
     },
     {
-      "ticker": "ED",
-      "date": "2026-04-30",
-      "days_away": 44,
-      "eps_est": 2.27
-    },
-    {
       "ticker": "LHX",
       "date": "2026-04-30",
       "days_away": 44,
       "eps_est": 2.59
+    },
+    {
+      "ticker": "LLY",
+      "date": "2026-04-30",
+      "days_away": 44,
+      "eps_est": 7.25
     },
     {
       "ticker": "XOM",
@@ -843,22 +843,16 @@
       "eps_est": 0.92
     },
     {
-      "ticker": "PLTR",
-      "date": "2026-05-04",
-      "days_away": 48,
-      "eps_est": 0.28
-    },
-    {
       "ticker": "O",
       "date": "2026-05-04",
       "days_away": 48,
       "eps_est": 0.4
     },
     {
-      "ticker": "CCJ",
-      "date": "2026-05-05",
-      "days_away": 49,
-      "eps_est": 0.36
+      "ticker": "PLTR",
+      "date": "2026-05-04",
+      "days_away": 48,
+      "eps_est": 0.28
     },
     {
       "ticker": "ANET",
@@ -867,10 +861,10 @@
       "eps_est": 0.81
     },
     {
-      "ticker": "TLN",
-      "date": "2026-05-07",
-      "days_away": 51,
-      "eps_est": 3.7
+      "ticker": "CCJ",
+      "date": "2026-05-05",
+      "days_away": 49,
+      "eps_est": 0.36
     },
     {
       "ticker": "QBTS",
@@ -883,6 +877,12 @@
       "date": "2026-05-07",
       "days_away": 51,
       "eps_est": 0.13
+    },
+    {
+      "ticker": "TLN",
+      "date": "2026-05-07",
+      "days_away": 51,
+      "eps_est": 3.7
     },
     {
       "ticker": "CRSP",
@@ -1131,9 +1131,9 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.784,
-      "ten_year": 4.206,
-      "spread": 0.422,
+      "two_year": 3.786,
+      "ten_year": 4.202,
+      "spread": 0.416,
       "date": "2026-03-17",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -1143,9 +1143,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.206,
+      "current": 4.202,
       "prev": 4.208,
-      "change_bps": -0.2,
+      "change_bps": -0.6,
       "date": "2026-03-17",
       "assessment": "Elevated \u2014 bearish"
     },
@@ -1159,9 +1159,9 @@
   "priceRefreshedAt": "2026-03-17T19:00:15.941119Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.206,
-    "two_year": 3.784,
-    "yield_spread": 0.422,
+    "ten_year": 4.202,
+    "two_year": 3.786,
+    "yield_spread": 0.416,
     "inverted": false
   }
 }
