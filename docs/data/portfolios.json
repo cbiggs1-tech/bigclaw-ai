@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-03-16T21:30:37.041399Z",
+  "lastUpdate": "2026-03-17T13:02:52.457857Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -100,7 +100,7 @@
     {
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
-      "totalValue": 97067.8,
+      "totalValue": 97066.9,
       "prevTotalValue": 95955.22,
       "startingCash": 100000.0,
       "totalReturn": -2.93,
@@ -119,7 +119,7 @@
           "ticker": "AVGO",
           "shares": 45.0,
           "avgCost": 327.63,
-          "currentPrice": 324.47,
+          "currentPrice": 324.45,
           "purchasedAt": "Feb 16, 2026"
         },
         {
@@ -265,11 +265,11 @@
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 99283.18,
+      "totalValue": 99599.17,
       "prevTotalValue": 98134.33,
       "startingCash": 100000.0,
-      "totalReturn": -0.72,
-      "dailyReturn": 1.17,
+      "totalReturn": -0.4,
+      "dailyReturn": 1.49,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -291,7 +291,7 @@
           "ticker": "NVDA",
           "shares": 206.57,
           "avgCost": 182.02,
-          "currentPrice": 182.31,
+          "currentPrice": 183.44,
           "purchasedAt": "Feb 03, 2026"
         },
         {
@@ -305,14 +305,14 @@
           "ticker": "QBTS",
           "shares": 48.5,
           "avgCost": 19.03,
-          "currentPrice": 17.47,
+          "currentPrice": 17.46,
           "purchasedAt": "Feb 12, 2026"
         },
         {
           "ticker": "TSLA",
           "shares": 59.75,
           "avgCost": 418.43,
-          "currentPrice": 394.49,
+          "currentPrice": 395.88,
           "purchasedAt": "Feb 03, 2026"
         }
       ]
@@ -320,11 +320,11 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 95192.37,
+      "totalValue": 95292.65,
       "prevTotalValue": 94144.81,
       "startingCash": 100000.0,
-      "totalReturn": -4.81,
-      "dailyReturn": 1.11,
+      "totalReturn": -4.71,
+      "dailyReturn": 1.22,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -339,7 +339,7 @@
           "ticker": "AVGO",
           "shares": 14.0,
           "avgCost": 332.54,
-          "currentPrice": 324.47,
+          "currentPrice": 324.45,
           "purchasedAt": "Feb 18, 2026"
         },
         {
@@ -360,14 +360,14 @@
           "ticker": "NVDA",
           "shares": 76.9,
           "avgCost": 181.44,
-          "currentPrice": 182.31,
+          "currentPrice": 183.44,
           "purchasedAt": "Feb 05, 2026"
         },
         {
           "ticker": "TSLA",
           "shares": 9.83,
           "avgCost": 428.45,
-          "currentPrice": 394.49,
+          "currentPrice": 395.88,
           "purchasedAt": "Feb 10, 2026"
         },
         {

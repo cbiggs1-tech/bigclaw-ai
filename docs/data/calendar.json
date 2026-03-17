@@ -4,9 +4,16 @@
       "name": "FOMC Rate Decision",
       "date": "2026-03-18",
       "icon": "\ud83c\udfe6",
-      "days_away": 2,
+      "days_away": 1,
       "category": "fed"
+    },
+    {
+      "name": "Q1 End / Rebalancing Window",
+      "date": "2026-03-31",
+      "icon": "\ud83d\udcca",
+      "days_away": 14,
+      "category": "market"
     }
   ],
-  "lastUpdate": "2026-03-16T21:32:03.249180Z"
+  "lastUpdate": "2026-03-17T13:04:18.080322Z"
 }
