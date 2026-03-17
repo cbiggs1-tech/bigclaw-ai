@@ -735,28 +735,28 @@
       "eps_est": 6.84
     },
     {
-      "ticker": "RTX",
-      "date": "2026-04-21",
-      "days_away": 35,
-      "eps_est": 1.51
-    },
-    {
       "ticker": "TSLA",
       "date": "2026-04-21",
       "days_away": 35,
       "eps_est": 0.4
     },
     {
-      "ticker": "GE",
+      "ticker": "RTX",
       "date": "2026-04-21",
       "days_away": 35,
-      "eps_est": 1.58
+      "eps_est": 1.51
     },
     {
       "ticker": "NOC",
       "date": "2026-04-21",
       "days_away": 35,
       "eps_est": 6.01
+    },
+    {
+      "ticker": "GE",
+      "date": "2026-04-21",
+      "days_away": 35,
+      "eps_est": 1.58
     },
     {
       "ticker": "LMT",
@@ -801,16 +801,16 @@
       "eps_est": 4.06
     },
     {
-      "ticker": "ED",
-      "date": "2026-04-30",
-      "days_away": 44,
-      "eps_est": 2.27
-    },
-    {
       "ticker": "AAPL",
       "date": "2026-04-30",
       "days_away": 44,
       "eps_est": 1.95
+    },
+    {
+      "ticker": "LLY",
+      "date": "2026-04-30",
+      "days_away": 44,
+      "eps_est": 7.25
     },
     {
       "ticker": "LHX",
@@ -819,10 +819,10 @@
       "eps_est": 2.59
     },
     {
-      "ticker": "LLY",
+      "ticker": "ED",
       "date": "2026-04-30",
       "days_away": 44,
-      "eps_est": 7.25
+      "eps_est": 2.27
     },
     {
       "ticker": "XOM",
@@ -837,16 +837,16 @@
       "eps_est": 5.13
     },
     {
-      "ticker": "BWXT",
-      "date": "2026-05-04",
-      "days_away": 48,
-      "eps_est": 0.92
-    },
-    {
       "ticker": "O",
       "date": "2026-05-04",
       "days_away": 48,
       "eps_est": 0.4
+    },
+    {
+      "ticker": "BWXT",
+      "date": "2026-05-04",
+      "days_away": 48,
+      "eps_est": 0.92
     },
     {
       "ticker": "PLTR",
@@ -855,22 +855,16 @@
       "eps_est": 0.28
     },
     {
-      "ticker": "ANET",
-      "date": "2026-05-05",
-      "days_away": 49,
-      "eps_est": 0.81
-    },
-    {
       "ticker": "CCJ",
       "date": "2026-05-05",
       "days_away": 49,
       "eps_est": 0.36
     },
     {
-      "ticker": "QBTS",
-      "date": "2026-05-07",
-      "days_away": 51,
-      "eps_est": null
+      "ticker": "ANET",
+      "date": "2026-05-05",
+      "days_away": 49,
+      "eps_est": 0.81
     },
     {
       "ticker": "KTOS",
@@ -883,6 +877,12 @@
       "date": "2026-05-07",
       "days_away": 51,
       "eps_est": 3.7
+    },
+    {
+      "ticker": "QBTS",
+      "date": "2026-05-07",
+      "days_away": 51,
+      "eps_est": null
     },
     {
       "ticker": "CRSP",
