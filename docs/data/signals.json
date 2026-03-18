@@ -1,5 +1,5 @@
 {
-  "date": "2026-03-18 10:00",
+  "date": "2026-03-18 11:26",
   "signals": [
     {
       "ticker": "ANET",
@@ -15,7 +15,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (25% below target)"
       ],
-      "price": 135.18,
+      "price": 136.35,
       "value_override": {
         "total_score": 2,
         "base_score_before": 1,
@@ -44,7 +44,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (31% below target)"
       ],
-      "price": 319.07,
+      "price": 317.83,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3,
@@ -70,7 +70,7 @@
         "insider net selling (4B/6S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 114.04
+      "price": 114.18
     },
     {
       "ticker": "GEV",
@@ -85,7 +85,7 @@
         "outperforming XLI by 8.0%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 865.95
+      "price": 872.97
     },
     {
       "ticker": "JNJ",
@@ -100,7 +100,7 @@
         "outperforming XLV by 3.3%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 238.87
+      "price": 237.99
     },
     {
       "ticker": "LMT",
@@ -116,7 +116,7 @@
         "outperforming XLI by 3.4%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 642.62
+      "price": 644.2
     },
     {
       "ticker": "O",
@@ -130,7 +130,7 @@
         "insider net selling (0B/2S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 63.32
+      "price": 63.75
     },
     {
       "ticker": "PG",
@@ -144,7 +144,7 @@
         "insider net selling (0B/15S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 147.79
+      "price": 148.11
     },
     {
       "ticker": "RTX",
@@ -159,7 +159,7 @@
         "outperforming XLI by 5.1%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 206.36
+      "price": 206.43
     },
     {
       "ticker": "TLN",
@@ -175,7 +175,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (30% below target)"
       ],
-      "price": 335.87,
+      "price": 342.84,
       "value_override": {
         "total_score": 2,
         "base_score_before": -5,
@@ -202,7 +202,7 @@
         "outperforming XLC by 2.4%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 49.98
+      "price": 49.62
     },
     {
       "ticker": "candidates",
@@ -491,5 +491,5 @@
       "swap_recommendations": []
     }
   },
-  "priceRefreshedAt": "2026-03-18T15:00:18.109004Z"
+  "priceRefreshedAt": "2026-03-18T17:00:10.666018Z"
 }
