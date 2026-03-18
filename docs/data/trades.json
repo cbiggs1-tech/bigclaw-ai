@@ -1,0 +1,71 @@
+{
+  "trades": [
+    {
+      "date": "Mar 18",
+      "portfolio": "AI Defense & Autonomous",
+      "action": "BUY",
+      "ticker": "LMT",
+      "shares": 5.0,
+      "price": 642.125,
+      "total": 3210.625,
+      "rationale": "\ud83d\udfe2 STRONG BUY / ADD",
+      "executed_at": "2026-03-18 16:26:13"
+    },
+    {
+      "date": "Mar 18",
+      "portfolio": "Nuclear Renaissance",
+      "action": "BUY",
+      "ticker": "GEV",
+      "shares": 7.0,
+      "price": 871.02,
+      "total": 6097.139999999999,
+      "rationale": "\ud83d\udfe2 STRONG BUY / ADD",
+      "executed_at": "2026-03-18 16:26:12"
+    },
+    {
+      "date": "Mar 18",
+      "portfolio": "Momentum Growth",
+      "action": "BUY",
+      "ticker": "ANET",
+      "shares": 23.0,
+      "price": 136.74,
+      "total": 3145.0200000000004,
+      "rationale": "\ud83d\udfe2 STRONG BUY / ADD",
+      "executed_at": "2026-03-18 16:26:12"
+    },
+    {
+      "date": "Mar 18",
+      "portfolio": "AI Defense & Autonomous",
+      "action": "BUY",
+      "ticker": "RTX",
+      "shares": 34.0,
+      "price": 205.85,
+      "total": 6998.9,
+      "rationale": "\ud83d\udfe2 STRONG BUY / ADD",
+      "executed_at": "2026-03-18 16:26:12"
+    },
+    {
+      "date": "Mar 18",
+      "portfolio": "Income Dividends",
+      "action": "BUY",
+      "ticker": "O",
+      "shares": 113.0,
+      "price": 63.55,
+      "total": 7181.15,
+      "rationale": "\ud83d\udfe2 STRONG BUY / ADD",
+      "executed_at": "2026-03-18 16:26:11"
+    },
+    {
+      "date": "Mar 18",
+      "portfolio": "Nuclear Renaissance",
+      "action": "SELL",
+      "ticker": "TLN",
+      "shares": 6.0,
+      "price": 341.33,
+      "total": 2047.98,
+      "rationale": "TRIM 50% (score -3)",
+      "executed_at": "2026-03-18 16:26:10"
+    }
+  ],
+  "lastUpdate": "2026-03-18T20:31:04.533150+00:00"
+}
