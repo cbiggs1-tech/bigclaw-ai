@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-18T15:30:32.557560",
+  "timestamp": "2026-03-18T16:30:39.666021",
   "context": {
     "ticker": null,
     "sector": null,
@@ -163,8 +163,8 @@
       "1mo": 3.84
     },
     "Bitcoin": {
-      "price": 70945.41,
-      "1mo": 3.05
+      "price": 71279.76,
+      "1mo": 3.54
     },
     "yield_curve": {
       "spread": 0.601,
