@@ -735,6 +735,24 @@
       "eps_est": 6.84
     },
     {
+      "ticker": "TSLA",
+      "date": "2026-04-21",
+      "days_away": 34,
+      "eps_est": 0.4
+    },
+    {
+      "ticker": "RTX",
+      "date": "2026-04-21",
+      "days_away": 34,
+      "eps_est": 1.51
+    },
+    {
+      "ticker": "NOC",
+      "date": "2026-04-21",
+      "days_away": 34,
+      "eps_est": 6.01
+    },
+    {
       "ticker": "GE",
       "date": "2026-04-21",
       "days_away": 34,
@@ -745,24 +763,6 @@
       "date": "2026-04-21",
       "days_away": 34,
       "eps_est": 6.82
-    },
-    {
-      "ticker": "NOC",
-      "date": "2026-04-21",
-      "days_away": 34,
-      "eps_est": 6.01
-    },
-    {
-      "ticker": "RTX",
-      "date": "2026-04-21",
-      "days_away": 34,
-      "eps_est": 1.51
-    },
-    {
-      "ticker": "TSLA",
-      "date": "2026-04-21",
-      "days_away": 34,
-      "eps_est": 0.4
     },
     {
       "ticker": "GEV",
@@ -801,10 +801,10 @@
       "eps_est": 4.06
     },
     {
-      "ticker": "ED",
+      "ticker": "AAPL",
       "date": "2026-04-30",
       "days_away": 43,
-      "eps_est": 2.27
+      "eps_est": 1.95
     },
     {
       "ticker": "LLY",
@@ -813,16 +813,16 @@
       "eps_est": 7.25
     },
     {
-      "ticker": "AAPL",
-      "date": "2026-04-30",
-      "days_away": 43,
-      "eps_est": 1.95
-    },
-    {
       "ticker": "LHX",
       "date": "2026-04-30",
       "days_away": 43,
       "eps_est": 2.59
+    },
+    {
+      "ticker": "ED",
+      "date": "2026-04-30",
+      "days_away": 43,
+      "eps_est": 2.27
     },
     {
       "ticker": "XOM",
@@ -837,6 +837,12 @@
       "eps_est": 5.13
     },
     {
+      "ticker": "O",
+      "date": "2026-05-04",
+      "days_away": 47,
+      "eps_est": 0.4
+    },
+    {
       "ticker": "BWXT",
       "date": "2026-05-04",
       "days_away": 47,
@@ -849,10 +855,10 @@
       "eps_est": 0.28
     },
     {
-      "ticker": "O",
-      "date": "2026-05-04",
-      "days_away": 47,
-      "eps_est": 0.4
+      "ticker": "CCJ",
+      "date": "2026-05-05",
+      "days_away": 48,
+      "eps_est": 0.36
     },
     {
       "ticker": "ANET",
@@ -861,10 +867,10 @@
       "eps_est": 0.81
     },
     {
-      "ticker": "CCJ",
-      "date": "2026-05-05",
-      "days_away": 48,
-      "eps_est": 0.36
+      "ticker": "KTOS",
+      "date": "2026-05-07",
+      "days_away": 50,
+      "eps_est": 0.13
     },
     {
       "ticker": "TLN",
@@ -877,12 +883,6 @@
       "date": "2026-05-07",
       "days_away": 50,
       "eps_est": null
-    },
-    {
-      "ticker": "KTOS",
-      "date": "2026-05-07",
-      "days_away": 50,
-      "eps_est": 0.13
     },
     {
       "ticker": "CRSP",
@@ -1131,9 +1131,9 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.812,
-      "ten_year": 4.216,
-      "spread": 0.404,
+      "two_year": 3.821,
+      "ten_year": 4.226,
+      "spread": 0.405,
       "date": "2026-03-18",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -1143,9 +1143,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.216,
+      "current": 4.226,
       "prev": 4.273,
-      "change_bps": -5.7,
+      "change_bps": -4.7,
       "date": "2026-03-18",
       "assessment": "Elevated \u2014 bearish"
     },
@@ -1159,9 +1159,9 @@
   "priceRefreshedAt": "2026-03-18T13:05:09.321854Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.216,
-    "two_year": 3.812,
-    "yield_spread": 0.404,
+    "ten_year": 4.226,
+    "two_year": 3.821,
+    "yield_spread": 0.405,
     "inverted": false
   }
 }
