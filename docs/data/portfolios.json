@@ -1,14 +1,14 @@
 {
-  "lastUpdate": "2026-03-17T21:30:44.331986Z",
+  "lastUpdate": "2026-03-18T13:02:43.933605Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
       "totalValue": 92025.9,
-      "prevTotalValue": 91110.37,
+      "prevTotalValue": 91101.37,
       "startingCash": 100000.0,
       "totalReturn": -7.97,
-      "dailyReturn": 1.0,
+      "dailyReturn": 1.01,
       "createdAt": "2026-02-16 13:51:57",
       "purchaseStatus": "pending",
       "holdings": [
@@ -265,11 +265,11 @@
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 100216.82,
+      "totalValue": 100043.29,
       "prevTotalValue": 99607.38,
       "startingCash": 100000.0,
-      "totalReturn": 0.22,
-      "dailyReturn": 0.61,
+      "totalReturn": 0.04,
+      "dailyReturn": 0.44,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -291,7 +291,7 @@
           "ticker": "NVDA",
           "shares": 206.57,
           "avgCost": 182.02,
-          "currentPrice": 181.96,
+          "currentPrice": 181.71,
           "purchasedAt": "Feb 03, 2026"
         },
         {
@@ -312,7 +312,7 @@
           "ticker": "TSLA",
           "shares": 59.75,
           "avgCost": 418.43,
-          "currentPrice": 399.06,
+          "currentPrice": 397.02,
           "purchasedAt": "Feb 03, 2026"
         }
       ]
@@ -320,11 +320,11 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 95513.24,
+      "totalValue": 95430.85,
       "prevTotalValue": 95282.72,
       "startingCash": 100000.0,
-      "totalReturn": -4.49,
-      "dailyReturn": 0.24,
+      "totalReturn": -4.57,
+      "dailyReturn": 0.16,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -353,21 +353,21 @@
           "ticker": "MSFT",
           "shares": 18.66,
           "avgCost": 409.15,
-          "currentPrice": 399.65,
+          "currentPrice": 397.34,
           "purchasedAt": "Feb 03, 2026"
         },
         {
           "ticker": "NVDA",
           "shares": 76.9,
           "avgCost": 181.44,
-          "currentPrice": 181.96,
+          "currentPrice": 181.71,
           "purchasedAt": "Feb 05, 2026"
         },
         {
           "ticker": "TSLA",
           "shares": 9.83,
           "avgCost": 428.45,
-          "currentPrice": 399.06,
+          "currentPrice": 397.02,
           "purchasedAt": "Feb 10, 2026"
         },
         {
