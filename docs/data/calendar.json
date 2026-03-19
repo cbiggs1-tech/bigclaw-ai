@@ -1,19 +1,12 @@
 {
   "events": [
     {
-      "name": "FOMC Rate Decision",
-      "date": "2026-03-18",
-      "icon": "\ud83c\udfe6",
-      "days_away": 0,
-      "category": "fed"
-    },
-    {
       "name": "Q1 End / Rebalancing Window",
       "date": "2026-03-31",
       "icon": "\ud83d\udcca",
-      "days_away": 13,
+      "days_away": 12,
       "category": "market"
     }
   ],
-  "lastUpdate": "2026-03-18T21:31:10.552066Z"
+  "lastUpdate": "2026-03-19T13:03:22.575528Z"
 }

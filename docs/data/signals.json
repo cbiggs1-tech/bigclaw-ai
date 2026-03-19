@@ -227,67 +227,67 @@
     {
       "ticker": "JNJ",
       "date": "2026-04-14",
-      "days_away": 27,
+      "days_away": 26,
       "eps_est": 2.68
     },
     {
       "ticker": "LMT",
       "date": "2026-04-21",
-      "days_away": 34,
+      "days_away": 33,
       "eps_est": 6.81
     },
     {
       "ticker": "RTX",
       "date": "2026-04-21",
-      "days_away": 34,
+      "days_away": 33,
       "eps_est": 1.51
     },
     {
       "ticker": "GEV",
       "date": "2026-04-22",
-      "days_away": 35,
+      "days_away": 34,
       "eps_est": 1.66
     },
     {
       "ticker": "PG",
       "date": "2026-04-24",
-      "days_away": 37,
+      "days_away": 36,
       "eps_est": 1.57
     },
     {
       "ticker": "VZ",
       "date": "2026-04-27",
-      "days_away": 40,
+      "days_away": 39,
       "eps_est": 1.22
     },
     {
       "ticker": "ED",
       "date": "2026-04-30",
-      "days_away": 43,
+      "days_away": 42,
       "eps_est": 2.27
     },
     {
       "ticker": "O",
       "date": "2026-05-04",
-      "days_away": 47,
+      "days_away": 46,
       "eps_est": 0.4
     },
     {
       "ticker": "ANET",
       "date": "2026-05-05",
-      "days_away": 48,
+      "days_away": 47,
       "eps_est": 0.81
     },
     {
       "ticker": "TLN",
       "date": "2026-05-07",
-      "days_away": 50,
-      "eps_est": 3.7
+      "days_away": 49,
+      "eps_est": 0.91
     },
     {
       "ticker": "AVGO",
       "date": "2026-06-03",
-      "days_away": 77,
+      "days_away": 76,
       "eps_est": 2.39
     }
   ],
@@ -317,22 +317,22 @@
   "concentration": [],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.862,
-      "ten_year": 4.259,
-      "spread": 0.397,
-      "date": "2026-03-18",
+      "two_year": 3.95,
+      "ten_year": 4.308,
+      "spread": 0.358,
+      "date": "2026-03-19",
       "assessment": "Normal & steepening \u2014 bullish"
     },
     "credit_spreads": {
       "current_bps": 292.0,
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.259,
-      "prev": 4.273,
-      "change_bps": -1.4,
-      "date": "2026-03-18",
+      "current": 4.308,
+      "prev": 4.285,
+      "change_bps": 2.3,
+      "date": "2026-03-19",
       "assessment": "Elevated \u2014 bearish"
     },
     "scores": {
@@ -556,9 +556,9 @@
   "priceRefreshedAt": "2026-03-18T19:00:10.014508Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.259,
-    "two_year": 3.862,
-    "yield_spread": 0.397,
+    "ten_year": 4.308,
+    "two_year": 3.95,
+    "yield_spread": 0.358,
     "inverted": false
   }
 }

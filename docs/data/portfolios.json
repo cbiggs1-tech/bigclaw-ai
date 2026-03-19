@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-03-18T21:30:41.138460Z",
+  "lastUpdate": "2026-03-19T13:02:53.468546Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -79,11 +79,11 @@
     {
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
-      "totalValue": 99633.17,
+      "totalValue": 99576.17,
       "prevTotalValue": 99549.34,
       "startingCash": 100000.0,
-      "totalReturn": -0.37,
-      "dailyReturn": 0.08,
+      "totalReturn": -0.42,
+      "dailyReturn": 0.03,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -98,7 +98,7 @@
           "ticker": "AVGO",
           "shares": 15.0,
           "avgCost": 332.52,
-          "currentPrice": 315.26,
+          "currentPrice": 311.46,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -172,11 +172,11 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 99758.36,
+      "totalValue": 99705.16,
       "prevTotalValue": 99843.06,
       "startingCash": 100000.0,
-      "totalReturn": -0.24,
-      "dailyReturn": -0.08,
+      "totalReturn": -0.29,
+      "dailyReturn": -0.14,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -184,7 +184,7 @@
           "ticker": "AVGO",
           "shares": 14.0,
           "avgCost": 332.52,
-          "currentPrice": 315.26,
+          "currentPrice": 311.46,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
