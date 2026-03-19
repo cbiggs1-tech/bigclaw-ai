@@ -1119,27 +1119,29 @@ function renderCalendarEvents(data) {
 // ── Trades ──
 function loadTrades() {
     safeFetch('data/trades.json').then(data => {
-        const trades = (Array.isArray(data) ? data : (data.trades || [])).slice(0, 10);
+        const trades = (Array.isArray(data) ? data : (data.trades || [])).slice(0, 25);
         const el = document.getElementById('tradesContent');
-        if (trades.length === 0) { el.innerHTML = '<div class="placeholder">No trades yet — starting Monday</div>'; return; }
+        if (trades.length === 0) { el.innerHTML = '<div class="placeholder">No trades yet</div>'; return; }
         let html = `<table class="trades-table"><thead><tr>
-            <th>Date</th><th>Action</th><th>Ticker</th><th>Shares</th><th>Price</th><th class="hide-mobile">Rationale</th>
+            <th>Date</th><th>Portfolio</th><th>Action</th><th>Ticker</th><th>Shares</th><th>Price</th><th class="hide-mobile">Total</th>
         </tr></thead><tbody>`;
         trades.forEach(t => {
             const actionClass = (t.action || '').toUpperCase() === 'BUY' ? 'trade-action-buy' : 'trade-action-sell';
+            const shortName = (t.portfolio || '').replace('AI Defense & Autonomous', 'AI Defense').replace('Nuclear Renaissance', 'Nuclear').replace('Momentum Growth', 'Momentum').replace('Income Dividends', 'Income').replace('Innovation Fund', 'Innovation').replace('Growth Value', 'Growth').replace('Value Picks', 'Value');
             html += `<tr>
                 <td>${t.date || ''}</td>
+                <td style="font-size:0.75rem;opacity:0.8">${shortName}</td>
                 <td class="${actionClass}">${(t.action || '').toUpperCase()}</td>
                 <td class="trade-ticker">${t.ticker || ''}</td>
-                <td>${t.shares || ''}</td>
+                <td>${t.shares ? Math.round(t.shares) : ''}</td>
                 <td>$${fmtPrice(t.price || 0)}</td>
-                <td class="hide-mobile">${t.rationale || ''}</td>
+                <td class="hide-mobile">$${fmtPrice(t.total || 0)}</td>
             </tr>`;
         });
         html += '</tbody></table>';
         el.innerHTML = html;
     }).catch(() => {
-        document.getElementById('tradesContent').innerHTML = '<div class="placeholder">No trades yet — starting Monday</div>';
+        document.getElementById('tradesContent').innerHTML = '<div class="placeholder">No trades yet</div>';
     });
 }
 
