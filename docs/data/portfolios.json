@@ -1,10 +1,10 @@
 {
-  "lastUpdate": "2026-03-19T17:01:59.516920Z",
+  "lastUpdate": "2026-03-19T17:02:29.663404Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
-      "totalValue": 99528.01,
+      "totalValue": 99528.28,
       "prevTotalValue": 99571.93,
       "startingCash": 100000.0,
       "totalReturn": -0.47,
@@ -16,14 +16,14 @@
           "ticker": "GEV",
           "shares": 13.0,
           "avgCost": 847.02,
-          "currentPrice": 855.92,
+          "currentPrice": 855.9,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "TLN",
           "shares": 3.0,
           "avgCost": 386.9,
-          "currentPrice": 335.01,
+          "currentPrice": 335.18,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -31,11 +31,11 @@
     {
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
-      "totalValue": 99322.45,
+      "totalValue": 99312.2,
       "prevTotalValue": 99542.62,
       "startingCash": 100000.0,
-      "totalReturn": -0.68,
-      "dailyReturn": -0.22,
+      "totalReturn": -0.69,
+      "dailyReturn": -0.23,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -50,14 +50,14 @@
           "ticker": "JNJ",
           "shares": 17.0,
           "avgCost": 239.47,
-          "currentPrice": 238.43,
+          "currentPrice": 238.4,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "O",
           "shares": 188.0,
           "avgCost": 64.25,
-          "currentPrice": 62.63,
+          "currentPrice": 62.6,
           "purchasedAt": "Mar 18, 2026"
         },
         {
@@ -71,7 +71,7 @@
           "ticker": "VZ",
           "shares": 200.0,
           "avgCost": 48.34,
-          "currentPrice": 49.37,
+          "currentPrice": 49.34,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -79,11 +79,11 @@
     {
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
-      "totalValue": 99628.89,
+      "totalValue": 99620.77,
       "prevTotalValue": 99642.64,
       "startingCash": 100000.0,
-      "totalReturn": -0.37,
-      "dailyReturn": -0.01,
+      "totalReturn": -0.38,
+      "dailyReturn": -0.02,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -91,14 +91,14 @@
           "ticker": "ANET",
           "shares": 58.0,
           "avgCost": 137.94,
-          "currentPrice": 135.08,
+          "currentPrice": 134.93,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "AVGO",
           "shares": 15.0,
           "avgCost": 332.52,
-          "currentPrice": 318.84,
+          "currentPrice": 318.88,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -106,11 +106,11 @@
     {
       "name": "AI Defense & Autonomous",
       "style": "AI Defense / Autonomous Systems",
-      "totalValue": 99607.22,
+      "totalValue": 99608.78,
       "prevTotalValue": 99933.46,
       "startingCash": 100000.0,
       "totalReturn": -0.39,
-      "dailyReturn": -0.33,
+      "dailyReturn": -0.32,
       "createdAt": "2026-02-16",
       "purchaseStatus": "active",
       "holdings": [
@@ -118,7 +118,7 @@
           "ticker": "LMT",
           "shares": 12.0,
           "avgCost": 646.45,
-          "currentPrice": 634.77,
+          "currentPrice": 634.92,
           "purchasedAt": "Mar 18, 2026"
         },
         {
@@ -133,7 +133,7 @@
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 99416.15,
+      "totalValue": 99415.95,
       "prevTotalValue": 99467.5,
       "startingCash": 100000.0,
       "totalReturn": -0.58,
@@ -145,7 +145,7 @@
           "ticker": "JNJ",
           "shares": 10.0,
           "avgCost": 238.65,
-          "currentPrice": 238.43,
+          "currentPrice": 238.4,
           "purchasedAt": "Mar 18, 2026"
         },
         {
@@ -172,7 +172,7 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 99808.5,
+      "totalValue": 99809.04,
       "prevTotalValue": 99767.74,
       "startingCash": 100000.0,
       "totalReturn": -0.19,
@@ -184,7 +184,7 @@
           "ticker": "AVGO",
           "shares": 14.0,
           "avgCost": 332.52,
-          "currentPrice": 318.84,
+          "currentPrice": 318.88,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
