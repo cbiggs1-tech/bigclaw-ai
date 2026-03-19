@@ -242,16 +242,16 @@
       "eps_est": 2.68
     },
     {
-      "ticker": "RTX",
-      "date": "2026-04-21",
-      "days_away": 33,
-      "eps_est": 1.51
-    },
-    {
       "ticker": "LMT",
       "date": "2026-04-21",
       "days_away": 33,
       "eps_est": 6.81
+    },
+    {
+      "ticker": "RTX",
+      "date": "2026-04-21",
+      "days_away": 33,
+      "eps_est": 1.51
     },
     {
       "ticker": "GEV",
