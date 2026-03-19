@@ -14,7 +14,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (23% below target)"
       ],
-      "price": 135.02,
+      "price": 135.08,
       "value_override": {
         "total_score": 1,
         "base_score_before": 4,
@@ -42,7 +42,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (33% below target)"
       ],
-      "price": 319.11,
+      "price": 318.84,
       "value_override": {
         "total_score": 2,
         "base_score_before": -2,
@@ -84,7 +84,7 @@
         "outperforming XLI by 10.7%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 855.4
+      "price": 855.92
     },
     {
       "ticker": "JNJ",
@@ -99,7 +99,7 @@
         "outperforming XLV by 4.0%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 238.4
+      "price": 238.43
     },
     {
       "ticker": "LMT",
@@ -115,7 +115,7 @@
         "outperforming XLI by 5.0%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 634.67
+      "price": 634.77
     },
     {
       "ticker": "O",
@@ -129,7 +129,7 @@
         "insider net selling (0B/2S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 62.65
+      "price": 62.63
     },
     {
       "ticker": "PG",
@@ -144,7 +144,7 @@
         "bond mkt +2 (wt 1.5x)",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 34 oversold)"
       ],
-      "price": 145.16,
+      "price": 145.14,
       "value_override": {
         "total_score": 1,
         "base_score_before": -1,
@@ -170,7 +170,7 @@
         "outperforming XLI by 5.8%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 200.45
+      "price": 200.49
     },
     {
       "ticker": "TLN",
@@ -186,7 +186,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       ],
-      "price": 335.34,
+      "price": 335.01,
       "value_override": {
         "total_score": 2,
         "base_score_before": -5,
@@ -213,7 +213,7 @@
         "outperforming XLC by 4.0%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 49.35
+      "price": 49.37
     },
     {
       "ticker": "candidates",
@@ -571,5 +571,5 @@
     "yield_spread": 0.365,
     "inverted": false
   },
-  "priceRefreshedAt": "2026-03-19T17:01:17.236741Z"
+  "priceRefreshedAt": "2026-03-19T17:02:03.241573Z"
 }
