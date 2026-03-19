@@ -14,7 +14,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (23% below target)"
       ],
-      "price": 134.93,
+      "price": 134.88,
       "value_override": {
         "total_score": 1,
         "base_score_before": 4,
@@ -42,7 +42,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (33% below target)"
       ],
-      "price": 318.88,
+      "price": 318.86,
       "value_override": {
         "total_score": 2,
         "base_score_before": -2,
@@ -84,7 +84,7 @@
         "outperforming XLI by 10.7%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 855.9
+      "price": 856.23
     },
     {
       "ticker": "JNJ",
@@ -129,7 +129,7 @@
         "insider net selling (0B/2S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 62.6
+      "price": 62.63
     },
     {
       "ticker": "PG",
@@ -144,7 +144,7 @@
         "bond mkt +2 (wt 1.5x)",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 34 oversold)"
       ],
-      "price": 145.14,
+      "price": 145.13,
       "value_override": {
         "total_score": 1,
         "base_score_before": -1,
@@ -213,7 +213,7 @@
         "outperforming XLC by 4.0%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 49.34
+      "price": 49.31
     },
     {
       "ticker": "candidates",
@@ -571,5 +571,5 @@
     "yield_spread": 0.365,
     "inverted": false
   },
-  "priceRefreshedAt": "2026-03-19T17:02:32.999707Z"
+  "priceRefreshedAt": "2026-03-19T17:02:54.816645Z"
 }

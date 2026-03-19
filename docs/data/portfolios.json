@@ -1,10 +1,10 @@
 {
-  "lastUpdate": "2026-03-19T17:02:29.663404Z",
+  "lastUpdate": "2026-03-19T17:02:51.345455Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
-      "totalValue": 99528.28,
+      "totalValue": 99532.57,
       "prevTotalValue": 99571.93,
       "startingCash": 100000.0,
       "totalReturn": -0.47,
@@ -16,7 +16,7 @@
           "ticker": "GEV",
           "shares": 13.0,
           "avgCost": 847.02,
-          "currentPrice": 855.9,
+          "currentPrice": 856.23,
           "purchasedAt": "Mar 18, 2026"
         },
         {
@@ -31,7 +31,7 @@
     {
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
-      "totalValue": 99312.2,
+      "totalValue": 99311.69,
       "prevTotalValue": 99542.62,
       "startingCash": 100000.0,
       "totalReturn": -0.69,
@@ -57,21 +57,21 @@
           "ticker": "O",
           "shares": 188.0,
           "avgCost": 64.25,
-          "currentPrice": 62.6,
+          "currentPrice": 62.63,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "PG",
           "shares": 40.0,
           "avgCost": 158.4,
-          "currentPrice": 145.14,
+          "currentPrice": 145.13,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "VZ",
           "shares": 200.0,
           "avgCost": 48.34,
-          "currentPrice": 49.34,
+          "currentPrice": 49.31,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -79,11 +79,11 @@
     {
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
-      "totalValue": 99620.77,
+      "totalValue": 99617.5,
       "prevTotalValue": 99642.64,
       "startingCash": 100000.0,
       "totalReturn": -0.38,
-      "dailyReturn": -0.02,
+      "dailyReturn": -0.03,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -91,14 +91,14 @@
           "ticker": "ANET",
           "shares": 58.0,
           "avgCost": 137.94,
-          "currentPrice": 134.93,
+          "currentPrice": 134.88,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "AVGO",
           "shares": 15.0,
           "avgCost": 332.52,
-          "currentPrice": 318.88,
+          "currentPrice": 318.86,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -133,7 +133,7 @@
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 99415.95,
+      "totalValue": 99415.55,
       "prevTotalValue": 99467.5,
       "startingCash": 100000.0,
       "totalReturn": -0.58,
@@ -152,7 +152,7 @@
           "ticker": "PG",
           "shares": 40.0,
           "avgCost": 158.51,
-          "currentPrice": 145.14,
+          "currentPrice": 145.13,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -172,7 +172,7 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 99809.04,
+      "totalValue": 99808.69,
       "prevTotalValue": 99767.74,
       "startingCash": 100000.0,
       "totalReturn": -0.19,
@@ -184,7 +184,7 @@
           "ticker": "AVGO",
           "shares": 14.0,
           "avgCost": 332.52,
-          "currentPrice": 318.88,
+          "currentPrice": 318.86,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
