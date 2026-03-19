@@ -1,6 +1,17 @@
 {
   "trades": [
     {
+      "date": "Mar 19",
+      "portfolio": "Nuclear Renaissance",
+      "action": "SELL",
+      "ticker": "TLN",
+      "shares": 3.0,
+      "price": 334.015,
+      "total": 1002.045,
+      "rationale": "TRIM 50% (score -3)",
+      "executed_at": "2026-03-19 14:30:29"
+    },
+    {
       "date": "Mar 18",
       "portfolio": "AI Defense & Autonomous",
       "action": "BUY",
@@ -67,5 +78,5 @@
       "executed_at": "2026-03-18 16:26:10"
     }
   ],
-  "lastUpdate": "2026-03-19T13:03:22.353986+00:00"
+  "lastUpdate": "2026-03-19T14:32:35.737638+00:00"
 }

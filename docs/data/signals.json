@@ -1,67 +1,66 @@
 {
-  "date": "2026-03-18 11:26",
+  "date": "2026-03-19 09:30",
   "signals": [
     {
       "ticker": "ANET",
-      "score": 3,
+      "score": 5,
       "label": "\ud83d\udfe2 STRONG BUY / ADD",
       "reasons": [
-        "below 50-day SMA",
+        "above 50-day SMA",
         "above 200-day SMA",
         "golden cross (50>200)",
         "earnings growth 19%",
         "insider net selling (0B/9S)",
-        "underperforming XLK by 6.7%",
         "bond mkt +2 (wt 0.75x)",
-        "\u26a1 VALUE OVERRIDE: +2 (25% below target)"
+        "\u26a1 VALUE OVERRIDE: +1 (23% below target)"
       ],
-      "price": 136.07,
+      "price": 136.07000732421875,
       "value_override": {
-        "total_score": 2,
-        "base_score_before": 1,
+        "total_score": 1,
+        "base_score_before": 4,
         "components": {
           "analyst_target": {
-            "score": 2,
-            "reason": "25% below analyst target $177.74"
+            "score": 1,
+            "reason": "23% below analyst target $177.74"
           }
         },
-        "summary": "\u26a1 VALUE OVERRIDE: +2 (25% below target)"
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (23% below target)"
       }
     },
     {
       "ticker": "AVGO",
-      "score": -1,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "score": 0,
+      "label": "\u26aa HOLD",
       "reasons": [
-        "MACD bearish crossover",
         "below 50-day SMA",
         "below 200-day SMA",
         "golden cross (50>200)",
         "earnings growth 188%",
         "D/E ratio 166",
-        "insider net selling (1B/19S)",
-        "underperforming XLK by 3.4%",
+        "insider net selling (0B/20S)",
+        "underperforming XLK by 3.2%",
         "bond mkt +2 (wt 0.75x)",
-        "\u26a1 VALUE OVERRIDE: +2 (31% below target)"
+        "\u26a1 VALUE OVERRIDE: +2 (33% below target)"
       ],
-      "price": 315.93,
+      "price": 315.92999267578125,
       "value_override": {
         "total_score": 2,
-        "base_score_before": -3,
+        "base_score_before": -2,
         "components": {
           "analyst_target": {
             "score": 2,
-            "reason": "31% below analyst target $467.80"
+            "reason": "33% below analyst target $472.01"
           }
         },
-        "summary": "\u26a1 VALUE OVERRIDE: +2 (31% below target)"
+        "summary": "\u26a1 VALUE OVERRIDE: +2 (33% below target)"
       }
     },
     {
       "ticker": "ED",
-      "score": 2,
+      "score": 1,
       "label": "\ud83d\udfe2 BUY / HOLD",
       "reasons": [
+        "MACD bearish crossover",
         "above 50-day SMA",
         "above 200-day SMA",
         "golden cross (50>200)",
@@ -70,7 +69,7 @@
         "insider net selling (4B/6S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 113.53
+      "price": 113.52999877929688
     },
     {
       "ticker": "GEV",
@@ -82,10 +81,10 @@
         "golden cross (50>200)",
         "earnings growth 672%",
         "insider net selling (0B/7S)",
-        "outperforming XLI by 8.0%",
+        "outperforming XLI by 10.7%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 858.47
+      "price": 858.469970703125
     },
     {
       "ticker": "JNJ",
@@ -97,10 +96,10 @@
         "golden cross (50>200)",
         "earnings growth 49%",
         "insider net selling (0B/7S)",
-        "outperforming XLV by 3.3%",
+        "outperforming XLV by 4.0%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 237.28
+      "price": 237.27999877929688
     },
     {
       "ticker": "LMT",
@@ -113,10 +112,10 @@
         "earnings growth 161%",
         "D/E ratio 339",
         "insider net selling (0B/4S)",
-        "outperforming XLI by 3.4%",
+        "outperforming XLI by 5.0%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 642.28
+      "price": 642.280029296875
     },
     {
       "ticker": "O",
@@ -130,21 +129,33 @@
         "insider net selling (0B/2S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 63.04
+      "price": 63.040000915527344
     },
     {
       "ticker": "PG",
-      "score": -1,
-      "label": "\ud83d\udfe1 WATCH / CAUTION",
+      "score": 0,
+      "label": "\u26aa HOLD",
       "reasons": [
         "below 50-day SMA",
         "below 200-day SMA",
         "golden cross (50>200)",
         "earnings growth -5%",
         "insider net selling (0B/15S)",
-        "bond mkt +2 (wt 1.5x)"
+        "bond mkt +2 (wt 1.5x)",
+        "\u26a1 VALUE OVERRIDE: +1 (RSI 34 oversold)"
       ],
-      "price": 146.71
+      "price": 146.7100067138672,
+      "value_override": {
+        "total_score": 1,
+        "base_score_before": -1,
+        "components": {
+          "rsi_oversold": {
+            "score": 1,
+            "reason": "RSI 34 oversold territory"
+          }
+        },
+        "summary": "\u26a1 VALUE OVERRIDE: +1 (RSI 34 oversold)"
+      }
     },
     {
       "ticker": "RTX",
@@ -156,10 +167,10 @@
         "golden cross (50>200)",
         "earnings growth 8%",
         "insider net selling (0B/13S)",
-        "outperforming XLI by 5.1%",
+        "outperforming XLI by 5.8%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 204.56
+      "price": 204.55999755859375
     },
     {
       "ticker": "TLN",
@@ -171,21 +182,21 @@
         "death cross (50<200)",
         "D/E ratio 625",
         "insider net selling (0B/3S)",
-        "underperforming XLU by 17.4%",
+        "underperforming XLU by 13.4%",
         "bond mkt +2 (wt 0.75x)",
-        "\u26a1 VALUE OVERRIDE: +2 (30% below target)"
+        "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       ],
-      "price": 338.6,
+      "price": 338.6000061035156,
       "value_override": {
         "total_score": 2,
         "base_score_before": -5,
         "components": {
           "analyst_target": {
             "score": 2,
-            "reason": "30% below analyst target $465.18"
+            "reason": "28% below analyst target $469.77"
           }
         },
-        "summary": "\u26a1 VALUE OVERRIDE: +2 (30% below target)"
+        "summary": "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       }
     },
     {
@@ -199,10 +210,10 @@
         "earnings growth -53%",
         "D/E ratio 175",
         "insider net selling (0B/17S)",
-        "outperforming XLC by 2.4%",
+        "outperforming XLC by 4.0%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 49.59
+      "price": 49.59000015258789
     },
     {
       "ticker": "candidates",
@@ -317,9 +328,9 @@
   "concentration": [],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.928,
-      "ten_year": 4.289,
-      "spread": 0.361,
+      "two_year": 3.904,
+      "ten_year": 4.269,
+      "spread": 0.365,
       "date": "2026-03-19",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -329,9 +340,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.289,
+      "current": 4.269,
       "prev": 4.285,
-      "change_bps": 0.4,
+      "change_bps": -1.6,
       "date": "2026-03-19",
       "assessment": "Elevated \u2014 bearish"
     },
@@ -351,7 +362,7 @@
         {
           "ticker": "JNJ",
           "score": 6,
-          "value": 2381.1000061035156,
+          "value": 2372.7999877929688,
           "position_size": {
             "category": "full",
             "range": "12-15%"
@@ -360,13 +371,13 @@
         },
         {
           "ticker": "PG",
-          "score": -1,
-          "value": 6059.1998291015625,
+          "score": 0,
+          "value": 5868.4002685546875,
           "position_size": {
             "category": "review",
             "range": "0% (flag for review)"
           },
-          "label": "\ud83d\udfe1 WATCH / CAUTION"
+          "label": "\u26aa HOLD"
         }
       ],
       "trim_recommendations": [],
@@ -379,13 +390,13 @@
       "ranked_holdings": [
         {
           "ticker": "AVGO",
-          "score": -1,
-          "value": 4498.3399658203125,
+          "score": 0,
+          "value": 4423.0198974609375,
           "position_size": {
             "category": "review",
             "range": "0% (flag for review)"
           },
-          "label": "\ud83d\udfe1 WATCH / CAUTION"
+          "label": "\u26aa HOLD"
         }
       ],
       "trim_recommendations": [],
@@ -399,7 +410,7 @@
         {
           "ticker": "JNJ",
           "score": 6,
-          "value": 4047.8700103759766,
+          "value": 4033.759979248047,
           "position_size": {
             "category": "full",
             "range": "12-15%"
@@ -409,7 +420,7 @@
         {
           "ticker": "O",
           "score": 5,
-          "value": 4806.749725341797,
+          "value": 11851.52017211914,
           "position_size": {
             "category": "full",
             "range": "12-15%"
@@ -419,7 +430,7 @@
         {
           "ticker": "VZ",
           "score": 3,
-          "value": 10104.000091552734,
+          "value": 9918.000030517578,
           "position_size": {
             "category": "standard",
             "range": "8-12%"
@@ -428,8 +439,8 @@
         },
         {
           "ticker": "ED",
-          "score": 2,
-          "value": 5055.600067138672,
+          "score": 1,
+          "value": 4995.3199462890625,
           "position_size": {
             "category": "starter",
             "range": "5-8%"
@@ -438,13 +449,13 @@
         },
         {
           "ticker": "PG",
-          "score": -1,
-          "value": 6059.1998291015625,
+          "score": 0,
+          "value": 5868.4002685546875,
           "position_size": {
             "category": "review",
             "range": "0% (flag for review)"
           },
-          "label": "\ud83d\udfe1 WATCH / CAUTION"
+          "label": "\u26aa HOLD"
         }
       ],
       "trim_recommendations": [],
@@ -457,23 +468,23 @@
       "ranked_holdings": [
         {
           "ticker": "ANET",
-          "score": 3,
-          "value": 4657.450256347656,
+          "score": 5,
+          "value": 7892.0604248046875,
           "position_size": {
-            "category": "standard",
-            "range": "8-12%"
+            "category": "full",
+            "range": "12-15%"
           },
           "label": "\ud83d\udfe2 STRONG BUY / ADD"
         },
         {
           "ticker": "AVGO",
-          "score": -1,
-          "value": 4819.649963378906,
+          "score": 0,
+          "value": 4738.949890136719,
           "position_size": {
             "category": "review",
             "range": "0% (flag for review)"
           },
-          "label": "\ud83d\udfe1 WATCH / CAUTION"
+          "label": "\u26aa HOLD"
         }
       ],
       "trim_recommendations": [],
@@ -487,7 +498,7 @@
         {
           "ticker": "GEV",
           "score": 5,
-          "value": 5064.2999267578125,
+          "value": 11160.109619140625,
           "position_size": {
             "category": "full",
             "range": "12-15%"
@@ -497,7 +508,7 @@
         {
           "ticker": "TLN",
           "score": -3,
-          "value": 3925.68017578125,
+          "value": 2031.6000366210938,
           "position_size": {
             "category": "review",
             "range": "0% (flag for review)"
@@ -531,7 +542,7 @@
         {
           "ticker": "RTX",
           "score": 5,
-          "value": 4879.9200439453125,
+          "value": 11864.479858398438,
           "position_size": {
             "category": "full",
             "range": "12-15%"
@@ -541,7 +552,7 @@
         {
           "ticker": "LMT",
           "score": 4,
-          "value": 4454.310119628906,
+          "value": 7707.3603515625,
           "position_size": {
             "category": "standard",
             "range": "8-12%"
@@ -553,12 +564,11 @@
       "swap_recommendations": []
     }
   },
-  "priceRefreshedAt": "2026-03-19T13:04:11.666425Z",
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.289,
-    "two_year": 3.928,
-    "yield_spread": 0.361,
+    "ten_year": 4.269,
+    "two_year": 3.904,
+    "yield_spread": 0.365,
     "inverted": false
   }
 }
