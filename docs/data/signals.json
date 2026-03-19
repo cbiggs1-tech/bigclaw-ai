@@ -14,7 +14,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +1 (23% below target)"
       ],
-      "price": 136.07000732421875,
+      "price": 135.22,
       "value_override": {
         "total_score": 1,
         "base_score_before": 4,
@@ -42,7 +42,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (33% below target)"
       ],
-      "price": 315.92999267578125,
+      "price": 316.3,
       "value_override": {
         "total_score": 2,
         "base_score_before": -2,
@@ -69,7 +69,7 @@
         "insider net selling (4B/6S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 113.52999877929688
+      "price": 113.16
     },
     {
       "ticker": "GEV",
@@ -84,7 +84,7 @@
         "outperforming XLI by 10.7%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 858.469970703125
+      "price": 854.18
     },
     {
       "ticker": "JNJ",
@@ -99,7 +99,7 @@
         "outperforming XLV by 4.0%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 237.27999877929688
+      "price": 237.45
     },
     {
       "ticker": "LMT",
@@ -115,7 +115,7 @@
         "outperforming XLI by 5.0%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 642.280029296875
+      "price": 629.08
     },
     {
       "ticker": "O",
@@ -129,7 +129,7 @@
         "insider net selling (0B/2S)",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 63.040000915527344
+      "price": 62.97
     },
     {
       "ticker": "PG",
@@ -144,7 +144,7 @@
         "bond mkt +2 (wt 1.5x)",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 34 oversold)"
       ],
-      "price": 146.7100067138672,
+      "price": 145.32,
       "value_override": {
         "total_score": 1,
         "base_score_before": -1,
@@ -170,7 +170,7 @@
         "outperforming XLI by 5.8%",
         "bond mkt +2 (wt 0.75x)"
       ],
-      "price": 204.55999755859375
+      "price": 198.37
     },
     {
       "ticker": "TLN",
@@ -186,7 +186,7 @@
         "bond mkt +2 (wt 0.75x)",
         "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       ],
-      "price": 338.6000061035156,
+      "price": 333.13,
       "value_override": {
         "total_score": 2,
         "base_score_before": -5,
@@ -213,7 +213,7 @@
         "outperforming XLC by 4.0%",
         "bond mkt +2 (wt 1.5x)"
       ],
-      "price": 49.59000015258789
+      "price": 49.6
     },
     {
       "ticker": "candidates",
@@ -570,5 +570,6 @@
     "two_year": 3.904,
     "yield_spread": 0.365,
     "inverted": false
-  }
+  },
+  "priceRefreshedAt": "2026-03-19T15:00:24.287984Z"
 }
