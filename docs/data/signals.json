@@ -16,7 +16,7 @@
         "underperforming XLK by 3.2%",
         "\u26a1 VALUE OVERRIDE: +2 (16% below target, RSI 36 oversold)"
       ],
-      "price": 248.5,
+      "price": 248.58,
       "value_override": {
         "total_score": 2,
         "base_score_before": 3.0,
@@ -46,7 +46,7 @@
         "insider net selling (0B/15S)",
         "\u26a1 VALUE OVERRIDE: +3 (17% below target, RSI 29 oversold)"
       ],
-      "price": 206.88,
+      "price": 204.61,
       "value_override": {
         "total_score": 3,
         "base_score_before": 5.5,
@@ -77,7 +77,7 @@
         "outperforming XLY by 7.5%",
         "\u26a1 VALUE OVERRIDE: +2 (26% below target)"
       ],
-      "price": 206.88,
+      "price": 205.73,
       "value_override": {
         "total_score": 2,
         "base_score_before": 1.0,
@@ -103,7 +103,7 @@
         "insider net selling (0B/11S)",
         "\u26a1 VALUE OVERRIDE: +1 (23% below target)"
       ],
-      "price": 133.05,
+      "price": 130.13,
       "value_override": {
         "total_score": 1,
         "base_score_before": 5.5,
@@ -131,7 +131,7 @@
         "outperforming XLC by 8.5%",
         "\u26a1 VALUE OVERRIDE: +2 (32% below target)"
       ],
-      "price": 437.07,
+      "price": 435.66,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3.5,
@@ -155,7 +155,7 @@
         "death cross (50<200)",
         "no dividend"
       ],
-      "price": 70.12
+      "price": 68.75
     },
     {
       "ticker": "ASTS",
@@ -170,7 +170,7 @@
         "insider net selling (4B/16S)",
         "outperforming XLK by 10.2%"
       ],
-      "price": 90.43
+      "price": 87.28
     },
     {
       "ticker": "AVAV",
@@ -185,7 +185,7 @@
         "underperforming XLI by 18.0%",
         "\u26a1 VALUE OVERRIDE: +2 (32% below target)"
       ],
-      "price": 202.05,
+      "price": 195.99,
       "value_override": {
         "total_score": 2,
         "base_score_before": -5.0,
@@ -213,7 +213,7 @@
         "underperforming XLK by 3.0%",
         "\u26a1 VALUE OVERRIDE: +2 (32% below target)"
       ],
-      "price": 317.53,
+      "price": 313.06,
       "value_override": {
         "total_score": 2,
         "base_score_before": 0.0,
@@ -240,7 +240,7 @@
         "outperforming XLI by 20.8%",
         "\u26a1 VALUE OVERRIDE: +2 (32% below target)"
       ],
-      "price": 499.68,
+      "price": 494.88,
       "value_override": {
         "total_score": 2,
         "base_score_before": -4.5,
@@ -267,7 +267,7 @@
         "underperforming XLF by 4.4%",
         "\u26a1 VALUE OVERRIDE: +2 (24% below target, RSI 34 oversold)"
       ],
-      "price": 47.35,
+      "price": 47.06,
       "value_override": {
         "total_score": 2,
         "base_score_before": 4.0,
@@ -301,7 +301,7 @@
         "outperforming XLI by 8.1%",
         "\u26a1 VALUE OVERRIDE: +1 (24% below target)"
       ],
-      "price": 81.2,
+      "price": 80.31,
       "value_override": {
         "total_score": 1,
         "base_score_before": -5.0,
@@ -330,7 +330,7 @@
         "outperforming XLF by 2.9%",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 39 oversold)"
       ],
-      "price": 482.64,
+      "price": 483.09,
       "value_override": {
         "total_score": 1,
         "base_score_before": -5.5,
@@ -357,7 +357,7 @@
         "insider net selling (0B/4S)",
         "outperforming XLI by 7.6%"
       ],
-      "price": 202.49
+      "price": 198.71
     },
     {
       "ticker": "CCJ",
@@ -372,7 +372,7 @@
         "insider net selling (0B/12S)",
         "underperforming XLE by 18.0%"
       ],
-      "price": 102.42
+      "price": 100.5
     },
     {
       "ticker": "CEG",
@@ -387,7 +387,7 @@
         "outperforming XLU by 7.7%",
         "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 296.52,
+      "price": 286.59,
       "value_override": {
         "total_score": 1,
         "base_score_before": 0.5,
@@ -415,7 +415,7 @@
         "outperforming XLF by 28.3%",
         "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 198.45,
+      "price": 196.0,
       "value_override": {
         "total_score": 1,
         "base_score_before": -2.0,
@@ -441,7 +441,7 @@
         "insider net selling (0B/20S)",
         "outperforming XLP by 5.2%"
       ],
-      "price": 979.12
+      "price": 977.01
     },
     {
       "ticker": "CRM",
@@ -456,7 +456,7 @@
         "outperforming XLK by 6.5%",
         "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 194.95,
+      "price": 194.6,
       "value_override": {
         "total_score": 2,
         "base_score_before": 3.5,
@@ -484,7 +484,7 @@
         "underperforming XLV by 7.3%",
         "\u26a1 VALUE OVERRIDE: +3 (44% below target, RSI 38 oversold)"
       ],
-      "price": 46.8,
+      "price": 46.27,
       "value_override": {
         "total_score": 3,
         "base_score_before": -7.0,
@@ -513,7 +513,7 @@
         "insider net selling (0B/20S)",
         "outperforming XLK by 2.7%"
       ],
-      "price": 408.89
+      "price": 405.73
     },
     {
       "ticker": "CVX",
@@ -529,7 +529,7 @@
         "yield 353.0%",
         "insider net selling (0B/11S)"
       ],
-      "price": 204.2
+      "price": 203.6
     },
     {
       "ticker": "DDOG",
@@ -545,7 +545,7 @@
         "outperforming XLK by 9.0%",
         "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 127.27,
+      "price": 126.14,
       "value_override": {
         "total_score": 2,
         "base_score_before": 0.0,
@@ -572,7 +572,7 @@
         "underperforming XLY by 5.5%",
         "\u26a1 VALUE OVERRIDE: +1 (18% below target)"
       ],
-      "price": 101.23,
+      "price": 100.07,
       "value_override": {
         "total_score": 1,
         "base_score_before": -0.5,
@@ -598,7 +598,7 @@
         "underperforming XLE by 21.5%",
         "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 3.39,
+      "price": 3.28,
       "value_override": {
         "total_score": 2,
         "base_score_before": 0.5,
@@ -624,7 +624,7 @@
         "yield 328.0%",
         "insider net selling (0B/20S)"
       ],
-      "price": 128.4
+      "price": 128.27
     },
     {
       "ticker": "ED",
@@ -639,7 +639,7 @@
         "yield 308.0%",
         "insider net selling (4B/6S)"
       ],
-      "price": 110.12
+      "price": 109.87
     },
     {
       "ticker": "EPD",
@@ -656,7 +656,7 @@
         "insider net buying (3B/0S)",
         "underperforming XLE by 4.1%"
       ],
-      "price": 37.59
+      "price": 37.69
     },
     {
       "ticker": "FTNT",
@@ -671,7 +671,7 @@
         "insider net selling (0B/6S)",
         "outperforming XLK by 3.0%"
       ],
-      "price": 81.39
+      "price": 81.13
     },
     {
       "ticker": "GD",
@@ -686,7 +686,7 @@
         "insider net selling (0B/15S)",
         "outperforming XLI by 5.6%"
       ],
-      "price": 348.14
+      "price": 344.79
     },
     {
       "ticker": "GE",
@@ -703,7 +703,7 @@
         "underperforming XLI by 5.8%",
         "\u26a1 VALUE OVERRIDE: +2 (20% below target, RSI 32 oversold)"
       ],
-      "price": 288.57,
+      "price": 284.4,
       "value_override": {
         "total_score": 2,
         "base_score_before": -0.5,
@@ -733,7 +733,7 @@
         "insider net selling (0B/7S)",
         "outperforming XLI by 12.2%"
       ],
-      "price": 866.79
+      "price": 849.57
     },
     {
       "ticker": "GOOGL",
@@ -749,7 +749,7 @@
         "outperforming XLC by 3.2%",
         "\u26a1 VALUE OVERRIDE: +1 (18% below target)"
       ],
-      "price": 300.95,
+      "price": 299.13,
       "value_override": {
         "total_score": 1,
         "base_score_before": 4.0,
@@ -779,7 +779,7 @@
         "underperforming XLY by 7.1%",
         "\u26a1 VALUE OVERRIDE: +3 (20% below target, RSI 26 oversold)"
       ],
-      "price": 323.19,
+      "price": 320.63,
       "value_override": {
         "total_score": 3,
         "base_score_before": 2.0,
@@ -810,7 +810,7 @@
         "insider net buying (3B/0S)",
         "\u26a1 VALUE OVERRIDE: +1 (20% below target)"
       ],
-      "price": 246.85,
+      "price": 246.14,
       "value_override": {
         "total_score": 1,
         "base_score_before": 2.5,
@@ -839,7 +839,7 @@
         "outperforming XLF by 2.3%",
         "\u26a1 VALUE OVERRIDE: +2 (45% below target)"
       ],
-      "price": 41.39,
+      "price": 39.7,
       "value_override": {
         "total_score": 2,
         "base_score_before": -0.5,
@@ -865,7 +865,7 @@
         "insider net selling (0B/7S)",
         "outperforming XLV by 3.5%"
       ],
-      "price": 236.23
+      "price": 235.72
     },
     {
       "ticker": "JPM",
@@ -880,7 +880,7 @@
         "insider net selling (0B/20S)",
         "\u26a1 VALUE OVERRIDE: +2 (16% below target, RSI 39 oversold)"
       ],
-      "price": 289.85,
+      "price": 287.38,
       "value_override": {
         "total_score": 2,
         "base_score_before": 2.0,
@@ -911,7 +911,7 @@
         "insider net selling (0B/10S)",
         "\u26a1 VALUE OVERRIDE: +2 (RSI 33 oversold, P/B 0.62)"
       ],
-      "price": 21.75,
+      "price": 21.67,
       "value_override": {
         "total_score": 2,
         "base_score_before": 1.5,
@@ -941,7 +941,7 @@
         "insider net selling (4B/16S)",
         "underperforming XLE by 4.8%"
       ],
-      "price": 33.49
+      "price": 33.37
     },
     {
       "ticker": "KO",
@@ -957,7 +957,7 @@
         "insider net selling (0B/16S)",
         "outperforming XLP by 2.9%"
       ],
-      "price": 74.76
+      "price": 74.79
     },
     {
       "ticker": "KTOS",
@@ -973,7 +973,7 @@
         "underperforming XLI by 5.2%",
         "\u26a1 VALUE OVERRIDE: +1 (21% below target)"
       ],
-      "price": 87.37,
+      "price": 84.3,
       "value_override": {
         "total_score": 1,
         "base_score_before": -0.5,
@@ -1002,7 +1002,7 @@
         "underperforming XLK by 4.4%",
         "\u26a1 VALUE OVERRIDE: +2 (22% below target, RSI 38 oversold)"
       ],
-      "price": 165.93,
+      "price": 166.1,
       "value_override": {
         "total_score": 2,
         "base_score_before": -5.0,
@@ -1032,7 +1032,7 @@
         "insider net selling (0B/12S)",
         "outperforming XLI by 8.7%"
       ],
-      "price": 355.95
+      "price": 353.6
     },
     {
       "ticker": "LLY",
@@ -1049,7 +1049,7 @@
         "underperforming XLV by 3.6%",
         "\u26a1 VALUE OVERRIDE: +2 (24% below target, RSI 32 oversold)"
       ],
-      "price": 918.02,
+      "price": 901.13,
       "value_override": {
         "total_score": 2,
         "base_score_before": -0.5,
@@ -1080,7 +1080,7 @@
         "insider net selling (0B/4S)",
         "outperforming XLI by 3.1%"
       ],
-      "price": 628.54
+      "price": 628.69
     },
     {
       "ticker": "LOW",
@@ -1097,7 +1097,7 @@
         "underperforming XLY by 11.8%",
         "\u26a1 VALUE OVERRIDE: +3 (20% below target, RSI 25 oversold)"
       ],
-      "price": 226.15,
+      "price": 224.58,
       "value_override": {
         "total_score": 3,
         "base_score_before": 4.5,
@@ -1130,7 +1130,7 @@
         "outperforming XLI by 10.9%",
         "\u26a1 VALUE OVERRIDE: +1 (15% below target)"
       ],
-      "price": 19.1,
+      "price": 18.18,
       "value_override": {
         "total_score": 1,
         "base_score_before": -0.5,
@@ -1157,7 +1157,7 @@
         "insider net selling (0B/15S)",
         "\u26a1 VALUE OVERRIDE: +3 (26% below target, RSI 36 oversold)"
       ],
-      "price": 498.34,
+      "price": 496.54,
       "value_override": {
         "total_score": 3,
         "base_score_before": 1.0,
@@ -1188,7 +1188,7 @@
         "insider net selling (1B/10S)",
         "outperforming XLF by 2.7%"
       ],
-      "price": 55.24
+      "price": 54.69
     },
     {
       "ticker": "META",
@@ -1204,7 +1204,7 @@
         "underperforming XLC by 4.1%",
         "\u26a1 VALUE OVERRIDE: +3 (30% below target, RSI 36 oversold)"
       ],
-      "price": 594.23,
+      "price": 590.96,
       "value_override": {
         "total_score": 3,
         "base_score_before": 1.0,
@@ -1237,7 +1237,7 @@
         "underperforming XLI by 6.6%",
         "\u26a1 VALUE OVERRIDE: +3 (20% below target, RSI 28 oversold)"
       ],
-      "price": 140.92,
+      "price": 139.9,
       "value_override": {
         "total_score": 3,
         "base_score_before": 2.5,
@@ -1268,7 +1268,7 @@
         "insider net selling (0B/2S)",
         "outperforming XLP by 2.2%"
       ],
-      "price": 64.54
+      "price": 64.75
     },
     {
       "ticker": "MRK",
@@ -1282,7 +1282,7 @@
         "yield 298.0%",
         "insider net selling (0B/15S)"
       ],
-      "price": 114.88
+      "price": 113.68
     },
     {
       "ticker": "MSFT",
@@ -1297,7 +1297,7 @@
         "insider net selling (2B/18S)",
         "\u26a1 VALUE OVERRIDE: +3 (35% below target, RSI 36 oversold)"
       ],
-      "price": 383.52,
+      "price": 381.94,
       "value_override": {
         "total_score": 3,
         "base_score_before": 2.0,
@@ -1327,7 +1327,7 @@
         "insider net selling (0B/18S)",
         "outperforming XLK by 16.2%"
       ],
-      "price": 220.49
+      "price": 216.1
     },
     {
       "ticker": "NNE",
@@ -1343,7 +1343,7 @@
         "underperforming XLI by 11.2%",
         "\u26a1 VALUE OVERRIDE: +3 (55% below target, RSI 33 oversold)"
       ],
-      "price": 20.95,
+      "price": 20.55,
       "value_override": {
         "total_score": 3,
         "base_score_before": -4.0,
@@ -1374,7 +1374,7 @@
         "insider net selling (0B/13S)",
         "outperforming XLI by 4.2%"
       ],
-      "price": 710.68
+      "price": 705.24
     },
     {
       "ticker": "NVDA",
@@ -1389,7 +1389,7 @@
         "underperforming XLK by 3.7%",
         "\u26a1 VALUE OVERRIDE: +2 (33% below target)"
       ],
-      "price": 175.66,
+      "price": 173.49,
       "value_override": {
         "total_score": 2,
         "base_score_before": 2.5,
@@ -1415,7 +1415,7 @@
         "insider net selling (0B/2S)",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 39 oversold)"
       ],
-      "price": 61.61,
+      "price": 61.33,
       "value_override": {
         "total_score": 1,
         "base_score_before": 3.0,
@@ -1442,7 +1442,7 @@
         "underperforming XLU by 20.1%",
         "\u26a1 VALUE OVERRIDE: +3 (44% below target, RSI 36 oversold)"
       ],
-      "price": 55.39,
+      "price": 53.33,
       "value_override": {
         "total_score": 3,
         "base_score_before": -4.0,
@@ -1473,7 +1473,7 @@
         "outperforming XLK by 13.7%",
         "\u26a1 VALUE OVERRIDE: +1 (18% below target)"
       ],
-      "price": 162.99,
+      "price": 163.71,
       "value_override": {
         "total_score": 1,
         "base_score_before": 0.5,
@@ -1500,7 +1500,7 @@
         "insider net selling (0B/20S)",
         "outperforming XLK by 10.5%"
       ],
-      "price": 12.28
+      "price": 12.08
     },
     {
       "ticker": "PG",
@@ -1516,7 +1516,7 @@
         "underperforming XLP by 2.2%",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 32 oversold)"
       ],
-      "price": 145.03,
+      "price": 144.62,
       "value_override": {
         "total_score": 1,
         "base_score_before": 0.0,
@@ -1543,7 +1543,7 @@
         "outperforming XLK by 16.7%",
         "\u26a1 VALUE OVERRIDE: +1 (17% below target)"
       ],
-      "price": 153.0,
+      "price": 150.06,
       "value_override": {
         "total_score": 1,
         "base_score_before": 1.0,
@@ -1569,7 +1569,7 @@
         "underperforming XLP by 4.5%",
         "\u26a1 VALUE OVERRIDE: +2 (16% below target, RSI 34 oversold)"
       ],
-      "price": 162.18,
+      "price": 163.43,
       "value_override": {
         "total_score": 2,
         "base_score_before": 2.0,
@@ -1601,7 +1601,7 @@
         "underperforming XLK by 15.7%",
         "\u26a1 VALUE OVERRIDE: +3 (57% below target, RSI 32 oversold)"
       ],
-      "price": 15.77,
+      "price": 15.38,
       "value_override": {
         "total_score": 3,
         "base_score_before": -6.0,
@@ -1632,7 +1632,7 @@
         "underperforming XLC by 9.0%",
         "\u26a1 VALUE OVERRIDE: +3 (46% below target, RSI 38 oversold)"
       ],
-      "price": 56.35,
+      "price": 56.44,
       "value_override": {
         "total_score": 3,
         "base_score_before": -5.0,
@@ -1663,7 +1663,7 @@
         "outperforming XLI by 24.9%",
         "\u26a1 VALUE OVERRIDE: +2 (27% below target)"
       ],
-      "price": 13.74,
+      "price": 13.14,
       "value_override": {
         "total_score": 2,
         "base_score_before": 3.0,
@@ -1690,7 +1690,7 @@
         "outperforming XLI by 18.9%",
         "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 9.35,
+      "price": 9.08,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3.0,
@@ -1716,7 +1716,7 @@
         "insider net selling (0B/13S)",
         "outperforming XLI by 5.0%"
       ],
-      "price": 199.19
+      "price": 197.76
     },
     {
       "ticker": "SCHD",
@@ -1728,7 +1728,7 @@
         "golden cross (50>200)",
         "yield 330.0%"
       ],
-      "price": 30.59
+      "price": 30.44
     },
     {
       "ticker": "SHOP",
@@ -1743,7 +1743,7 @@
         "insider net selling (0B/20S)",
         "\u26a1 VALUE OVERRIDE: +1 (24% below target)"
       ],
-      "price": 118.91,
+      "price": 116.13,
       "value_override": {
         "total_score": 1,
         "base_score_before": -3.5,
@@ -1771,7 +1771,7 @@
         "underperforming XLI by 11.1%",
         "\u26a1 VALUE OVERRIDE: +3 (42% below target, RSI 39 oversold)"
       ],
-      "price": 11.7,
+      "price": 11.31,
       "value_override": {
         "total_score": 3,
         "base_score_before": -5.5,
@@ -1801,7 +1801,7 @@
         "insider net selling (0B/19S)",
         "\u26a1 VALUE OVERRIDE: +2 (27% below target)"
       ],
-      "price": 170.43,
+      "price": 167.57,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3.5,
@@ -1837,7 +1837,7 @@
         "yield 400.0%",
         "insider net selling (0B/1S)"
       ],
-      "price": 28.6
+      "price": 28.59
     },
     {
       "ticker": "TGT",
@@ -1854,7 +1854,7 @@
         "insider net selling (0B/7S)",
         "outperforming XLP by 5.5%"
       ],
-      "price": 113.61
+      "price": 113.06
     },
     {
       "ticker": "TLN",
@@ -1871,7 +1871,7 @@
         "underperforming XLU by 11.5%",
         "\u26a1 VALUE OVERRIDE: +2 (28% below target)"
       ],
-      "price": 319.94,
+      "price": 311.1,
       "value_override": {
         "total_score": 2,
         "base_score_before": -4.0,
@@ -1900,7 +1900,7 @@
         "underperforming XLY by 2.0%",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 36 oversold)"
       ],
-      "price": 374.8,
+      "price": 368.61,
       "value_override": {
         "total_score": 1,
         "base_score_before": -6.0,
@@ -1927,7 +1927,7 @@
         "underperforming XLI by 3.5%",
         "\u26a1 VALUE OVERRIDE: +1 (RSI 34 oversold)"
       ],
-      "price": 88.87,
+      "price": 88.47,
       "value_override": {
         "total_score": 1,
         "base_score_before": -0.5,
@@ -1954,7 +1954,7 @@
         "outperforming XLV by 4.3%",
         "\u26a1 VALUE OVERRIDE: +1 (22% below target)"
       ],
-      "price": 281.99,
+      "price": 278.64,
       "value_override": {
         "total_score": 1,
         "base_score_before": 4.0,
@@ -1977,7 +1977,7 @@
         "golden cross (50>200)",
         "yield 384.0%"
       ],
-      "price": 47.06
+      "price": 45.95
     },
     {
       "ticker": "V",
@@ -1992,7 +1992,7 @@
         "insider net selling (0B/17S)",
         "\u26a1 VALUE OVERRIDE: +3 (25% below target, RSI 31 oversold)"
       ],
-      "price": 302.55,
+      "price": 301.23,
       "value_override": {
         "total_score": 3,
         "base_score_before": 6.0,
@@ -2025,7 +2025,7 @@
         "underperforming XLU by 3.9%",
         "\u26a1 VALUE OVERRIDE: +2 (29% below target)"
       ],
-      "price": 156.34,
+      "price": 148.65,
       "value_override": {
         "total_score": 2,
         "base_score_before": -3.0,
@@ -2052,7 +2052,7 @@
         "insider net selling (0B/17S)",
         "outperforming XLC by 3.5%"
       ],
-      "price": 50.37
+      "price": 50.24
     },
     {
       "ticker": "WFC",
@@ -2068,7 +2068,7 @@
         "underperforming XLF by 6.7%",
         "\u26a1 VALUE OVERRIDE: +2 (25% below target, RSI 34 oversold)"
       ],
-      "price": 77.77,
+      "price": 77.23,
       "value_override": {
         "total_score": 2,
         "base_score_before": 4.0,
@@ -2099,7 +2099,7 @@
         "insider net selling (0B/7S)",
         "underperforming XLE by 2.8%"
       ],
-      "price": 161.86
+      "price": 161.34
     }
   ],
   "earnings": [
@@ -2726,5 +2726,5 @@
     "yield_spread": 0.372,
     "inverted": false
   },
-  "priceRefreshedAt": "2026-03-20T17:00:17.287090Z"
+  "priceRefreshedAt": "2026-03-20T19:00:16.609279Z"
 }
