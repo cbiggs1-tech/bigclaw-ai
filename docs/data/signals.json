@@ -242,16 +242,16 @@
       "eps_est": 2.68
     },
     {
-      "ticker": "RTX",
-      "date": "2026-04-21",
-      "days_away": 32,
-      "eps_est": 1.51
-    },
-    {
       "ticker": "LMT",
       "date": "2026-04-21",
       "days_away": 32,
       "eps_est": 6.81
+    },
+    {
+      "ticker": "RTX",
+      "date": "2026-04-21",
+      "days_away": 32,
+      "eps_est": 1.51
     },
     {
       "ticker": "GEV",
@@ -328,9 +328,9 @@
   "concentration": [],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.951,
-      "ten_year": 4.308,
-      "spread": 0.357,
+      "two_year": 3.969,
+      "ten_year": 4.328,
+      "spread": 0.359,
       "date": "2026-03-20",
       "assessment": "Normal & steepening \u2014 bullish"
     },
@@ -340,9 +340,9 @@
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.308,
+      "current": 4.328,
       "prev": 4.22,
-      "change_bps": 8.8,
+      "change_bps": 10.8,
       "date": "2026-03-20",
       "assessment": "Elevated \u2014 bearish"
     },
@@ -566,9 +566,9 @@
   },
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.308,
-    "two_year": 3.951,
-    "yield_spread": 0.357,
+    "ten_year": 4.328,
+    "two_year": 3.969,
+    "yield_spread": 0.359,
     "inverted": false
   },
   "priceRefreshedAt": "2026-03-20T13:03:23.710438Z"
