@@ -1,14 +1,14 @@
 {
-  "lastUpdate": "2026-03-20T14:03:12.734385Z",
+  "lastUpdate": "2026-03-20T15:00:07.437477Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
-      "totalValue": 99801.04,
-      "prevTotalValue": 99822.31,
+      "totalValue": 99620.85,
+      "prevTotalValue": 99808.6,
       "startingCash": 100000.0,
-      "totalReturn": -0.2,
-      "dailyReturn": -0.02,
+      "totalReturn": -0.38,
+      "dailyReturn": -0.19,
       "createdAt": "2026-02-16 13:51:57",
       "purchaseStatus": "pending",
       "holdings": [
@@ -16,14 +16,14 @@
           "ticker": "GEV",
           "shares": 13.0,
           "avgCost": 847.02,
-          "currentPrice": 876.96,
+          "currentPrice": 866.1,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "TLN",
-          "shares": 3.0,
+          "shares": 2.0,
           "avgCost": 386.9,
-          "currentPrice": 334.85,
+          "currentPrice": 319.58,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -31,11 +31,11 @@
     {
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
-      "totalValue": 99400.92,
-      "prevTotalValue": 99295.1,
+      "totalValue": 99254.46,
+      "prevTotalValue": 99293.9,
       "startingCash": 100000.0,
-      "totalReturn": -0.6,
-      "dailyReturn": 0.11,
+      "totalReturn": -0.75,
+      "dailyReturn": -0.04,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -43,35 +43,35 @@
           "ticker": "ED",
           "shares": 44.0,
           "avgCost": 111.48,
-          "currentPrice": 111.83,
+          "currentPrice": 110.64,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "JNJ",
           "shares": 17.0,
           "avgCost": 239.47,
-          "currentPrice": 237.36,
+          "currentPrice": 235.6,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "O",
           "shares": 188.0,
           "avgCost": 64.25,
-          "currentPrice": 62.31,
+          "currentPrice": 61.97,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "PG",
-          "shares": 40.0,
+          "shares": 20.0,
           "avgCost": 158.4,
-          "currentPrice": 145.64,
+          "currentPrice": 144.38,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "VZ",
           "shares": 200.0,
           "avgCost": 48.34,
-          "currentPrice": 50.15,
+          "currentPrice": 50.36,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -79,11 +79,11 @@
     {
       "name": "Momentum Growth",
       "style": "Momentum / Aggressive Growth",
-      "totalValue": 99476.63,
+      "totalValue": 99408.0,
       "prevTotalValue": 99712.31,
       "startingCash": 100000.0,
-      "totalReturn": -0.52,
-      "dailyReturn": -0.24,
+      "totalReturn": -0.59,
+      "dailyReturn": -0.31,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -91,14 +91,14 @@
           "ticker": "ANET",
           "shares": 58.0,
           "avgCost": 137.94,
-          "currentPrice": 132.9,
+          "currentPrice": 131.96,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "AVGO",
           "shares": 15.0,
           "avgCost": 332.52,
-          "currentPrice": 317.12,
+          "currentPrice": 316.16,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -106,11 +106,11 @@
     {
       "name": "AI Defense & Autonomous",
       "style": "AI Defense / Autonomous Systems",
-      "totalValue": 99534.1,
+      "totalValue": 99498.44,
       "prevTotalValue": 99654.07,
       "startingCash": 100000.0,
-      "totalReturn": -0.47,
-      "dailyReturn": -0.12,
+      "totalReturn": -0.5,
+      "dailyReturn": -0.16,
       "createdAt": "2026-02-16",
       "purchaseStatus": "active",
       "holdings": [
@@ -118,14 +118,14 @@
           "ticker": "LMT",
           "shares": 12.0,
           "avgCost": 646.45,
-          "currentPrice": 630.61,
+          "currentPrice": 629.33,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "RTX",
           "shares": 58.0,
           "avgCost": 204.84,
-          "currentPrice": 200.09,
+          "currentPrice": 199.74,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -133,11 +133,11 @@
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 99425.5,
-      "prevTotalValue": 99395.9,
+      "totalValue": 99365.45,
+      "prevTotalValue": 99394.7,
       "startingCash": 100000.0,
-      "totalReturn": -0.57,
-      "dailyReturn": 0.03,
+      "totalReturn": -0.63,
+      "dailyReturn": -0.03,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -145,14 +145,14 @@
           "ticker": "JNJ",
           "shares": 10.0,
           "avgCost": 238.65,
-          "currentPrice": 237.36,
+          "currentPrice": 235.6,
           "purchasedAt": "Mar 18, 2026"
         },
         {
           "ticker": "PG",
-          "shares": 40.0,
+          "shares": 20.0,
           "avgCost": 158.51,
-          "currentPrice": 145.64,
+          "currentPrice": 144.38,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
@@ -172,11 +172,11 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 99784.4,
+      "totalValue": 99770.96,
       "prevTotalValue": 99822.48,
       "startingCash": 100000.0,
-      "totalReturn": -0.22,
-      "dailyReturn": -0.04,
+      "totalReturn": -0.23,
+      "dailyReturn": -0.05,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -184,7 +184,7 @@
           "ticker": "AVGO",
           "shares": 14.0,
           "avgCost": 332.52,
-          "currentPrice": 317.12,
+          "currentPrice": 316.16,
           "purchasedAt": "Mar 18, 2026"
         }
       ]
