@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-19T16:30:20.953497",
+  "timestamp": "2026-03-20T08:01:54.818684",
   "context": {
     "ticker": null,
     "sector": null,
@@ -7,9 +7,9 @@
   },
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.281,
-    "two_year": 3.919,
-    "yield_spread": 0.362,
+    "ten_year": 4.308,
+    "two_year": 3.951,
+    "yield_spread": 0.357,
     "inverted": false
   },
   "market": {
@@ -42,9 +42,9 @@
       "3mo": -1.37
     },
     "VIX": {
-      "level": 24.06,
+      "level": 24.75,
       "classification": "Elevated",
-      "1mo_change": 18.58
+      "1mo_change": 26.15
     }
   },
   "sectors": [
@@ -150,9 +150,9 @@
   ],
   "risk": {
     "vix": {
-      "level": 24.06,
+      "level": 24.75,
       "classification": "Elevated",
-      "1mo_change": 18.58
+      "1mo_change": 26.15
     },
     "Gold (GLD)": {
       "price": 426.41,
@@ -163,11 +163,11 @@
       "1mo": 2.49
     },
     "Bitcoin": {
-      "price": 70619.95,
-      "1mo": 4.63
+      "price": 70321.73,
+      "1mo": 5.87
     },
     "yield_curve": {
-      "spread": 0.871,
+      "spread": 0.508,
       "inverted": false
     }
   },
@@ -183,11 +183,11 @@
       "mom_change": 3.5
     },
     "fear_greed": {
-      "score": 17.2,
+      "score": 16.4,
       "rating": "extreme fear",
-      "previous": 18.2,
-      "1w_ago": 22.5,
-      "1m_ago": 39.6
+      "previous": 17.2,
+      "1w_ago": 22.6,
+      "1m_ago": 44.4
     },
     "saving_rate": {
       "current": 4.5,
@@ -208,22 +208,22 @@
   },
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.919,
-      "ten_year": 4.281,
-      "spread": 0.362,
-      "date": "2026-03-19",
+      "two_year": 3.951,
+      "ten_year": 4.308,
+      "spread": 0.357,
+      "date": "2026-03-20",
       "assessment": "Normal & steepening \u2014 bullish"
     },
     "credit_spreads": {
       "current_bps": 292.0,
-      "date": "2026-03-19",
+      "date": "2026-03-20",
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.281,
-      "prev": 4.285,
-      "change_bps": -0.4,
-      "date": "2026-03-19",
+      "current": 4.308,
+      "prev": 4.22,
+      "change_bps": 8.8,
+      "date": "2026-03-20",
       "assessment": "Elevated \u2014 bearish"
     },
     "scores": {

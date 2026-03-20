@@ -4,9 +4,16 @@
       "name": "Q1 End / Rebalancing Window",
       "date": "2026-03-31",
       "icon": "\ud83d\udcca",
-      "days_away": 12,
+      "days_away": 11,
       "category": "market"
+    },
+    {
+      "name": "Nonfarm Payrolls (Apr)",
+      "date": "2026-04-03",
+      "icon": "\ud83d\udcbc",
+      "days_away": 14,
+      "category": "macro"
     }
   ],
-  "lastUpdate": "2026-03-19T21:30:52.028064Z"
+  "lastUpdate": "2026-03-20T13:02:31.971475Z"
 }
