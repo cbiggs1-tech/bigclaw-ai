@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "2026-03-20T20:30:27.925541Z",
+  "lastUpdate": "2026-03-20T21:31:16.469596Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
@@ -196,11 +196,11 @@
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 99151.22,
+      "totalValue": 99195.22,
       "prevTotalValue": 99633.97,
       "startingCash": 100000.0,
-      "totalReturn": -0.85,
-      "dailyReturn": -0.48,
+      "totalReturn": -0.8,
+      "dailyReturn": -0.44,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -208,7 +208,7 @@
           "ticker": "AAPL",
           "shares": 55.0,
           "avgCost": 248.79,
-          "currentPrice": 248.18,
+          "currentPrice": 248.98,
           "purchasedAt": "Mar 20, 2026"
         },
         {
@@ -286,11 +286,11 @@
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 99868.47,
+      "totalValue": 99905.73,
       "prevTotalValue": 100109.05,
       "startingCash": 100000.0,
-      "totalReturn": -0.13,
-      "dailyReturn": -0.24,
+      "totalReturn": -0.09,
+      "dailyReturn": -0.2,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -298,7 +298,7 @@
           "ticker": "NVDA",
           "shares": 46.0,
           "avgCost": 176.2,
-          "currentPrice": 173.33,
+          "currentPrice": 174.14,
           "purchasedAt": "Mar 20, 2026"
         }
       ]
@@ -306,11 +306,11 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 99452.89,
+      "totalValue": 99477.07,
       "prevTotalValue": 99923.9,
       "startingCash": 100000.0,
-      "totalReturn": -0.55,
-      "dailyReturn": -0.47,
+      "totalReturn": -0.52,
+      "dailyReturn": -0.45,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -318,7 +318,7 @@
           "ticker": "AAPL",
           "shares": 9.0,
           "avgCost": 248.76,
-          "currentPrice": 248.18,
+          "currentPrice": 248.98,
           "purchasedAt": "Mar 20, 2026"
         },
         {
@@ -353,14 +353,14 @@
           "ticker": "MSFT",
           "shares": 12.0,
           "avgCost": 385.06,
-          "currentPrice": 381.9,
+          "currentPrice": 382.64,
           "purchasedAt": "Mar 20, 2026"
         },
         {
           "ticker": "NVDA",
           "shares": 10.0,
           "avgCost": 176.16,
-          "currentPrice": 173.33,
+          "currentPrice": 174.14,
           "purchasedAt": "Mar 20, 2026"
         },
         {
