@@ -1,25 +1,72 @@
 {
-  "lastUpdate": "2026-03-20T15:00:07.780098Z",
-  "indices": [
+  "lastUpdate": "2026-03-20T16:30:30.913438Z",
+  "spy": {
+    "price": 652.87,
+    "change": -1.05
+  },
+  "dji": {
+    "price": 457.91,
+    "change": -0.68
+  },
+  "nasdaq": {
+    "price": 586.48,
+    "change": -1.1
+  },
+  "sectors": [
     {
-      "name": "S&P 500",
-      "value": 6550.7,
-      "change": -0.84
+      "sector": "Energy",
+      "etf": "XLE",
+      "1mo": 9.62
     },
     {
-      "name": "Dow Jones",
-      "value": 45739.27,
-      "change": -0.61
+      "sector": "Utilities",
+      "etf": "XLU",
+      "1mo": -1.97
     },
     {
-      "name": "NASDAQ",
-      "value": 21823.79,
-      "change": -1.21
+      "sector": "Technology",
+      "etf": "XLK",
+      "1mo": -3.03
     },
     {
-      "name": "VIX",
-      "value": 26.26,
-      "change": 9.1
+      "sector": "Comm. Services",
+      "etf": "XLC",
+      "1mo": -3.52
+    },
+    {
+      "sector": "Real Estate",
+      "etf": "XLRE",
+      "1mo": -5.9
+    },
+    {
+      "sector": "Financials",
+      "etf": "XLF",
+      "1mo": -6.36
+    },
+    {
+      "sector": "Healthcare",
+      "etf": "XLV",
+      "1mo": -6.73
+    },
+    {
+      "sector": "Consumer Staples",
+      "etf": "XLP",
+      "1mo": -7.08
+    },
+    {
+      "sector": "Consumer Disc.",
+      "etf": "XLY",
+      "1mo": -7.51
+    },
+    {
+      "sector": "Industrials",
+      "etf": "XLI",
+      "1mo": -8.38
+    },
+    {
+      "sector": "Materials",
+      "etf": "XLB",
+      "1mo": -10.63
     }
   ]
 }

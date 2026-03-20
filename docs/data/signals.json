@@ -2102,7 +2102,206 @@
       "price": 158.16000366210938
     }
   ],
-  "earnings": [],
+  "earnings": [
+    {
+      "ticker": "JPM",
+      "date": "2026-04-14",
+      "days_away": 25,
+      "eps_est": 5.5
+    },
+    {
+      "ticker": "JNJ",
+      "date": "2026-04-14",
+      "days_away": 25,
+      "eps_est": 2.68
+    },
+    {
+      "ticker": "WFC",
+      "date": "2026-04-14",
+      "days_away": 25,
+      "eps_est": 1.58
+    },
+    {
+      "ticker": "KMI",
+      "date": "2026-04-15",
+      "days_away": 26,
+      "eps_est": 0.38
+    },
+    {
+      "ticker": "BAC",
+      "date": "2026-04-15",
+      "days_away": 26,
+      "eps_est": 1.0
+    },
+    {
+      "ticker": "MMM",
+      "date": "2026-04-21",
+      "days_away": 32,
+      "eps_est": 1.99
+    },
+    {
+      "ticker": "LMT",
+      "date": "2026-04-21",
+      "days_away": 32,
+      "eps_est": 6.81
+    },
+    {
+      "ticker": "NOC",
+      "date": "2026-04-21",
+      "days_away": 32,
+      "eps_est": 6.01
+    },
+    {
+      "ticker": "UNH",
+      "date": "2026-04-21",
+      "days_away": 32,
+      "eps_est": 6.84
+    },
+    {
+      "ticker": "RTX",
+      "date": "2026-04-21",
+      "days_away": 32,
+      "eps_est": 1.51
+    },
+    {
+      "ticker": "GEV",
+      "date": "2026-04-22",
+      "days_away": 33,
+      "eps_est": 1.66
+    },
+    {
+      "ticker": "PM",
+      "date": "2026-04-22",
+      "days_away": 33,
+      "eps_est": 1.84
+    },
+    {
+      "ticker": "GD",
+      "date": "2026-04-22",
+      "days_away": 33,
+      "eps_est": 3.65
+    },
+    {
+      "ticker": "IBM",
+      "date": "2026-04-22",
+      "days_away": 33,
+      "eps_est": 1.81
+    },
+    {
+      "ticker": "GOOGL",
+      "date": "2026-04-23",
+      "days_away": 34,
+      "eps_est": 2.62
+    },
+    {
+      "ticker": "PG",
+      "date": "2026-04-24",
+      "days_away": 35,
+      "eps_est": 1.57
+    },
+    {
+      "ticker": "V",
+      "date": "2026-04-28",
+      "days_away": 39,
+      "eps_est": 3.09
+    },
+    {
+      "ticker": "EPD",
+      "date": "2026-04-28",
+      "days_away": 39,
+      "eps_est": 0.68
+    },
+    {
+      "ticker": "MSFT",
+      "date": "2026-04-29",
+      "days_away": 40,
+      "eps_est": 4.06
+    },
+    {
+      "ticker": "LHX",
+      "date": "2026-04-30",
+      "days_away": 41,
+      "eps_est": 2.59
+    },
+    {
+      "ticker": "ED",
+      "date": "2026-04-30",
+      "days_away": 41,
+      "eps_est": 2.27
+    },
+    {
+      "ticker": "AAPL",
+      "date": "2026-04-30",
+      "days_away": 41,
+      "eps_est": 1.96
+    },
+    {
+      "ticker": "ABBV",
+      "date": "2026-05-01",
+      "days_away": 42,
+      "eps_est": 3.01
+    },
+    {
+      "ticker": "BWXT",
+      "date": "2026-05-04",
+      "days_away": 45,
+      "eps_est": 0.92
+    },
+    {
+      "ticker": "O",
+      "date": "2026-05-04",
+      "days_away": 45,
+      "eps_est": 0.4
+    },
+    {
+      "ticker": "ANET",
+      "date": "2026-05-05",
+      "days_away": 46,
+      "eps_est": 0.81
+    },
+    {
+      "ticker": "TLN",
+      "date": "2026-05-07",
+      "days_away": 48,
+      "eps_est": 0.91
+    },
+    {
+      "ticker": "RCAT",
+      "date": "2026-05-15",
+      "days_away": 56,
+      "eps_est": null
+    },
+    {
+      "ticker": "HD",
+      "date": "2026-05-19",
+      "days_away": 60,
+      "eps_est": 3.42
+    },
+    {
+      "ticker": "NVDA",
+      "date": "2026-05-20",
+      "days_away": 61,
+      "eps_est": 1.78
+    },
+    {
+      "ticker": "LOW",
+      "date": "2026-05-20",
+      "days_away": 61,
+      "eps_est": 2.97
+    },
+    {
+      "ticker": "CRM",
+      "date": "2026-05-27",
+      "days_away": 68,
+      "eps_est": 3.12
+    },
+    {
+      "ticker": "COST",
+      "date": "2026-05-28",
+      "days_away": 69,
+      "eps_est": 4.95
+    }
+  ],
   "overlap": [
     {
       "ticker": "JNJ",
@@ -2140,35 +2339,30 @@
   ],
   "bond_signals": {
     "yield_curve": {
-      "two_year": 3.76,
-      "ten_year": 4.26,
-      "spread": 0.5,
-      "spread_1mo_ago": 0.62,
-      "spread_change": -0.12,
-      "date": "2026-03-18",
-      "assessment": "Flat \u2014 neutral"
+      "two_year": 3.996,
+      "ten_year": 4.368,
+      "spread": 0.372,
+      "date": "2026-03-20",
+      "assessment": "Normal & steepening \u2014 bullish"
     },
     "credit_spreads": {
-      "current_bps": 327.0,
-      "raw_value": 3.27,
-      "prev_value": 2.88,
-      "change": 0.39,
-      "date": "2026-03-19",
-      "assessment": "Tight (327bps) \u2014 bullish"
+      "current_bps": 292.0,
+      "date": "2026-03-20",
+      "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.26,
-      "prev": 4.05,
-      "change_bps": 21.0,
-      "date": "2026-03-18",
-      "assessment": "High/rising \u2014 bearish"
+      "current": 4.368,
+      "prev": 4.22,
+      "change_bps": 14.8,
+      "date": "2026-03-20",
+      "assessment": "Elevated \u2014 bearish"
     },
     "scores": {
-      "yield_curve": 0,
+      "yield_curve": 1,
       "credit_spreads": 1,
       "ten_year_level": -1
     },
-    "combined_score": 0
+    "combined_score": 1
   },
   "portfolio_optimization": {
     "Value Picks": {
@@ -2524,5 +2718,12 @@
       "trim_recommendations": [],
       "swap_recommendations": []
     }
+  },
+  "rates": {
+    "fed_funds": "4.25\u20134.50%",
+    "ten_year": 4.368,
+    "two_year": 3.996,
+    "yield_spread": 0.372,
+    "inverted": false
   }
 }
