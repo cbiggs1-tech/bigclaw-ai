@@ -209,4 +209,4 @@ __marimo__/
 # BigClaw specific
 *.db
 bigclaw_portfolios.db
-data/
+

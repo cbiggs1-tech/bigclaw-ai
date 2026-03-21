@@ -565,6 +565,81 @@ def export_calendar(days_ahead: int = 14) -> list:
     return events
 
 
+def export_trades() -> dict:
+    """Export recent trades across all portfolios.
+
+    Shows last 7 days of trades. If none exist in that window,
+    expands to 30 days so the dashboard always has something to show.
+    """
+    from datetime import timedelta, timezone
+    cutoff_7d = (datetime.now(timezone.utc) - timedelta(days=7)).strftime("%Y-%m-%d")
+    cutoff_30d = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%d")
+    cutoff_str = cutoff_7d
+
+    trades = []
+    portfolio_list = list_portfolios()
+
+    for p_info in portfolio_list:
+        if not p_info.get('is_active'):
+            continue
+        portfolio = Portfolio(p_info['id'])
+        pname = p_info['name']
+        txns = portfolio.get_transactions(limit=100)
+        for t in txns:
+            exec_at = t.get('executed_at', '')
+            if exec_at < cutoff_str:
+                continue
+            # Format date for display
+            try:
+                dt = datetime.fromisoformat(exec_at)
+                date_str = dt.strftime("%b %d")
+            except Exception:
+                date_str = exec_at[:10] if exec_at else ""
+            trades.append({
+                "date": date_str,
+                "portfolio": pname,
+                "action": (t.get('action') or '').upper(),
+                "ticker": t.get('ticker', ''),
+                "shares": t.get('shares', 0),
+                "price": t.get('price', 0),
+                "total": t.get('total_value', 0),
+                "rationale": t.get('rationale', ''),
+                "executed_at": exec_at,
+            })
+
+    # Sort newest first
+    trades.sort(key=lambda x: x.get('executed_at', ''), reverse=True)
+
+    # If no trades in 7-day window, expand to 30 days
+    if not trades:
+        cutoff_str = cutoff_30d
+        for p_info in portfolio_list:
+            if not p_info.get('is_active'):
+                continue
+            portfolio = Portfolio(p_info['id'])
+            pname = p_info['name']
+            for t in portfolio.get_transactions(limit=100):
+                exec_at = t.get('executed_at', '')
+                if exec_at < cutoff_str:
+                    continue
+                try:
+                    dt = datetime.fromisoformat(exec_at)
+                    date_str = dt.strftime("%b %d")
+                except Exception:
+                    date_str = exec_at[:10] if exec_at else ""
+                trades.append({
+                    "date": date_str, "portfolio": pname,
+                    "action": (t.get('action') or '').upper(),
+                    "ticker": t.get('ticker', ''), "shares": t.get('shares', 0),
+                    "price": t.get('price', 0), "total": t.get('total_value', 0),
+                    "rationale": t.get('rationale', ''), "executed_at": exec_at,
+                })
+        trades.sort(key=lambda x: x.get('executed_at', ''), reverse=True)
+
+    from datetime import timezone
+    return {"trades": trades, "lastUpdate": datetime.now(timezone.utc).isoformat()}
+
+
 def save_json_files(portfolios: dict, sentiment: dict, metadata: dict, news: dict, market: dict):
     """Save all JSON files to docs/data folder."""
     os.makedirs(DOCS_DATA_PATH, exist_ok=True)
@@ -687,6 +762,13 @@ def export_dashboard(sentiment_data: Optional[dict] = None) -> bool:
             for h in p.get('holdings', [])
         })
         earnings = export_earnings(all_tickers)
+
+        # Export recent trades
+        trades = export_trades()
+        trades_path = os.path.join(DOCS_DATA_PATH, 'trades.json')
+        with open(trades_path, 'w') as f:
+            json.dump(trades, f, indent=2)
+        logger.info(f"Exported {len(trades.get('trades', []))} recent trades to trades.json")
 
         # Save files
         save_json_files(portfolios, sentiment, metadata, news, market)
