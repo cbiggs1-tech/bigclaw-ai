@@ -1,14 +1,14 @@
 {
-  "lastUpdate": "2026-03-20T21:31:16.469596Z",
+  "lastUpdate": "2026-03-23T13:01:20.183152Z",
   "portfolios": [
     {
       "name": "Nuclear Renaissance",
       "style": "Nuclear Energy / Domain Expertise",
-      "totalValue": 99693.43,
+      "totalValue": 99985.26,
       "prevTotalValue": 100673.13,
       "startingCash": 100000.0,
-      "totalReturn": -0.31,
-      "dailyReturn": -0.97,
+      "totalReturn": -0.01,
+      "dailyReturn": -0.68,
       "createdAt": "2026-02-16 13:51:57",
       "purchaseStatus": "pending",
       "holdings": [
@@ -23,7 +23,7 @@
           "ticker": "GEV",
           "shares": 14.0,
           "avgCost": 847.39,
-          "currentPrice": 852.15,
+          "currentPrice": 873.0,
           "purchasedAt": "Mar 20, 2026"
         },
         {
@@ -45,11 +45,11 @@
     {
       "name": "Income Dividends",
       "style": "Income / Dividend Growth",
-      "totalValue": 98960.24,
+      "totalValue": 99022.88,
       "prevTotalValue": 99826.36,
       "startingCash": 100000.0,
-      "totalReturn": -1.04,
-      "dailyReturn": -0.87,
+      "totalReturn": -0.98,
+      "dailyReturn": -0.8,
       "createdAt": "2026-02-16 13:12:32",
       "purchaseStatus": "active",
       "holdings": [
@@ -113,7 +113,7 @@
           "ticker": "SCHD",
           "shares": 261.0,
           "avgCost": 30.61,
-          "currentPrice": 30.38,
+          "currentPrice": 30.62,
           "purchasedAt": "Mar 20, 2026"
         }
       ]
@@ -196,11 +196,11 @@
     {
       "name": "Value Picks",
       "style": "Deep Value Investing",
-      "totalValue": 99195.22,
+      "totalValue": 99602.33,
       "prevTotalValue": 99633.97,
       "startingCash": 100000.0,
-      "totalReturn": -0.8,
-      "dailyReturn": -0.44,
+      "totalReturn": -0.4,
+      "dailyReturn": -0.03,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -208,7 +208,7 @@
           "ticker": "AAPL",
           "shares": 55.0,
           "avgCost": 248.79,
-          "currentPrice": 248.98,
+          "currentPrice": 252.88,
           "purchasedAt": "Mar 20, 2026"
         },
         {
@@ -278,7 +278,7 @@
           "ticker": "WFC",
           "shares": 103.0,
           "avgCost": 77.44,
-          "currentPrice": 77.7,
+          "currentPrice": 79.57,
           "purchasedAt": "Mar 20, 2026"
         }
       ]
@@ -286,11 +286,11 @@
     {
       "name": "Innovation Fund",
       "style": "Disruptive Innovation",
-      "totalValue": 99905.73,
+      "totalValue": 100063.05,
       "prevTotalValue": 100109.05,
       "startingCash": 100000.0,
-      "totalReturn": -0.09,
-      "dailyReturn": -0.2,
+      "totalReturn": 0.06,
+      "dailyReturn": -0.05,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -298,7 +298,7 @@
           "ticker": "NVDA",
           "shares": 46.0,
           "avgCost": 176.2,
-          "currentPrice": 174.14,
+          "currentPrice": 177.56,
           "purchasedAt": "Mar 20, 2026"
         }
       ]
@@ -306,11 +306,11 @@
     {
       "name": "Growth Value",
       "style": "Growth at Reasonable Price",
-      "totalValue": 99477.07,
+      "totalValue": 99563.65,
       "prevTotalValue": 99923.9,
       "startingCash": 100000.0,
-      "totalReturn": -0.52,
-      "dailyReturn": -0.45,
+      "totalReturn": -0.44,
+      "dailyReturn": -0.36,
       "createdAt": "2026-02-03 19:30:00",
       "purchaseStatus": "active",
       "holdings": [
@@ -318,7 +318,7 @@
           "ticker": "AAPL",
           "shares": 9.0,
           "avgCost": 248.76,
-          "currentPrice": 248.98,
+          "currentPrice": 252.88,
           "purchasedAt": "Mar 20, 2026"
         },
         {
@@ -353,14 +353,14 @@
           "ticker": "MSFT",
           "shares": 12.0,
           "avgCost": 385.06,
-          "currentPrice": 382.64,
+          "currentPrice": 384.08,
           "purchasedAt": "Mar 20, 2026"
         },
         {
           "ticker": "NVDA",
           "shares": 10.0,
           "avgCost": 176.16,
-          "currentPrice": 174.14,
+          "currentPrice": 177.56,
           "purchasedAt": "Mar 20, 2026"
         },
         {

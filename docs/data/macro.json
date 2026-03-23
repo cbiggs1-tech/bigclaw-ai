@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-20T16:31:13.052457",
+  "timestamp": "2026-03-23T08:01:16.225171",
   "context": {
     "ticker": null,
     "sector": null,
@@ -7,9 +7,9 @@
   },
   "rates": {
     "fed_funds": "4.25\u20134.50%",
-    "ten_year": 4.391,
-    "two_year": 4.012,
-    "yield_spread": 0.379,
+    "ten_year": 4.358,
+    "two_year": 3.976,
+    "yield_spread": 0.382,
     "inverted": false
   },
   "market": {
@@ -42,9 +42,9 @@
       "3mo": -3.6
     },
     "VIX": {
-      "level": 26.78,
+      "level": 24.4,
       "classification": "Elevated",
-      "1mo_change": 36.49
+      "1mo_change": 27.82
     }
   },
   "sectors": [
@@ -150,9 +150,9 @@
   ],
   "risk": {
     "vix": {
-      "level": 26.78,
+      "level": 24.4,
       "classification": "Elevated",
-      "1mo_change": 36.49
+      "1mo_change": 27.82
     },
     "Gold (GLD)": {
       "price": 413.38,
@@ -163,11 +163,11 @@
       "1mo": 2.22
     },
     "Bitcoin": {
-      "price": 70445.68,
-      "1mo": 6.05
+      "price": 70583.2,
+      "1mo": 3.79
     },
     "yield_curve": {
-      "spread": 0.595,
+      "spread": 0.568,
       "inverted": false
     }
   },
@@ -183,11 +183,11 @@
       "mom_change": 3.5
     },
     "fear_greed": {
-      "score": 14.6,
+      "score": 15.9,
       "rating": "extreme fear",
-      "previous": 17.2,
-      "1w_ago": 22.6,
-      "1m_ago": 44.4
+      "previous": 14.6,
+      "1w_ago": 21.6,
+      "1m_ago": 37.0
     },
     "saving_rate": {
       "current": 4.5,
@@ -208,22 +208,22 @@
   },
   "bond_signals": {
     "yield_curve": {
-      "two_year": 4.012,
-      "ten_year": 4.391,
-      "spread": 0.379,
-      "date": "2026-03-20",
+      "two_year": 3.976,
+      "ten_year": 4.358,
+      "spread": 0.382,
+      "date": "2026-03-23",
       "assessment": "Normal & steepening \u2014 bullish"
     },
     "credit_spreads": {
       "current_bps": 292.0,
-      "date": "2026-03-20",
+      "date": "2026-03-23",
       "assessment": "Tight (292bps) \u2014 bullish"
     },
     "ten_year": {
-      "current": 4.391,
-      "prev": 4.22,
-      "change_bps": 17.1,
-      "date": "2026-03-20",
+      "current": 4.358,
+      "prev": 4.202,
+      "change_bps": 15.6,
+      "date": "2026-03-23",
       "assessment": "Elevated \u2014 bearish"
     },
     "scores": {
@@ -251,6 +251,6 @@
       "bearish": 3
     },
     "specific": null,
-    "watch": "Elevated VIX at 26.8 \u2014 volatility risk"
+    "watch": "Next FOMC meeting & CPI release"
   }
 }
